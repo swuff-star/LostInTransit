@@ -47,7 +47,7 @@
 		"LIT_ITEM_SPROUTINGEGG_DESC": "Attach <style=cIsHealing>leeching seeds</style> to up to <style=cIsUtility>1</style> <style=cStack>(+1 per stack)</style> enemy, <style=cIsDamage>damaging</style> them and <style=cIsHealing>healing</style> you for <style=cIsHealing>15%</style> damage per second.",
 
 		"LIT_ITEM_ARMSRACE_NAME": "Arms Race",
-		"LIT_ITEM_ARMSRACE_PICKUP": "Using interactables summons temporary drones. Drones are equipped with shields.",
+		"LIT_ITEM_ARMSRACE_PICKUP": "Using interactables summons temporary drones. Drones are equipped with gated shields.",
 		"LIT_ITEM_ARMSRACE_DESC": "Purchased <style=cIsUtility>drones</style> are given <style=cIsHealing>8%</style> <style=cStack>(+8% per stack)</style> of their health as <style=cIsHealing>shield</style>, as well as a <style=cIsDamage>9%</style> <style=cStack>(+9% per stack)</style> chance to fire <style=cIsDamage>mortars</style> and <style=cIsDamage>missiles</style>.",
 		"LIT_ITEM_ARMSRACE_LORE": "<style=cMono>Excerpt from the KS-I Brand Automated Defense Service user manual:</style>\n\nHello, and thank you for your purchase of our Universal Drone Upgrade Kit! (UKUK)\n\nWhile we believe that KS-I brand droids are the pinnacle of automated defense, modern technology has allowed us to push past what we believed possible for user interacing and ordinance installation.\n\nWith your purchase, we recommend reading the full user manual for all new commands available for upgraded drones before committing to any possibly dangerous combat scenarios.\n\nTo install, simply place the unpackaged UDUK into any unmodified KS-I slot. After installation, please wait for at least five minutes before issuing a command.\n\nRemember: Any voices you may hear from your drone after installation are simply a byproduct of high quality AI. If this persists, please contact your local KS-I mechanic specialist!",
 
@@ -60,10 +60,10 @@
 		"LIT_ITEM_BECKONINGCAT_PURIST_PICKUP": "Elite monsters have a chance to drop items.",
 		"LIT_ITEM_BECKONINGCAT_PURIST_DESC": "Elite monsters have a <style=cIsUtility>4.5%</style> <style=cStack>(+1.5% per stack)</style> chance to drop items on death. Dropped items have a <style=cIsUtility>5%</style> <style=cStack>(+1% per stack)</style> chance to be <color=#81d047>Uncommon</color>, and a <style=cIsUtility>0.5%</style> <style=cStack>(+0.25% per stack)</style> chance to be <color=#f26060>Rare</color>.",
 		"LIT_ITEM_BECKONINGCAT_PURIST_LORE": "<style=cDeath>WORK IN PROGRESS</style>",
-		
+
 		"LIT_ITEM_GUARDIANSHEART_NAME": "Guardian's Heart",
-		"LIT_ITEM_GUARDIANSHEART_PICKUP": "Block excess damage and gain armor upon shield break.",
-		"LIT_ITEM_GUARDIANSHEART_DESC": "Gain <style=cIsHealing>60 shield</style>. When your shield is broken, gain <style=cIsUtility>40 armor</style> for <style=cIsUtility>3</style> <style=cStack>(+50% per stack)</style> seconds, and <style=cIsHealing>block</style> any damage exceeding the amount of shield you had.",
+		"LIT_ITEM_GUARDIANSHEART_PICKUP": "All shields become gated, blocking excess damage.",
+		"LIT_ITEM_GUARDIANSHEART_DESC": "Gain <style=cIsHealing>60 shield</style>. All shields become <style=cIsUtility>gated</style>, <style=cIsHealing>blocking</style> any damage exceeding your current amount of shield, and giving <style=cIsUtility>40 armor</style> for <style=cIsUtility>3</style> <style=cStack>(+50% per stack)</style> seconds.",
 		"LIT_ITEM_GUARDIANSHEART_LORE": "========================================\n====   MyBabel Machine Translator   ====\n====     [Version 12.45.1.009 ]   ======\n========================================\nTraining… <100000000 cycles>\nTraining… <100000000 cycles>\nTraining… <100000000 cycles>\nTraining… <9023657 cycles>\nPaused…\nDisplay partial result? Y/N\nY\n========================================\n\nFirst cycle. <His> offering has been planted in both [Dex] and [Mozu]. No immediate changes, but we will keep track of them.\n\nThird cycle. Already, the subjects show signs of growth and both are bursting with energy. [Dex] struggles to bring himself to slumber, but <He> has reassured us that the excitement will abate.\n\nSeventh cycle. [Mozu] claims to feel uneasy, but otherwise no lingering negative effects are appearing. Both subjects are growing at a spectacular rate.\n\nFourteenth cycle. [Mozu] has collapsed, and does not respond. <He> told us that such a thing is to be expected among the weak. Her heart still beats, even after we removed it from her body. [Dex] lives, and has continued to grow rapidly.\n\nTwenty-eighth cycle. [Dex]'s growth has been tremendous. He has grown the same amount in one moon that others would grow in several hundred. <He> is satisfied with the work we have done. <He> tells us to discard the body of [Mozu], but to keep her heart. It is still beating.",
 
 		"LIT_ITEM_ENERGYCELL_NAME": "Energy Cell",
@@ -88,7 +88,7 @@
 
 		"LIT_ITEM_LOPPER_NAME": "Ol' Lopper",
 		"LIT_ITEM_LOPPER_PICKUP": "Deal more damage to injured victims.",
-		"LIT_ITEM_LOPPER_DESC": "Deal <style=cIsDamage>1%</style> <style=cStack>(+1% per stack)</style> more damage for every <style=cIsHealth>2% health</style> missing from enemies, up to <style=cIsDamage>30%</style> <style=cStack>(+30% per stack)</style> damage.",
+		"LIT_ITEM_LOPPER_DESC": "Deal <style=cIsDamage>2%</style> <style=cStack>(+2% per stack)</style> more damage for every <style=cIsHealth>1% health</style> missing from enemies, up to <style=cIsDamage>50%</style> <style=cStack>(+50% per stack)</style> damage.",
 		"LIT_ITEM_LOPPER_LORE": "<style=cMono>// --AUTO-TRANSCRIPTION FROM EVIDENCE STORAGE OF [Redacted] PRECINCT-- //\n\n</style>A shuttered gate closes as two men walk in the room. \"We have it in our possession, yes?\"\n\nThe younger of the two hoists a fairly large crate in his hands. \"Yes, sir, I have it right here.\"\n\nThe grizzled veteran grins as he strokes his beard. \"Perfect. This should be easy, then.\"\n\nA large thud echoes throughout the room as the case is set on an inspection table. \"Do you think it'll work?\"\n\nThe clacking of metal is heard as the veteran inspects and opens the case. \"No reason it shouldn't. He's defenseless now, so either he comes to us, or we go to him.\"\n\nThe youth shifts from one foot to the other anxiously. \"But don't you think it's strange, sir?\"\n\n\"In what way?\"\n\nThe shuffling of papers can be heard, as the youth's tone shifts to being more professional. \"They say he was inseperable from his axe, and yet he sent it to someone for repairs. It just doesn't seem right.\"\n\nThe veteran merely grunts and waves dismissively at his claim. \"As you said, he needed it repaired. It's simple as that. Don't think about it too much.\"\n\nThe youth sighs as the shuttered gate opens again. \"Sorry, sir. I just feel uneasy about this...\"",
 
 		"LIT_ITEM_REPULCHEST_NAME": "Repulsion Armor",
@@ -127,7 +127,7 @@
 		"LIT_EQUIP_GIGANTICAMETHYST_LORE": "Rich! Rich I am!\nJealous, jealous they were.\nIt's mine! All mine!\n\nBarry wanted to return it.\nBut we were never returning!\nSo I returned him to the soil.\n\nSamantha wanted to share it.\nBut breaking would ruin its luster!\nSo I broke her.\n\nI told them we weren't going back.\nThey didn't believe me!\nNow we're all here, forever.\n\nMe, my friends, and my crystal.",
 
 		"LIT_EQUIP_CAPTAINSBROOCH_NAME": "Captain's Brooch",
-		"LIT_EQUIP_CAPTAINSBROOCH_PICKUP": "Call down the Captain's Arsenal."
+		"LIT_EQUIP_CAPTAINSBROOCH_PICKUP": "Call down the Captain's Arsenal.",
 		"LIT_EQUIP_CAPTAINSBROOCH_DESCRIPTION": "Call down the <style=cIsUtility>Captain's Arsenal</style> from the <style=cIsUtility>UES Safe Travels</style>.",
 
 		"LIT_EQUIP_GENERATOR_NAME": "Intrinsic Field Projector",
@@ -151,11 +151,11 @@
 		"LIT_EQUIP_PRESCRIPTIONS_PICKUP": "Increase damage, attack speed, and armor.",
 		"LIT_EQUIP_PRESCRIPTIONS_DESC": "Increase <style=cIsDamage>attack speed</style> by <style=cIsDamage>70%</style>, <style=cIsDamage>damage</style> by <style=cIsDamage>20%</style>, and <style=cIsUtility>armor</style> by <style=cIsUtility>20</style> for <style=cIsUtility12</style> seconds.",
 		"LIT_EQUIP_PRESCRIPTIONS_LORE": "Order: C. Licht's Medicine for 4/56\nTracking Number: 643*******\nEstimated Delivery: 04/03/2056\nShipping Method: High Priority\nShipping Address: 554 Washington St., Corydon, Earth\nShipping Details: \n\nCalvin Lichgt's monthly prescriptions. Should not be left unrefrigerated for more than 6 hours.\n\nTake one tablet daily with your evening meal. If you take more than one, you may suffer negative side effects.\n\nI mean it. Do NOT take more thna one per day. Neither of us want a repeat of last month.",
-		
+
 		"LIT_EQUIP_PILLAGEDGOLD_NAME": "Pillaged Gold",
 		"LIT_EQUIP_PILLAGEDGOLD_PICKUP": "Hitting enemies gives gold.",
 		"LIT_EQUIP_PILLAGEDGOLD_DESC": "For 14 seconds, gain <style=cIsUtility>1</style> gold on hit.",
-		
+
 		"LIT_EQUIP_DYNAMITEPLUNGER_NAME": "Dynamite Plunger",
 		"LIT_EQUIP_DYNAMITEPLUNGER_PICKUP": "Hitting enemies has a chance to drop dynamite. Detonate on use.",
 
@@ -178,6 +178,7 @@
 		"LIT_EQUIP_AFFIXFRENZIED_LORE": "<style=cDeath>Whoa, hold up there, partner! You weren't supposed to see this... Do me a favor, and report this to the authors, will ya? ...And don't do it again!</style>",
 
 		"LIT_EQUIP_AFFIXBLIGHTED_NAME": "Betrayal of the Bulwark",
+		"msRaceDroneMods": null,
 		"LIT_EQUIP_AFFIXBLIGHTED_PICKUP": "Become another misguided soul.",
 		"ASPECTABILITIES_LIT_EQUIP_AFFIXBLIGHTED_PICKUP": "Reshuffle your 2 Elite Buffs.",
 		"LIT_EQUIP_AFFIXBLIGHTED_DESC": "Become another misguided soul.",
@@ -186,16 +187,16 @@
 		"LIT_MODIFIER_BLIGHTED": "Blighted {0}",
 		"LIT_ELITE_MODIFIER_LEECHING": "Leeching {0}",
 		"LIT_ELITE_MODIFIER_VOLATILE": "Volatile {0}",
-		"LIT_ELITE_MODIFIER_FRENZIED": "Frenzying {0}",
+		"LIT_ELITE_MODIFIER_FRENZIED": "Frenzied {0}",
 
 		"ELITE_MODIFIER_GOLD": "Auric {0}",
 
 		"LIT_MECHSPIDER_LORE": "<style=cMono>$ Transmitting emergency signals. . .\n\n$ Warning! Transmission failure!</style>\n\n             uu$$$$$$$$$$$uu\n          uu$$$$$$$$$$$$$$$$$uu\n         u$$$$$$$$$$$$$$$$$$$$$u\n        u$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$\"   \"$$$\"   \"$$$$$$u\n       \"$$$$\"      u$u       $$$$\"\n        $$$u       u$u       u$$$\n        $$$u      u$$$u      u$$$\n         \"$$$$uu$$$   $$$uu$$$$\"\n          \"$$$$$$$\"   \"$$$$$$$\"\n            u$$$$$$$u$$$$$$$u\n             u$\"$\"$\"$\"$\"$\"$u\n  uuu        $$u$ $ $ $ $u$$       uuu\n u$$$$        $$$$$u$u$u$$$       u$$$$\n  $$$$$uu      \"$$$$$$$$$\"     uu$$$$$$\nu$$$$$$$$$$$uu    \"\"\"\"\"    uuuu$$$$$$$$$$\n$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\n \"\"\"      \"\"$$$$$$$$$$$uu \"\"$\"\"\"\n           uuuu \"\"$$$$$$$$$$uuu\n  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\n  $$$$$$$$$$\"\"\"\"           \"\"$$$$$$$$$$$\"\n   \"$$$$$\"                      \"\"$$$$\"\"\n     $$$\"                         $$$$\"\n\nHijacked by the Roider Union Pistolero.\n\nNext time use a real booter, captain. Money in our pockets.",
 
 		"LIT_EVOLEMURIAN_NAME": "Evolved Lemurian",
-		
+
 		"LIT_EXPANSION_NAME": "Lost in Transit",
-		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game.",
+		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game."
 
 	}
 }

@@ -1,9 +1,7 @@
 ﻿using Moonstorm;
 using RoR2;
-using R2API;
 using RoR2.Items;
 using System;
-using UnityEngine;
 
 namespace LostInTransit.Items
 {
@@ -14,7 +12,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Maximum Extra Damage per Lopper", ConfigDesc = "Maximum extra damage dealt by Ol' Lopper.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float lopperMaxBonus = 0.3f;
+        public static float lopperMaxBonus = 0.5f;
 
 
         public class LopperBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever
@@ -25,7 +23,7 @@ namespace LostInTransit.Items
             public void OnIncomingDamageOther(HealthComponent healthComponent, DamageInfo damageInfo)
             {
                 //Debug.Log("Damage before Lopper: " + damageInfo.damage);
-                damageInfo.damage += stack * (damageInfo.damage * Math.Min(((1f - healthComponent.combinedHealthFraction) / 2f), lopperMaxBonus));
+                damageInfo.damage += stack * (damageInfo.damage * Math.Min(((1f - healthComponent.combinedHealthFraction) * 2f), lopperMaxBonus));
                 //Debug.Log("Damage after Lopper: " + damageInfo.damage);
             }
         }

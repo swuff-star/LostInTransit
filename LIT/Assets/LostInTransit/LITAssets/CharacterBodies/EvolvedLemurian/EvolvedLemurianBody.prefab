@@ -1,0 +1,698 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4993092800823127137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3270846736074923687}
+  - component: {fileID: 5120630218229588714}
+  - component: {fileID: 1283678226181060336}
+  - component: {fileID: 7145708592051774823}
+  - component: {fileID: 5486132048642645002}
+  - component: {fileID: 4100263234302991625}
+  - component: {fileID: 2847058018398329752}
+  - component: {fileID: 8184633102265508447}
+  - component: {fileID: 8395291793735473140}
+  - component: {fileID: 2544602298050724577}
+  - component: {fileID: 115402617266732193}
+  - component: {fileID: 744648284126424522}
+  - component: {fileID: 563719143482818492}
+  - component: {fileID: 2503959913210882086}
+  - component: {fileID: 6078888966878106854}
+  - component: {fileID: 575906820778623346}
+  - component: {fileID: 8375237656546967683}
+  - component: {fileID: 2611284444604958522}
+  - component: {fileID: 2496346162725789780}
+  - component: {fileID: 1474077763086826249}
+  - component: {fileID: 7267519546592807626}
+  m_Layer: 0
+  m_Name: EvolvedLemurianBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3270846736074923687
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5120630218229588714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1530905962, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeedPenaltyCoefficient: 1
+  characterDirection: {fileID: 0}
+  muteWalkMotion: 0
+  mass: 100
+  airControl: 0.25
+  disableAirControlUntilCollision: 0
+  generateParametersOnAwake: 1
+  networkIdentity: {fileID: 0}
+  body: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  alive: 1
+  restStopwatch: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  isAirControlForced: 0
+  lastVelocity: {x: 0, y: 0, z: 0}
+  _moveDirection: {x: 0, y: 0, z: 0}
+  _safeCollisionEnableCount: 0
+  _gravityParameters:
+    environmentalAntiGravityGranterCount: 0
+    antiGravityNeutralizerCount: 0
+    channeledAntiGravityGranterCount: 0
+  <useGravity>k__BackingField: 0
+  _flightParameters:
+    channeledFlightGranterCount: 0
+  <isFlying>k__BackingField: 0
+--- !u!114 &1283678226181060336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &7145708592051774823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1549848242, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterBody: {fileID: 0}
+  _aimDirection: {x: 0, y: 0, z: 0}
+  lastRaycastTime: -Infinity
+  lastFixedRaycastTime: -Infinity
+  didLastRaycastHit: 0
+  lastMaxDistance: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  <emoteRequest>k__BackingField: -1
+--- !u!114 &5486132048642645002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -197296741, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyIndex: -1
+  baseNameToken: LIT_EVOLVEDLEMURIAN_NAME
+  subtitleNameToken: 
+  activeBuffsList: 
+  activeBuffsListCount: 0
+  buffs: 
+  eliteBuffCount: 0
+  warCryEffectInstance: {fileID: 0}
+  bodyFlags: 1
+  _masterObject: {fileID: 0}
+  _master: {fileID: 0}
+  <inventory>k__BackingField: {fileID: 0}
+  linkedToMaster: 0
+  <isPlayerControlled>k__BackingField: 0
+  disablingHurtBoxes: 0
+  previousEquipmentIndex: -1
+  <executeEliteHealthFraction>k__BackingField: 0
+  transform: {fileID: 0}
+  <rigidbody>k__BackingField: {fileID: 0}
+  <networkIdentity>k__BackingField: {fileID: 0}
+  <characterMotor>k__BackingField: {fileID: 0}
+  <characterDirection>k__BackingField: {fileID: 0}
+  <teamComponent>k__BackingField: {fileID: 0}
+  <healthComponent>k__BackingField: {fileID: 0}
+  <equipmentSlot>k__BackingField: {fileID: 0}
+  <inputBank>k__BackingField: {fileID: 0}
+  <skillLocator>k__BackingField: {fileID: 0}
+  sfxLocator: {fileID: 0}
+  <modelLocator>k__BackingField: {fileID: 0}
+  <hurtBoxGroup>k__BackingField: {fileID: 0}
+  <mainHurtBox>k__BackingField: {fileID: 0}
+  <coreTransform>k__BackingField: {fileID: 0}
+  <hasEffectiveAuthority>k__BackingField: 0
+  _isSprinting: 0
+  outOfCombatStopwatch: 0
+  outOfDangerStopwatch: 0
+  <outOfCombat>k__BackingField: 1
+  _outOfDanger: 1
+  previousPosition: {x: 0, y: 0, z: 0}
+  notMovingStopwatch: 0
+  rootMotionInMainState: 0
+  mainRootSpeed: 0
+  baseMaxHealth: 110
+  baseRegen: 0
+  baseMaxShield: 0
+  baseMoveSpeed: 7
+  baseAcceleration: 30
+  baseJumpPower: 22
+  baseDamage: 14
+  baseAttackSpeed: 0
+  baseCrit: 0
+  baseArmor: 0
+  baseVisionDistance: Infinity
+  baseJumpCount: 1
+  sprintingSpeedMultiplier: 1.45
+  autoCalculateLevelStats: 1
+  levelMaxHealth: 33
+  levelRegen: 0
+  levelMaxShield: 0
+  levelMoveSpeed: 0
+  levelJumpPower: 0
+  levelDamage: 2.8
+  levelAttackSpeed: 0
+  levelCrit: 0
+  levelArmor: 0
+  <experience>k__BackingField: 0
+  <level>k__BackingField: 0
+  <maxHealth>k__BackingField: 0
+  <maxBarrier>k__BackingField: 0
+  <barrierDecayRate>k__BackingField: 0
+  <regen>k__BackingField: 0
+  <maxShield>k__BackingField: 0
+  <moveSpeed>k__BackingField: 0
+  <acceleration>k__BackingField: 0
+  <jumpPower>k__BackingField: 0
+  <maxJumpCount>k__BackingField: 0
+  <maxJumpHeight>k__BackingField: 0
+  <damage>k__BackingField: 0
+  <attackSpeed>k__BackingField: 0
+  <crit>k__BackingField: 0
+  <critMultiplier>k__BackingField: 0
+  <bleedChance>k__BackingField: 0
+  <armor>k__BackingField: 0
+  <visionDistance>k__BackingField: 0
+  <critHeal>k__BackingField: 0
+  <cursePenalty>k__BackingField: 0
+  <hasOneShotProtection>k__BackingField: 0
+  <isGlass>k__BackingField: 0
+  <oneShotProtectionFraction>k__BackingField: 0
+  <canPerformBackstab>k__BackingField: 0
+  <canReceiveBackstab>k__BackingField: 0
+  statsDirty: 0
+  aimTimer: 0
+  <killCountServer>k__BackingField: 0
+  helfireController: {fileID: 0}
+  helfireLifetime: 0
+  fireTrail: {fileID: 0}
+  wasLucky: 0
+  poisonballTimer: 0
+  lunarMissileRechargeTimer: 10
+  lunarMissileTimerBetweenShots: 0
+  remainingMissilesToFire: 0
+  lunarMissilePrefab: {fileID: 0}
+  timeBubbleWardInstance: {fileID: 0}
+  engiShieldTempEffectInstance: {fileID: 0}
+  bucklerShieldTempEffectInstance: {fileID: 0}
+  slowDownTimeTempEffectInstance: {fileID: 0}
+  crippleEffectInstance: {fileID: 0}
+  tonicBuffEffectInstance: {fileID: 0}
+  weakTempEffectInstance: {fileID: 0}
+  energizedTempEffectInstance: {fileID: 0}
+  barrierTempEffectInstance: {fileID: 0}
+  nullifyStack1EffectInstance: {fileID: 0}
+  nullifyStack2EffectInstance: {fileID: 0}
+  nullifyStack3EffectInstance: {fileID: 0}
+  regenBoostEffectInstance: {fileID: 0}
+  elephantDefenseEffectInstance: {fileID: 0}
+  healingDisabledEffectInstance: {fileID: 0}
+  noCooldownEffectInstance: {fileID: 0}
+  doppelgangerEffectInstance: {fileID: 0}
+  deathmarkEffectInstance: {fileID: 0}
+  crocoRegenEffectInstance: {fileID: 0}
+  mercExposeEffectInstance: {fileID: 0}
+  lifestealOnHitEffectInstance: {fileID: 0}
+  teamWarCryEffectInstance: {fileID: 0}
+  randomDamageEffectInstance: {fileID: 0}
+  lunarGolemShieldEffectInstance: {fileID: 0}
+  warbannerEffectInstance: {fileID: 0}
+  teslaFieldEffectInstance: {fileID: 0}
+  lunarSecondaryRootEffectInstance: {fileID: 0}
+  lunarDetonatorEffectInstance: {fileID: 0}
+  fruitingEffectInstance: {fileID: 0}
+  mushroomVoidTempEffectInstance: {fileID: 0}
+  bearVoidTempEffectInstance: {fileID: 0}
+  outOfCombatArmorEffectInstance: {fileID: 0}
+  voidFogMildEffectInstance: {fileID: 0}
+  voidFogStrongEffectInstance: {fileID: 0}
+  voidJailerSlowEffectInstance: {fileID: 0}
+  voidRaidcrabWardWipeFogEffectInstance: {fileID: 0}
+  spreadBloomDecayTime: 0.45
+  spreadBloomCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadBloomInternal: 0
+  _defaultCrosshairPrefab: {fileID: 0}
+  hideCrosshair: 0
+  multiKillTimer: 0
+  <multiKillCount>k__BackingField: 0
+  <radius>k__BackingField: 0
+  aimOriginTransform: {fileID: 0}
+  hullClassification: 0
+  portraitIcon: {fileID: 0}
+  bodyColor: {r: 0.5849056, g: 0.26762193, b: 0.26762193, a: 0}
+  isChampion: 0
+  <isElite>k__BackingField: 0
+  currentVehicle: {fileID: 0}
+  preferredPodPrefab: {fileID: 0}
+  preferredInitialStateType:
+    _typeName: EntityStates.Uninitialized, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  skinIndex: 0
+  customKillTotalStatName: 
+  overrideCoreTransform: {fileID: 0}
+--- !u!114 &4100263234302991625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1067940895, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraParams: {fileID: 11400000, guid: 96ced9bff05c7644ea3562cc06cd1de9, type: 2}
+  cameraPivotTransform: {fileID: 0}
+  fovOverride: 0
+  recoil: {x: 0, y: 0}
+  dontRaycastToPivot: 0
+  targetRecoil: {x: 0, y: 0}
+  recoilVelocity: {x: 0, y: 0}
+  targetRecoilVelocity: {x: 0, y: 0}
+  _currentCameraParamsData:
+    minPitch:
+      value: 0
+      alpha: 0
+    maxPitch:
+      value: 0
+      alpha: 0
+    wallCushion:
+      value: 0
+      alpha: 0
+    pivotVerticalOffset:
+      value: 0
+      alpha: 0
+    idealLocalCameraPos:
+      value: {x: 0, y: 0, z: 0}
+      alpha: 0
+    fov:
+      value: 0
+      alpha: 0
+    isFirstPerson:
+      value: 0
+      alpha: 0
+--- !u!114 &2847058018398329752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 0}
+  modelDestructionNotifier: {fileID: 0}
+  modelBaseTransform: {fileID: 0}
+  autoUpdateModelTransform: 1
+  dontDetatchFromParent: 0
+  modelParentTransform: {fileID: 0}
+  noCorpse: 0
+  dontReleaseModelOnDeath: 0
+  preserveModel: 0
+  normalizeToFloor: 0
+  normalSmoothdampTime: 0.1
+  normalMaxAngleDelta: 90
+  normalSmoothdampVelocity: {x: 0, y: 0, z: 0}
+  targetNormal: {x: 0, y: 1, z: 0}
+  currentNormal: {x: 0, y: 1, z: 0}
+  characterMotor: {fileID: 0}
+--- !u!114 &8184633102265508447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1077198318, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVector: {x: 0, y: 0, z: 0}
+  targetTransform: {fileID: 0}
+  overrideAnimatorForwardTransform: {fileID: 0}
+  rootMotionAccumulator: {fileID: 0}
+  modelAnimator: {fileID: 0}
+  driveFromRootRotation: 0
+  turnSpeed: 180
+  turnSoundName: 
+  previousParamsIndex: -1
+  yRotationVelocity: 0
+  _yaw: 0
+  targetVector: {x: 0, y: 0, z: 0}
+  <hasEffectiveAuthority>k__BackingField: 0
+--- !u!114 &8395291793735473140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: Body
+  initialStateType:
+    _typeName: EntityStates.LemurianMonster.SpawnState, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  mainStateType:
+    _typeName: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  <networker>k__BackingField: {fileID: 0}
+  <networkIdentity>k__BackingField: {fileID: 0}
+  <destroying>k__BackingField: 0
+--- !u!114 &2544602298050724577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: Weapon
+  initialStateType:
+    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  mainStateType:
+    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  <networker>k__BackingField: {fileID: 0}
+  <networkIdentity>k__BackingField: {fileID: 0}
+  <destroying>k__BackingField: 0
+--- !u!114 &115402617266732193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: Flight
+  initialStateType:
+    _typeName: EntityStates.Vulture.Land, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  mainStateType:
+    _typeName: EntityStates.Vulture.Land, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  <networker>k__BackingField: {fileID: 0}
+  <networkIdentity>k__BackingField: {fileID: 0}
+  <destroying>k__BackingField: 0
+--- !u!114 &744648284126424522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <skillDef>k__BackingField: {fileID: 0}
+  _skillFamily: {fileID: 11400000, guid: f6f080f031edac346ac8fe1c28581473, type: 2}
+  <baseSkill>k__BackingField: {fileID: 0}
+  skillName: 
+  hideInCharacterSelect: 0
+  <stateMachine>k__BackingField: {fileID: 0}
+  <characterBody>k__BackingField: {fileID: 0}
+  <defaultSkillDef>k__BackingField: {fileID: 0}
+  bonusStockFromBody: 0
+  <maxStock>k__BackingField: 0
+  <stock>k__BackingField: 0
+  finalRechargeInterval: 0
+  _cooldownScale: 1
+  _flatCooldownReduction: 1
+  <rechargeStopwatch>k__BackingField: 0
+  hasExecutedSuccessfully: 0
+--- !u!114 &563719143482818492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primary: {fileID: 744648284126424522}
+  secondary: {fileID: 0}
+  utility: {fileID: 0}
+  special: {fileID: 0}
+  passiveSkill:
+    enabled: 0
+    skillNameToken: 
+    skillDescriptionToken: 
+    keywordToken: 
+    icon: {fileID: 0}
+  networkIdentity: {fileID: 0}
+  allSkills: []
+  hasEffectiveAuthority: 0
+  skillDefDirtyFlags: 0
+  inDeserialize: 0
+--- !u!114 &2503959913210882086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -315171339, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideAllyCardDisplay: 0
+  _teamIndex: -1
+  <body>k__BackingField: {fileID: 0}
+  oldTeamIndex: -1
+  defaultIndicatorPrefab: {fileID: 0}
+  indicator: {fileID: 0}
+--- !u!114 &6078888966878106854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -365436499, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  shield: 0
+  barrier: 0
+  magnetiCharge: 0
+  dontShowHealthbar: 0
+  globalDeathEventChanceCoefficient: 1
+  _killingDamageType: 0
+  body: {fileID: 0}
+  modelLocator: {fileID: 0}
+  <lastHitAttacker>k__BackingField: {fileID: 0}
+  <godMode>k__BackingField: 0
+  <potionReserve>k__BackingField: 0
+  <isInFrozenState>k__BackingField: 0
+  devilOrbHealPool: 0
+  devilOrbTimer: 0
+  regenAccumulator: 0
+  wasAlive: 1
+  adaptiveArmorValue: 0
+  isShieldRegenForced: 0
+  ospTimer: 0
+  serverDamageTakenThisUpdate: 0
+  repeatHealComponent: {fileID: 0}
+  currentEquipmentIndex: 0
+--- !u!114 &575906820778623346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1512185436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInteractionDistance: 3
+--- !u!114 &8375237656546967683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -359660931, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightInteractor: 1
+  inputReceived: 0
+  networkIdentity: {fileID: 0}
+  <interactor>k__BackingField: {fileID: 0}
+  inputBank: {fileID: 0}
+  characterBody: {fileID: 0}
+  equipmentSlot: {fileID: 0}
+  interactableCooldown: 0
+--- !u!114 &2611284444604958522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1277448904, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathStateMachine: {fileID: 0}
+  deathState:
+    _typeName: EntityStates.Vulture.FallingDeath, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  idleStateMachine:
+  - {fileID: 8395291793735473140}
+  - {fileID: 8395291793735473140}
+--- !u!114 &2496346162725789780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 161585894, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <transform>k__BackingField: {fileID: 0}
+  <inputBank>k__BackingField: {fileID: 0}
+  <characterMotor>k__BackingField: {fileID: 0}
+  <characterDirection>k__BackingField: {fileID: 0}
+  <rigidbody>k__BackingField: {fileID: 0}
+  positionTransmitInterval: 0.05
+  lastPositionTransmitTime: -Infinity
+  interpolationFactor: 3
+  debugDuplicatePositions: 0
+  debugSnapshotReceived: 0
+  rigidbodyStartedKinematic: 1
+  <hasEffectiveAuthority>k__BackingField: 0
+--- !u!114 &1474077763086826249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachines:
+  - {fileID: 8395291793735473140}
+  - {fileID: 2544602298050724577}
+  - {fileID: 115402617266732193}
+  networkIdentity: {fileID: 0}
+--- !u!114 &7267519546592807626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993092800823127137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 261648291, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emoteDefinitions: []

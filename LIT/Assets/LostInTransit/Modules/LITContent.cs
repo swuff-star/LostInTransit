@@ -61,6 +61,8 @@ namespace LostInTransit
 
         public static class Items
         {
+            public static ItemDef ArmsRaceDroneMods;
+            public static ItemDef ArmsRace;
             public static ItemDef BeckoningCat;
             public static ItemDef BitterRoot;
             public static ItemDef BlessedDice;

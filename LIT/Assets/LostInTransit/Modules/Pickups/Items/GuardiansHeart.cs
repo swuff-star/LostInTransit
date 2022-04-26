@@ -31,6 +31,11 @@ namespace LostInTransit.Items
             public static ItemDef GetItemDef() => LITContent.Items.GuardiansHeart;
 
             public float currentShield;
+
+            public void Start()
+            {
+                body.RecalculateStats();
+            }
             private void FixedUpdate()
             {
                 currentShield = body.healthComponent.shield;
@@ -42,6 +47,7 @@ namespace LostInTransit.Items
                     if (shieldGating == true && !(damageInfo.damageType == DamageType.BypassArmor || damageInfo.damageType == DamageType.BypassOneShotProtection))
                     {
                         damageInfo.damage = body.healthComponent.shield + body.healthComponent.barrier;
+                        body.healthComponent.shield = 0f;
                     }
 
                     if (heartArmor > 0f)
