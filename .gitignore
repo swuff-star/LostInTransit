@@ -84,6 +84,9 @@ LIT/ThunderKit/
 #Other
 LIT/Assets/Plugins/NGTools/*
 OldProject/*
+LIT/Packages/*
+!LIT/Packages/packages-lock.json
+!LIT/Packages/manifest.json
 
 ##-------##
 ## wwise ##
