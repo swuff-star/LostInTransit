@@ -1,7 +1,8 @@
 {
     "name": "LostInTransit",
     "references": [
-        "GUID:a44f47cf3ada4435dbc516bad0bc86fe"
+        "GUID:a44f47cf3ada4435dbc516bad0bc86fe",
+        "GUID:027c693fefcac6548859a0eec81eed3d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -23,7 +23,7 @@ namespace LostInTransit.Elites
 
             RoR2Application.onLoad += BlightSetup;
             On.RoR2.Util.GetBestBodyName += GetBlightedName;
-            DirectorAPI.MonsterActions += CreateCosts;
+            //DirectorAPI.MonsterActions += CreateCosts;
         }
 
         private static void CreateCosts(List<DirectorAPI.DirectorCardHolder> arg1, DirectorAPI.StageInfo arg2)
