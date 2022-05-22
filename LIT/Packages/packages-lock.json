@@ -79,7 +79,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "43f4431c4fd8d045e453c4bde6c352b6666bacdc"
+      "hash": "83cc4c407a7dc6394a7e161cfd22f58a5f4be2aa"
     },
     "tristanmcpherson-r2api": {
       "version": "file:R2API",
