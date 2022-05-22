@@ -1,0 +1,918 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c430476270cb42ae82672a367a0e1, type: 3}
+  m_Name: iddAffixVolatile
+  m_EditorClassIdentifier: 
+  keyAsset: {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}
+  displayPrefab: {fileID: 4984898351240871556, guid: 4c53fba62aa469545b475ba6acf9f152,
+    type: 3}
+  namedDisplayDictionary:
+  - idrs:
+      address: idrsBandit2
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Hat
+      localPos: {x: 0.08974, y: 0.10545, z: 0.20664}
+      localAngles: {x: 19.66007, y: 103.8748, z: 305.1916}
+      localScales: {x: 0.13329, y: 0.13329, z: 0.13329}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsCommando
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.10882, y: 0.28656, z: -0.00002}
+      localAngles: {x: 16.89391, y: 26.6832, z: 315.852}
+      localScales: {x: 0.18829, y: 0.18829, z: 0.18829}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsCaptain
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.0971, y: 0.23454, z: 0.12376}
+      localAngles: {x: 12.5164, y: 23.53003, z: 333.5402}
+      localScales: {x: 0.15938, y: 0.15938, z: 0.15938}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsCroco
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 1.43183, y: 1.90979, z: 1.60243}
+      localAngles: {x: 0, y: 131.7732, z: 343.9997}
+      localScales: {x: 1.15528, y: 1.15528, z: 1.15528}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsEngi
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.1577, y: 0.08624, z: 0.17353}
+      localAngles: {x: 23.0457, y: 51.30429, z: 342.5899}
+      localScales: {x: 0.19791, y: 0.19791, z: 0.19791}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsHuntress
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.10123, y: 0.08743, z: 0.06946}
+      localAngles: {x: 352.2075, y: 40.43784, z: 324.1241}
+      localScales: {x: 0.12099, y: 0.12099, z: 0.12099}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsLoader
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.14988, y: 0.07244, z: 0.13101}
+      localAngles: {x: 348.0771, y: 44.41277, z: 317.6945}
+      localScales: {x: 0.15598, y: 0.15598, z: 0.15598}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMage
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.06033, y: 0.0453, z: 0.0504}
+      localAngles: {x: 0, y: 62.92982, z: 327.9778}
+      localScales: {x: 0.13293, y: 0.13293, z: 0.13293}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMerc
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.06012, y: 0.04804, z: 0.07298}
+      localAngles: {x: 22.25735, y: 30.90237, z: 327.6738}
+      localScales: {x: 0.12764, y: 0.12764, z: 0.12764}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsToolbotBody
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: 1.67402, y: 1.91757, z: 0.00017}
+      localAngles: {x: 0, y: 0, z: 228.8764}
+      localScales: {x: 1.55257, y: 1.55257, z: 1.55257}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsTreebot
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Eye
+      localPos: {x: -0.19391, y: 0.81869, z: -0.12099}
+      localAngles: {x: 331.2386, y: 321.5512, z: 307.5296}
+      localScales: {x: 0.49692, y: 0.49692, z: 0.49692}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsBell
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: BellEnd
+      localPos: {x: 0, y: 0.00004, z: -1.8462}
+      localAngles: {x: 0, y: 270, z: 9.82952}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsBeetle
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.45909, y: 0.50325, z: -0.23519}
+      localAngles: {x: 0, y: 207.126, z: 315.7073}
+      localScales: {x: 0.49146, y: 0.49146, z: 0.49146}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsBeetleGuard
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.94592, y: 0.81146, z: 0.70831}
+      localAngles: {x: 18.76561, y: 336.6687, z: 216.7174}
+      localScales: {x: 1.52671, y: 1.52671, z: 1.52671}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsBeetleQueen
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 2.27976, y: 2.39876, z: -0.79778}
+      localAngles: {x: 0, y: 199.2867, z: 315.196}
+      localScales: {x: 2.57993, y: 2.57993, z: 2.57993}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsBison
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.37809, y: 0.18691, z: 0.50989}
+      localAngles: {x: 10.98356, y: 325.5843, z: 205.4416}
+      localScales: {x: 0.48693, y: 0.48693, z: 0.48693}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsClayboss
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Center
+      localPos: {x: -0.8494, y: 1.24136, z: 1.67323}
+      localAngles: {x: 2.71684, y: 31.685, z: 328.3929}
+      localScales: {x: 0.75, y: 0.75, z: 0.75}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsClayBruiser
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.3168, y: 0.42085, z: 0.2941}
+      localAngles: {x: 0.17126, y: 47.09046, z: 324.5157}
+      localScales: {x: 0.33554, y: 0.33554, z: 0.33554}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsGolem
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.60861, y: 0.91172, z: 0.23795}
+      localAngles: {x: 3.09443, y: 48.90314, z: 330.0192}
+      localScales: {x: 0.68106, y: 0.68106, z: 0.68106}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsGrandparent
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0, y: 8.41629, z: 0.4261}
+      localAngles: {x: 0, y: 90, z: 0}
+      localScales: {x: 3, y: 3, z: 3}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsGravekeeperBody
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Mask
+      localPos: {x: 1.04885, y: 0.33413, z: 1.37011}
+      localAngles: {x: 0, y: 37.42749, z: 270}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsGreaterWisp
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: MaskBase
+      localPos: {x: -0.37336, y: 0.67009, z: 0.44159}
+      localAngles: {x: 0, y: 49.78561, z: 336.6306}
+      localScales: {x: 0.80363, y: 0.80363, z: 0.80363}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsHermitCrab
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Muzzle
+      localPos: {x: -0.20806, y: -0.67986, z: 0.23273}
+      localAngles: {x: 0, y: 48.20382, z: 335.3376}
+      localScales: {x: 0.75, y: 0.75, z: 0.75}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsImp
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Neck
+      localPos: {x: 0.15653, y: 0.05053, z: -0.16651}
+      localAngles: {x: 348.8095, y: 229.2758, z: 347.2959}
+      localScales: {x: 0.17206, y: 0.17206, z: 0.17206}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsImpBoss
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Neck
+      localPos: {x: 0.74587, y: -0.51562, z: -0.98497}
+      localAngles: {x: 0, y: 232.8652, z: 335.1035}
+      localScales: {x: 0.68115, y: 0.68115, z: 0.68115}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsJellyfish
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Hull2
+      localPos: {x: -0.34185, y: 0.87674, z: -0.03635}
+      localAngles: {x: 0, y: 0, z: 301.5861}
+      localScales: {x: 0.75, y: 0.75, z: 0.75}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsLemurian
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.89894, y: 3.26086, z: -0.71809}
+      localAngles: {x: 346.4797, y: 349.813, z: 307.5465}
+      localScales: {x: 1.25, y: 1.25, z: 1.25}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsLemurianBruiser
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 1.2478, y: 3.16592, z: 0.35568}
+      localAngles: {x: 14.97527, y: 337.3306, z: 218.4818}
+      localScales: {x: 1.59919, y: 1.59919, z: 1.59919}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMiniMushroom
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.01874, y: -0.99547, z: -0.76526}
+      localAngles: {x: 24.39329, y: 342.541, z: 59.25598}
+      localScales: {x: 0.5, y: 0.5, z: 0.5}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsNullifier
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Muzzle
+      localPos: {x: -1.03905, y: 0.0003, z: 2.11674}
+      localAngles: {x: 0, y: 52.84411, z: 0}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsParent
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -25.9652, y: 136.8653, z: 21.81479}
+      localAngles: {x: 326.2988, y: 231.967, z: 255.1075}
+      localScales: {x: 47.48817, y: 47.48817, z: 47.48817}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsRoboballBoss
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: MainEyeMuzzle
+      localPos: {x: 0, y: 0, z: -0.18278}
+      localAngles: {x: 13.80187, y: 90, z: 0}
+      localScales: {x: 0.58022, y: 0.58022, z: 0.58022}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsRoboballMini
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: ROOT
+      localPos: {x: -0.50079, y: 0.45401, z: 0.58105}
+      localAngles: {x: 0, y: 49.24311, z: 353.8405}
+      localScales: {x: 0.76359, y: 0.76359, z: 0.76359}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsTitan
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -1.35232, y: 4.64578, z: 1.81258}
+      localAngles: {x: 3.02, y: 46.32784, z: 345.8343}
+      localScales: {x: 1.75183, y: 1.75183, z: 1.75183}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsVagrant
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HullCenter
+      localPos: {x: -0.54434, y: 0.13842, z: 1.04761}
+      localAngles: {x: 359.3163, y: 61.89576, z: 332.2689}
+      localScales: {x: 0.75, y: 0.75, z: 0.75}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsVulture
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.30848, y: 2.93338, z: -0.95916}
+      localAngles: {x: 326.4444, y: 24.23308, z: 231.2234}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsWisp
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.31525, y: 0.30564, z: 0.39702}
+      localAngles: {x: 10.3731, y: 350.8943, z: 239.4679}
+      localScales: {x: 0.5, y: 0.5, z: 0.5}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsScav
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Chest
+      localPos: {x: 3.38131, y: 5.72098, z: -6.27938}
+      localAngles: {x: 323.0511, y: 335.4919, z: 259.8373}
+      localScales: {x: 3, y: 3, z: 3}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMoffeinAncientWisp
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.33169, y: 0.27867, z: 0.38885}
+      localAngles: {x: 8.12595, y: 55.16859, z: 332.1334}
+      localScales: {x: 0.31715, y: 0.31715, z: 0.31715}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMoffeinClayMan
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.10958, y: 0.29057, z: 0.08991}
+      localAngles: {x: 9.61765, y: 56.03909, z: 330.8455}
+      localScales: {x: 0.31885, y: 0.31885, z: 0.31885}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsNebbyArchWisp
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: DisplayMask
+      localPos: {x: -0.61772, y: 1.73818, z: 1.00651}
+      localAngles: {x: 6.52602, y: 68.88582, z: 332.3875}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsChef
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.00473, y: 0.01034, z: 0.00571}
+      localAngles: {x: 319.1285, y: 74.11437, z: 329.9974}
+      localScales: {x: 0.00575, y: 0.00575, z: 0.00575}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsHand
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -1.64351, y: 1.37415, z: 1.88725}
+      localAngles: {x: 0, y: 48.94975, z: 331.2297}
+      localScales: {x: 1.46635, y: 1.46635, z: 1.46635}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsMiner
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: 0.00068, y: 0.00218, z: -0.00037}
+      localAngles: {x: 0, y: 213.5366, z: 318.8299}
+      localScales: {x: 0.00248, y: 0.00248, z: 0.00248}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsNemesisEnforcer
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.00232, y: 0.00635, z: -0.00202}
+      localAngles: {x: 353.177, y: 326.9874, z: 328.6262}
+      localScales: {x: 0.0075, y: 0.0075, z: 0.0075}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsSniperClassic
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.04223, y: 0.2166, z: -0.15216}
+      localAngles: {x: 338.7646, y: 340.8388, z: 313.8116}
+      localScales: {x: 0.17031, y: 0.17031, z: 0.17031}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsExecutioner
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.00069, y: -0.0004, z: 0.00099}
+      localAngles: {x: 0, y: 55.12426, z: 322.411}
+      localScales: {x: 0.00151, y: 0.00151, z: 0.00151}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsNemmando
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: HeadCenter
+      localPos: {x: -0.00085, y: 0.00297, z: 0.00064}
+      localAngles: {x: 0.00001, y: 37.07076, z: 323.0984}
+      localScales: {x: 0.00193, y: 0.00193, z: 0.00193}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsSecurityDrone
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: EliteDisplay
+      localPos: {x: -0.44765, y: 0.44688, z: -0.47721}
+      localAngles: {x: 0, y: 313.1695, z: 325.6675}
+      localScales: {x: 0.75, y: 0.75, z: 0.75}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - idrs:
+      address: idrsPaladin
+      asset: {fileID: 0}
+    displayRules:
+    - ruleType: 0
+      childName: Head
+      localPos: {x: -0.07597, y: 0.38895, z: 0.10051}
+      localAngles: {x: 17.05813, y: 40.11826, z: 340.8055}
+      localScales: {x: 0.25, y: 0.25, z: 0.25}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0

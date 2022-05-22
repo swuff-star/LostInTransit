@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1937965295, guid: 5310a63ff5e7e2149a9ca995774adb79, type: 3}
+  m_Script: {fileID: 11500000, guid: dd67b606727ace14ab02544804372b47, type: 3}
   m_Name: AbilityVolatile
   m_EditorClassIdentifier: 
   equipmentDef: {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}

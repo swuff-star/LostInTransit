@@ -20,7 +20,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b46a1e85e934970833dc1aea689eb13c724b621a"
+      "hash": "cbc4029bbadcc3af6d4c75a80a2ab2d35b4b2d99"
     },
     "com.unity.postprocessing": {
       "version": "2.3.0",
