@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af00c00fb9bbb5b49976a40609f990d5, type: 3}
-  m_Name: Frenzied
+  m_Name: FrenziedHonor
   m_EditorClassIdentifier: 
   modifierToken: LIT_ELITE_MODIFIER_FRENZIED
   eliteEquipmentDef: {fileID: 11400000, guid: 40ff794bbbf17fa458952cda08f732d1, type: 2}
@@ -18,9 +18,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4278253055
   shaderEliteRampIndex: -1
-  healthBoostCoefficient: 4
-  damageBoostCoefficient: 2
-  eliteTier: 1
+  healthBoostCoefficient: 2.5
+  damageBoostCoefficient: 1.5
+  eliteTier: 2
   lightColor: {r: 1, g: 0.9607844, b: 0, a: 0}
   eliteRamp: {fileID: 2800000, guid: 3c28f3eff3387bb459733827ef286f19, type: 3}
   overlay: {fileID: 0}

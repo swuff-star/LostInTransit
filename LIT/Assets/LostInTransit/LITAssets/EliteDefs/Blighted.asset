@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af00c00fb9bbb5b49976a40609f990d5, type: 3}
-  m_Name: Blighted 1
+  m_Name: Blighted
   m_EditorClassIdentifier: 
-  modifierToken: 
-  eliteEquipmentDef: {fileID: 0}
+  modifierToken: LIT_MODIFIER_BLIGHTED
+  eliteEquipmentDef: {fileID: 11400000, guid: c572279333409f54f9ba90b9d7614c43, type: 2}
   color:
     serializedVersion: 2
     rgba: 0
@@ -22,6 +22,6 @@ MonoBehaviour:
   damageBoostCoefficient: 1
   eliteTier: 0
   lightColor: {r: 0, g: 0, b: 0, a: 0}
-  eliteRamp: {fileID: 0}
-  overlay: {fileID: 0}
+  eliteRamp: {fileID: 2800000, guid: 81f6b869ad1a6354685c45c6b6b630bb, type: 3}
+  overlay: {fileID: 2100000, guid: e284b6978dbe3634b99e62258c2f40b7, type: 2}
   effect: {fileID: 0}
