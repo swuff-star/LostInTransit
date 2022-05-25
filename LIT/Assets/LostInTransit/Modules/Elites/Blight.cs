@@ -99,7 +99,7 @@ namespace LostInTransit.Elites
             List<EliteDef> availableElites = new List<EliteDef>() { RoR2Content.Elites.Fire, RoR2Content.Elites.Ice, RoR2Content.Elites.Lightning };
                                                                                                            //★ DLC elites will need to be added to this, but we have to add them when the run starts to check if DLC is enabled.
             for (int i = 0; i < EliteModuleBase.MoonstormElites.Count; i++)                                //to-do: ^ in onRunGlobal + remember to remove on run end
-                if (EliteModuleBase.MoonstormElites[i].eliteTier == EliteTiers.Custom)
+                if (EliteModuleBase.MoonstormElites[i].eliteTier == VanillaEliteTier.HonorDisabled)
                     availableElites.Add(EliteModuleBase.MoonstormElites[i]);
 
             EliteDefsForBlightedElites.AddRange(availableElites);

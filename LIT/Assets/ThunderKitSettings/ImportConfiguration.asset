@@ -80,6 +80,19 @@ MonoBehaviour:
   m_Name: Install DebugToolkit
   m_EditorClassIdentifier: 
   enabled: 1
+--- !u!114 &-4301573334335596108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4090d1da9d2c4d64393fc97cd46e8414, type: 3}
+  m_Name: Unity GUI Uninstaller
+  m_EditorClassIdentifier: 
+  enabled: 1
 --- !u!114 &-1398357941721215472
 MonoBehaviour:
   m_ObjectHideFlags: 0

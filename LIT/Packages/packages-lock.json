@@ -7,13 +7,13 @@
       "dependencies": {}
     },
     "com.passivepicasso.thunderkit": {
-      "version": "https://github.com/PassivePicasso/ThunderKit.git",
+      "version": "https://github.com/PassivePicasso/ThunderKit.git#5.2.3",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "3f650a07782d368eccf4ea2e55d13187753f61be"
+      "hash": "15524b17aa67bbc869a0def0e915544134e1eca4"
     },
     "com.unity.multiplayer-hlapi": {
       "version": "https://github.com/risk-of-thunder/UnityMultiplayerHLAPI.git",
@@ -61,25 +61,25 @@
       "dependencies": {}
     },
     "riskofthunder-ror2editorkit": {
-      "version": "https://github.com/risk-of-thunder/RoR2EditorKit.git",
+      "version": "https://github.com/risk-of-thunder/RoR2EditorKit.git#3.2.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "59c5381d17aed43f19b571033267968f262c597e"
+      "hash": "c887f3d93ada626fdb281a04d5e8eef09a6129bd"
     },
-    "riskofthunder-ror2importer": {
-      "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git",
+    "riskofthunder-ror2importextensions": {
+      "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.0.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c9db45b4c28ee62950ef9eed2850a1af426f4ff3"
+      "hash": "1c9fe47b4d15ef42c431971e3b7c256460444ded"
     },
     "teammoonstorm-moonstormsharedutils": {
       "version": "https://github.com/TeamMoonstorm/MoonstormSharedUtils.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "83cc4c407a7dc6394a7e161cfd22f58a5f4be2aa"
+      "hash": "0a24f318445435916a951bcb383961887df535c9"
     },
     "tristanmcpherson-r2api": {
       "version": "file:R2API",

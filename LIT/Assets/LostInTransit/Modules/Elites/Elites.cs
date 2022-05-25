@@ -29,7 +29,7 @@ namespace LostInTransit.Modules
         protected override IEnumerable<EliteEquipmentBase> GetInitializedEliteEquipmentBases()
         {
             base.GetInitializedEliteEquipmentBases()
-                .Where(elite => LITMain.config.Bind<bool>("Lost in Transit Elites", elite.EliteDef.name, true, "Enable/disable this Elite Type.").Value)
+                .Where(elite => LITMain.config.Bind<bool>("Lost in Transit Elites", elite.GetType().Name, true, "Enable/disable this Elite Type.").Value)
                 .ToList()
                 .ForEach(elite => AddElite(elite));
             return null;

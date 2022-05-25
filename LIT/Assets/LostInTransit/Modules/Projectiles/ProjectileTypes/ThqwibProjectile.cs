@@ -10,8 +10,6 @@ namespace LostInTransit.Projectiles
     public class ThqwibProjectile : ProjectileBase
     {
         public override GameObject ProjectilePrefab { get; } = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/characterbodies/scavsackprojectile"), "ThqwibProjectile", false);
-
-        public override GameObject ProjectileGhost { get; } = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/characterbodies/scavsackprojectile"), "ThqwibProjectile", false);
         //★ without doing any fucking research or testing whatsoever, i think this is fine. there are 78 more errors to fix before the mod can build.
 
         public static GameObject ThqwibProj;

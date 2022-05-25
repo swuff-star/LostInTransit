@@ -28,7 +28,7 @@ MonoBehaviour:
   enigmaCompatible: 0
   isLunar: 0
   isBoss: 0
-  passiveBuffDef: {fileID: 11400000, guid: a0a41f82a3a5c864e8a2a9cc48532a8c, type: 2}
+  passiveBuffDef: {fileID: 11400000, guid: 201fbc34e0b53d444be0b47b6a1b724c, type: 2}
   appearsInSinglePlayer: 1
   appearsInMultiPlayer: 1
   requiredExpansion: {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}

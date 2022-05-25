@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af00c00fb9bbb5b49976a40609f990d5, type: 3}
-  m_Name: Blighted 1
+  m_Name: VolatileHonor
   m_EditorClassIdentifier: 
-  modifierToken: 
-  eliteEquipmentDef: {fileID: 0}
+  modifierToken: LIT_ELITE_MODIFIER_VOLATILE
+  eliteEquipmentDef: {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}
   color:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4278224895
   shaderEliteRampIndex: -1
-  healthBoostCoefficient: 1
-  damageBoostCoefficient: 1
-  eliteTier: 0
-  lightColor: {r: 0, g: 0, b: 0, a: 0}
-  eliteRamp: {fileID: 0}
+  healthBoostCoefficient: 2.5
+  damageBoostCoefficient: 1.5
+  eliteTier: 2
+  lightColor: {r: 1, g: 0.5294118, b: 0, a: 0}
+  eliteRamp: {fileID: 2800000, guid: e75fb1709416917408ea57855d4f6370, type: 3}
   overlay: {fileID: 0}
   effect: {fileID: 0}

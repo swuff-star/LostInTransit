@@ -1,5 +1,6 @@
 ﻿using Moonstorm;
 using RoR2;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,7 +8,12 @@ namespace LostInTransit.Equipments
 {
     public class AffixVolatile : EliteEquipmentBase
     {
-        public override MSEliteDef EliteDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Volatile");
+        public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
+        {
+            LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Volatile"),
+            LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("VolatileHonor")
+        };
+
         public override EquipmentDef EquipmentDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<EquipmentDef>("AffixVolatile");
         //public override MSAspectAbilityDataHolder AspectAbilityData { get; set; } = LITAssets.Instance.MainAssetBundle.LoadAsset<MSAspectAbilityDataHolder>("AbilityVolatile");
 

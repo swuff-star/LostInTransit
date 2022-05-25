@@ -9,17 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -585069481, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 11500000, guid: af00c00fb9bbb5b49976a40609f990d5, type: 3}
   m_Name: Volatile
   m_EditorClassIdentifier: 
   modifierToken: LIT_ELITE_MODIFIER_VOLATILE
   eliteEquipmentDef: {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}
   color:
     serializedVersion: 2
-    rgba: 39167
-  shaderEliteRampIndex: 0
-  eliteTier: 0
-  lightColor: {r: 1, g: 0.59607846, b: 0, a: 0}
+    rgba: 4278224895
+  shaderEliteRampIndex: -1
+  healthBoostCoefficient: 4
+  damageBoostCoefficient: 2
+  eliteTier: 1
+  lightColor: {r: 1, g: 0.5294118, b: 0, a: 0}
   eliteRamp: {fileID: 2800000, guid: e75fb1709416917408ea57855d4f6370, type: 3}
   overlay: {fileID: 0}
   effect: {fileID: 0}

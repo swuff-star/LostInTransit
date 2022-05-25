@@ -1,13 +1,17 @@
 ﻿using KinematicCharacterController;
 using Moonstorm;
 using RoR2;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
     public class AffixBlighted : EliteEquipmentBase
     {
-        public override MSEliteDef EliteDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Blighted");
+        public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
+        {
+            LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Blighted"),
+        };
         public override EquipmentDef EquipmentDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<EquipmentDef>("AffixBlighted");
        // public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<MSAspectAbilityDataHolder>("AbilityBlighted");
 
