@@ -11,7 +11,6 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
     //★ I did something naughty and just... commented out a lot of errors instead of fixing them. I plan on redoing this anyway so... oh well.
     public class AffixVolatile : BuffBase
     {

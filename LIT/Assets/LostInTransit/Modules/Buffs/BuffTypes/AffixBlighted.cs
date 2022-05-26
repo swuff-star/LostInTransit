@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
     //N- Buffs no longer have an "AddBehavior(ref CharacterBody body, int stacks)" method
     public sealed class AffixBlighted : BuffBase
     {

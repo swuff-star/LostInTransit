@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50df4f9027e15e04b931a8d460fb22c5, type: 3}
   m_Name: ExecutePipeline
   m_EditorClassIdentifier: 
-  Errored: 0
-  ErrorMessage: 
-  ErrorStacktrace: 
   Active: 1
   OverrideManifest: 1
-  targetpipeline: {fileID: 11400000, guid: ad94eada5d555f34b9eeaf2fb9a6c0dd, type: 2}
+  targetpipeline: {fileID: 11400000, guid: b5193eb7d28d28847bbcaabe768d005f, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,7 +31,8 @@ MonoBehaviour:
   - {fileID: -3510381355683360244}
   - {fileID: 7653116410788104337}
   - {fileID: 456893790901547433}
-  manifest: {fileID: 11400000, guid: acae7dc04bed84a792d6f9f55f44fd1b, type: 2}
+  QuickAccess: 0
+  manifest: {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
 --- !u!114 &456893790901547433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,12 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03063c7a6ec04cc4c82c75cf9bcc8db8, type: 3}
   m_Name: Copy
   m_EditorClassIdentifier: 
-  Errored: 0
-  ErrorMessage: 
-  ErrorStacktrace: 
   Active: 1
   PerManifest: 1
-  ExcludedManifests: []
+  ListType: 0
+  Manifests: []
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
@@ -70,9 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50df4f9027e15e04b931a8d460fb22c5, type: 3}
   m_Name: ExecutePipeline
   m_EditorClassIdentifier: 
-  Errored: 0
-  ErrorMessage: 
-  ErrorStacktrace: 
   Active: 0
-  OverrideManifest: 0
+  OverrideManifest: 1
   targetpipeline: {fileID: 11400000, guid: 1d3c168b33650b34884a3c7ec84bd0d9, type: 2}

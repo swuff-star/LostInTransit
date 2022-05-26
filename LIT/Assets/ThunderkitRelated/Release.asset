@@ -15,7 +15,8 @@ MonoBehaviour:
   Active: 1
   PerManifest: 1
   ListType: 1
-  Manifests: []
+  Manifests:
+  - {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
   ArchiveType: 1
   Source: <BuildPath>
   Output: <ReleasePath>.zip
@@ -50,7 +51,7 @@ MonoBehaviour:
   - {fileID: -640416070249004058}
   - {fileID: -4598038704487222675}
   QuickAccess: 0
-  manifest: {fileID: 0}
+  manifest: {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
 --- !u!114 &2795398002312913296
 MonoBehaviour:
   m_ObjectHideFlags: 0

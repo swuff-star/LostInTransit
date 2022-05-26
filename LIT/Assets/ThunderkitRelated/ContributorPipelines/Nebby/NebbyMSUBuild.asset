@@ -37,7 +37,7 @@ MonoBehaviour:
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
-  Source: <ManifestStagingRoot>
+  Source: <BuildPath>
   Destination: <NebbysTestingPath>
 --- !u!114 &5153180345527493564
 MonoBehaviour:
