@@ -123,10 +123,6 @@ namespace LostInTransit
                 },
                 delegate
                 {
-                    new ItemDisplays().Initialize();
-                },
-                delegate
-                {
                     SerializableContentPack.entityStateTypes = typeof(LITContent).Assembly.GetTypes()
                         .Where(type => typeof(EntityStates.EntityState).IsAssignableFrom(type))
                         .Select(type => new EntityStates.SerializableEntityStateType(type))

@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Equipments
 {
+    [DisabledContent]
     public class AffixVolatile : EliteEquipmentBase
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>

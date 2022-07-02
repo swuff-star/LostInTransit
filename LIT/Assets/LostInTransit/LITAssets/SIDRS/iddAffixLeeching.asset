@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   namedDisplayDictionary:
   - idrs:
-      address: idrsBandit2
+      address: RoR2/Base/Bandit2/idrsBandit2.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsCommando
+      address: RoR2/Base/Commando/idrsCommando.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsCaptain
+      address: RoR2/Base/Captain/idrsCaptain.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsCroco
+      address: RoR2/Base/Croco/idrsCroco.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsEngi
+      address: RoR2/Base/Engi/idrsEngi.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsHuntress
+      address: RoR2/Base/Huntress/idrsHuntress.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsLoader
+      address: RoR2/Base/Loader/idrsLoader.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsMage
+      address: RoR2/Base/Mage/idrsMage.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsMerc
+      address: RoR2/Base/Merc/idrsMerc.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsToolbotBody
+      address: RoR2/Base/Toolbot/idrsToolbot.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsTreebot
+      address: RoR2/Base/Treebot/idrsTreebot.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsBell
+      address: RoR2/Base/Bell/idrsBell.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsBeetle
+      address: RoR2/Base/Beetle/idrsBeetle.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsBeetleGuard
+      address: RoR2/Base/Beetle/idrsBeetleGuard.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsBeetleQueen
+      address: RoR2/Base/Beetle/idrsBeetleQueen.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsBison
+      address: RoR2/Base/Bison/idrsBison.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsClayboss
+      address: RoR2/Base/ClayBoss/idrsClayBoss.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsClayBruiser
+      address: RoR2/Base/ClayBruiser/idrsClayBruiser.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsGolem
+      address: RoR2/Base/Golem/idrsGolem.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsGrandparent
+      address: RoR2/Base/Grandparent/idrsGrandparent.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsGravekeeperBody
+      address: RoR2/Base/Gravekeeper/idrsGravekeeper.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsGreaterWisp
+      address: RoR2/Base/GreaterWisp/idrsGreaterWisp.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsHermitCrab
+      address: RoR2/Base/HermitCrab/idrsHermitCrab.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsImp
+      address: RoR2/Base/Imp/idrsImp.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsImpBoss
+      address: RoR2/Base/ImpBoss/idrsImpBoss.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsJellyfish
+      address: RoR2/Base/Jellyfish/idrsJellyfish.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsLemurian
+      address: RoR2/Base/Lemurian/idrsLemurian.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsLemurianBruiser
+      address: RoR2/Base/LemurianBruiser/idrsLemurianBruiser.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -521,7 +521,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsMiniMushroom
+      address: RoR2/Base/MiniMushroom/idrsMiniMushroom.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsNullifier
+      address: RoR2/Base/Nullifier/idrsNullifier.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsParent
+      address: RoR2/Base/Parent/idrsParent.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsRoboballBoss
+      address: RoR2/Base/RoboBallBoss/idrsRoboBallBoss.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsRoboballMini
+      address: RoR2/Base/RoboBallBoss/idrsRoboBallMini.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsTitan
+      address: RoR2/Base/Titan/idrsTitan.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsVagrant
+      address: RoR2/Base/Vagrant/idrsVagrant.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsVulture
+      address: RoR2/Base/Vulture/idrsVulture.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsWisp
+      address: RoR2/Base/Wisp/idrsWisp.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -683,7 +683,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsScav
+      address: RoR2/Base/Scav/idrsScav.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
@@ -691,222 +691,6 @@ MonoBehaviour:
       localPos: {x: 0.15733, y: 4.92097, z: 1.40138}
       localAngles: {x: 334.4718, y: 185.7457, z: 358.3457}
       localScales: {x: 3, y: 3, z: 3}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsMoffeinAncientWisp
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0, y: 0.44231, z: -0.00256}
-      localAngles: {x: 17.05706, y: 0, z: 0}
-      localScales: {x: 0.17247, y: 0.17247, z: 0.17247}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsMoffeinClayMan
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0, y: 0.37574, z: -0.01413}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 0.14255, y: 0.14255, z: 0.14255}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsNebbyArchWisp
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: DisplayMask
-      localPos: {x: 0, y: 2.24507, z: 0.77472}
-      localAngles: {x: 32.63882, y: 0, z: 0}
-      localScales: {x: 0.29575, y: 0.29575, z: 0.29575}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsChef
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Hat
-      localPos: {x: 0, y: 0.00848, z: 0}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 0.0075, y: 0.0075, z: 0.0075}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsHand
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: -0.63314, y: 2.65928, z: 0.58902}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 1, y: 1, z: 1}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsMiner
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: HeadCenter
-      localPos: {x: 0, y: 0.00281, z: 0}
-      localAngles: {x: 0, y: 180, z: 0}
-      localScales: {x: 0.00096, y: 0.00096, z: 0.00096}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsNemesisEnforcer
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0.0009, y: 0.00764, z: 0.00037}
-      localAngles: {x: 0, y: 270, z: 0}
-      localScales: {x: 0.00628, y: 0.00628, z: 0.00628}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsSniperClassic
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0.00001, y: 0.05008, z: -0.21924}
-      localAngles: {x: 270, y: 0, z: 0}
-      localScales: {x: 0.14916, y: 0.14916, z: 0.14916}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsExecutioner
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0, y: 0, z: 0}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 0.00103, y: 0.00103, z: 0.00103}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsNemmando
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: HeadCenter
-      localPos: {x: 0, y: 0.00351, z: 0}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 0.00158, y: 0.00158, z: 0.00158}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsSecurityDrone
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: EliteDisplay
-      localPos: {x: 0.6191, y: 0.76038, z: 0}
-      localAngles: {x: 0, y: 270, z: 0}
-      localScales: {x: 0.42585, y: 0.42585, z: 0.42585}
-      limbMask: 0
-      finishedRule:
-        ruleType: 0
-        followerPrefab: {fileID: 0}
-        childName: 
-        localPos: {x: 0, y: 0, z: 0}
-        localAngles: {x: 0, y: 0, z: 0}
-        localScale: {x: 0, y: 0, z: 0}
-        limbMask: 0
-  - idrs:
-      address: idrsPaladin
-      asset: {fileID: 0}
-    displayRules:
-    - ruleType: 0
-      childName: Head
-      localPos: {x: 0.00459, y: 0.36417, z: 0.06903}
-      localAngles: {x: 0, y: 0, z: 0}
-      localScales: {x: 0.14948, y: 0.14948, z: 0.14948}
       limbMask: 0
       finishedRule:
         ruleType: 0
