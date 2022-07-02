@@ -61,11 +61,11 @@
       "dependencies": {}
     },
     "riskofthunder-ror2editorkit": {
-      "version": "https://github.com/risk-of-thunder/RoR2EditorKit.git#3.2.1",
+      "version": "https://github.com/risk-of-thunder/RoR2EditorKit.git#3.2.2",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c887f3d93ada626fdb281a04d5e8eef09a6129bd"
+      "hash": "7fd8f6ebac29608837caeaed90545c3ad4157592"
     },
     "riskofthunder-ror2importextensions": {
       "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.0.1",
@@ -79,7 +79,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7de9e2752c347ee51501a36f9a2fef051ef1ae90"
+      "hash": "5937dd1c002c8a89580cd5ebca8807bd9814afeb"
     },
     "tristanmcpherson-r2api": {
       "version": "file:R2API",

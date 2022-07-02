@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matMitosisGlobule
-  m_Shader: {fileID: 4800000, guid: d09b6a89a5f739c4a8179d7d276e176b, type: 2}
+  m_Shader: {fileID: 4800000, guid: 1168ea1414509f9488b889c3d989c6a8, type: 2}
   m_ShaderKeywords: DITHER FLOWMAP FORCE_SPEC FRESNEL_EMISSION PRINT_CUTOFF _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
