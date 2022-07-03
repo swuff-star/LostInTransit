@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    [DisabledContent]
     public class AffixBlighted : EliteEquipmentBase
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
