@@ -647,7 +647,7 @@ MonoBehaviour:
         localScale: {x: 0, y: 0, z: 0}
         limbMask: 0
   - idrs:
-      address: idrsVultRoR2/Base/Vulture/idrsVulture.asset
+      address: RoR2/Base/Vulture/idrsVulture.asset
       asset: {fileID: 0}
     displayRules:
     - ruleType: 0
