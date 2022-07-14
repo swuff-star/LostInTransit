@@ -75,11 +75,11 @@
       "hash": "1c9fe47b4d15ef42c431971e3b7c256460444ded"
     },
     "teammoonstorm-moonstormsharedutils": {
-      "version": "https://github.com/TeamMoonstorm/MoonstormSharedUtils.git",
+      "version": "https://github.com/TeamMoonstorm/MoonstormSharedUtils.git#1.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f6beefed5613bdd552f879d76421cefa0515a4a7"
+      "hash": "fcfcb12e21c86ec75560b7a5137d87f3dc12e5b0"
     },
     "tristanmcpherson-r2api": {
       "version": "file:R2API",
