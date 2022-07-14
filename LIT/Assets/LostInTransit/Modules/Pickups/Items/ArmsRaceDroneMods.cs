@@ -10,7 +10,7 @@ namespace LostInTransit.Items
     //[DisabledContent]
     public class ArmsRaceDroneMods : ItemBase
     {
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("ArmsRaceDroneModifiers");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRaceDroneModifiers");
 
         public class ArmsRaceDroneModsBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
         {

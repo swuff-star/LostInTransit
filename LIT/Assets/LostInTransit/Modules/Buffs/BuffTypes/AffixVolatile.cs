@@ -14,7 +14,7 @@ namespace LostInTransit.Buffs
     //★ I did something naughty and just... commented out a lot of errors instead of fixing them. I plan on redoing this anyway so... oh well.
     public class AffixVolatile : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("AffixVolatile");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixVolatile");
 
         public override void Initialize()
         {

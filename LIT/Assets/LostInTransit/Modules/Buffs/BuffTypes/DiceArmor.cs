@@ -8,7 +8,7 @@ namespace LostInTransit.Buffs
     [DisabledContent]
     public class DiceArmor : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("DiceArmor");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceArmor");
 
         public class DiceArmorBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {

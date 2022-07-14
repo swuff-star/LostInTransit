@@ -12,7 +12,7 @@ namespace LostInTransit.Items
     public class FiremansBoots : ItemBase
     {
         private const string token = "LIT_ITEM_FIREMANSBOOTS_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("FireBoots");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("FireBoots");
 
         [ConfigurableField(ConfigName = "Chance to Ignite", ConfigDesc = "Chance to Ignite on Hit.")]
         [TokenModifier(token, StatTypes.Default, 0)]

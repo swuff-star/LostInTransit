@@ -8,7 +8,7 @@ namespace LostInTransit.Buffs
 {
     public class RootRegen : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("RootRegen");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("RootRegen");
         public class NuggetRegenBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]

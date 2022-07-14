@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class NuggetRegen : BuffBase
     {
-        public override BuffDef BuffDef { get;} = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("NuggetRegen");
+        public override BuffDef BuffDef { get;} = LITAssets.LoadAsset<BuffDef>("NuggetRegen");
 
         public override void Initialize()
         {

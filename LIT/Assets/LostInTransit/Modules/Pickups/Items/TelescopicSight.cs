@@ -7,37 +7,37 @@ namespace LostInTransit.Items
     public class TelescopicSight : ItemBase
     {
         private const string token = "LIT_ITEM_TELESCOPICSIGHT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("TelescopicSight");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("TelescopicSight");
 
         public static string section;
 
-        [ConfigurableField(ConfigName = "Base Proc Chance", ConfigDesc = "Base proc chance for Telescopic Sight.")]
+        [ConfigurableField(ConfigDesc = "Base proc chance for Telescopic Sight.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float newBaseChance = 1f;
+        public static float baseProcChance = 1f;
 
         [ConfigurableField(ConfigName = "Proc Chance per Stack", ConfigDesc = "Extra proc chance per stack of sights.")]
         [TokenModifier(token, StatTypes.Default, 1)]
-        public static float newStackChance = 0.5f;
+        public static float procChancePerStack = 0.5f;
 
-        [ConfigurableField(ConfigName = "Cooldown", ConfigDesc = "Whether Telescopic Sight's instant kill should have a cooldown.")]
-        public static bool cooldown = false;
+        [ConfigurableField(ConfigDesc = "Whether Telescopic Sight's instant kill should have a cooldown.")]
+        public static bool enableCooldown = true;
 
-        [ConfigurableField(ConfigName = "Cooldown", ConfigDesc = "Cooldown between Telescopic Sight activations.")]
+        [ConfigurableField(ConfigDesc = "Cooldown between Telescopic Sight activations.")]
         [TokenModifier(token, StatTypes.Default, 3)]
-        public static float teleCooldown = 20f;
+        public static float cooldownDuration = 20f;
 
-        [ConfigurableField(ConfigName = "Cooldown Reduction per Stack", ConfigDesc = "Seconds removed from cooldown per stack.")]
+        [ConfigurableField(ConfigDesc = "Seconds removed from cooldown per stack.")]
         [TokenModifier(token, StatTypes.Default, 4)]
-        public static float teleCooldownStack = 2f;
+        public static float cooldownReductio = 2f;
 
-        [ConfigurableField(ConfigName = "Health Percentage Dealt to Exceptions", ConfigDesc = "Percentage of max health that's dealt to set exceptions when activated on them.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
-        public static float exceptionHealthPercentage = 20f;
+        [ConfigurableField(ConfigDesc = "Percentage of max health that's dealt to set exceptions when activated on them.")]
+        [TokenModifier(token, StatTypes.Percentage, 2)]
+        public static float exceptionHealthPercentage = 0.2f;
 
-        [ConfigurableField(ConfigName = "Instakill Elites", ConfigDesc = "Whether Telescopic Sight should instakill elites.")]
+        [ConfigurableField( ConfigDesc = "Whether Telescopic Sight should instakill elites.")]
         public static bool instakillElites = true;
 
-        [ConfigurableField(ConfigName = "Instakill Bosses", ConfigDesc = "Whether Telescopic Sight should instakill boss monsters.")]
+        [ConfigurableField( ConfigDesc = "Whether Telescopic Sight should instakill boss monsters.")]
         public static bool instakillBosses = false;
 
 
@@ -51,7 +51,9 @@ namespace LostInTransit.Items
                 {
                     if (Util.CheckRoll(CalcChance() * damageInfo.procCoefficient) && !body.HasBuff(LITContent.Buffs.TeleSightCD))
                     {
-                        if (cooldown) body.AddCooldownBuff(LITContent.Buffs.TeleSightCD, CalcCooldown());
+                        if (enableCooldown) 
+                            body.AddCooldownBuff(LITContent.Buffs.TeleSightCD, CalcCooldown());
+
                         var flag = ChooseWetherToInstakill(victimHealthComponent.body);
                         if (flag)
                         {
@@ -59,7 +61,7 @@ namespace LostInTransit.Items
                         }
                         else
                         {
-                            damageInfo.damage = victimHealthComponent.body.maxHealth * (exceptionHealthPercentage / 100);
+                            damageInfo.damage = victimHealthComponent.body.maxHealth * exceptionHealthPercentage;
                         }
                         Util.PlaySound("TeleSightProc", body.gameObject);
                     }
@@ -67,13 +69,13 @@ namespace LostInTransit.Items
             }
             private float CalcChance()
             {
-                float stackChance = newStackChance * (stack - 1);
-                return newBaseChance + stackChance;
+                float stackChance = procChancePerStack * (stack - 1);
+                return baseProcChance + stackChance;
             }
             private float CalcCooldown()
             {
                 //Yknow, we should NEVER reach a cooldown of 0, so this caps the cooldown at around 10 seconds.
-                return teleCooldown - ((1 - 1 / (1 + 0.25f * (stack - 1))) * 10);
+                return cooldownDuration - ((1 - 1 / (1 + 0.25f * (stack - 1))) * 10);
                 //Agreeable.
             }
             /*

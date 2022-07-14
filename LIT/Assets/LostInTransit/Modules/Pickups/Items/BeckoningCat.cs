@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     {
         private const string token = "LIT_ITEM_BECKONINGCAT_DESC";
 
-        public override ItemDef ItemDef => LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("BeckoningCat");
+        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeckoningCat");
 
         [ConfigurableField(LITConfig.items, ConfigName = "Base Drop Chance", ConfigDesc = "Base chance for Elites to drop an item.")]
         [TokenModifier(token, StatTypes.Default, 0)]

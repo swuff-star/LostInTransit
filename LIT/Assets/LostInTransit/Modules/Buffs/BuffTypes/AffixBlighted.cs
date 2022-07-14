@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //N- Buffs no longer have an "AddBehavior(ref CharacterBody body, int stacks)" method
     public sealed class AffixBlighted : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("AffixBlighted");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixBlighted");
 
         //N- Buff behaviors now use moonstorm's base buff body behavior
         //The class itself is abstract and its in Moonstorm.Components
@@ -28,7 +28,7 @@ namespace LostInTransit.Buffs
 
             public BuffDef secondBuff;
 
-            private GameObject SmokeEffect = LITAssets.Instance.MainAssetBundle.LoadAsset<GameObject>("BlightSmoke");
+            private GameObject SmokeEffect = LITAssets.LoadAsset<GameObject>("BlightSmoke");
 
             private float stopwatch;
             private static float checkTimer = 0.5f;

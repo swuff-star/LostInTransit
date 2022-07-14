@@ -7,7 +7,7 @@ namespace LostInTransit.Buffs
 {
     public class GoldenGunBuff : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("GoldenGun");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("GoldenGun");
 
         public class GoldenGunBuffBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {

@@ -37,15 +37,15 @@ namespace LostInTransit.Modules
 
         private void LateEliteSetup(ReadOnlyCollection<MSEliteDef> eliteCollection)
         {
-            if (eliteCollection.Contains(LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Volatile")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Volatile")))
             {
                 VolatileSpitebomb.BeginSetup();
             }
-            if (eliteCollection.Contains(LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Blighted")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Blighted")))
             {
                 Blight.BeginSetup();
             }
-            if (eliteCollection.Contains(LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Leeching")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Leeching")))
             {
                 RoR2Application.onLoad += () =>
                 {

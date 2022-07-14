@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class GuardiansHeartBuff : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("GuardiansHeartBuff");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("GuardiansHeartBuff");
 
         public class GuardiansHeartBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {

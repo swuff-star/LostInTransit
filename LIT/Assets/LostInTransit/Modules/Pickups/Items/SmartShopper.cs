@@ -9,7 +9,7 @@ namespace LostInTransit.Items
     public class SmartShopper : ItemBase
     {
         private const string token = "LIT_ITEM_SMARTSHOPPER_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("SmartShopper");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("SmartShopper");
 
         [ConfigurableField(ConfigName = "Refund Amount", ConfigDesc = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
         [TokenModifier(token, StatTypes.Percentage, 0)]
@@ -60,7 +60,7 @@ namespace LostInTransit.Items
 
             private void UpdateStacks()
             {
-                stack = body.inventory.GetItemCount(LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("SmartShopper"));
+                stack = body.inventory.GetItemCount(LITAssets.LoadAsset<ItemDef>("SmartShopper"));
             }
 
             public void OnDestroy()

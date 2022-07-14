@@ -15,7 +15,7 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class RepulsionArmorActive : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("RepulsionArmorActive");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("RepulsionArmorActive");
         //private Ray aimRay;
 
         public class RepulsionArmorActiveBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier

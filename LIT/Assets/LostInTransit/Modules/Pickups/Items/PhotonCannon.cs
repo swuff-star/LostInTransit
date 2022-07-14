@@ -12,7 +12,7 @@ namespace LostInTransit.Items
     public class PhotonCannon : ItemBase
     {
         private const string token = "LIT_ITEM_PHOTONCANNON_DESC";
-        public override ItemDef ItemDef { get;} = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("PhotonCannon");
+        public override ItemDef ItemDef { get;} = LITAssets.LoadAsset<ItemDef>("PhotonCannon");
 
         [ConfigurableField(ConfigName = "Charge gained per second", ConfigDesc = "Amount of charge gained every second for each skill on cooldown")]
         [TokenModifier(token, StatTypes.Default, 0)]

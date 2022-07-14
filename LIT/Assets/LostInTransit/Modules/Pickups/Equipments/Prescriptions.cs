@@ -6,7 +6,7 @@ namespace LostInTransit.Equipments
     [DisabledContent]
     public class Prescriptions : EquipmentBase
     {
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<EquipmentDef>("Prescriptions");
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("Prescriptions");
 
         public override bool FireAction(EquipmentSlot slot)
         {

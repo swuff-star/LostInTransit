@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class LifeSavings : ItemBase
     {
         private const string token = "LIT_ITEM_LIFESAVINGS_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("LifeSavings");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavings");
         public static ItemDef itemDef;
 
         /*[ConfigurableField(ConfigName = "Money Kept Between Stages", ConfigDesc = "Percentage of money kept between stages")]

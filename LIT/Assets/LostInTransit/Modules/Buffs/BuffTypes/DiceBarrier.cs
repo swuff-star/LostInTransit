@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     [DisabledContent]
     public class DiceBarrier : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("DiceBarrier");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceBarrier");
 
         //Todo: have this use IStatItemBehavior, body.barrierDecayRate is recalculated in recalcstats
         public class DiceBarrierBehavior : BaseBuffBodyBehavior

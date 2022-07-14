@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class BitterRoot : ItemBase
     {
         private const string token = "LIT_ITEM_BITTERROOT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("BitterRoot");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BitterRoot");
 
         /*[ConfigurableField(LITConfig.items, ConfigName = "Extra Maximum Health per Root", ConfigDesc = "Extra percentage of maximum health added per root")]
         [TokenModifier(token, StatTypes.Default)]

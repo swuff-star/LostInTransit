@@ -10,7 +10,7 @@ namespace LostInTransit.Items
     public class BlessedDice : ItemBase
     {
         private const string token = "LIT_ITEM_BLESSEDDICE_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("BlessedDice");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BlessedDice");
 
         [ConfigurableField(LITConfig.items, ConfigName = "Base duration of buff from Blessed Dice", ConfigDesc = "Base duration of buff after using a shrine.")]
         [TokenModifier(token, StatTypes.Default, 0)]

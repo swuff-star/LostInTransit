@@ -12,9 +12,9 @@ namespace LostInTransit.Items
     public class MeatNugget : ItemBase
     {
         private const string token = "LIT_ITEM_MEATNUGGET_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("MeatNugget");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MeatNugget");
 
-        public static GameObject MeatNuggetPickup = LITAssets.Instance.MainAssetBundle.LoadAsset<GameObject>("MeatNuggetPickup");
+        public static GameObject MeatNuggetPickup = LITAssets.LoadAsset<GameObject>("MeatNuggetPickup");
 
         [ConfigurableField(ConfigName = "Proc Chance", ConfigDesc = "Proc chance for Meat Nugget.")]
         [TokenModifier(token, StatTypes.Default, 0)]

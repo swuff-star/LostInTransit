@@ -9,7 +9,7 @@ namespace LostInTransit.Items
     public class EnergyCell : ItemBase
     {
         private const string token = "LIT_ITEM_ENERGYCELL_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("EnergyCell");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("EnergyCell");
 
         [ConfigurableField(ConfigName = "Maximum Attack Speed per Cell", ConfigDesc = "Maximum amount of attack speed per item held.")]
         [TokenModifier(token, StatTypes.Percentage)]

@@ -88,7 +88,7 @@ namespace LostInTransit
         }
         public override string identifier => LITMain.GUID;
 
-        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } = LITAssets.Instance.MainAssetBundle.LoadAsset<R2APISerializableContentPack>("ContentPack");
+        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } = LITAssets.LoadAsset<R2APISerializableContentPack>("ContentPack");
         public override Action[] LoadDispatchers { get; protected set; }
         public override Action[] PopulateFieldsDispatchers { get; protected set; }
 

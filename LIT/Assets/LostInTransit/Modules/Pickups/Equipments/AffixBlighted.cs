@@ -10,10 +10,10 @@ namespace LostInTransit.Equipments
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
-            LITAssets.Instance.MainAssetBundle.LoadAsset<MSEliteDef>("Blighted"),
+            LITAssets.LoadAsset<MSEliteDef>("Blighted"),
         };
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<EquipmentDef>("AffixBlighted");
-       // public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<MSAspectAbilityDataHolder>("AbilityBlighted");
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixBlighted");
+       // public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.LoadAsset<MSAspectAbilityDataHolder>("AbilityBlighted");
 
         [ConfigurableField(ConfigName = "Boss Blighted", ConfigDesc = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
         public static bool bossBlighted = false;

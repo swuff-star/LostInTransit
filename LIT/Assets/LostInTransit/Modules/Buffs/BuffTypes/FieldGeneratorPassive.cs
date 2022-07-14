@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class FieldGeneratorPassive : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("FieldGeneratorPassive");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("FieldGeneratorPassive");
 
         public class DiceAtkBehavior : BaseBuffBodyBehavior, IOnIncomingDamageOtherServerReciever
         {

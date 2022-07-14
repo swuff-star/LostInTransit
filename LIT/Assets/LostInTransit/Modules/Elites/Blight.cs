@@ -18,7 +18,7 @@ namespace LostInTransit.Elites
         internal static void BeginSetup()
         {
             LITLogger.LogI($"Blighted elites are enabled, setting up systems...");
-            var blightedDirector = LITAssets.Instance.MainAssetBundle.LoadAsset<GameObject>("BlightedDirector");
+            var blightedDirector = LITAssets.LoadAsset<GameObject>("BlightedDirector");
             HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.networkedObjectPrefabs, blightedDirector);
 
             RoR2Application.onLoad += BlightSetup;
@@ -124,7 +124,7 @@ namespace LostInTransit.Elites
         {
             if (Run.instance && NetworkServer.active)
             {
-                NetworkServer.Spawn(UnityEngine.Object.Instantiate(LITAssets.Instance.MainAssetBundle.LoadAsset<GameObject>("BlightedDirector")));
+                NetworkServer.Spawn(UnityEngine.Object.Instantiate(LITAssets.LoadAsset<GameObject>("BlightedDirector")));
             }
         }
     }

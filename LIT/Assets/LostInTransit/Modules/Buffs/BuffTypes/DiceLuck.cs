@@ -8,7 +8,7 @@ namespace LostInTransit.Buffs
     [DisabledContent]
     public class DiceLuck : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<BuffDef>("DiceLuck");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceLuck");
 
         //Todo: Have this as a hook on CharacterMaster.OnInventoryChanged (otherwise the "luck" stat gets rewritten every time the inventory changes)
         public class DiceLuckBehavior : BaseBuffBodyBehavior

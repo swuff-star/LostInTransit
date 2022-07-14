@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class GoldenGun : ItemBase
     {
         private const string token = "LIT_ITEM_GOLDENGUN_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("GoldenGun");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GoldenGun");
 
         [ConfigurableField(ConfigName = "Maximum Gold Threshold", ConfigDesc = "The maximum amount of gold that Golden Gun will account for.")]
         [TokenModifier(token, StatTypes.Default, 2)]

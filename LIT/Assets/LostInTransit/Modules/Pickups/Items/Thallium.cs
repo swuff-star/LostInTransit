@@ -9,25 +9,23 @@ namespace LostInTransit.Items
     public class Thallium : ItemBase
     {
         public const string token = "LIT_ITEM_THALLIUM_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("Thallium");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Thallium");
 
-        public static string section;
-
-        [ConfigurableField(ConfigName = "Proc Chance", ConfigDesc = "Chance to afflict Thallium Poisoning.")]
+        [ConfigurableField(ConfigDesc = "Chance to afflict Thallium Poisoning.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float procChance = 10f;
 
-        [ConfigurableField(ConfigName = "Total Damage", ConfigDesc = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
+        [ConfigurableField(ConfigDesc = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
         [TokenModifier(token, StatTypes.Default, 1)]
         [TokenModifier(token, StatTypes.DivideBy2, 2)]
-        public static float dmgCoefficient = 500f;
+        public static float totalDamage = 500f;
 
-        [ConfigurableField(ConfigName = "Slow Multiplier", ConfigDesc = "How much the victim is slowed by.")]
+        [ConfigurableField(ConfigDesc = "How much the victim is slowed by.")]
         [TokenModifier(token, StatTypes.Default, 3)]
         public static float slowMultiplier = 75f;
 
-        [ConfigurableField(ConfigName = "Poisoning Duration", ConfigDesc = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
-        public static int duration = 4;
+        [ConfigurableField(ConfigDesc = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
+        public static int poisonDuration = 4;
 
         [ConfigurableField(ConfigName = "Poison is Fixed Duration", ConfigDesc = "If enabled, stacks increase the damage per tick instead of the total duration")]
         public static bool noTimeToDie = false;
@@ -47,8 +45,8 @@ namespace LostInTransit.Items
 
                 if (Util.CheckRoll(procChance * damageReport.damageInfo.procCoefficient) && !flag)
                 {
-                    float newDuration = Mathf.Max(duration, 1f);
-                    float newDamage = (dmgCoefficient / 100) * (1 + ((stack - 1) / 2));
+                    float newDuration = Mathf.Max(poisonDuration, 1f);
+                    float newDamage = (totalDamage / 100) * (1 + ((stack - 1) / 2));
                     if (!noTimeToDie)
                         newDuration += (stack - 1) * 2;
                     var dotInfo = new InflictDotInfo()

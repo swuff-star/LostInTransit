@@ -10,11 +10,11 @@ namespace LostInTransit.Items
     public class WickedRing : ItemBase
     {
         private const string token = "LIT_ITEM_WICKEDRING_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.Instance.MainAssetBundle.LoadAsset<ItemDef>("WickedRingNew");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("WickedRingNew");
 
-        [ConfigurableField(ConfigName = "Seconds Removed per Kill", ConfigDesc = "Seconds removed from skill cooldowns on kill.")]
+        [ConfigurableField(ConfigDesc = "Seconds removed from skill cooldowns on kill.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float ringReduction = 1f;
+        public static float secondsRemovedPerKill = 1f;
 
 
         public class WickedRingBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver
@@ -24,7 +24,8 @@ namespace LostInTransit.Items
 
             public void OnKilledOtherServer(DamageReport damageReport)
             {
-                if (body.skillLocator) body.skillLocator.DeductCooldownFromAllSkillsServer(ringReduction * stack);
+                if (body.skillLocator) 
+                    body.skillLocator.DeductCooldownFromAllSkillsServer(secondsRemovedPerKill * stack);
             }
         }
     }
