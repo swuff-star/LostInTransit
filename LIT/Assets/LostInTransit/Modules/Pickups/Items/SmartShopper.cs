@@ -11,16 +11,9 @@ namespace LostInTransit.Items
         private const string token = "LIT_ITEM_SMARTSHOPPER_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("SmartShopper");
 
-        [ConfigurableField(ConfigName = "Refund Amount", ConfigDesc = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
+        [ConfigurableField(ConfigDesc = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
         [TokenModifier(token, StatTypes.Percentage, 0)]
-        public static float RefundAmount = 0.5f;
-
-        /*[ConfigurableField(ConfigName = "Money Bonus", ConfigDesc = "Amount of extra money gained, per stack.")]
-        [TokenModifier(token, StatTypes.Percentage, 0)]
-        public static float goldAmount = 0.25f;
-
-        [ConfigurableField(ConfigName = "Use Exponential Scaling", ConfigDesc = "Whether scaling should be done exponentially or linearally.")]
-        public static bool usesExpScaling = true;*/
+        public static float refundAmount = 0.5f;
 
         public class SmartShopperBehavior : BaseItemBodyBehavior
         {
@@ -29,44 +22,45 @@ namespace LostInTransit.Items
             private float refundAmount;
             private int maxRefunds;
             private int currentRefunds;
-
             public bool CanRefund { get => currentRefunds < maxRefunds; }
-            private void Refund(Interactor interactor, IInteractable interactable, UnityEngine.GameObject interactableObject)
+
+            public void Start()
+            {
+                refundAmount = Mathf.Clamp01(SmartShopper.refundAmount);
+                currentRefunds = 0;
+                maxRefunds = stack;
+
+                GlobalEventManager.OnInteractionsGlobal += TryToRefund;
+                body.onInventoryChanged += UpdateStacks;
+            }
+            public void OnDestroy()
+            {
+                GlobalEventManager.OnInteractionsGlobal -= TryToRefund;
+                body.onInventoryChanged -= UpdateStacks;
+            }
+
+            private void TryToRefund(Interactor interactor, IInteractable interactable, UnityEngine.GameObject interactableObject)
             {
                 var pInteraction = interactableObject.GetComponent<PurchaseInteraction>();
                 if(pInteraction)
                 {
                     if(pInteraction.costType == CostTypeIndex.Money && CanRefund)
                     {
-                        OnRefund((uint)pInteraction.cost);
+                        DoRefund((uint)pInteraction.cost);
                     }
                 }
             }
 
-            private void OnRefund(uint moneyCost)
+            private void DoRefund(uint moneyCost)
             {
                 currentRefunds++;
                 body.master?.GiveMoney((uint)(moneyCost * refundAmount));
             }
 
-            public void Start()
-            {
-                refundAmount = Mathf.Clamp01(RefundAmount);
-                currentRefunds = 0;
-                maxRefunds = stack;
-                GlobalEventManager.OnInteractionsGlobal += Refund;
-                body.onInventoryChanged += UpdateStacks;
-            }
 
             private void UpdateStacks()
             {
-                stack = body.inventory.GetItemCount(LITAssets.LoadAsset<ItemDef>("SmartShopper"));
-            }
-
-            public void OnDestroy()
-            {
-                GlobalEventManager.OnInteractionsGlobal -= Refund;
-                body.onInventoryChanged -= UpdateStacks;
+                maxRefunds = body.inventory.GetItemCount(LITAssets.LoadAsset<ItemDef>("SmartShopper"));
             }
         }
 

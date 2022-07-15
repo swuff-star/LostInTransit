@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\</ProjectRoot>
-		<SourceFilesRoot>D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\</ProjectRoot>
+		<SourceFilesRoot>D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>

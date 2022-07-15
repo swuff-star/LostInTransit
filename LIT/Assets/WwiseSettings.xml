@@ -8,6 +8,6 @@
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <SoundbankPath>Audio/GeneratedSoundBanks</SoundbankPath>
-  <WwiseInstallationPathWindows>D:\Program Files\Wwise 2019.2.12.7544</WwiseInstallationPathWindows>
+  <WwiseInstallationPathWindows>D:\ProgramFiles\Wwise</WwiseInstallationPathWindows>
   <WwiseProjectPath>../WwiseLIT/WwiseLIT.wproj</WwiseProjectPath>
 </WwiseSettings>

@@ -17,9 +17,9 @@ namespace LostInTransit.Projectiles
 
         public static GameObject ThqwibProj;
 
-        public override async void Initialize()
+        public override void Initialize()
         {
-            prefab = await ClonePrefab();
+            prefab = ClonePrefab();
             if (prefab)
             {
                 var onKillComponent = prefab.GetComponent<ProjectileGrantOnKillOnDestroy>();
@@ -30,11 +30,10 @@ namespace LostInTransit.Projectiles
             }
         }
 
-        private async Task<GameObject> ClonePrefab()
+        private GameObject ClonePrefab()
         {
-            var fab = await Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Scav/ScavSackProjectile.prefab").Task;
-            prefab = PrefabAPI.InstantiateClone(fab, "LIT_Thqwib", true);
-            return prefab;
+            var fab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Scav/ScavSackProjectile.prefab").WaitForCompletion();
+            return PrefabAPI.InstantiateClone(fab, "LIT_Thqwib", true); ;
         }
     }
 }

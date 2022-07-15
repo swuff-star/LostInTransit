@@ -47,7 +47,6 @@ namespace LostInTransit.Items
                 float gravReduction = (float)Math.Pow(reducedGravity / 100, 6 / stack + 5);
                 body.characterMotor.velocity.y -= Time.fixedDeltaTime * Physics.gravity.y * Mathf.Min(1 - gravReduction, 1 - (minGrav / 100));
             }
-
         }
     }
 }

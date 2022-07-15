@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="97">
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\WwiseLIT.wproj" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\WwiseLIT.TomyG.wsettings" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Virtual Acoustics\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Triggers\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Switches\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\States\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\SoundBanks\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Queries\Factory Queries.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Queries\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Presets\Factory Spatial Audio.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Presets\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Modulators\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Mixing Sessions\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Game Parameters\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Events\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Effects\Factory Effects.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Effects\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Conversion Settings\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Control Surface Sessions\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Audio Devices\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Attenuations\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
+	<ValidationCacheItem File="D:\RoR2Related\Projects\LostInTransit\LIT\WwiseLIT\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1656778645" DateHigh="0"/>
 	<ValidationCacheItem File="D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\WwiseLIT.wproj" DateLow="1648222138" DateHigh="0"/>
 	<ValidationCacheItem File="D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\Virtual Acoustics\Default Work Unit.wwu" DateLow="1648221965" DateHigh="0"/>
 	<ValidationCacheItem File="D:\RoR2 Modding\LostInTransit\LIT\WwiseLIT\Triggers\Default Work Unit.wwu" DateLow="1648221965" DateHigh="0"/>
