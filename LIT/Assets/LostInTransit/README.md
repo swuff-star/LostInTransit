@@ -21,6 +21,7 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texLopperNew.png) | **Ol' Lopper** | Deal 2% (+2% per stack) more damage for every 1% health missing from enemies, up to 50% (+50% per stack) damage. | Rare |
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/Mitosis.png) | **Rapid Mitosis** | Decrease equipment cooldown by 35% (+35% per stack). While you have at least 1 equipment charge, health regeneration is increased by 3.8 hp/s (+1.9 hp/s per stack). | Rare |
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texThallium.png) | **Thallium** | 10% chance to inflict thallium poisoning for 500% (+250% per stack) of enemy's base damage and slow by 75%. | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/WickedRing.png) | **Wicked Ring** | Killing enemies decreases all skill cooldowns by 1 (+1 per stack) second. |
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconAmethyst.png) | **Gigantic Amethyst** | Reset skill cooldowns on use. | Equipment |
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconThqwib.png) | **Thqwib** | Release a bloom of 30 thqwibs, detonating on impact for 200% damage. | Equipment |
 
@@ -45,6 +46,8 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 	* Added Repulsion Armor
 	* Added Ol' Lopper
 	* Added Rapid Mitosis
+	* Added Wicked Ring
+	* Please give me thoughts on all of these new items as well as old ones.
 * Equipment
 	* Added Thqwib
 * Elites
