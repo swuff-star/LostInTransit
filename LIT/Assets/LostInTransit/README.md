@@ -9,33 +9,48 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 
 | Icon | Item | Description | Rarity |
 |:-|-|------|-|
-|![](https://i.imgur.com/Vqj1kyK.png) | **Life Savings** | Keep 5% (+2.5% per stack) of gold between stages. | Common |
-|![](https://i.imgur.com/0JpFYMD.png) | **Mysterious Vial** | Regenerate an extra 0.8 (+0.8 per stack) hp per second. | Common |
-|![](https://i.imgur.com/zTCttJR.png) | **Beckoning Cat** | Elite monsters have a 4.5% (+1.5% per stack) chance to drop items on death. | Uncommon |
-|![](https://i.imgur.com/L4TZX13.png) | **Golden Gun** | Deal extra damage based on held gold, up to +40% damage (+20% per stack) at 600 gold (+300 per stack, scaling with time). | Uncommon |
-|![](https://i.imgur.com/oI6SJMs.png) | **Prison Shackles** | Slow monsters for -30% attack speed for 2 (+2 per stack) seconds. | Uncommon |
-|![](https://i.imgur.com/4qpaGr0.png) | **Smart Shopper** | Monsters drop 25% (+25% per stack) more gold. | Uncommon |
-|![](https://i.imgur.com/16yqiHX.png) | **Thallium** | 10% chance to inflict thallium poisoning for 500% (+250% per stack) of enemy's base damage and slow by 75%. | Rare |
-|![](https://i.imgur.com/xmQADqk.png) | **Telescopic Sight** | 1% (+0.5% per stack) chance to instakill monsters. Boss monsters instead take 20% of their maximum health in damage. Recharges every 20 (-2 per stack) seconds. | Rare |
-|![](https://i.imgur.com/27uyOZz.png) | **Gigantic Amethyst** | Reset skill cooldowns on use. | Equipment |
-
-## Elites
-
-| Elite Type | Name | Description | Tier |
-|:-|-|------|-|
-|![](https://i.imgur.com/O7976kP.png) | **Frenzying** | Increased attack and move speed. Periodically dash towards enemies at high speeds. | 1 |
-|![](https://i.imgur.com/CubhqEH.png) | **Leeching** | Damage dealt is returned as healing. Periodically heal nearby allies for a small amount of health. | 1 |
-|![](https://i.imgur.com/Ze8oyIg.png) | **Volatile** | Attacks explode on hit. Occasionally drop Spite bombs when damaged. | 1 |
-|![](https://i.imgur.com/Xrn4MvE.png) | **Blighted** | An unknown force of the Planet, these phantasms are as mysterious as they are deadly. | ? |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconRootNewer.png) | **Bitter Root** | Increase health regeneration by 3 hp/s for 3s (+3s per stack) after killing an enemy. | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconSavingsNew.png) | **Life Savings** | Gain 1 (+1 per stack) Chest's worth of gold at the beginning of each stage. | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/meatnugger.png) | **Meat Nugget** | 8% chance on hitting an enemy to spawn a nugget that increases health regeneration by +1.6 hp/s for 2 seconds (+2 seconds per stack). | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/mysteriousvial.png) | **Mysterious Vial** | Increase health regeneration by +0.8 hp/s (+0.8 hp/s per stack). | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconCatNew.png) | **Beckoning Cat** | Elite monsters have a 4.5% (+1.5% per stack) chance to drop items on death. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconPickupGoldGun.png) | **Golden Gun** | Deal extra damage based on held gold, up to +40% damage (+20% per stack) at 300 gold (+150 per stack, scaling with time). | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconguardiansheart%201.png) | **Guardian's Heart** | Gain 60 shield. All shields become gated, blocking any damage exceeding your current amount of shield and giving 40 armor for 3 (+50% per stack) seconds when broken. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconShacklesNew.png) | **Prison Shackles** | Slow monsters for -30% attack speed for 2 (+2 per stack) seconds. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconArmor.png} | **Repulsion Armor** | Getting hit 6 times activates the repulsion armor, giving 500 armor and reflecting projectiles for 3 (+1.5 per stack) seconds.
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texLopperNew.png) | **Ol' Lopper** | Deal 2% (+2% per stack) more damage for every 1% health missing from enemies, up to 50% (+50% per stack) damage. | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/Mitosis.png) | **Rapid Mitosis** | Decrease equipment cooldown by 35% (+35% per stack). While you have at least 1 equipment charge, health regeneration is increased by 3.8 hp/s (+1.9 hp/s per stack). | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texThallium.png) | **Thallium** | 10% chance to inflict thallium poisoning for 500% (+250% per stack) of enemy's base damage and slow by 75%. | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconAmethyst.png) | **Gigantic Amethyst** | Reset skill cooldowns on use. | Equipment |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconThqwib.png) | **Thqwib** | Release a bloom of 30 thqwibs, detonating on impact for 200% damage. | Equipment |
 
 ## Credits
-* Code - Nebby, swuff★
+* Code - Gaforb, Nebby, swuff★
 * Art/Modelling/Animation - bruh, GEMO, LucidInceptor, Nebby, SOM
 * Sound - UnknownGlaze, neik, SOM
 * Writing - BlimBlam, Lyrical Endymion, QandQuestion, swuff★, T_Dimensional
 * Additional support/special thanks - Draymarc, KevinFromHPCustomerService, KomradeSpectre, Moffein, rob, Shared, TheTimesweeper, xpcybic, /vm/
 
 ## Changelog
+
+### 0.4.0
+* General
+	* Updated to Survivors of the Void & MSU 1.0.0
+* Items
+	* Added Bitter Root (Re-implementation of old Bison Steak)
+	* Tweaked Life Savings (Keep 5% of gold -> Gain 1 chest in gold at beginning of each stage)
+	* Added Meat Nugget
+	* Added Guardian's Heart
+	* Disabled Smart Shopper (Reworking)
+	* Added Repulsion Armor
+	* Added Ol' Lopper
+	* Added Rapid Mitosis
+* Equipment
+	* Added Thqwib
+* Elites
+	* Disabled all Elites (Reworking)
+* Known Bugs
+	* No sounds!
 
 ### 0.3.9
 
