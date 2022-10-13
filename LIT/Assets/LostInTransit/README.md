@@ -50,7 +50,8 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 * Elites
 	* Disabled all Elites (Reworking)
 * Known Bugs
-	* No sounds!
+	* No sounds! Should be fixed ASAP, but just wanting to get this out now.
+	* No Item Displays / VFX - Next up in to-do.
 
 ### 0.3.9
 
