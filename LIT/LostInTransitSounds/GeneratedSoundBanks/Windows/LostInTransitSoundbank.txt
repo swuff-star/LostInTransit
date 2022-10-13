@@ -1,0 +1,25 @@
+Event	ID	Name			Wwise Object Path	Notes
+	677351196	TeleSightProc			\Default Work Unit\TeleSightProc	
+	1323727862	LeechHeal			\Default Work Unit\LeechHeal	
+	1547271496	AmethystProc			\Default Work Unit\AmethystProc	
+	2629721448	BlightAppear			\Default Work Unit\BlightAppear	
+	2654765639	CatProc			\Default Work Unit\CatProc	
+	2739876589	ThalliumProc			\Default Work Unit\ThalliumProc	
+	2797996931	FrenzyDash			\Default Work Unit\FrenzyDash	
+	3203155572	BlightSpawn			\Default Work Unit\BlightSpawn	
+	3867593397	RepulsionChestProc			\Default Work Unit\RepulsionChestProc	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	38520772	BlightedSpawn	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\BlightedSpawn_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\BlightedSpawn		92901
+	92036071	LeechingHeal	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\LeechingHeal_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\LeechingHeal		31129
+	123771587	RepulsionChestProc	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\RepulsionChestProc_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\RepulsionChestProc		17190
+	320132946	BeckoningCatProc	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\BeckoningCatProc_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\BeckoningCatProc		38723
+	631632114	FrenzyingDash	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\FrenzyingDash_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\FrenzyingDash		35541
+	809510832	AmethystActivate	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\AmethystActivate_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\AmethystActivate		25171
+	842083267	ThalliumProc	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\ThalliumProc_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\ThalliumProc		39243
+	937796265	BlighteAppear	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\BlighteAppear_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\BlighteAppear		96541
+	996550271	TeleSightProc	C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\SFX\TeleSightProc_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Major Sounds\TeleSightProc		32853
+

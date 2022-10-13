@@ -130,7 +130,7 @@ MonoBehaviour:
   StagingPaths:
   - <BuildPathSoundbanks>
   files:
-  - {fileID: 102900000, guid: 13d04f23d728d17458d59eecafa260d2, type: 3}
+  - {fileID: 102900000, guid: b5a346d72bcafd149bb4d4ebbd969d47, type: 3}
 --- !u!114 &8324102109481770816
 MonoBehaviour:
   m_ObjectHideFlags: 0

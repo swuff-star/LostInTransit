@@ -20,4 +20,4 @@ namespace LostInTransit.Equipments
         }                                                                       //"amethystfire"? you aren't FIRING anything.
     }                                                                           //"amethystuse" is dull.
                                                                                 //n- "AmethystActivation", duh.
-}                                                                  
+}                                                                               //long

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Node\Documents\WwiseProjects\LostInTransitSounds\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="263542888">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3729978934" Language="SFX" Hash="335322845">
+			<ObjectPath>\SoundBanks\Default Work Unit\LostInTransitSoundbank</ObjectPath>
+			<ShortName>LostInTransitSoundbank</ShortName>
+			<Path>LostInTransitSoundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1547271496" Name="AmethystProc" ObjectPath="\Events\Default Work Unit\AmethystProc">
+					<IncludedMemoryFiles>
+						<File Id="809510832" Language="SFX">
+							<ShortName>AmethystActivate.wav</ShortName>
+							<Path>SFX\AmethystActivate_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2629721448" Name="BlightAppear" ObjectPath="\Events\Default Work Unit\BlightAppear">
+					<IncludedMemoryFiles>
+						<File Id="937796265" Language="SFX">
+							<ShortName>BlighteAppear.wav</ShortName>
+							<Path>SFX\BlighteAppear_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3203155572" Name="BlightSpawn" ObjectPath="\Events\Default Work Unit\BlightSpawn">
+					<IncludedMemoryFiles>
+						<File Id="38520772" Language="SFX">
+							<ShortName>BlightedSpawn.wav</ShortName>
+							<Path>SFX\BlightedSpawn_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2654765639" Name="CatProc" ObjectPath="\Events\Default Work Unit\CatProc">
+					<IncludedMemoryFiles>
+						<File Id="320132946" Language="SFX">
+							<ShortName>BeckoningCatProc.wav</ShortName>
+							<Path>SFX\BeckoningCatProc_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2797996931" Name="FrenzyDash" ObjectPath="\Events\Default Work Unit\FrenzyDash">
+					<IncludedMemoryFiles>
+						<File Id="631632114" Language="SFX">
+							<ShortName>FrenzyingDash.wav</ShortName>
+							<Path>SFX\FrenzyingDash_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1323727862" Name="LeechHeal" ObjectPath="\Events\Default Work Unit\LeechHeal">
+					<IncludedMemoryFiles>
+						<File Id="92036071" Language="SFX">
+							<ShortName>LeechingHeal.wav</ShortName>
+							<Path>SFX\LeechingHeal_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3867593397" Name="RepulsionChestProc" ObjectPath="\Events\Default Work Unit\RepulsionChestProc">
+					<IncludedMemoryFiles>
+						<File Id="123771587" Language="SFX">
+							<ShortName>RepulsionChestProc.wav</ShortName>
+							<Path>SFX\RepulsionChestProc_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="677351196" Name="TeleSightProc" ObjectPath="\Events\Default Work Unit\TeleSightProc">
+					<IncludedMemoryFiles>
+						<File Id="996550271" Language="SFX">
+							<ShortName>TeleSightProc.wav</ShortName>
+							<Path>SFX\TeleSightProc_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2739876589" Name="ThalliumProc" ObjectPath="\Events\Default Work Unit\ThalliumProc">
+					<IncludedMemoryFiles>
+						<File Id="842083267" Language="SFX">
+							<ShortName>ThalliumProc.wav</ShortName>
+							<Path>SFX\ThalliumProc_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}" SchemaVersion="97">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Master Mixer" ID="{E2C9D7E9-8CFF-4B97-B9D5-A183EDCA77D7}" ShortID="948833838">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{01A1097A-D465-4BB5-A07F-44D70F9BA31C}" ShortID="918741286">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Volume_SFX" ID="{E9D8BB31-051B-49F9-A8A8-54C985590983}" WorkUnitID="{27B1871D-C3B2-4624-9364-2459697FC942}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{CC9641EE-F881-4AE7-809C-A4A6DD11CC2C}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SFX Mixer" ID="{2F72BED7-D60D-41BC-8498-60CC385D549E}" ShortID="720560390">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Major Sounds" ID="{FE605388-1640-4720-9461-0C89C74EC7D4}" ShortID="691978020">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Major Att" ID="{3BE6D137-63FA-4979-B853-E6FF0882B9B1}" WorkUnitID="{A2D2A172-0264-4D61-B392-B514E0A8A6E2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AmethystActivate" ID="{94370BBA-5E60-4F52-8AE7-DD7F5E800C00}" ShortID="750816479">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AmethystActivate" ID="{63FF28AE-B2B1-4025-B934-6E6787101B4E}">
+													<Language>SFX</Language>
+													<AudioFile>AmethystActivate.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="809510832"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="AmethystActivate" ID="{63FF28AE-B2B1-4025-B934-6E6787101B4E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BeckoningCatProc" ID="{C93C1418-EB8C-48F8-98CC-2B952A857B84}" ShortID="91379725">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BeckoningCatProc" ID="{05EFF3AC-5420-40C1-A645-1F866E943656}">
+													<Language>SFX</Language>
+													<AudioFile>BeckoningCatProc.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="320132946"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BeckoningCatProc" ID="{05EFF3AC-5420-40C1-A645-1F866E943656}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BlighteAppear" ID="{AF3FE51B-CFE8-4A73-8E18-DD1E8D0FA5F7}" ShortID="1024170647">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BlighteAppear" ID="{CBC89770-A5BF-4A3A-9DB0-2B4478E9328C}">
+													<Language>SFX</Language>
+													<AudioFile>BlighteAppear.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="937796265"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BlighteAppear" ID="{CBC89770-A5BF-4A3A-9DB0-2B4478E9328C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BlightedAmbient" ID="{49790085-00A1-4BC6-BD97-497C4D3F55A4}" ShortID="366080689">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BlightedAmbient" ID="{96EE0398-ACF4-4DE5-B321-8B438F6CE36D}">
+													<Language>SFX</Language>
+													<AudioFile>BlightedAmbient.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="897823579"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BlightedAmbient" ID="{96EE0398-ACF4-4DE5-B321-8B438F6CE36D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BlightedSpawn" ID="{0675748A-0307-457E-9BE2-61CAB7B3110F}" ShortID="1070311689">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BlightedSpawn" ID="{42A4B768-00B3-4267-B834-3A83991F1001}">
+													<Language>SFX</Language>
+													<AudioFile>BlightedSpawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="38520772"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BlightedSpawn" ID="{42A4B768-00B3-4267-B834-3A83991F1001}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FrenzyingDash" ID="{9D8B7CBF-45B3-4529-B213-811CAF3FFC7C}" ShortID="234165498">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FrenzyingDash" ID="{636C7518-0EFF-43B0-B066-F660C34A02E8}">
+													<Language>SFX</Language>
+													<AudioFile>FrenzyingDash.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="631632114"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FrenzyingDash" ID="{636C7518-0EFF-43B0-B066-F660C34A02E8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LeechingHeal" ID="{8EB6A2BF-7672-40B6-85C1-3F50CD2C0786}" ShortID="980610945">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LeechingHeal" ID="{73109432-721E-4D73-A44B-64F368D9DC3E}">
+													<Language>SFX</Language>
+													<AudioFile>LeechingHeal.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="92036071"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LeechingHeal" ID="{73109432-721E-4D73-A44B-64F368D9DC3E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="RepulsionChestProc" ID="{C13D133B-22BA-427E-8D4F-EB03EA481AB0}" ShortID="873238945">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="RepulsionChestProc" ID="{FF9B66CD-DEAB-4145-8337-720BA7745D9F}">
+													<Language>SFX</Language>
+													<AudioFile>RepulsionChestProc.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="123771587"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="RepulsionChestProc" ID="{FF9B66CD-DEAB-4145-8337-720BA7745D9F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="TeleSightProc" ID="{54706B17-024C-46CF-9591-18D23CEF48DC}" ShortID="375559662">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TeleSightProc" ID="{08809681-54FC-4F86-A3CB-36EB1F58DA40}">
+													<Language>SFX</Language>
+													<AudioFile>TeleSightProc.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="996550271"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="TeleSightProc" ID="{08809681-54FC-4F86-A3CB-36EB1F58DA40}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ThalliumProc" ID="{2B1F1AD3-2193-4081-83BA-BD063418C4A4}" ShortID="625412479">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ThalliumProc" ID="{A0D7B22D-351A-4E10-9268-20A540A57CB9}">
+													<Language>SFX</Language>
+													<AudioFile>ThalliumProc.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="842083267"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ThalliumProc" ID="{A0D7B22D-351A-4E10-9268-20A540A57CB9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
+								<ActorMixer Name="Minor Sounds" ID="{AF26EA62-2EB9-4E36-AE64-BA0089CA2D5B}" ShortID="296617322">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Minor Att" ID="{4BAF4047-9794-421B-B84F-6CB2B1710B4E}" WorkUnitID="{A2D2A172-0264-4D61-B392-B514E0A8A6E2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8AEBD3BA-22B9-4FB1-A8EE-CB9EE2A0A84E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F59896E8-4F64-496D-8646-6698580291EF}"/>
+										</Reference>
+									</ReferenceList>
+								</ActorMixer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

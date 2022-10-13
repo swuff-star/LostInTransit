@@ -4,6 +4,7 @@ using RoR2.Items;
 
 namespace LostInTransit.Items
 {
+    [DisabledContent]
     public class TelescopicSight : ItemBase
     {
         private const string token = "LIT_ITEM_TELESCOPICSIGHT_DESC";

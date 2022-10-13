@@ -157,6 +157,8 @@ namespace LostInTransit
                     PopulateTypeFields(typeof(Items), ContentPack.itemDefs);
                 }
             };
+
+            LITHooks.Init();
         }
     }
     /*internal class LITContent : IContentPackProvider

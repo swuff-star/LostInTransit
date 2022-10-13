@@ -15,7 +15,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "CDR Amount", ConfigDesc = "Extra Cooldown Per Rapid Mitosis.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float mitosisCD = 0.25f;
+        public static float mitosisCD = 0.35f;
 
         [ConfigurableField(ConfigName = "Regeneration Amount", ConfigDesc = "Extra health regen given by Rapid Mitosis.")]
         [TokenModifier(token, StatTypes.Default, 1)]
@@ -26,28 +26,6 @@ namespace LostInTransit.Items
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static RoR2.ItemDef GetItemDef() => LITContent.Items.RapidMitosis;
-
-            //★ please work
-            public void Start()
-            {
-                On.RoR2.Inventory.CalculateEquipmentCooldownScale += (orig, self) =>
-                {
-                    float num = orig.Invoke(self);
-                    num *= (1 - MSUtil.InverseHyperbolicScaling(mitosisCD, mitosisCD, 0.7f, stack));
-                    return num;
-                };
-            }
-            
-
-            public void OnDestroy()
-            {
-                On.RoR2.Inventory.CalculateEquipmentCooldownScale -= (orig, self) =>
-                {
-                    float num = orig.Invoke(self);
-                    num *= (1 - MSUtil.InverseHyperbolicScaling(mitosisCD, mitosisCD, 0.7f, stack));
-                    return num;
-                };
-            }
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

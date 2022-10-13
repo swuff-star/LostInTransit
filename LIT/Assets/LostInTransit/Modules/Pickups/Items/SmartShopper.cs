@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace LostInTransit.Items
 {
+    [DisabledContent]
     public class SmartShopper : ItemBase
     {
         private const string token = "LIT_ITEM_SMARTSHOPPER_DESC";

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="BlightAppear" ID="{4D4DF2EC-6D4B-43B3-8F4C-1784726DD3FC}">
+					<ChildrenList>
+						<Action Name="" ID="{1A4C1433-F851-4A34-BE31-FCD8748D38C0}" ShortID="998766926">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BlighteAppear" ID="{AF3FE51B-CFE8-4A73-8E18-DD1E8D0FA5F7}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="CatProc" ID="{7D18FC6E-D7D3-479B-983F-D7FA492559ED}">
+					<ChildrenList>
+						<Action Name="" ID="{EB62C1B7-7229-4AF9-97E0-C7E6B1D23121}" ShortID="483970670">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BeckoningCatProc" ID="{C93C1418-EB8C-48F8-98CC-2B952A857B84}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="FrenzyDash" ID="{E9E398ED-964E-4386-8AB5-37FD8DE9817C}">
+					<ChildrenList>
+						<Action Name="" ID="{A64D5320-9054-4546-A503-9B7A44271BD2}" ShortID="506107339">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FrenzyingDash" ID="{9D8B7CBF-45B3-4529-B213-811CAF3FFC7C}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AmethystProc" ID="{24A704E8-3C2C-4A99-9F28-7BA3508256CB}">
+					<ChildrenList>
+						<Action Name="" ID="{D3F60647-8D56-4D50-84E5-7587E53D5BA5}" ShortID="80052883">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AmethystActivate" ID="{94370BBA-5E60-4F52-8AE7-DD7F5E800C00}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TeleSightProc" ID="{06C5C4D5-6381-4F5B-87B2-F83C01980AF6}">
+					<ChildrenList>
+						<Action Name="" ID="{DAC60BA0-6FE3-4375-882F-62A52801AA25}" ShortID="473548629">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TeleSightProc" ID="{54706B17-024C-46CF-9591-18D23CEF48DC}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ThalliumProc" ID="{518C5E30-C70F-402B-8EBF-78F9418FD79F}">
+					<ChildrenList>
+						<Action Name="" ID="{64240D35-01FE-4D1C-9E85-1A1D662291AE}" ShortID="518107403">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ThalliumProc" ID="{2B1F1AD3-2193-4081-83BA-BD063418C4A4}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BlightSpawn" ID="{E218AF40-2310-449B-859C-D29A7D51A1C5}">
+					<ChildrenList>
+						<Action Name="" ID="{602D59EF-6876-436D-8672-3EE4B69C715A}" ShortID="260485236">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BlightedSpawn" ID="{0675748A-0307-457E-9BE2-61CAB7B3110F}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="LeechHeal" ID="{F5D22466-04DE-482E-809A-CCA4C4D0C63A}">
+					<ChildrenList>
+						<Action Name="" ID="{4D34296F-1C6D-41F2-B9EB-4FABB90CF109}" ShortID="92331747">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LeechingHeal" ID="{8EB6A2BF-7672-40B6-85C1-3F50CD2C0786}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RepulsionChestProc" ID="{CD76B58A-2A8E-4CA2-AAB2-12F4EBAC4E6B}">
+					<ChildrenList>
+						<Action Name="" ID="{5AEBEC2E-37B6-473B-92B0-6091DD0C03AB}" ShortID="132539813">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RepulsionChestProc" ID="{C13D133B-22BA-427E-8D4F-EB03EA481AB0}" WorkUnitID="{A07D15F8-0E3B-4749-B58F-4FEE596C1A21}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
