@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: PrisonShackles
   m_EditorClassIdentifier: 
-  tier: 1
+  deprecatedTier: 1
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_PRISONSHACKLES_NAME
   pickupToken: LIT_ITEM_PRISONSHACKLES_PICKUP
   descriptionToken: LIT_ITEM_PRISONSHACKLES_DESC
@@ -20,7 +21,7 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   pickupModelPrefab: {fileID: 6107823268947827294, guid: 04f2b9e9a13ecad499d75e8f1b4bfad5,
     type: 3}
-  pickupIconSprite: {fileID: 21300000, guid: e9f08467c4340a243b725cdd2a6deaa3, type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 342590e4bf0be1e4a864f40d55bba583, type: 3}
   hidden: 0
   canRemove: 1
   tags: 03000000

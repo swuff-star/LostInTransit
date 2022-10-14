@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: MeatNugget
   m_EditorClassIdentifier: 
-  tier: 0
+  deprecatedTier: 0
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_MEATNUGGET_NAME
   pickupToken: LIT_ITEM_MEATNUGGET_PICKUP
   descriptionToken: LIT_ITEM_MEATNUGGET_DESC
@@ -20,7 +21,7 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   pickupModelPrefab: {fileID: 760524404955740681, guid: e46ffefa344761e479ad43a437600650,
     type: 3}
-  pickupIconSprite: {fileID: 21300000, guid: def3ee497dcc1e9429325adedec6af2f, type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: f9be450199807324cb7584e57771abca, type: 3}
   hidden: 0
   canRemove: 1
   tags: 02000000

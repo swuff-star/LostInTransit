@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: WickedRingNew
   m_EditorClassIdentifier: 
-  tier: 2
+  deprecatedTier: 2
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_WICKEDRING_NAME
   pickupToken: LIT_ITEM_WICKEDRING_PICKUP
   descriptionToken: LIT_ITEM_WICKEDRING_DESC
@@ -20,7 +21,7 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   pickupModelPrefab: {fileID: 6288584830043848385, guid: d964865865d17fe4fa47cdcf3aa8a308,
     type: 3}
-  pickupIconSprite: {fileID: 21300000, guid: 1f834448d5d072d41952597684107dfd, type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 3f41fb3b59e053d438e5815b6c38aaa1, type: 3}
   hidden: 0
   canRemove: 1
   tags: 0300000006000000
