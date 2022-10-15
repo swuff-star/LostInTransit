@@ -28,7 +28,10 @@ namespace LostInTransit
             public static BuffDef FieldGeneratorPassive;
             public static BuffDef GoldenGun;
             public static BuffDef GuardiansHeartBuff;
+            public static BuffDef HitListBuff;
+            public static BuffDef HitListMarked;
             public static BuffDef LeechingRegen;
+            public static BuffDef MitosisBuff;
             public static BuffDef NuggetRegen;
             public static BuffDef RepulsionArmorActive;
             public static BuffDef RepulsionArmorCD;
@@ -75,7 +78,7 @@ namespace LostInTransit
             public static ItemDef PhotonCannon;
             public static ItemDef PrisonShackles;
             public static ItemDef RapidMitosis;
-            public static ItemDef RepulsionChestplate;
+            public static ItemDef Chestplate;
             public static ItemDef RustyJetpack;
             public static ItemDef SmartShopper;
             public static ItemDef TelescopicSight;
@@ -85,6 +88,7 @@ namespace LostInTransit
             public static ItemDef FireShield;
             public static ItemDef BeatingEmbryo;
             public static ItemDef FireBoots;
+            public static ItemDef HitList;
         }
         public override string identifier => LITMain.GUID;
 

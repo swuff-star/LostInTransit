@@ -88,7 +88,7 @@ namespace EntityStates.Elites
                 nodes.GetNodePosition(nodeIndex, out blinkDestination);
                 blinkDestination += transform.position - characterBody.footPosition;
                 vector = blinkDestination - blinkStart;
-                CreateBlinkEffect(Util.GetCorePosition(gameObject), vector);
+                //CreateBlinkEffect(Util.GetCorePosition(gameObject), vector);
             }
         }
         private void CreateBlinkEffect(Vector3 origin, Vector3 direction)

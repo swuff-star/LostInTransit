@@ -68,9 +68,9 @@ namespace LostInTransit.Buffs
 
                 if (body.hasAuthority)
                 {
-                    if (blinkReady && body.isPlayerControlled && Input.GetKeyDown(LITConfig.frenziedBlink.Value))
-                        Blink();
-                    else if (blinkReady && !body.isPlayerControlled)
+                    /*if (blinkReady && body.isPlayerControlled && Input.GetKeyDown(LITConfig.frenziedBlink.Value))
+                        Blink();*/
+                    if (blinkReady && !body.isPlayerControlled)
                         Blink();
                 }
             }
@@ -92,19 +92,19 @@ namespace LostInTransit.Buffs
 
             internal void Ability()
             {
-                doingAbility = true;
+                /*doingAbility = true;
                 cdrMult = 2;
                 AbilityInstance = Instantiate(AbilityEffect, body.aimOriginTransform);
                 if (AbilityInstance)
                     AbilityInstance.transform.localScale *= body.bestFitRadius;
-                body.RecalculateStats();
+                body.RecalculateStats();*/
             }
 
             public void RecalculateStatsStart() { }
             public void RecalculateStatsEnd()
             {
-                body.moveSpeed *= 2f;
-                body.attackSpeed *= 2f;
+                body.moveSpeed *= 1.5f;
+                body.attackSpeed *= 1.5f;
 
                 //Ability Innactive = 0.5f, 50% cdr
                 //Ability Active = 0.75f, 75% cdr

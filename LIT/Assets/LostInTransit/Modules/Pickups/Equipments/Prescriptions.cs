@@ -3,7 +3,7 @@ using RoR2;
 
 namespace LostInTransit.Equipments
 {
-    [DisabledContent]
+    //[DisabledContent]
     public class Prescriptions : EquipmentBase
     {
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("Prescriptions");

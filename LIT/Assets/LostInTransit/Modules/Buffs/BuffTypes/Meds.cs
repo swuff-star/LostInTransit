@@ -22,6 +22,11 @@ namespace LostInTransit.Buffs
                 args.damageMultAdd += 0.2f;
                 args.armorAdd += 20f;
             }
+
+            public void OnDestroy()
+            {
+                body.RecalculateStats();
+            }
         }
     }
 }

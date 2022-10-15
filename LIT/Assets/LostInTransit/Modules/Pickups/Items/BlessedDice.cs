@@ -104,10 +104,11 @@ namespace LostInTransit.Items
                 //These have to be nested to prevent NREs when checking for isShrine on non-purchase events
                 if (isPurchase)
                 {
-                    if (interactableObject.GetComponent<PurchaseInteraction>().isShrine)
+                    body.AddTimedBuff(ChooseRandomBuff(), CalcBuffTimer());
+                    /*if (interactableObject.GetComponent<PurchaseInteraction>().isShrine)
                     {
-                        body.AddTimedBuff(ChooseRandomBuff(), CalcBuffTimer());
-                    }
+                        
+                    }*/
                 }
             }
 

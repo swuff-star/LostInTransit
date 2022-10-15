@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: TelescopicSight
   m_EditorClassIdentifier: 
-  tier: 2
+  deprecatedTier: 2
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_TELESCOPICSIGHT_NAME
   pickupToken: LIT_ITEM_TELESCOPICSIGHT_PICKUP
   descriptionToken: LIT_ITEM_TELESCOPICSIGHT_DESC
@@ -23,5 +24,5 @@ MonoBehaviour:
   pickupIconSprite: {fileID: 21300000, guid: ab9b2ac856858cc4f8f30f4eda2898fb, type: 3}
   hidden: 0
   canRemove: 1
-  tags: 01000000
+  tags: 0100000004000000
   requiredExpansion: {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}

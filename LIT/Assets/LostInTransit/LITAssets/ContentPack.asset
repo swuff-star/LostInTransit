@@ -29,7 +29,8 @@ MonoBehaviour:
   itemRelationshipTypes: []
   equipmentDefs: []
   buffDefs: []
-  eliteDefs: []
+  eliteDefs:
+  - {fileID: 11400000, guid: f6f54088444f57d478576a4d311c3d7e, type: 2}
   unlockableDefs: []
   survivorDefs: []
   artifactDefs: []

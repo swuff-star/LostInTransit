@@ -1,123 +1,117 @@
-### 0.3.3
-* Items
-	* Golden Gun: Fixed the Item Display causing a ton of null reference exceptions, alongside causing invisible enemies.
+﻿# Lost In Transit
+Lost in Transit is a mod for Risk of Rain 2 that adapts content from Risk of Rain 1, intending to balance and redesign varying features in ways that preserve that best original identites while also respecting the balance and gameplay changes made in Risk of Rain 2.
 
-### 0.3.2
+In its current state, the mod is intended to be an adaptation over a pure port - some features may have changed function or identities for varying reasons. This is done to help players less familiar with Risk of Rain 1's content ease into it and keep things simple. 
+
+If you have any issues with the mod, any feedback you'd like to give, any ideas for new content, or would like to follow progress, you can either join the Lost in Transit Discord Server (https://discord.gg/jzxXsQEZ5y) or you can contact me on Discord (swuff★#2224) - shoot me a DM or ping me in a mutual server. The mod is in active development, so expect new features soon. And as a personal note: I'm still fairly new to modding, so expect issues. 
+
+## Items / Equipment
+
+| Icon | Item | Description | Rarity |
+|:-|-|------|-|
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconRootNewer.png) | **Bitter Root** | Increase health regeneration by 3 hp/s for 3s (+3s per stack) after killing an enemy. | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconSavingsNew.png) | **Life Savings** | Gain 1 (+1 per stack) Chest's worth of gold at the beginning of each stage. | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/meatnugger.png) | **Meat Nugget** | 8% chance on hitting an enemy to spawn a nugget that increases health regeneration by +1.6 hp/s for 2 seconds (+2 seconds per stack). | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/mysteriousvial.png) | **Mysterious Vial** | Increase health regeneration by +0.8 hp/s (+0.8 hp/s per stack). | Common |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconCatNew.png) | **Beckoning Cat** | Elite monsters have a 4.5% (+1.5% per stack) chance to drop items on death. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconPickupGoldGun.png) | **Golden Gun** | Deal extra damage based on held gold, up to +40% damage (+20% per stack) at 300 gold (+150 per stack, scaling with time). | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconguardiansheart%201.png) | **Guardian's Heart** | Gain 60 shield. All shields become gated, blocking any damage exceeding your current amount of shield and giving 40 armor for 3 (+50% per stack) seconds when broken. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconShacklesNew.png) | **Prison Shackles** | Slow monsters for -30% attack speed for 2 (+2 per stack) seconds. | Uncommon |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconArmor.png) | **Repulsion Armor** | Getting hit 6 times activates the repulsion armor, giving 500 armor and reflecting projectiles for 3 (+1.5 per stack) seconds.
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texLopperNew.png) | **Ol' Lopper** | Deal 2% (+2% per stack) more damage for every 1% health missing from enemies, up to 50% (+50% per stack) damage. | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/Mitosis.png) | **Rapid Mitosis** | Decrease equipment cooldown by 35% (+35% per stack). While you have at least 1 equipment charge, health regeneration is increased by 3.8 hp/s (+1.9 hp/s per stack). | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texThallium.png) | **Thallium** | 10% chance to inflict thallium poisoning for 500% (+250% per stack) of enemy's base damage and slow by 75%. | Rare |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/WickedRing.png) | **Wicked Ring** | Killing enemies decreases all skill cooldowns by 1 (+1 per stack) second. |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconAmethyst.png) | **Gigantic Amethyst** | Reset skill cooldowns on use. | Equipment |
+|![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconThqwib.png) | **Thqwib** | Release a bloom of 30 thqwibs, detonating on impact for 200% damage. | Equipment |
+
+## Credits
+* Code - Gaforb, Nebby, swuff★
+* Art/Modelling/Animation - bruh, GEMO, GrooveSalad, LucidInceptor, Nebby, SOM
+* Sound - UnknownGlaze, Neik, SOM
+* Writing - BlimBlam, Lyrical Endymion, QandQuestion, swuff★, T_Dimensional
+* Additional support/special thanks - Draymarc, KevinFromHPCustomerService, KomradeSpectre, Moffein, rob, Shared, TheTimesweeper, xpcybic, /vm/
+
+## Changelog
+
+### 0.4.2
+* Items
+	* Most items were re-rendered courtesy of GrooveSalad.
+	* Meat Nugget, Bitter Root, and Mysterious Vial now scale with level.
+	* Added AI Blacklist tag to several items that were missing it. Sorry if anyone died to Thallium last night.
+	* Lightly reworked Rapid Mitosis (+3.8 hp/s regen with >= 1 equipment charges -> Using your equipment gives 25% cooldown reduction on all skills for 6 seconds.)
+
+### 0.4.1
 * General
-	* Fixed the readme file not having the proper description for the new Telescopic Sight
+	* Included the mod in the .zip. Rookie mistake.
+
+### 0.4.0
+* General
+	* Updated to Survivors of the Void & MSU 1.0.0
+* Items
+	* Added Bitter Root (Re-implementation of old Bison Steak)
+	* Reworked Life Savings (Keep 5% of gold -> Gain 1 chest in gold at beginning of each stage)
+	* Added Meat Nugget
+	* Added Guardian's Heart
+	* Disabled Smart Shopper (Reworking)
+	* Added Repulsion Armor
+	* Added Ol' Lopper
+	* Added Rapid Mitosis
+	* Added Wicked Ring
+	* Please give me thoughts on all of these new items as well as old ones.
+* Equipment
+	* Added Thqwib
 * Elites
-	* Blighted: Fixed smoke particles lingering indefinetly.
-	* Blighted: Fixed spawn sound effect not playing.
-	* Frenzying: New ramp is now properly applied.
-	* Leeching: New ramp is now properly applied.
-	* Volatile: New ramp is now properly applied.
-	* Volatile: Fixed crown not having proper materials.
-* Items
-	* Life Savings: I swear it should work now
+	* Disabled all Elites (Reworking)
+* Known Bugs
+	* No sounds! Should be fixed ASAP, but just wanting to get this out now.
+	* No Item Displays / VFX - Next up in to-do.
 
-### 0.3.1
-* General
-	* No, this is not a readme update disguised as fix
-* Items
-	* Prison Shackles: Fixed icon
+### 0.3.9
 
+* Updated to use MSU 0.6.0
+* Re-Enabled Bitter Root
+* Thallium no longer causes on kill effects to not trigger
+* Fixed an issue where Leeching elites may rarely set the regen boost strength to negative values.
 
-### 0.3.0
-*I strongly recommend deleting old config and starting fresh. I think things should update either way, but am not sure. If values seem off in game - try this before reporting it to me.*
+### 0.3.8
+* Re-did IDRS for Volatile, Leeching and Frenzied Elites
+* Added support for the following mod's idrs:
+  * Starstorm2's Nemmando, Executioner & Security Drone
+  * Enforcer's Nemesis Enforcer
+  * Chef
+  * Sniper
+  * Miner
+  * HAN-D
+  * Archaic Wisps
+  * Clayman
+  * Ancient Wisp
+* Changed the Volatile, Leeching and Frenzied Ramps to be more distinct from each other.
+
+### 0.3.7
+
 * Items
-	* Added proper item tags for items (*Developer note: Apparently none of these items have been tagged properly, allowing Life Savings to show up in Healing chests and other similar occurances. They're all sorted nicely, now.*)
-	* AI Blacklisted certain items that the AI should never get for balance reasons (e.g. Telescopic Sight) or technical reasons (e.g. Golden Gun)
-	* Added item displays for Mysterious Vial, Beckoning Cat, Telescopic Sight, and Golden Gun for Vanilla characters. Expect the rest next update
-	* Items now properly reflect config-based changes in their descriptions. This is mostly complete and doesn't support some more complicated config options e.g. Beckoning Cat Luck, Telescopic Sight config
-	* Bitter Root: Added (*Developer note: I'm not happy with this, honestly. I kind of want to make it a consumeable like the DLC's "Elixir", but I don't feel like it'll be well received. Thoughts?*)
-	* Life Savings: Rewritten entirely and should now be networked, we hope
-	* Life Savings: Stat change: 5% of money kept from previous stage, +2.5% per stack
-	* Prison Shackles: Added (*Developer note: Shoutout to my lovely friend who had the idea for this. I think it's a simple change that makes it just as valuable as another beloved Uncommon item ;) Enjoy!*)
-	* Telescopic Sight: Reworked -> Attacks have a 1% (+0.5% per stack) chance to instakill enemies. Bosses recieve 20% of their maximum health as damage rather than instantaneous death. Has a 20 second (-2 seconds per stack) cooldown. (*Developer Note: I think I'm happy with this rework? Lemme know how it feels. I don't want it to be a crit-based item anymore, and I've heard some interesting ideas that drop the old idea entirely that'd make it a unique utility - if people aren't happy with this, I could try that next?*)
-	* Thallium: Slightly reworked how scaling works; very technical change to numbers, but stacking is now done by increasing duration rather than damage. Insanely minor numbers nerf that's negligible - can change back to old behavior via config if desired.*)
+	* Removed Blessed Dice for the time being, as theyre unfinished.
+* Elites:
+	* Blighted: Fixed a bug where the game would crash upon entering to the bazaar.
+
+### 0.3.6
+* Items
+	* Prison Shackles: Reduced attack speed reduction (60% -> 30%)
 * Elites
-	* Frenzying: Updated buff icon
-	* Frenzying: Updated elite ramp
-	* Frenzying: Added a visual indicator when dash is ready
-	* Leeching: Updated buff icon
-	* Leeching: Updated elite ramp
-	* Volatile: Added
-	* Blighted: Added (*Developer note: These guys use a unique spawning method. Do they feel too common? Too strong? Too visible?)
-* Other
-	* Updated "ELITE_MODIFIER_GOLD" from "Gold" to "Auric". I like how it sounds since it comes from the same root Aurelionite does. No other mod fixes this and it's too small a change to warrant its own mod. Golden Coast Plus, maybe?
-
-### 0.2.0
-* General
-	* Added MoonstormSharedUtils as a dependency
-* Items
-	* Beckoning Cat: Item drops off of slain enemy position rather than player position. Will reintroduce player position drop behavior in future config
-	* Golden Gun: Added (*Developer note: This item's scaling has been changed semi-significantly. In Risk of Rain 1, it capped at 700 gold, with stacks decreasing this capacity. In Lost in Transit, stacks increase the max damage output by +20% per, but also increase the cap by +300 gold per. Cap is also 600 gold for even math, no clue why Hopoo chose 700 - doesn't divide easily by 40. Anyway, yeah, lemme know how this feels.*)
-	* Gigantic Amethyst: Fixed networking
-	* Guttural Whimpers: Updated icon
-	* Life Savings: (*Developer note: This item is currently not networked, and I want to get this update out sooner rather than later - I recommend disabling this item for multiplayer games*)
-	* Life Savings: Increased gold kept between stages from 2% to 4%
-	* Mysterious Vial: Added level-based scaling to the regeneration e.g. Cautious Slug
-	* Mysterious Vial: Increased from 0.4 regen to 0.8 regen (*Developer note: This change, as well as Life Savings' balance change, won't take effect unless you either delete your old config or edit it yourself to reflect these changes. This is just the nature of how the config file currently works*)
-* Elites
-	* Frenzying: Added (*Developer note: As a player, you have to press a key to activate the dash. By default, this is 'F', as to not conflict with Aspect Abilities*)
-	* Leeching: Leeching Elites now use a custom buff for their AoE that will always heal 10% and never more than 10%, and also doesn't stack. Hopefully they should feel a bit more tame, now
-	* Leeching: Removed behaviors from 0.1.2 where boss monsters would take twice as long to regen, as well as longer cooldowns based on enemies affected
-
-### 0.1.3
-* General
-	* The mod works this time I swear
-
-### 0.1.2
-* General
-	* Fixed issue preventing the game from launching depending on the user's system localization
-	* Disabling Leeching Elites no longer prevents the mod from loading
-* Items
-	* Life Savings: Updated render
-	* Smart Shopper: Updated materials & render
-* Elites
-	* Leeching: Regen buff no longer stacks with itself
-	* Leeching: The more monsters affected by a Leeching Elite's AoE, the longer the duration until the next AoE burst will be
-	* Leeching: Boss monsters now take twice as long to fully regen off of a Leeching Elite's healing AoE
-
-### 0.1.1
-* General
-	* Updated manifest
-	* Mod should actually work now... Oops
-
-### 0.1.0
-*First ThunderStore release!*
-* Items
-	* Life Savings: No longer preserves any gold when travelling between Hidden Realms
-	* Smart Shopper: Added
-
-### 0.0.4
-* General
-	* Added a proper .lang file to un-"Tower of Babel" the mod
-* Items
-	* Life Savings: Added
-  (*Developer note: Another changed item. The original Life Savings worked fine in Risk of Rain 2, but felt extremely boring to play with. Instead of passive gold, the item now allows you to keep a small amount of your gold between stages. Hoping this makes the item much more desirable.*)
-* Elites
-	* Leeching: Reduced healing AoE from 256m to 20m. Oops
-
-### 0.0.3
-* Elites
-	* Turns out Leeching Elites weren't actually doing anything before - given an itemBehavior so they start doing stuff, now
-	* Buffed the on-hit healing of Leeching Elites significantly (removed x0.25 multiplier)
-	* Leeching Elites Now create a tracer to nearby monsters when healing them
-
-### 0.0.2
-* General
-	* Added FixPluginTypesSerialzation as a dependency
-	* Fixed issue where mod wouldn't load without Aspect Abilities installed
-
-### 0.0.1
-*Should probably start keeping track of version #'s - this is the first ThunderKit release, so let's start here.*
-* Items
-	* Beckoning Cat: Added
-	 (*Developer note: This item was originally the "56 Leaf Clover" in Risk of Rain 1, but was changed due to the inclusion of "57 Leaf Clover" in Risk of Rain 2. To help prevent confusion betwen the two, the item was given a complete overhaul - may provide a config option to restore this into the 56 Leaf Clover if there's demand for it.*)
-	* Mysterious Vial: Added
-	* Telescopic Sight: Added
- 	(*Developer note: The original Telescopic Sight is widely considered an overpowered and unfun item. The current implementation instead offers players a 10% chance to quintuple their damage on crit. That said, I'm not happy with this implementation and am looking into alternatives that both better preserve the item's identity, and are more interesting to play with.*)
-	* Thallium: Added
-* Elites
-	* Added Leeching Elites
+	* Leeching: Increased time between healing bursts from 10 to 15 seconds
+	* Leeching: Now have a visible window before healing, accompanied by an AoE radius
+	* Leeching: Damaging a Leeching elite during the aforementioned window now reduces total healing done, up to 50%
+	* Leeching: Reduced particle count on VFX
+	* Volatile: Added cooldown between bombs appearing
+	* Volatile: Maximum bomb count halved
+	* Volatile: Bomb damage halved
+	* Blighted: Fixed bug where spawn rate didn't reset in-between runs
+	* Blighted: Replaced configurable blacklist with a configurable weight system
+	* Blighted: Teleporter bosses can now be Blighted, for double the cost (also configurable)
+	* Blighted: Removed SFX from smoke visual
+	* Blighted: Lowered CDR (50% -> 25%)
+	* Blighted: Slightly lowered damage boost (-25%), but raised attack speed (+110%)
+	* Blighted: Smoke effect no longer spawns when the aspect is held by a player
+	
+(Old changelogs can be found [Here](https://github.com/swuff-star/LostInTransit/blob/master/OldChangelogs.md))

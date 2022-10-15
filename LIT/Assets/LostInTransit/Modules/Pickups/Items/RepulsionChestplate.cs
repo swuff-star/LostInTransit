@@ -38,12 +38,17 @@ namespace LostInTransit.Items
         public class RepulsionArmorBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static ItemDef GetItemDef() => LITContent.Items.RepulsionChestplate;
-            
+            public static ItemDef GetItemDef() => LITContent.Items.Chestplate;
+
             /*public float hitsNeededToActivate; //it's a mouthful but I am very high and I will easily be able to remember what it is for like this.
             private float stopwatch;
             private static float checkTimer = 0.25f;*/
+
             public void Start()
+            {
+                //body.SetBuffCount(LITContent.Buffs.RepulsionArmorCD.buffIndex, (int)hitsNeededConfig);
+            }
+            public void LateStart()
             {
                 /*stopwatch = 0f;
                 hitsNeededToActivate = hitsNeededConfig + (hitsNeededConfigStack * (stack - 1));
@@ -51,7 +56,7 @@ namespace LostInTransit.Items
                 { hitsNeededToActivate = 1; } //Failsafe for if someone tries to set this shit to 0.
                 if(NetworkServer.active)
                     body.AddBuff(LITContent.Buffs.RepulsionArmorActive);*/
-                if (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 0 && body.GetBuffCount(LITContent.Buffs.RepulsionArmorActive) == 0) body.SetBuffCount(LITContent.Buffs.RepulsionArmorCD.buffIndex, (int)(hitsNeededConfig + hitsNeededConfigStack));
+                //if (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 0 && body.GetBuffCount(LITContent.Buffs.RepulsionArmorActive) == 0) body.SetBuffCount(LITContent.Buffs.RepulsionArmorCD.buffIndex, (int)(hitsNeededConfig + hitsNeededConfigStack));
             }
             /*private void FixedUpdate()
             {
@@ -84,11 +89,22 @@ namespace LostInTransit.Items
                 } //That's a lotta if statements. Cleaner implementation probably possible but not worth pursuing at this time.
             }*/
 
+            private void FixedUpdate()
+            {
+                if ((body.GetBuffCount(LITContent.Buffs.RepulsionArmorActive) == 0) && (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 0))
+                {
+                    //Debug.Log("YOU HAVE NOTHING");
+                    body.AddTimedBuffAuthority(LITContent.Buffs.RepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)) / 2f);
+                    //body.SetBuffCount(LITContent.Buffs.RepulsionArmorActive.buffIndex, (int)hitsNeededConfig);
+                }
+            }
+
             public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
-                if (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 1)
+                if ((body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) <= 1) && (!body.HasBuff(LITContent.Buffs.RepulsionArmorActive)))
                 {
-                    body.RemoveBuff(LITContent.Buffs.RepulsionArmorCD);
+                    if (body.HasBuff(LITContent.Buffs.RepulsionArmorCD)) body.RemoveBuff(LITContent.Buffs.RepulsionArmorCD);
+
                     body.AddTimedBuffAuthority(LITContent.Buffs.RepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)));
                 }
                 if (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) > 1) body.RemoveBuff(LITContent.Buffs.RepulsionArmorCD);

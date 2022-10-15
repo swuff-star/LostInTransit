@@ -26,13 +26,23 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 |![](https://raw.githubusercontent.com/swuff-star/LostInTransit/master/LIT/Assets/Icons/texIconThqwib.png) | **Thqwib** | Release a bloom of 30 thqwibs, detonating on impact for 200% damage. | Equipment |
 
 ## Credits
-* Code - Gaforb, Nebby, swuff★
-* Art/Modelling/Animation - bruh, GEMO, LucidInceptor, Nebby, SOM
-* Sound - UnknownGlaze, neik, SOM
+* Code - Gaforb, Moffein, Nebby, swuff★
+* Art/Modelling/Animation - bruh, GEMO, GrooveSalad LucidInceptor, Nebby, SOM
+* Sound - UnknownGlaze, Neik, SOM
 * Writing - BlimBlam, Lyrical Endymion, QandQuestion, swuff★, T_Dimensional
 * Additional support/special thanks - Draymarc, KevinFromHPCustomerService, KomradeSpectre, Moffein, rob, Shared, TheTimesweeper, xpcybic, /vm/
 
 ## Changelog
+
+### 0.4.2
+* Items
+	* Most items have been re-rendered for new icons, courtesy of GrooveSalad.
+	* Bitter Root, Meat Nugget, and Mysterious Vial all now accomodate for base health regeneration.
+	* Reworked Rapid Mitosis: +3.8 hp/s with >= 1 equipment charge -> On Equipment Use: Gain 25% cooldown reduction to all skills for 6 seconds.
+
+### 0.4.1
+* General
+	* Included the mod in the .zip. Rookie mistake.
 
 ### 0.4.0
 * General

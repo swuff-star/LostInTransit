@@ -13,24 +13,32 @@ namespace LostInTransit.Items
         private const string token = "LIT_ITEM_RAPIDMITOSIS_DESC";
         public override RoR2.ItemDef ItemDef { get; } = LITAssets.LoadAsset<RoR2.ItemDef>("RapidMitosis");
 
-        [ConfigurableField(ConfigName = "CDR Amount", ConfigDesc = "Extra Cooldown Per Rapid Mitosis.")]
+        [ConfigurableField(ConfigName = "Equipment CDR Amount", ConfigDesc = "Equipment Cooldown Reduction per Rapid Mitosis.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float mitosisCD = 0.35f;
+        public static float mitosisEquipCD = 0.30f;
 
-        [ConfigurableField(ConfigName = "Regeneration Amount", ConfigDesc = "Extra health regen given by Rapid Mitosis.")]
+        [ConfigurableField(ConfigName = "Skill CDR Amount", ConfigDesc = "Skill Cooldown Reduction granted via Rapid Mitosis.")]
         [TokenModifier(token, StatTypes.Default, 1)]
-        public static float mitosisRegen = 3.6f;
+        public static float mitosisSkillCD = 0.4f;
+
+        [ConfigurableField(ConfigName = "Skill CDR Length", ConfigDesc = "Duration of the buff granted via Rapid Mitosis.")]
+        [TokenModifier(token, StatTypes.Default, 2)]
+        public static float mitosisDur = 6f;
+
+        /*[ConfigurableField(ConfigName = "Regeneration Amount", ConfigDesc = "Extra health regen given by Rapid Mitosis.")]
+        [TokenModifier(token, StatTypes.Default, 1)]
+        public static float mitosisRegen = 3.6f;*/
 
 
-        public class RapidMitosisBehavior : BaseItemBodyBehavior, IBodyStatArgModifier
+        public class RapidMitosisBehavior : BaseItemBodyBehavior, IBodyStatArgModifier  // I don't even think this needs an itemBehavior anymore.
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static RoR2.ItemDef GetItemDef() => LITContent.Items.RapidMitosis;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                if (body.equipmentSlot.stock >= 1f)
-                { args.baseRegenAdd += mitosisRegen + ((mitosisRegen / 2) * (stack - 1)); }
+                /*if (body.equipmentSlot.stock >= 1f)
+                { args.baseRegenAdd += mitosisRegen + ((mitosisRegen / 2) * (stack - 1)); }*/
             }
         }
     }

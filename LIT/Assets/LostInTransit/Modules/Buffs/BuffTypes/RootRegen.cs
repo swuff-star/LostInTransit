@@ -16,7 +16,7 @@ namespace LostInTransit.Buffs
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.baseRegenAdd += Items.BitterRoot.rootRegen * buffStacks;
+                args.baseRegenAdd += (Items.BitterRoot.rootRegen + ((Items.BitterRoot.rootRegen / 5) * body.level)) * buffStacks;
             }
         }
     }

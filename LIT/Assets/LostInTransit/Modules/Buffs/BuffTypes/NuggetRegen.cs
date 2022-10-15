@@ -25,7 +25,7 @@ namespace LostInTransit.Buffs
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.baseRegenAdd += Items.MeatNugget.regenAdded * buffStacks;
+                args.baseRegenAdd += (Items.MeatNugget.regenAdded + ((Items.MeatNugget.regenAdded / 5) * body.level)) * buffStacks;
             }
         }
     }

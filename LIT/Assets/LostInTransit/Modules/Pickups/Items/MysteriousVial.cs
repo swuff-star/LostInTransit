@@ -21,7 +21,7 @@ namespace LostInTransit.Items
             public static ItemDef GetItemDef() => LITContent.Items.MysteriousVial;
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.baseRegenAdd += vialRegen * stack;
+                args.baseRegenAdd += (vialRegen + ((vialRegen / 5) * body.level)) * stack;
             }
         }
     }

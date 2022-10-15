@@ -9,7 +9,7 @@ namespace LostInTransit.Equipments
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
              LITAssets.LoadAsset<MSEliteDef>("Frenzied"),
-              LITAssets.LoadAsset<MSEliteDef>("FrenziedHonor")
+             LITAssets.LoadAsset<MSEliteDef>("FrenziedHonor")
         };
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixFrenzied");
         //public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.LoadAsset<MSAspectAbilityDataHolder>("AbilityFrenzied");
@@ -25,6 +25,16 @@ namespace LostInTransit.Equipments
                     return true;
                 }
             }*/
+
+            var bodyStateMachine = EntityStateMachine.FindByCustomName(slot.characterBody.gameObject, "Body");
+            if (slot.characterBody.healthComponent.alive && bodyStateMachine)
+            {
+                //Todd Howard Voice: It just works.
+                bodyStateMachine.SetNextState(new EntityStates.Elites.FrenziedBlink());
+                //blinkStopwatch = 0;
+                //blinkReady = false;
+                return true;
+            }
 
             return false;
         }

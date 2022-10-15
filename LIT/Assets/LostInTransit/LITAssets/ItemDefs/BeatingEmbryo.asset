@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: BeatingEmbryo
   m_EditorClassIdentifier: 
-  tier: 2
+  deprecatedTier: 2
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_BEATINGEMBRYO_NAME
   pickupToken: LIT_ITEM_BEATINGEMBRYO_PICKUP
   descriptionToken: LIT_ITEM_BEATINGEMBRYO_DESC
@@ -22,5 +23,5 @@ MonoBehaviour:
   pickupIconSprite: {fileID: 0}
   hidden: 0
   canRemove: 1
-  tags: 0300000007000000
+  tags: 030000000700000004000000
   requiredExpansion: {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
