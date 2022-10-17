@@ -50,6 +50,12 @@ namespace LostInTransit.Items
             }
             public void LateStart()
             {
+                if ((body.GetBuffCount(LITContent.Buffs.RepulsionArmorActive) == 0) && (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 0))
+                {
+                    //Debug.Log("YOU HAVE NOTHING");
+                    body.AddTimedBuffAuthority(LITContent.Buffs.RepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)) / 2f);
+                    //body.SetBuffCount(LITContent.Buffs.RepulsionArmorActive.buffIndex, (int)hitsNeededConfig);
+                }
                 /*stopwatch = 0f;
                 hitsNeededToActivate = hitsNeededConfig + (hitsNeededConfigStack * (stack - 1));
                 if (hitsNeededToActivate < 1)
@@ -89,18 +95,14 @@ namespace LostInTransit.Items
                 } //That's a lotta if statements. Cleaner implementation probably possible but not worth pursuing at this time.
             }*/
 
-            private void FixedUpdate()
+            /*private void FixedUpdate()
             {
-                if ((body.GetBuffCount(LITContent.Buffs.RepulsionArmorActive) == 0) && (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) == 0))
-                {
-                    //Debug.Log("YOU HAVE NOTHING");
-                    body.AddTimedBuffAuthority(LITContent.Buffs.RepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)) / 2f);
-                    //body.SetBuffCount(LITContent.Buffs.RepulsionArmorActive.buffIndex, (int)hitsNeededConfig);
-                }
-            }
+                
+            }*/
 
             public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
+                if (damageInfo.attacker == body) return;
                 if ((body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD) <= 1) && (!body.HasBuff(LITContent.Buffs.RepulsionArmorActive)))
                 {
                     if (body.HasBuff(LITContent.Buffs.RepulsionArmorCD)) body.RemoveBuff(LITContent.Buffs.RepulsionArmorCD);

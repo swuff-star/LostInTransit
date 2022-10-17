@@ -25,7 +25,8 @@
         "Wwise.dll",
         "Unity.Addressables.dll",
         "Unity.ResourceManager.dll",
-        "LegacyResourcesAPI.dll"
+        "LegacyResourcesAPI.dll",
+        ""
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -15,7 +15,7 @@ namespace LostInTransit.Buffs
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
             public static BuffDef GetBuffDef() => LITContent.Buffs.AffixFrenzied;
 
-            public float blinkCooldown = 10;
+            public float blinkCooldown = 8;
 
             public GameObject BlinkReadyEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedTPReady");
 
@@ -43,11 +43,12 @@ namespace LostInTransit.Buffs
             private void FixedUpdate()
             {
                 blinkStopwatch += Time.fixedDeltaTime;
-                abilityStopwatch += doingAbility ? Time.fixedDeltaTime : 0;
+                //abilityStopwatch += doingAbility ? Time.fixedDeltaTime : 0;
 
                 if (blinkStopwatch > blinkCooldown / cdrMult)
                 {
                     blinkReady = true;
+                    Debug.Log("network authority: " + body.hasAuthority);
                     if (!BlinkReadyInstance)
                     {
                         BlinkReadyInstance = Instantiate(BlinkReadyEffect, body.aimOriginTransform);
@@ -55,7 +56,7 @@ namespace LostInTransit.Buffs
                             BlinkReadyInstance.transform.localScale *= body.radius;
                     }
                 }
-                if (abilityStopwatch >= 10)
+                /*if (abilityStopwatch >= 10)
                 {
                     abilityStopwatch = 0;
                     doingAbility = false;
@@ -64,9 +65,9 @@ namespace LostInTransit.Buffs
 
                     if (AbilityInstance)
                         Destroy(AbilityInstance);
-                }
+                }*/
 
-                if (body.hasAuthority)
+                if (body.hasAuthority) //Util.HasEffectiveAuthority(gameObject)
                 {
                     /*if (blinkReady && body.isPlayerControlled && Input.GetKeyDown(LITConfig.frenziedBlink.Value))
                         Blink();*/

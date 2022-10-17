@@ -27,7 +27,7 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 
 ## Credits
 * Code - Gaforb, Moffein, Nebby, swuff★
-* Art/Modelling/Animation - bruh, GEMO, GrooveSalad LucidInceptor, Nebby, SOM
+* Art/Modelling/Animation - bruh, GEMO, GrooveSalad, LucidInceptor, Nebby, SOM, Subwit
 * Sound - UnknownGlaze, Neik, SOM
 * Writing - BlimBlam, Lyrical Endymion, QandQuestion, swuff★, T_Dimensional
 * Additional support/special thanks - Draymarc, KevinFromHPCustomerService, KomradeSpectre, Moffein, rob, Shared, TheTimesweeper, xpcybic, /vm/
@@ -39,6 +39,8 @@ If you have any issues with the mod, any feedback you'd like to give, any ideas 
 	* Most items have been re-rendered for new icons, courtesy of GrooveSalad.
 	* Bitter Root, Meat Nugget, and Mysterious Vial all now accomodate for base health regeneration.
 	* Reworked Rapid Mitosis: +3.8 hp/s with >= 1 equipment charge -> On Equipment Use: Gain 25% cooldown reduction to all skills for 6 seconds.
+	* Added The Hit List
+	* Added Prescriptions
 
 ### 0.4.1
 * General

@@ -36,6 +36,7 @@ namespace LostInTransit.Items
             private void Start()
             {
                 Stage.onStageStartGlobal += UpdateStacksOnStageStart;
+                body.onInventoryChanged += UpdateStacksOnInventoryChange;
                 UpdateStacks();
             }
 
@@ -50,6 +51,11 @@ namespace LostInTransit.Items
                 UpdateStacks();
             }
 
+            private void UpdateStacksOnInventoryChange()
+            {
+                UpdateStacks();
+            }    
+
             private float GetCap(uint value)
             {
                 return value + (value / 2) * (stack - 1);
@@ -58,6 +64,7 @@ namespace LostInTransit.Items
             public void OnDestroy()
             {
                 Stage.onStageStartGlobal -= UpdateStacksOnStageStart;
+                body.onInventoryChanged -= UpdateStacksOnInventoryChange;
                 body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, 0);
             }
 
