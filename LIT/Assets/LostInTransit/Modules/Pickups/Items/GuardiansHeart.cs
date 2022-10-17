@@ -32,10 +32,11 @@ namespace LostInTransit.Items
 
             public float currentShield;
 
-            public void Start()
+            public void Awake()
             {
                 body.RecalculateStats();
             }
+
             private void FixedUpdate()
             {
                 currentShield = body.healthComponent.shield;

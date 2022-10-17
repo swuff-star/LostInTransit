@@ -29,29 +29,6 @@ namespace LostInTransit.Items
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.GoldenGun;
 
-            public float gunCap = 0;
-            private float goldForBuff = 0;
-            private int buffsToGive = 0;
-
-            private void Start()
-            {
-                UpdateStacks();
-            }
-
-            private void UpdateStacks()
-            {
-                gunCap = Run.instance.GetDifficultyScaledCost((int)GetCap(goldCap));
-                Debug.Log(goldCap + " = gold cap");
-                goldForBuff = Run.instance.GetDifficultyScaledCost((int)GetCap(goldCap)) / GetCap(goldNeeded); 
-                Debug.Log(goldForBuff + " = gold per buff");
-            }
-
-
-            private float GetCap(uint value)
-            {
-                return value + ((value / 2) * (stack - 1));
-            }
-
             public void OnDestroy()
             {
                 body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, 0);
@@ -64,15 +41,20 @@ namespace LostInTransit.Items
 
             private void FixedUpdate()
             {
-                if(NetworkServer.active)
+                if (NetworkServer.active)
                 {
-                    if (body.master.money > 0)
+                    int singleStackCost = Stage.instance ? Run.instance.GetDifficultyScaledCost((int)goldCap, Stage.instance.entryDifficultyCoefficient) : Run.instance.GetDifficultyScaledCost((int)goldCap);
+
+                    int maxCost = singleStackCost + ((int)(0.5f * goldCap) * stack - 1);
+                    int maxBuffs = (int)goldNeeded + ((int)(0.5f * goldNeeded) * stack - 1);
+
+                    float moneyPercent = (float)body.master.money / maxCost;
+                    int targetBuffCount = Mathf.Min(maxBuffs, Mathf.FloorToInt(maxBuffs * moneyPercent));
+
+                    int currentBuffCount = body.GetBuffCount(LITContent.Buffs.GoldenGun.buffIndex);
+                    if (targetBuffCount != currentBuffCount)
                     {
-                        buffsToGive = (int)(Mathf.Min(body.master.money, gunCap) / goldForBuff);
-                        if (buffsToGive != body.GetBuffCount(LITContent.Buffs.GoldenGun))
-                        {
-                            body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, buffsToGive);
-                        }
+                        body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, targetBuffCount);
                     }
                 }
             }
