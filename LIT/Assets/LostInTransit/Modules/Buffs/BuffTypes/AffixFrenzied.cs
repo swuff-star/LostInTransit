@@ -3,6 +3,8 @@ using Moonstorm.Components;
 using RoR2;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
+using System;
 
 namespace LostInTransit.Buffs
 {
@@ -21,23 +23,29 @@ namespace LostInTransit.Buffs
 
             public GameObject AbilityEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedAbility");
 
-            private GameObject BlinkReadyInstance;
+            public GameObject BlinkReadyInstance;
 
             private GameObject AbilityInstance;
 
-            private bool blinkReady = false;
+            public bool blinkReady;
 
             private bool doingAbility = false;
 
-            private float blinkStopwatch;
+            public float blinkStopwatch;
 
             private float abilityStopwatch;
 
             private float cdrMult = 1;
 
+            private NetworkIdentity networkIdentity;
+
+            private SetStateOnHurt setStateOnhurt;
+
             private void Start()
             {
                 body.RecalculateStats();
+                networkIdentity = gameObject.GetComponent<NetworkIdentity>();
+                gameObject.GetComponent<SetStateOnHurt>();
             }
 
             private void FixedUpdate()
@@ -48,7 +56,7 @@ namespace LostInTransit.Buffs
                 if (blinkStopwatch > blinkCooldown / cdrMult)
                 {
                     blinkReady = true;
-                    Debug.Log("network authority: " + body.hasAuthority);
+                    //Debug.Log("network authority: " + Util.HasEffectiveAuthority(gameObject));
                     if (!BlinkReadyInstance)
                     {
                         BlinkReadyInstance = Instantiate(BlinkReadyEffect, body.aimOriginTransform);
@@ -67,20 +75,43 @@ namespace LostInTransit.Buffs
                         Destroy(AbilityInstance);
                 }*/
 
-                if (body.hasAuthority) //Util.HasEffectiveAuthority(gameObject)
+                bool resetDash = body.healthComponent.isInFrozenState;
+                if (!resetDash)
+                {
+                    if (setStateOnhurt)
+                    {
+                        Type state = setStateOnhurt.targetStateMachine.state.GetType();
+                        if (state == typeof(EntityStates.StunState) || state == typeof(EntityStates.ShockState))
+                        {
+                            resetDash = true;
+                        }
+                    }    
+                }    
+
+                if (resetDash)
+                {
+                    blinkStopwatch = 0f;
+                    blinkReady = false;
+                }    
+
+                if (Util.HasEffectiveAuthority(networkIdentity))
                 {
                     /*if (blinkReady && body.isPlayerControlled && Input.GetKeyDown(LITConfig.frenziedBlink.Value))
                         Blink();*/
                     if (blinkReady && !body.isPlayerControlled)
                         Blink();
                 }
+                else
+                {
+                    Debug.Log("No Network Identity found for Frenzying " + body.baseNameToken + ". Canceling dash.");
+                    blinkReady = false;
+                    }
             }
 
             //Todo: turn this ESM stuff into probably a networked body attachment?
             private void Blink()
             {
-                if (BlinkReadyInstance)
-                    Destroy(BlinkReadyInstance);
+                
                 var bodyStateMachine = EntityStateMachine.FindByCustomName(body.gameObject, "Body");
                 if (body.healthComponent.alive && bodyStateMachine)
                 {

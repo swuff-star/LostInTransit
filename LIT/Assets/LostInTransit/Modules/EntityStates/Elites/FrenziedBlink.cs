@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Navigation;
 using UnityEngine;
+using LostInTransit.Buffs;
 
 namespace EntityStates.Elites
 {
@@ -27,6 +28,10 @@ namespace EntityStates.Elites
 
         public static string endSoundString;
 
+        public static float blinkStopwatch;
+
+        public bool blinkReady = false;
+
         public static float destealthDuration;
 
         private CharacterModel characterModel;
@@ -34,6 +39,14 @@ namespace EntityStates.Elites
         private HurtBoxGroup hurtboxGroup;
         public override void OnEnter()
         {
+            AffixFrenzied.AffixFrenziedBehavior afb = base.GetComponent<AffixFrenzied.AffixFrenziedBehavior>();
+            Debug.Log("afb = " + afb);
+            if (afb)
+            {
+                afb.blinkStopwatch = 0;
+                afb.blinkReady = false;
+                Object.Destroy(afb.BlinkReadyInstance);
+            }    
             blinkPrefab = LoomingPresence.blinkPrefab;
             destealthMaterial = LoomingPresence.destealthMaterial;
             duration = LoomingPresence.duration;
