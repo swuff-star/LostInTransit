@@ -39,7 +39,7 @@
 
 		"LIT_ITEM_RUSTYJETPACK_NAME": "Rusty Jetpack",
 		"LIT_ITEM_RUSTYJETPACK_PICKUP": "Increased jump height, reduced fall speed.",
-		"LIT_ITEM_RUSTYJETPCK_DESC": "Jump {0}% higher (+{0} higher per stack) and fall {1}% slower (+{1}% slower per stack)",
+		"LIT_ITEM_RUSTYJETPACK_DESC": "Jump {0}% higher (+{0} higher per stack) and fall {2}% slower (+{2}% slower per stack) while holding jump.",
 		"LIT_ITEM_RUSTYJETPACK_LORE": "Entry not found\n\n<style=cMono>/404\n\nWe could not find the above entry on our servers.</style>\n\n<style=cIsDamage>Did you mean: </style><style=cIsHealing>/wiki/H3AD-5T_v2</style>\n\nAlternatively, you can visit the <style=cIsHealing>Main Page</style> or read <style=cIsHealing>more information</style> about this type of error.",
 
 		"LIT_ITEM_SPROUTINGEGG_NAME": "Sprouting Egg",

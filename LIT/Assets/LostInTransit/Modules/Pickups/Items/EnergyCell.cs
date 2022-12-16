@@ -5,14 +5,14 @@ using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    [DisabledContent]
+    //[DisabledContent]
     public class EnergyCell : ItemBase
     {
         private const string token = "LIT_ITEM_ENERGYCELL_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("EnergyCell");
 
         [ConfigurableField(ConfigName = "Maximum Attack Speed per Cell", ConfigDesc = "Maximum amount of attack speed per item held.")]
-        [TokenModifier(token, StatTypes.Percentage)]
+        //[TokenModifier(token, StatTypes.Percentage)]
         public static float bonusAttackSpeed = 0.4f;
 
 

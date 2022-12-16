@@ -59,6 +59,7 @@ namespace LostInTransit
             public static EquipmentDef FieldGenerator;
             public static EquipmentDef FieldGeneratorUsed;
             public static EquipmentDef GiganticAmethyst;
+            public static EquipmentDef GoldPlatedBomb;
             public static EquipmentDef Thqwib;
         }
 

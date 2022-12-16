@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matAffixFrenzied
-  m_Shader: {fileID: 4800000, guid: 5dfa0015d7b305d4e94f6b67a2105c13, type: 2}
+  m_Shader: {fileID: 4800000, guid: 9b2024ee08a5bfc418ff897991e84323, type: 2}
   m_ShaderKeywords: DISABLEREMAP FRESNEL FRESNEL_EMISSION PRINT_CUTOFF VERTEXOFFSET
     _EMISSION
   m_LightmapFlags: 1

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1512808244, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: GoldPlatedBomb
+  m_EditorClassIdentifier: 
+  pickupModelPrefab: {fileID: 8323693429353222946, guid: 2c147e39aa8c4214fa73b7963c809e7c,
+    type: 3}
+  cooldown: 60
+  nameToken: LIT_GOLDPLATEDBOMB_NAME
+  pickupToken: LIT_GOLDPLATEDBOMB_PICKUP
+  descriptionToken: LIT_GOLDPLATEDBOMB_DESC
+  loreToken: LIT_GOLDPLATEDBOMB_LORE
+  pickupIconSprite: {fileID: 0}
+  unlockableDef: {fileID: 0}
+  colorIndex: 5
+  canDrop: 0
+  dropOnDeathChance: 0
+  canBeRandomlyTriggered: 1
+  enigmaCompatible: 0
+  isLunar: 0
+  isBoss: 0
+  passiveBuffDef: {fileID: 0}
+  appearsInSinglePlayer: 1
+  appearsInMultiPlayer: 1
+  requiredExpansion: {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
+  mageElement: 0
