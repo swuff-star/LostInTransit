@@ -17,27 +17,17 @@ using System.Security.Permissions;
 
 namespace LostInTransit
 {
-    [BepInDependency("com.bepis.r2api.artifactcode")]
-[BepInDependency("com.bepis.r2api.colors")]
-[BepInDependency("com.bepis.r2api.content_management")]
-[BepInDependency("com.bepis.r2api")]
-[BepInDependency("com.bepis.r2api.damagetype")]
-[BepInDependency("com.bepis.r2api.director")]
-[BepInDependency("com.bepis.r2api.dot")]
-[BepInDependency("com.bepis.r2api.elites")]
-[BepInDependency("com.bepis.r2api.prefab")]
-[BepInDependency("com.bepis.r2api.recalculatestats")]
+    #region R2API Dependencies
+    [BepInDependency("com.bepis.r2api.dot")]
+    [BepInDependency("com.bepis.r2api.networking")]
+    [BepInDependency("com.bepis.r2api.prefab")]
+    [BepInDependency("com.bepis.r2api.sound")]
+    #endregion
 
     [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
     //[BepInDependency("com.TheMysticSword.AspectAbilities", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(GUID, MODNAME, VERSION)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        nameof(DotAPI),
-        nameof(DamageAPI),
-        nameof(PrefabAPI)
-    })]
     public class LITMain : BaseUnityPlugin
     {
         internal const string GUID = "com.ContactLight.LostInTransit";
@@ -65,7 +55,6 @@ namespace LostInTransit
             new LITLanguage().Init();
 
             ConfigurableFieldManager.AddMod(this);
-            TokenModifierManager.AddToManager();
         }
     }
 }

@@ -141,7 +141,7 @@ MonoBehaviour:
   - {fileID: -1464738149065297014}
   - {fileID: 2927169485524582942}
   - {fileID: 793164083609876259}
-  ConfigurationIndex: 15
+  ConfigurationIndex: -1
 --- !u!114 &793164083609876259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: R2API Submodule Installer
   m_EditorClassIdentifier: 
   enabled: 1
-  submoduleIndex: 0
+  submoduleIndex: -1
   r2apiSubmodules:
   - submoduleName: R2API_Core
     description: Core R2API module
