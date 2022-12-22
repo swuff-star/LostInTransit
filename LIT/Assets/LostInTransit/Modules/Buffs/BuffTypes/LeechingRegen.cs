@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Buffs
 {
+    /*[DisabledContent]
     public class LeechingRegen : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("LeechingRegen");
@@ -16,12 +17,12 @@ namespace LostInTransit.Buffs
             var croco = Resources.Load<BuffDef>("buffdefs/CrocoRegen");
             BuffDef.iconSprite = croco.iconSprite;
             BuffDef.startSfx = croco.startSfx;
-        }*/
+        }
 
         public class LeechingRegenBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
-            [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.LeechingRegen;
+            //[BuffDefAssociation(useOnClient = true, useOnServer = true)]
+            //public static BuffDef GetBuffDef() => LITContent.Buffs.LeechingRegen;
 
             public float duration = 5;
             public float totalRegen = 0;
@@ -49,6 +50,6 @@ namespace LostInTransit.Buffs
                 args.baseRegenAdd += totalRegen;
             }
         }
-    }
+    }*/
 }
 

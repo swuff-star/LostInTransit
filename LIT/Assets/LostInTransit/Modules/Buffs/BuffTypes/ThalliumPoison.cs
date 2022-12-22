@@ -12,7 +12,7 @@ namespace LostInTransit.Buffs
 
         public override void Initialize()
         {
-            index = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.DeathMark, BuffDef);
+            index = DotAPI.RegisterDotDef(0.2f, 0.2f, DamageColorIndex.DeathMark, BuffDef);
         }
 
         public class ThalDebuffBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier

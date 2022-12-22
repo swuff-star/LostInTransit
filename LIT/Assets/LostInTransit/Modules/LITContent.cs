@@ -24,22 +24,20 @@ namespace LostInTransit
             public static BuffDef DiceLuck;
             public static BuffDef DiceMove;
             public static BuffDef DiceRegen;
-            public static BuffDef DiceBarrier;
             public static BuffDef FieldGeneratorPassive;
             public static BuffDef GoldenGun;
             public static BuffDef GuardiansHeartBuff;
             public static BuffDef HitListBuff;
             public static BuffDef HitListMarked;
-            public static BuffDef LeechingRegen;
+            public static BuffDef Meds;
             public static BuffDef MitosisBuff;
             public static BuffDef NuggetRegen;
+            public static BuffDef Pillaging;
             public static BuffDef RepulsionArmorActive;
             public static BuffDef RepulsionArmorCD;
             public static BuffDef RootRegen;
             public static BuffDef Shackled;
-            public static BuffDef TeleSightCD;
             public static BuffDef ThalliumPoison;
-            public static BuffDef Meds;
         }
 
         public static class Elites
@@ -125,6 +123,10 @@ namespace LostInTransit
                 delegate
                 {
                     new Modules.Elites().Initialize();
+                },
+                delegate
+                {
+                    new Characters.Characters().Initialize();
                 },
                 delegate
                 {

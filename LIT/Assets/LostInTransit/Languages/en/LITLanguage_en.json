@@ -196,7 +196,45 @@
 
 		"ELITE_MODIFIER_GOLD": "Auric {0}",
 
-		"LIT_MECHSPIDER_LORE": "<style=cMono>$ Transmitting emergency signals. . .\n\n$ Warning! Transmission failure!</style>\n\n             uu$$$$$$$$$$$uu\n          uu$$$$$$$$$$$$$$$$$uu\n         u$$$$$$$$$$$$$$$$$$$$$u\n        u$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$$$$$$$$$$$$$$$$$$$$u\n       u$$$$$$\"   \"$$$\"   \"$$$$$$u\n       \"$$$$\"      u$u       $$$$\"\n        $$$u       u$u       u$$$\n        $$$u      u$$$u      u$$$\n         \"$$$$uu$$$   $$$uu$$$$\"\n          \"$$$$$$$\"   \"$$$$$$$\"\n            u$$$$$$$u$$$$$$$u\n             u$\"$\"$\"$\"$\"$\"$u\n  uuu        $$u$ $ $ $ $u$$       uuu\n u$$$$        $$$$$u$u$u$$$       u$$$$\n  $$$$$uu      \"$$$$$$$$$\"     uu$$$$$$\nu$$$$$$$$$$$uu    \"\"\"\"\"    uuuu$$$$$$$$$$\n$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\n \"\"\"      \"\"$$$$$$$$$$$uu \"\"$\"\"\"\n           uuuu \"\"$$$$$$$$$$uuu\n  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\n  $$$$$$$$$$\"\"\"\"           \"\"$$$$$$$$$$$\"\n   \"$$$$$\"                      \"\"$$$$\"\"\n     $$$\"                         $$$$\"\n\nHijacked by the Roider Union Pistolero.\n\nNext time use a real booter, captain. Money in our pockets.",
+		"LIT_MECHANICALSPIDER_NAME": "Mechanical Spider",
+		"LIT_UNLOCKABLE_LOG_MECHANICALSPIDER": "Mechanical Spider",
+		"LIT_MECHANICALSPIDER_LORE": "<style=cMono>Transmitting emergency signals... \n
+.\n
+. .\n
+. . .\n
+Warning! Transmission failure!\n\n</style>
+
+                           uuuuuuu\n
+                   uu$$$$$$$$$$$uu\n
+             uu$$$$$$$$$$$$$$$$$uu\n
+           u$$$$$$$$$$$$$$$$$$$$$u\n
+          u$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$\"       \"$$$\"       \"$$$$$$u\n
+         \"$$$$\"            u$u             $$$$\"\n
+          $$$u              u$u             u$$$\n
+          $$$u            u$$$u           u$$$\n
+           \"$$$$uu$$$          $$$uu$$$$\"\n
+            \"$$$$$$$\"             \"$$$$$$$\"\n
+                  u$$$$$$$u$$$$$$$u\n
+                     u$\"$\"$\"$\"$\"$\"$u\n
+  uuu             $$u$ $ $ $ $u$$                 uuu\n
+ u$$$$            $$$$$u$u$u$$$             u$$$$\n
+  $$$$$uu         \"$$$$$$$$$\"         uu$$$$$$\n
+u$$$$$$$$$$$uu    \"\"\"\"\"      uuuu$$$$$$$$$$\n
+$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\n
+ \"\"\"            \"\"$$$$$$$$$$$uu \"\"$\"\"\"\n
+                  uuuu \"\"$$$$$$$$$$uuu\n
+  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\n
+  $$$$$$$$$$\"\"\"\"                     \"\"$$$$$$$$$$$\"\n
+   \"$$$$$\"                                           \"\"$$$$\"\"\n
+     $$$\"                                                 $$$$\"\n\n
+
+
+Hijacked by the Roider Union Pistolero.\n\n
+
+Next time use a real booter, captain. Money in our pockets.",
 
 		"LIT_EVOLEMURIAN_NAME": "Evolved Lemurian",
 

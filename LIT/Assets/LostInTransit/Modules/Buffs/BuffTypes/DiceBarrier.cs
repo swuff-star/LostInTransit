@@ -6,16 +6,16 @@ using Moonstorm.Components;
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
-    public class DiceBarrier : BuffBase
+    //[DisabledContent]
+    /*public class DiceBarrier : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceBarrier");
+        //public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceBarrier");
 
         //Todo: have this use IStatItemBehavior, body.barrierDecayRate is recalculated in recalcstats
         public class DiceBarrierBehavior : BaseBuffBodyBehavior
         {
-            [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.DiceBarrier;
+            //[BuffDefAssociation(useOnClient = true, useOnServer = true)]
+            //public static BuffDef GetBuffDef() => LITContent.Buffs.DiceBarrier;
 
             private float origBarrierDecay;
             public void Start()
@@ -31,5 +31,5 @@ namespace LostInTransit.Buffs
                 body.barrierDecayRate = origBarrierDecay;
             }
         }
-    }
+    }*/
 }

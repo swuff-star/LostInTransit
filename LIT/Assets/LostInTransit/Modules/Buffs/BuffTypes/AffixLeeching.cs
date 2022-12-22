@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Buffs
 {
-    public class AffixLeeching : BuffBase
+    /*public class AffixLeeching : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixLeeching");
 
@@ -135,12 +135,12 @@ namespace LostInTransit.Buffs
                 SearchForAllies();
                 bool hasBursted = false;
                 healthComponents.Where(hc => hc.body != body)
-                    .Where(hc => !hc.body.HasBuff(LITContent.Buffs.LeechingRegen))
+                    .Where(hc => !hc.body.HasBuff(LITContent.Buffs.AffixLeeching))
                     .Where(hc => !hc.body.GetComponent<AffixLeechingBehavior>())
                     .ToList()
                     .ForEach(hc =>
                     {
-                        hc.body.AddTimedBuff(LITContent.Buffs.LeechingRegen, 5);
+                        hc.body.AddTimedBuff(LITContent.Buffs.AffixLeeching, 5);
 
                         var component = hc.body.GetComponent<LeechingRegen.LeechingRegenBehavior>();
                         if(component)
@@ -215,5 +215,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }
+    }*/
 }

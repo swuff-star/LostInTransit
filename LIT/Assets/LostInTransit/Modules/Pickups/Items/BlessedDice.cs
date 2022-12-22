@@ -91,7 +91,7 @@ namespace LostInTransit.Items
                         break;
                     case 6:
                     case 11:
-                        buff = LITContent.Buffs.DiceBarrier;
+                        buff = LITContent.Buffs.DiceRegen;
                         break;
                 }
                 return buff;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace LostInTransit.Equipments
 {
+    [DisabledContent]
     public class AffixFrenzied : EliteEquipmentBase
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
