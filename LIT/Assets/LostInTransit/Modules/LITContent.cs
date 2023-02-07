@@ -72,6 +72,7 @@ namespace LostInTransit
             public static ItemDef GoldenGun;
             public static ItemDef GuardiansHeart;
             public static ItemDef LifeSavings;
+            public static ItemDef LifeSavingsUsed;
             public static ItemDef MeatNugget;
             public static ItemDef MysteriousVial;
             public static ItemDef PhotonCannon;
@@ -142,6 +143,7 @@ namespace LostInTransit
                 delegate
                 {
                     LITAssets.Instance.SwapMaterialShaders();
+                    LITAssets.Instance.FinalizeCopiedMaterials();
                 }
             };
 

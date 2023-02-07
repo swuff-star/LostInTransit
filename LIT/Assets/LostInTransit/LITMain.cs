@@ -25,9 +25,11 @@ namespace LostInTransit
     #endregion
 
     [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
     //[BepInDependency("com.TheMysticSword.AspectAbilities", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(GUID, MODNAME, VERSION)]
+
     public class LITMain : BaseUnityPlugin
     {
         internal const string GUID = "com.ContactLight.LostInTransit";
@@ -40,6 +42,8 @@ namespace LostInTransit
 
         public static ConfigFile config;
 
+        public static bool RiskyModLoaded = false;
+
         public static bool DEBUG = false;
 
         public void Awake()
@@ -48,6 +52,7 @@ namespace LostInTransit
             pluginInfo = Info;
             config = Config;
             LITLogger.logger = Logger;
+            RiskyModLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
 
             new LITConfig().Init();
             new LITAssets().Init();

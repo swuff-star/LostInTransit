@@ -8,6 +8,7 @@ using System;
 
 namespace LostInTransit.Buffs
 {
+    [DisabledContent]
     public class AffixFrenzied : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixFrenzied");

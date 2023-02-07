@@ -4,6 +4,8 @@ using RoR2;
 using System;
 using RoR2.Items;
 using R2API;
+using UnityEngine.Networking;
+using System.Runtime.CompilerServices;
 
 namespace LostInTransit.Items
 {
@@ -25,6 +27,33 @@ namespace LostInTransit.Items
         [ConfigurableField(ConfigName = "Shield Gating", ConfigDesc = "Whether the Heart should block damage past the remaining shield when broken.")]
         public static bool shieldGating = true;
 
+        public static bool hadShield = false;
+
+        /*public override void Initialize()
+        { 
+            if (LITMain.RiskyModLoaded)
+            {
+                [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+                static bool RiskyModShieldGateEnabled()
+                {
+                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.ShieldGating.enabled;
+                }
+
+                [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+                static bool RiskyModTrueOSPEnabled()
+                {
+                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.TrueOSP.enabled;
+                }
+
+                static DamageAPI.ModdedDamageType RiskyModGetIgnoreShieldGateDamageType()
+                {
+                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.ShieldGating.IgnoreShieldGateDamage;
+                    ...and that's where that ends, bc I think I need to use full r2api to reference this, and i don't want to do that :(
+                }
+            }
+
+        }*/
+
         public class GuardiansHeartBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
@@ -39,7 +68,17 @@ namespace LostInTransit.Items
 
             private void FixedUpdate()
             {
-                currentShield = body.healthComponent.shield;
+                if (NetworkServer.active)
+                {
+                    bool currentlyHasShield = body.healthComponent.shield > 0;
+
+                    if (hadShield && !currentlyHasShield)
+                    {
+                        body.AddTimedBuffAuthority(LITContent.Buffs.GuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, stack));
+                    }
+
+                    hadShield = currentlyHasShield;
+                }
             }
             public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
@@ -49,11 +88,6 @@ namespace LostInTransit.Items
                     {
                         damageInfo.damage = body.healthComponent.shield + body.healthComponent.barrier;
                         body.healthComponent.shield = 0f;
-                    }
-
-                    if (heartArmor > 0f)
-                    {
-                        body.AddTimedBuffAuthority(LITContent.Buffs.GuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, stack));
                     }
                 }
             }

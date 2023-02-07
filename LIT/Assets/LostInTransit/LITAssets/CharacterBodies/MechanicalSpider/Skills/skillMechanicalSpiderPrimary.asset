@@ -17,12 +17,12 @@ MonoBehaviour:
   skillDescriptionToken: 
   keywordTokens: []
   icon: {fileID: 0}
-  activationStateMachineName: 
+  activationStateMachineName: Weapon
   activationState:
-    _typeName: EntityStates.Elites.FrenziedBlink, LostInTransit, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    _typeName: LostInTransit.LITEntityStates.MechanicalSpider.ChargeTaser, LostInTransit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 5
+  baseRechargeInterval: 3
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
   resetCooldownTimerOnUse: 0
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
-  beginSkillCooldownOnSkillEnd: 0
+  beginSkillCooldownOnSkillEnd: 1
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 0

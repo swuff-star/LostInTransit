@@ -104,7 +104,7 @@ namespace LostInTransit.Components
                 {
                     if (Util.CheckRoll(SpawnRate))
                     {
-                        //MakeBlighted(body);
+                        MakeBlighted(body);
                     }   //Commenting this out as right now, EVERYTHING is becoming Blighted; hopefully this serves as a temp fix.
                 }
             }
@@ -113,7 +113,7 @@ namespace LostInTransit.Components
             {
                 if (Util.CheckRoll(SpawnRate))
                 {
-                    //MakeBlighted(body);
+                    MakeBlighted(body);
                 }
             }
         }
@@ -127,6 +127,8 @@ namespace LostInTransit.Components
 
                 inventory.SetEquipmentIndex(BlightedEquipIndex);
                 body.isElite = true;
+                body.GetComponent<CharacterMaster>().isBoss = true;
+                
 
                 inventory.RemoveItem(RoR2Content.Items.BoostHp, inventory.GetItemCount(RoR2Content.Items.BoostHp));
                 inventory.RemoveItem(RoR2Content.Items.BoostDamage, inventory.GetItemCount(RoR2Content.Items.BoostDamage));
@@ -134,8 +136,8 @@ namespace LostInTransit.Components
                 DeathRewards rewards = body.GetComponent<DeathRewards>();
                 if (rewards)
                 {
-                    rewards.expReward *= 5;
-                    rewards.goldReward *= 5;
+                    rewards.expReward *= 7;
+                    rewards.goldReward *= 7;
                 }
             }
         }

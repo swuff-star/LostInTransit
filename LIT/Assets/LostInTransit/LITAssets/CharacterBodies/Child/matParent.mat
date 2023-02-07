@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: matParent
+  m_Shader: {fileID: 4800000, guid: 9b2024ee08a5bfc418ff897991e84323, type: 2}
+  m_ShaderKeywords: CUTOUT DITHER FLOWMAP FORCE_SPEC PRINT_CUTOFF
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BlueChannelNormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlueChannelTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmTex:
+        m_Texture: {fileID: 2800000, guid: 1d90eae038a0cfc49a34ddec2d389c71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowHeightRamp:
+        m_Texture: {fileID: 2800000, guid: 42ed82baf98ddaa4b9c55569849a325b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowHeightmap:
+        m_Texture: {fileID: 2800000, guid: a4d096c65edb3ba4fb05bad06c1aa63a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowTex:
+        m_Texture: {fileID: 2800000, guid: 6559e2d41ef6c0a439d6148899e8ad7e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FresnelMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FresnelRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GreenChannelNormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GreenChannelTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 14c571b046a9b84479232516856c0421, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 421e3ae39ed2fe846a76eeff982343d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PrintRamp:
+        m_Texture: {fileID: 2800000, guid: bf10647e6e4fb524ea72a968d40470ee, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SliceAlphaTex:
+        m_Texture: {fileID: 2800000, guid: 70d454a63e8026c499fca440bd7ea1a9, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _SplatmapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Blend: 0
+    - _BlueChannelBias: 0
+    - _BlueChannelSmoothness: 0
+    - _BumpScale: 1
+    - _ColorsOn: 0
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DecalLayer: 0
+    - _Depth: 0.2
+    - _DetailNormalMapScale: 1
+    - _DitherOn: 1
+    - _DstBlend: 0
+    - _EliteBrightnessMax: 2.18
+    - _EliteBrightnessMin: -1.4
+    - _EliteIndex: 0
+    - _EmPower: 0
+    - _EnableCutout: 1
+    - _FEON: 0
+    - _Fade: 1
+    - _FadeBias: 0
+    - _FlowDiffuseStrength: 1
+    - _FlowEmissionStrength: 0.56
+    - _FlowHeightBias: 0.156
+    - _FlowHeightPower: 2.99
+    - _FlowMaskStrength: 0.04
+    - _FlowNormalStrength: 0
+    - _FlowSpeed: 3.13
+    - _FlowTextureScaleFactor: 0.63
+    - _FlowmapOn: 1
+    - _ForceSpecOn: 1
+    - _FresnelBoost: 1
+    - _FresnelPower: 0.1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _GreenChannelBias: 0
+    - _GreenChannelSmoothness: 0
+    - _LimbPrimeMask: 1
+    - _LimbRemovalOn: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _NormalStrength: 1.15
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _PrintBias: 1.07
+    - _PrintBoost: 2.43
+    - _PrintDirection: 3
+    - _PrintEmissionToAlbedoLerp: 0
+    - _PrintOn: 1
+    - _RampInfo: 5
+    - _SliceAlphaDepth: 1
+    - _SliceBandHeight: 6
+    - _SliceHeight: -2.6
+    - _Smoothness: 0
+    - _SmoothnessTextureChannel: 0
+    - _SpecularExponent: 7.73
+    - _SpecularHighlights: 1
+    - _SpecularStrength: 0
+    - _Speed: 0.1
+    - _SplatmapOn: 0
+    - _SplatmapTileScale: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _VertexOffsetStrength: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+    - _EmColor: {r: 0.9716981, g: 0.5821022, b: 0.5821022, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PerlinScale: {r: 0, g: 0, b: 0, a: 0}

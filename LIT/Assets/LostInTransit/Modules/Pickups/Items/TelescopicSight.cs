@@ -45,7 +45,7 @@ namespace LostInTransit.Items
         public class TelescopicSightBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static ItemDef GetItemDef() => LITContent.Items.Thallium;
+            public static ItemDef GetItemDef() => LITContent.Items.TelescopicSight;
             public void OnIncomingDamageOther(HealthComponent victimHealthComponent, DamageInfo damageInfo)
             {
                 if (damageInfo.dotIndex == DotController.DotIndex.None)

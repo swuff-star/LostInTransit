@@ -45,14 +45,20 @@ namespace LostInTransit.Equipments
             public void Start()
             {
                 body.baseMaxHealth *= 7.0f;
-                body.baseDamage *= 2;
+                body.baseDamage *= 1.6f;
                 body.baseMoveSpeed *= 1.1f;
+
                 body.PerformAutoCalculateLevelStats();
 
                 body.healthComponent.health = body.healthComponent.fullHealth;
 
                 Util.PlaySound("BlightAppear", body.gameObject);
-                
+
+                CharacterModel cm = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+
+                MotionTrailGenerator mtg = cm.mainSkinnedMeshRenderer.gameObject.AddComponent<MotionTrailGenerator>();
+
+                mtg.On();
             }
 
 
@@ -61,7 +67,7 @@ namespace LostInTransit.Equipments
                 if(body.healthComponent.alive)
                 {
                     body.baseMaxHealth /= 7.0f;
-                    body.baseDamage /= 2f;
+                    body.baseDamage /= 1.4f;
                     body.baseMoveSpeed /= 1.1f;
                     body.PerformAutoCalculateLevelStats();
                 }

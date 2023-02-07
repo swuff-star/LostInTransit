@@ -6,6 +6,7 @@ using Moonstorm;
 
 namespace LostInTransit.Bodies
 {
+    [DisabledContent]
     public sealed class MechanicalSpider : MonsterBase
     {
         public override MSMonsterDirectorCard MonsterDirectorCard => throw new System.NotImplementedException();

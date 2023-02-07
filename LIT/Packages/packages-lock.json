@@ -212,6 +212,12 @@
       "dependencies": {},
       "hash": "56ab06c015d1bf1ef9539e415934e9f6875eac75"
     },
+    "risky_lives-riskymod": {
+      "version": "file:RiskyMod",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "teammoonstorm-moonstormsharedutils": {
       "version": "https://github.com/TeamMoonstorm/MoonstormSharedUtils.git#1.2.0",
       "depth": 0,

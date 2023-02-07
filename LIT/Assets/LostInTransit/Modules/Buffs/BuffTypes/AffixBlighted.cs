@@ -43,9 +43,9 @@ namespace LostInTransit.Buffs
 
             private void RemoveBuff(GenericSkill obj = null)
             {
-                if (body.hasCloakBuff)
-                    body.RemoveBuff(RoR2Content.Buffs.Cloak);
-                SpawnEffect();
+                //if (body.hasCloakBuff)
+                    //body.RemoveBuff(RoR2Content.Buffs.Cloak);
+                //SpawnEffect();
                 stopwatch = 0f;
             }
 
@@ -75,13 +75,13 @@ namespace LostInTransit.Buffs
                 stopwatch += Time.fixedDeltaTime;
                 if (stopwatch > checkTimer && !body.HasBuff(RoR2Content.Buffs.Cloak))
                 {
-                    body.AddBuff(RoR2Content.Buffs.Cloak);
+                    //body.AddBuff(RoR2Content.Buffs.Cloak);
                 }
                 else if (Util.CheckRoll(1))
                 {
                     stopwatch = 0; //Doing this to ensure they're visible for a moment
-                    RemoveBuff();
-                    SpawnEffect();
+                    //RemoveBuff();
+                    //SpawnEffect();
                 }
             }
 
@@ -102,13 +102,13 @@ namespace LostInTransit.Buffs
             {
                 //Reduces cooldowns by 50%
                 if (body.skillLocator.primary)
-                    body.skillLocator.primary.cooldownScale *= 0.5f;
+                    body.skillLocator.primary.cooldownScale *= 0.7f;
                 if (body.skillLocator.secondary)
-                    body.skillLocator.secondary.cooldownScale *= 0.5f;
+                    body.skillLocator.secondary.cooldownScale *= 0.7f;
                 if (body.skillLocator.utility)
-                    body.skillLocator.utility.cooldownScale *= 0.5f;
+                    body.skillLocator.utility.cooldownScale *= 0.7f;
                 if (body.skillLocator.special)
-                    body.skillLocator.special.cooldownScale *= 0.5f;
+                    body.skillLocator.special.cooldownScale *= 0.7f;
                 //Is there a reason you subtract CDR instead of multiply? If two things gave 0.5 CDR like this, then it'd have 0 CDR... Right?
                 //Also, if these need nerfed, I say this is the first thing to go.
                 //Neb: i supose i can change it to multiply by 0.5 if they need nerfed. we'll see in the future.
@@ -125,7 +125,7 @@ namespace LostInTransit.Buffs
 
                     body.onSkillActivatedServer -= RemoveBuff;
 
-                    body?.RemoveBuff(RoR2Content.Buffs.Cloak);
+                    //body?.RemoveBuff(RoR2Content.Buffs.Cloak);
                 }
             }
         }

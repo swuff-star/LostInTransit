@@ -45,6 +45,11 @@ namespace LostInTransit
             return Path.Combine(AssemblyDir, "assetbundles", "litassets");
         }
 
+        internal void FinalizeCopiedMaterials()
+        {
+            FinalizeMaterialsWithAddressableMaterialShader(MainAssetBundle);
+        }
+
         private void LoadSoundBank()
         {
             byte[] array = File.ReadAllBytes(SoundBankPath);

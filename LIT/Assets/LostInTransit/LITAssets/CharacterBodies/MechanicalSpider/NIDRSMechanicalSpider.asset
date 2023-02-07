@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2a16891c8108e48883bce0009b7835, type: 3}
+  m_Name: NIDRSMechanicalSpider
+  m_EditorClassIdentifier: 
+  idrs: {fileID: 11400000, guid: 4c12ea8344952f04f8e4ab6e5bee76ba, type: 2}
+  namedRuleGroups:
+  - keyAsset:
+      address: RoR2/Base/EliteFire/EliteFireEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteFire/DisplayEliteHorn.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: 1.13049, y: 1.32449, z: 1.23872}
+      localAngles: {x: 16.82227, y: 4.91672, z: 359.8888}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteFire/DisplayEliteHorn.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: -1.13049, y: 1.32449, z: 1.23872}
+      localAngles: {x: 16.82227, y: 4.91672, z: 359.8888}
+      localScales: {x: -1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: 0.00067956, y: 0.0459548, z: -0.00072302}
+      localAngles: {x: 90, y: 180, z: 0}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/Base/EliteIce/EliteIceEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Gun
+      localPos: {x: 0.04001828, y: -1.461082, z: 0.4754088}
+      localAngles: {x: 30, y: 0, z: 180}
+      localScales: {x: 0.3, y: 0.3, z: 0.3}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/Base/EliteLightning/EliteLightningEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: 0.02070315, y: 1.489004, z: 2.158514}
+      localAngles: {x: 300, y: 0, z: 0}
+      localScales: {x: 1.2, y: 1.2, z: 1.2}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: -1.489106, y: 1.500091, z: 1.466572}
+      localAngles: {x: 300, y: 320, z: 0}
+      localScales: {x: 1.2, y: 1.2, z: 1.2}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: 1.489106, y: 1.500091, z: 1.466572}
+      localAngles: {x: 300, y: 40, z: 0}
+      localScales: {x: 1.2, y: 1.2, z: 1.2}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Gun
+      localPos: {x: 0, y: -0.261677, z: -0.00426}
+      localAngles: {x: 90, y: 0, z: 0}
+      localScales: {x: 5, y: 5, z: 5}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/Base/ElitePoison/ElitePoisonEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Body
+      localPos: {x: 0.01357, y: 1.419696, z: -0.0702022}
+      localAngles: {x: 270, y: 0, z: 0}
+      localScales: {x: 0.8, y: 0.8, z: 0.8}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
+  - keyAsset:
+      address: RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset
+      useDirectReference: 0
+      asset: {fileID: 0}
+      loadAssetFrom: 2
+    rules:
+    - ruleType: 0
+      displayPrefab:
+        address: RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab
+        useDirectReference: 0
+        asset: {fileID: 0}
+      childName: Gun
+      localPos: {x: 0.037329, y: -0.760047, z: 0.330744}
+      localAngles: {x: 90, y: 0, z: 0}
+      localScales: {x: 1, y: 1, z: 1}
+      limbMask: 0
+      finishedRule:
+        ruleType: 0
+        followerPrefab: {fileID: 0}
+        childName: 
+        localPos: {x: 0, y: 0, z: 0}
+        localAngles: {x: 0, y: 0, z: 0}
+        localScale: {x: 0, y: 0, z: 0}
+        limbMask: 0
