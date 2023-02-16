@@ -26,65 +26,49 @@ namespace LostInTransit.Items
         [TokenModifier(token, StatTypes.Default, 2)]
         public static float laserDamage = 2000f;
 
-        [ConfigurableField(ConfigName = "Use static charge timer", ConfigDesc = "if true, the turbine will gain charge at a fixed rate instead of for each skill on cooldown")]
+        [ConfigurableField(ConfigName = "Use static charge timer", ConfigDesc = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
         public static bool skillIssue = false;
 
         public class PhotonCannonBehavior : BaseItemBodyBehavior
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.PhotonCannon;
-            public float storedCharge;
-            private float stopwatch;
+            public float storedCharge = 0f;
+            private float stopwatch = 0f;
             private float chargeMultiplier;
-            private static float watchInterval = 0.25f;
-            private void Start()
-            {
-                body.onInventoryChanged += UpdateStacks;
-                UpdateStacks();
-                stopwatch = 0;
-                storedCharge = 0;
-            }
             private void FixedUpdate()
             {
                 if (NetworkServer.active)
                 {
-                    stopwatch += Time.fixedDeltaTime;
-                    if (stopwatch > watchInterval)
+                    stopwatch -= Time.fixedDeltaTime;
+                    if (stopwatch < 0f)
                     {
-                        stopwatch -= watchInterval;
-                        if (storedCharge > 100f)
-                        {
-                            Debug.Log("PEW PEW PEW"); //obviously laser code goes here
-                            storedCharge = 0f;
-                        }
-                        else
-                        {
-                            storedCharge += CalcCharge() * watchInterval;
-                        }
+                        stopwatch += 0.2f;
+                        if (storedCharge >= 100f) FireLaser();
+                        CalcCharge();
                     }
                 }
             }
-            private void UpdateStacks() //G - this exists solely to move it out of the FixedUpdate, might be unnecessary
-            {
-                chargeMultiplier = baseCharge + (stackCharge * (stack - 1));
-            }
-            private float CalcCharge()
+            private void CalcCharge()
             {
                 if (skillIssue)
                 {
-                    return 1f;
+                    storedCharge += (baseCharge + (stackCharge * (stack - 1)))*0.2f;
                 }
-                int i = 0;
-                foreach (object obj in Enum.GetValues(typeof(SkillSlot)))
+                else
                 {
-                    SkillSlot slot = (SkillSlot)obj;
-                    GenericSkill skill = body.skillLocator.GetSkill(slot);
-                    if (skill != null && skill.cooldownRemaining > 0)
+                    foreach (object obj in Enum.GetValues(typeof(SkillSlot)))
                     {
-                        i++;
+                        SkillSlot slot = (SkillSlot)obj;
+                        GenericSkill skill = body.skillLocator.GetSkill(slot);
+                        if (skill != null && skill.cooldownRemaining > 0) storedCharge += (baseCharge + (stackCharge * (stack - 1))) * 0.2f;
                     }
                 }
-                return chargeMultiplier * i;
+            }
+            private void FireLaser()
+            {
+                storedCharge = 0f;
+                Debug.Log("PEW PEW PEW"); //obviously laser code goes here
             }
         }
     }

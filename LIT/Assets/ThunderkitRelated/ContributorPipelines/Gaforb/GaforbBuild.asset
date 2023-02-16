@@ -49,6 +49,7 @@ MonoBehaviour:
   PerManifest: 1
   ListType: 0
   Manifests: []
+  StrictDictionaryReplace: 1
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
