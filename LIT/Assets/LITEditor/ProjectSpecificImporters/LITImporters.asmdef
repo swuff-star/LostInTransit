@@ -1,0 +1,20 @@
+{
+    "name": "LITImporters",
+    "references": [
+        "GUID:280569ac301428d4d950fdf647900922",
+        "GUID:48abf88f565f4bb4fb35fbe2385f0894",
+        "GUID:fb8ce2e2486231249a0954d5da518927",
+        "GUID:1e2e811b27b749041a3ef44bfb67a90f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -38,30 +38,11 @@ namespace LostInTransit.Items
         {
             if (LITMain.RiskyModLoaded)
             {
-                [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-                static bool RiskyModShieldGateEnabled()
-                {
-                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.ShieldGating.enabled;
-                }
                 if (RiskyModShieldGateEnabled())
                 {
                     Debug.Log("RiskyMod Shieldgating detected - disabling Guardian's Heart shieldgating");
                     shieldGating = false;
                 }
-                //I think we can just check the shieldgating bool and then disable the Heart shieldgating if it's enabled, since riskymod will handle it. - G
-
-                /*
-                [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-                static bool RiskyModTrueOSPEnabled()
-                {
-                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.TrueOSP.enabled;
-                }
-
-                static DamageAPI.ModdedDamageType RiskyModGetIgnoreShieldGateDamageType()
-                {
-                    return LITMain.RiskyModLoaded && RiskyMod.Tweaks.CharacterMechanics.ShieldGating.IgnoreShieldGateDamage;
-                    ...and that's where that ends, bc I think I need to use full r2api to reference this, and i don't want to do that :(
-                }*/
             }
 
             //Time for an IL hook, i'm sure this will not be a problem :clueless:
@@ -106,6 +87,11 @@ namespace LostInTransit.Items
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static bool RiskyModShieldGateEnabled()
+        {
+            return RiskyMod.Tweaks.CharacterMechanics.ShieldGating.enabled;
+        }
         public class GuardiansHeartBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
@@ -115,6 +101,7 @@ namespace LostInTransit.Items
 
             public void Awake()
             {
+                base.Awake();
                 body.RecalculateStats();
             }
 
