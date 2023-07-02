@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class NuggetRegen : BuffBase
     {
-        public override BuffDef BuffDef { get;} = LITAssets.LoadAsset<BuffDef>("NuggetRegen");
+        public override BuffDef BuffDef { get;} = LITAssets.LoadAsset<BuffDef>("bdNuggetRegen", LITBundle.Items);
 
         public override void Initialize()
         {
@@ -21,7 +21,7 @@ namespace LostInTransit.Buffs
         public class NuggetRegenBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.NuggetRegen;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdNuggetRegen;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

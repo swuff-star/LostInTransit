@@ -8,11 +8,11 @@ namespace LostInTransit.Buffs
 {
     public class RootRegen : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("RootRegen");
-        public class NuggetRegenBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdRootRegen", LITBundle.Items);
+        public class RootRegenBehaviour : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.RootRegen;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdRootRegen;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

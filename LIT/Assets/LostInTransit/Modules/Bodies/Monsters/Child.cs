@@ -11,8 +11,8 @@ namespace LostInTransit.Bodies
     {
         public override MSMonsterDirectorCard MonsterDirectorCard => throw new System.NotImplementedException();
 
-        public override GameObject BodyPrefab => LITAssets.LoadAsset<GameObject>("ChildBody");
+        public override GameObject BodyPrefab => LITAssets.LoadAsset<GameObject>("ChildBody", LITBundle.Dev);
 
-        public override GameObject MasterPrefab => LITAssets.LoadAsset<GameObject>("ChildMaster");
+        public override GameObject MasterPrefab => LITAssets.LoadAsset<GameObject>("ChildMaster", LITBundle.Dev);
     }
 }

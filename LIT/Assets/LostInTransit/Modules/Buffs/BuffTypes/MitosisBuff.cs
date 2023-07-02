@@ -10,16 +10,16 @@ namespace LostInTransit.Buffs
 {
     public class MitosisBuff : BuffBase
     {
-        public override BuffDef BuffDef => LITAssets.LoadAsset<BuffDef>("MitosisBuff");
+        public override BuffDef BuffDef => LITAssets.LoadAsset<BuffDef>("bdMitosisBuff", LITBundle.Items);
 
         public class MitosisBuffBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier, IStatItemBehavior
         {
             [BuffDefAssociation]
-            private static BuffDef GetBuffDef() => LITContent.Buffs.MitosisBuff;
+            private static BuffDef GetBuffDef() => LITContent.Buffs.bdMitosisBuff;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                if (body.HasBuff(LITContent.Buffs.MitosisBuff))
+                if (body.HasBuff(LITContent.Buffs.bdMitosisBuff))
                 {
                     //args.cooldownReductionAdd += Items.RapidMitosis.mitosisSkillCD;
                 }
@@ -27,7 +27,7 @@ namespace LostInTransit.Buffs
 
             public void RecalculateStatsEnd()
             {
-                if (body.HasBuff(LITContent.Buffs.MitosisBuff))
+                if (body.HasBuff(LITContent.Buffs.bdMitosisBuff))
                 {
                     if (body.skillLocator)
                     {

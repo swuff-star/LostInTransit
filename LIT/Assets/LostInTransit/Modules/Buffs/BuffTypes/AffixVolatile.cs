@@ -14,7 +14,7 @@ namespace LostInTransit.Buffs
     //★ I did something naughty and just... commented out a lot of errors instead of fixing them. I plan on redoing this anyway so... oh well.
     public class AffixVolatile : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixVolatile");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixVolatile", LITBundle.Equips);
 
         public override void Initialize()
         {
@@ -41,7 +41,7 @@ namespace LostInTransit.Buffs
         public class AffixVolatileBehavior : BaseBuffBodyBehavior, IOnTakeDamageServerReceiver
         {
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.AffixVolatile;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixVolatile;
 
             private float diffScaling { get => DifficultyCatalog.GetDifficultyDef(Run.instance.selectedDifficulty).scalingValue; }
             private GameObject bomb;

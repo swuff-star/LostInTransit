@@ -18,7 +18,7 @@ namespace LostInTransit.Characters
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Bodies.");
+            LITLog.Info($"Initializing Bodies.");
             GetCharacterBases();
         }
 

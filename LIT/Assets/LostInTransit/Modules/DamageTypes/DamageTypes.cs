@@ -12,7 +12,7 @@ namespace LostInTransit.DamageTypes
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Damage Types.");
+            LITLog.Info($"Initializing Damage Types.");
             GetDamageTypeBases();
         }
 

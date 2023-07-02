@@ -36,7 +36,7 @@ namespace LostInTransit.Components
         {
             get
             {
-                var blightArtifact = LITAssets.LoadAsset<ArtifactDef>("Prestige");
+                var blightArtifact = LITAssets.LoadAsset<ArtifactDef>("Prestige", LITBundle.Artifacts);
                 if (blightArtifact)
                 {
                     return RunArtifactManager.instance.IsArtifactEnabled(blightArtifact);
@@ -55,7 +55,7 @@ namespace LostInTransit.Components
 
         private SceneDef CommencementScene { get => SceneCatalog.GetSceneDefFromSceneName("moon2"); }
 
-        private EquipmentIndex BlightedEquipIndex { get => LITAssets.LoadAsset<EquipmentDef>("AffixBlighted").equipmentIndex; }
+        private EquipmentIndex BlightedEquipIndex { get => LITAssets.LoadAsset<EquipmentDef>("AffixBlighted", LITBundle.Equips).equipmentIndex; }
 
         void Start()
         {

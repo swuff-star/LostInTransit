@@ -9,12 +9,12 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class Meds : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("Meds");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdMeds", LITBundle.Equips);
 
         public class DiceAtkBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.Meds;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdMeds;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

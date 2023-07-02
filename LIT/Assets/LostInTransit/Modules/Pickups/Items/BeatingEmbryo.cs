@@ -26,7 +26,7 @@ namespace LostInTransit.Items
     [DisabledContent]
     public class BeatingEmbryo : ItemBase
     {
-        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeatingEmbryo");
+        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeatingEmbryo", LITBundle.Equips);
 
         public string[] bossHunterOptions = new string[] { "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT" };
 

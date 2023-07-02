@@ -8,7 +8,12 @@ namespace LostInTransit.Items
     public class LifeSavingsUsed : ItemBase
     {
         private const string token = "LIT_ITEM_LIFESAVINGSUSED_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavingsUsed");
-        public static ItemDef itemDef = LITAssets.LoadAsset<ItemDef>("LifeSavingsUsed");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavingsUsed", LITBundle.Items);
+        public static ItemDef itemDef;
+
+        public override void Initialize()
+        {
+            itemDef = ItemDef;
+        }
     }
 }

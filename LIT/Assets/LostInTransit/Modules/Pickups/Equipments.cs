@@ -16,7 +16,7 @@ namespace LostInTransit.Modules
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Equipments...");
+            LITLog.Info($"Initializing Equipments...");
             GetEquipmentBases();
             GetEliteEquipmentBases();
         }

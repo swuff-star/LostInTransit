@@ -14,30 +14,30 @@ namespace LostInTransit
     {
         public static class Buffs
         {
-            public static BuffDef AffixBlighted;
-            public static BuffDef AffixFrenzied;
-            public static BuffDef AffixLeeching;
-            public static BuffDef AffixVolatile;
-            public static BuffDef DiceArmor;
-            public static BuffDef DiceAtk;
-            public static BuffDef DiceCrit;
-            public static BuffDef DiceLuck;
-            public static BuffDef DiceMove;
-            public static BuffDef DiceRegen;
-            public static BuffDef FieldGeneratorPassive;
-            public static BuffDef GoldenGun;
-            public static BuffDef GuardiansHeartBuff;
-            public static BuffDef HitListBuff;
-            public static BuffDef HitListMarked;
-            public static BuffDef Meds;
-            public static BuffDef MitosisBuff;
-            public static BuffDef NuggetRegen;
-            public static BuffDef Pillaging;
-            public static BuffDef RepulsionArmorActive;
-            public static BuffDef RepulsionArmorCD;
-            public static BuffDef RootRegen;
-            public static BuffDef Shackled;
-            public static BuffDef ThalliumPoison;
+            public static BuffDef bdAffixBlighted;
+            public static BuffDef bdAffixFrenzied;
+            public static BuffDef bdAffixLeeching;
+            public static BuffDef bdAffixVolatile;
+            public static BuffDef bdDiceArmor;
+            public static BuffDef bdDiceAtk;
+            public static BuffDef bdDiceCrit;
+            public static BuffDef bdDiceLuck;
+            public static BuffDef bdDiceMove;
+            public static BuffDef bdDiceRegen;
+            public static BuffDef bdFieldGeneratorPassive;
+            public static BuffDef bdGoldenGun;
+            public static BuffDef bdGuardiansHeartBuff;
+            public static BuffDef bdHitListBuff;
+            public static BuffDef bdHitListMarked;
+            public static BuffDef bdMeds;
+            public static BuffDef bdMitosisBuff;
+            public static BuffDef bdNuggetRegen;
+            public static BuffDef bdPillaging;
+            public static BuffDef bdRepulsionArmorActive;
+            public static BuffDef bdRepulsionArmorCD;
+            public static BuffDef bdRootRegen;
+            public static BuffDef bdShackled;
+            public static BuffDef bdThalliumPoison;
         }
 
         public static class Elites
@@ -92,7 +92,7 @@ namespace LostInTransit
         }
         public override string identifier => LITMain.GUID;
 
-        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } = LITAssets.LoadAsset<R2APISerializableContentPack>("ContentPack");
+        public override R2APISerializableContentPack SerializableContentPack { get; protected set; } = LITAssets.LoadAsset<R2APISerializableContentPack>("ContentPack", LITBundle.Main);
         public override Action[] LoadDispatchers { get; protected set; }
         public override Action[] PopulateFieldsDispatchers { get; protected set; }
 
@@ -101,6 +101,10 @@ namespace LostInTransit
             base.Init();
             LoadDispatchers = new Action[]
             {
+                delegate
+                {
+                    LITAssets.Instance.LoadSoundbank();
+                },
                 delegate
                 {
                     new LostInTransit.Buffs.Buffs().Initialize();
@@ -138,7 +142,7 @@ namespace LostInTransit
                 },
                 delegate
                 {
-                    SerializableContentPack.effectPrefabs = LITAssets.LoadAllAssetsOfType<GameObject>().Where(go => go.GetComponent<EffectComponent>()).ToArray();
+                    SerializableContentPack.effectPrefabs = LITAssets.LoadAllAssetsOfType<GameObject>(LITBundle.All).Where(go => go.GetComponent<EffectComponent>()).ToArray();
                 },
                 delegate
                 {

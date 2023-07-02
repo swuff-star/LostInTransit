@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class RepulsionArmor : ItemBase
     {
         private const string token = "LIT_ITEM_REPULCHEST_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Chestplate");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Chestplate", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Hits Needed to Activate", ConfigDesc = "Amount of times required to take damage before activating Repulsion Armor.")]
         [TokenModifier(token, StatTypes.Default, 0)]
@@ -44,9 +44,9 @@ namespace LostInTransit.Items
 
             public void FixedUpdate()
             {
-                if (!body.HasBuff(LITContent.Buffs.RepulsionArmorActive) && !body.HasBuff(LITContent.Buffs.RepulsionArmorCD))
+                if (!body.HasBuff(LITContent.Buffs.bdRepulsionArmorActive) && !body.HasBuff(LITContent.Buffs.bdRepulsionArmorCD))
                 {
-                    body.SetBuffCount(LITContent.Buffs.RepulsionArmorCD.buffIndex, hitsNeededConfig);    //hitsNeededConfig should be an int
+                    body.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, hitsNeededConfig);    //hitsNeededConfig should be an int
                 }
             }
 
@@ -54,15 +54,15 @@ namespace LostInTransit.Items
             {
                 if (damageInfo.attacker == body) return;
 
-                int currentCDCount = (body.GetBuffCount(LITContent.Buffs.RepulsionArmorCD));
+                int currentCDCount = (body.GetBuffCount(LITContent.Buffs.bdRepulsionArmorCD));
                 if (currentCDCount > 0)
                 {
-                    body.RemoveBuff(LITContent.Buffs.RepulsionArmorCD);
+                    body.RemoveBuff(LITContent.Buffs.bdRepulsionArmorCD);
                     currentCDCount--;
 
                     if (currentCDCount <= 0)
                     {
-                        body.AddTimedBuff(LITContent.Buffs.RepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)));
+                        body.AddTimedBuff(LITContent.Buffs.bdRepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)));
                     }
                 }
             }

@@ -11,18 +11,18 @@ namespace LostInTransit.Buffs
     [DisabledContent]
     public class AffixFrenzied : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixFrenzied");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixFrenzied", LITBundle.Equips);
 
         public class AffixFrenziedBehavior : BaseBuffBodyBehavior, IStatItemBehavior
         {
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.AffixFrenzied;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixFrenzied;
 
             public float blinkCooldown = 8;
 
-            public GameObject BlinkReadyEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedTPReady");
+            public GameObject BlinkReadyEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedTPReady", LITBundle.Equips);
 
-            public GameObject AbilityEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedAbility");
+            public GameObject AbilityEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedAbility", LITBundle.Equips);
 
             public GameObject BlinkReadyInstance;
 

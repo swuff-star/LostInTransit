@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class ArmsRace : ItemBase
     {
         private const string token = "LIT_ITEM_ARMSRACE_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRace");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRace", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Shield Amount", ConfigDesc = "Percentage of max health granted to drones as shield, per stack.")]
         public static float extraShield = 8f;

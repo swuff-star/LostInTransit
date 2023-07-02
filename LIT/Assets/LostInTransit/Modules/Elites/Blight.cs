@@ -17,8 +17,8 @@ namespace LostInTransit.Elites
         internal static Dictionary<BodyIndex, int> blightCostdictionary = new Dictionary<BodyIndex, int>();
         internal static void BeginSetup()
         {
-            LITLogger.LogI($"Blighted elites are enabled, setting up systems...");
-            var blightedDirector = LITAssets.LoadAsset<GameObject>("BlightedDirector");
+            LITLog.Info($"Blighted elites are enabled, setting up systems...");
+            var blightedDirector = LITAssets.LoadAsset<GameObject>("BlightedDirector", LITBundle.Base);
             HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.networkedObjectPrefabs, blightedDirector);
 
             RoR2Application.onLoad += BlightSetup;
@@ -45,7 +45,7 @@ namespace LostInTransit.Elites
         {
             var text2 = orig(bodyObject);
             CharacterBody charBody = null;
-            BuffDef blightBuff = LITContent.Buffs.AffixBlighted;
+            BuffDef blightBuff = LITContent.Buffs.bdAffixBlighted;
             if ((bool)bodyObject)
             {
                 charBody = bodyObject.GetComponent<CharacterBody>();
@@ -79,7 +79,7 @@ namespace LostInTransit.Elites
             AddElites();
 
             Run.onRunStartGlobal += SpawnDirector;
-            LITLogger.LogI($"Finished Blighted Elite Setup.");
+            LITLog.Info($"Finished Blighted Elite Setup.");
         }
 
         private static void ModifyPrefabs()
@@ -124,7 +124,7 @@ namespace LostInTransit.Elites
         {
             if (Run.instance && NetworkServer.active)
             {
-                NetworkServer.Spawn(UnityEngine.Object.Instantiate(LITAssets.LoadAsset<GameObject>("BlightedDirector")));
+                NetworkServer.Spawn(UnityEngine.Object.Instantiate(LITAssets.LoadAsset<GameObject>("BlightedDirector", LITBundle.Base)));
             }
         }
     }

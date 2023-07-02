@@ -37,7 +37,7 @@ namespace LostInTransit
                 int mitosisCount = self.inventory.GetItemCount(LITContent.Items.RapidMitosis);
                 if (mitosisCount > 0)
                 {
-                    self.characterBody.AddTimedBuffAuthority(LITContent.Buffs.MitosisBuff.buffIndex, Items.RapidMitosis.mitosisDur);
+                    self.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdMitosisBuff.buffIndex, Items.RapidMitosis.mitosisDur);
                 }    
             }
         }
@@ -66,7 +66,7 @@ namespace LostInTransit
             if (Util.CheckRoll(Items.HitList.markChance + ((Items.HitList.markChance / 2) * (hitListCount - 1)), body.master))
             {
                 //Debug.Log("Marking a " + body.baseNameToken + "!");
-                body.SetBuffCount(LITContent.Buffs.HitListMarked.buffIndex, 1);
+                body.SetBuffCount(LITContent.Buffs.bdHitListMarked.buffIndex, 1);
             }
             else
             {

@@ -104,13 +104,13 @@ namespace LostInTransit.Elites
 
         internal static void BeginSetup()
         {
-            LITLogger.LogI($"Volatile elites are enabled, setting up Volatile Bomb...");
+            LITLog.Info($"Volatile elites are enabled, setting up Volatile Bomb...");
             _volatileSpiteBomb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/NetworkedObjects/SpiteBomb"), "VolatileSpitebomb", false);
             if (_volatileSpiteBomb)
             {
                 HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.networkedObjectPrefabs, _volatileSpiteBomb);
             }
         }
-        private static void LogGetError(string propertyName) => LITLogger.LogE($"Tried to get {propertyName} when no run is active! this is not allowed.");
+        private static void LogGetError(string propertyName) => LITLog.Error($"Tried to get {propertyName} when no run is active! this is not allowed.");
     }
 }

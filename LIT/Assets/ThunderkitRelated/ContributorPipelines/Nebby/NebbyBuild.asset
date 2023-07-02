@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
+--- !u!114 &-9142004896743524884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,16 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3695521163bdd74fa2845bbd3438240, type: 3}
-  m_Name: NebbyBuild
+  m_Script: {fileID: 11500000, guid: dba11a23eb01c7a4aa61a8ab800c27dd, type: 3}
+  m_Name: ChangeAssemblyBuildMode
   m_EditorClassIdentifier: 
-  Data:
-  - {fileID: 5153180345527493564}
-  - {fileID: 8340384190988746825}
-  - {fileID: 1620308847142327607}
-  QuickAccess: 0
-  manifest: {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
---- !u!114 &1620308847142327607
+  Active: 1
+  buildMode: 0
+--- !u!114 &-3576180096776599551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50df4f9027e15e04b931a8d460fb22c5, type: 3}
+  m_Name: ExecutePipeline
+  m_EditorClassIdentifier: 
+  Active: 1
+  OverrideManifest: 1
+  targetpipeline: {fileID: 11400000, guid: 4e0ada562e823934dad284255704129a, type: 2}
+--- !u!114 &-216652644370084839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,13 +45,15 @@ MonoBehaviour:
   PerManifest: 1
   ListType: 1
   Manifests:
+  - {fileID: 11400000, guid: 5ceb1d8ed3af40d4d806e9756b403649, type: 2}
   - {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
+  ReplaceDirectory: 1
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
   Source: <BuildPath>
   Destination: <NebbysTestingPath>
---- !u!114 &5153180345527493564
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,24 +62,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50df4f9027e15e04b931a8d460fb22c5, type: 3}
-  m_Name: ExecutePipeline
+  m_Script: {fileID: 11500000, guid: a3695521163bdd74fa2845bbd3438240, type: 3}
+  m_Name: NebbyBuild
   m_EditorClassIdentifier: 
-  Active: 1
-  OverrideManifest: 1
-  targetpipeline: {fileID: 11400000, guid: b5193eb7d28d28847bbcaabe768d005f, type: 2}
---- !u!114 &8340384190988746825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50df4f9027e15e04b931a8d460fb22c5, type: 3}
-  m_Name: ExecutePipeline
-  m_EditorClassIdentifier: 
-  Active: 1
-  OverrideManifest: 1
-  targetpipeline: {fileID: 11400000, guid: 1d3c168b33650b34884a3c7ec84bd0d9, type: 2}
+  Data:
+  - {fileID: -9142004896743524884}
+  - {fileID: -3576180096776599551}
+  - {fileID: -216652644370084839}
+  QuickAccess: 0
+  manifest: {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}

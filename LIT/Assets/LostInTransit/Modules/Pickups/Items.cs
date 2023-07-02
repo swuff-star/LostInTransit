@@ -16,7 +16,7 @@ namespace LostInTransit.Modules
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Items...");
+            LITLog.Info($"Initializing Items...");
             GetItemBases();
         }
 

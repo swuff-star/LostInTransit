@@ -10,7 +10,7 @@ namespace LostInTransit.Items
     public class RustyJetpack : ItemBase
     {
         private const string token = "LIT_ITEM_RUSTYJETPACK_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RustyJetpack");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RustyJetpack", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Jump Power", ConfigDesc = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
         [TokenModifier(token, StatTypes.Percentage, 0)]

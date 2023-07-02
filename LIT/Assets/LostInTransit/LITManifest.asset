@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StagingPaths:
   - <BuildPath>
+  includeMetaFiles: 0
   files:
   - {fileID: 4900000, guid: ee105b2720cd7e24483cc186959d6a09, type: 3}
   - {fileID: 4900000, guid: 451d4395f4cd99d40b2b0e6cad0ea424, type: 3}
@@ -115,9 +116,35 @@ MonoBehaviour:
   StagingPaths:
   - <BuildPathAssets>
   assetBundles:
-  - assetBundleName: LITAssets
+  - assetBundleName: litmain
     assets:
-    - {fileID: 102900000, guid: 8a2bdba4aea598b449c6bb2e19029aab, type: 3}
+    - {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
+    - {fileID: 11400000, guid: 107c76cde60158548a897912447a2a63, type: 2}
+    - {fileID: 2800000, guid: ab91b154d4fd6c64f9e67cfbf9a89483, type: 3}
+    - {fileID: 2800000, guid: b96edc6e52910cc4a858cbbf1b2dbaf0, type: 3}
+    - {fileID: 2800000, guid: b34e1c9bc387cee4eb1fde5b1d518aa3, type: 3}
+  - assetBundleName: litbase
+    assets:
+    - {fileID: 102900000, guid: 15fa85ba063d4f14483a9fd9971fdb75, type: 3}
+    - {fileID: 102900000, guid: f28e7e4fe1a1ef14eb3552448ab2ef8f, type: 3}
+  - assetBundleName: litartifacts
+    assets:
+    - {fileID: 102900000, guid: 872271561cfdfac47bf6159314b69aef, type: 3}
+  - assetBundleName: litequips
+    assets:
+    - {fileID: 102900000, guid: d90ca5bf667addb48a3d8831af86ad68, type: 3}
+  - assetBundleName: lititems
+    assets:
+    - {fileID: 102900000, guid: c71102e18ae8cbc43aaa4b3f88fa70d5, type: 3}
+  - assetBundleName: litdev
+    assets:
+    - {fileID: 102900000, guid: b351a27d3f2f9134097f2371192387d7, type: 3}
+  - assetBundleName: litshared
+    assets:
+    - {fileID: 102900000, guid: 592bc661cb027fe43834249a9798a139, type: 3}
+    - {fileID: 102900000, guid: 7408562af4fa94641a8e1ff6175c654c, type: 3}
+    - {fileID: 102900000, guid: 96281717b4e14ad4ea34179548a259dd, type: 3}
+    - {fileID: 102900000, guid: fab14a159a602b34983866de1f59c7c6, type: 3}
 --- !u!114 &114987763159783732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StagingPaths:
   - <BuildPathSoundbanks>
+  includeMetaFiles: 0
   files:
   - {fileID: 102900000, guid: b5a346d72bcafd149bb4d4ebbd969d47, type: 3}
 --- !u!114 &8324102109481770816

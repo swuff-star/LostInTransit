@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class Lopper : ItemBase
     {
         private const string token = "LIT_ITEM_LOPPER_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Lopper");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Lopper", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Maximum Extra Damage per Lopper", ConfigDesc = "Maximum extra damage dealt by Ol' Lopper.")]
         [TokenModifier(token, StatTypes.Default, 0)]

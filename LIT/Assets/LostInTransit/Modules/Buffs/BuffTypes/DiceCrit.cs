@@ -9,11 +9,11 @@ namespace LostInTransit.Buffs
     [DisabledContent]
     public class DiceCrit : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("DiceCrit");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceCrit", LITBundle.Items);
 
         public class DiceCritBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
-            public static BuffDef GetBuffDef() => LITContent.Buffs.DiceCrit;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdDiceCrit;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

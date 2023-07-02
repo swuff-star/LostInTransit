@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class PrisonShackles : ItemBase
     {
         private const string token = "LIT_ITEM_PRISONSHACKLES_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("PrisonShackles");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("PrisonShackles", LITBundle.Items);
 
         public static string section;
         [ConfigurableField(ConfigName = "Slow Multiplier", ConfigDesc = "Multiplier added to the shackled body's movement speed.")]
@@ -30,7 +30,7 @@ namespace LostInTransit.Items
             public void OnDamageDealtServer(DamageReport damageReport)
             {
                 if(damageReport.damageInfo.procCoefficient > 0)
-                    damageReport.victimBody.AddTimedBuff(LITContent.Buffs.Shackled, duration + durationStack * (stack - 1));
+                    damageReport.victimBody.AddTimedBuff(LITContent.Buffs.bdShackled, duration + durationStack * (stack - 1));
             }
         }
     }

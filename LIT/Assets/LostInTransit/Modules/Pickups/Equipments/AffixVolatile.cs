@@ -11,11 +11,11 @@ namespace LostInTransit.Equipments
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
-            LITAssets.LoadAsset<MSEliteDef>("Volatile"),
-            LITAssets.LoadAsset<MSEliteDef>("VolatileHonor")
+            LITAssets.LoadAsset<MSEliteDef>("Volatile", LITBundle.Equips),
+            LITAssets.LoadAsset<MSEliteDef>("VolatileHonor", LITBundle.Equips)
         };
 
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixVolatile");
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixVolatile", LITBundle.Equips);
         //public override MSAspectAbilityDataHolder AspectAbilityData { get; set; } = LITAssets.LoadAsset<MSAspectAbilityDataHolder>("AbilityVolatile");
 
         /*public override void AddBehavior(ref CharacterBody body, int stack)

@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class BitterRoot : ItemBase
     {
         private const string token = "LIT_ITEM_BITTERROOT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BitterRoot");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BitterRoot", LITBundle.Items);
 
         /*[ConfigurableField(LITConfig.items, ConfigName = "Extra Maximum Health per Root", ConfigDesc = "Extra percentage of maximum health added per root")]
         [TokenModifier(token, StatTypes.Default)]
@@ -32,7 +32,7 @@ namespace LostInTransit.Items
 
             public void OnKilledOtherServer(DamageReport damageReport)
             {
-                body.AddTimedBuffAuthority(LITContent.Buffs.RootRegen.buffIndex, rootRegenDur * stack);
+                body.AddTimedBuffAuthority(LITContent.Buffs.bdRootRegen.buffIndex, rootRegenDur * stack);
             }
 
             /*public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)

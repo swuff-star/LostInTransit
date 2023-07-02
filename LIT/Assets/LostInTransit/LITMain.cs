@@ -51,7 +51,7 @@ namespace LostInTransit
             instance = this;
             pluginInfo = Info;
             config = Config;
-            LITLogger.logger = Logger;
+            LITLog.logger = Logger;
             RiskyModLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
 
             new LITConfig().Init();

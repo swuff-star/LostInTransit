@@ -15,13 +15,13 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class RepulsionArmorActive : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("RepulsionArmorActive");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdRepulsionArmorActive", LITBundle.Items);
         //private Ray aimRay;
 
         public class RepulsionArmorActiveBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnClient = false, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.RepulsionArmorActive;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdRepulsionArmorActive;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
@@ -65,7 +65,7 @@ namespace LostInTransit.Buffs
 
             public void OnDestroy()
             {
-                body.SetBuffCount(LITContent.Buffs.RepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeededConfig);
+                body.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeededConfig);
             }
 
             /*public void OnIncomingDamageServer(DamageInfo damageInfo)

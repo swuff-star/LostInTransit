@@ -9,10 +9,10 @@ namespace LostInTransit.Equipments
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
-             LITAssets.LoadAsset<MSEliteDef>("Frenzied"),
-             LITAssets.LoadAsset<MSEliteDef>("FrenziedHonor")
+             LITAssets.LoadAsset<MSEliteDef>("Frenzied", LITBundle.Equips),
+             LITAssets.LoadAsset<MSEliteDef>("FrenziedHonor", LITBundle.Equips)
         };
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixFrenzied");
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixFrenzied", LITBundle.Items);
         //public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.LoadAsset<MSAspectAbilityDataHolder>("AbilityFrenzied");
         
         public override bool FireAction(EquipmentSlot slot)

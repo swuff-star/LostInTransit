@@ -8,8 +8,8 @@ namespace LostInTransit.Items
     public class LifeSavings : ItemBase
     {
         private const string token = "LIT_ITEM_LIFESAVINGS_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavings");
-        public static ItemDef itemDef = LITAssets.LoadAsset<ItemDef>("LifeSavings");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavings", LITBundle.Items);
+        public static ItemDef itemDef;
 
         [ConfigurableField(ConfigName = "Money per Life Savings", ConfigDesc = "Money granted per Life Savings.")]
         [TokenModifier(token, StatTypes.Default, 0)]
@@ -17,6 +17,7 @@ namespace LostInTransit.Items
 
         public override void Initialize()
         {
+            itemDef = ItemDef;
             CharacterBody.onBodyStartGlobal += GiveMoney;
         }
 

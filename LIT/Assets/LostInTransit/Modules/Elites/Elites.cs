@@ -21,7 +21,7 @@ namespace LostInTransit.Modules
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Elites...");
+            LITLog.Info($"Initializing Elites...");
             GetInitializedEliteEquipmentBases();
             OnListCreated += LateEliteSetup;
         }
@@ -37,15 +37,15 @@ namespace LostInTransit.Modules
 
         private void LateEliteSetup(ReadOnlyCollection<MSEliteDef> eliteCollection)
         {
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Volatile")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Volatile", LITBundle.Equips)))
             {
                 VolatileSpitebomb.BeginSetup();
             }
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Blighted")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Blighted", LITBundle.Equips)))
             {
                 Blight.BeginSetup();
             }
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Leeching")))
+            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Leeching", LITBundle.Equips)))
             {
                 RoR2Application.onLoad += () =>
                 {

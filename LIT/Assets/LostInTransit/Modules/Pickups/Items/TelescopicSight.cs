@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class TelescopicSight : ItemBase
     {
         private const string token = "LIT_ITEM_TELESCOPICSIGHT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("TelescopicSight");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("TelescopicSight", LITBundle.Items);
 
         public static string section;
 
@@ -53,7 +53,7 @@ namespace LostInTransit.Items
                     if (Util.CheckRoll(CalcChance() * damageInfo.procCoefficient))
                     {
                         //if (enableCooldown) 
-                            //body.AddCooldownBuff(LITContent.Buffs.TeleSightCD, CalcCooldown());
+                            //body.AddCooldownBuff(LITContent.Buffs.bdTeleSightCD, CalcCooldown());
 
                         var flag = ChooseWetherToInstakill(victimHealthComponent.body);
                         if (flag)

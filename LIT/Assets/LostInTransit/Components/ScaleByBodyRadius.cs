@@ -32,7 +32,7 @@ namespace LostInTransit.Components
                     {
 
                     }
-                    LITLogger.LogW("Could not find CharacterBody!");
+                    LITLog.Warning("Could not find CharacterBody!");
                     Destroy(this);
                     return;
                 }

@@ -16,7 +16,7 @@ namespace LostInTransit.Items
     public class GuardiansHeart : ItemBase
     {
         private const string token = "LIT_ITEM_GUARDIANSHEART_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GuardiansHeart");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GuardiansHeart", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Shield per Heart", ConfigDesc = "Amount of shield added per heart.")]
         public static float extraShield = 60;
@@ -92,6 +92,7 @@ namespace LostInTransit.Items
         {
             return RiskyMod.Tweaks.CharacterMechanics.ShieldGating.enabled;
         }
+
         public class GuardiansHeartBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
@@ -113,7 +114,7 @@ namespace LostInTransit.Items
 
                     if (hadShield && !currentlyHasShield && body.maxShield > 0f) // you should only get armor if you could have had shield
                     {
-                        body.AddTimedBuffAuthority(LITContent.Buffs.GuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, stack));
+                        body.AddTimedBuffAuthority(LITContent.Buffs.bdGuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, stack));
                     }
                     hadShield = currentlyHasShield;
                 }

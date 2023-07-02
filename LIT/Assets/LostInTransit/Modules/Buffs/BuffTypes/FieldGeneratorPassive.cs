@@ -9,12 +9,12 @@ namespace LostInTransit.Buffs
     //[DisabledContent]
     public class FieldGeneratorPassive : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("FieldGeneratorPassive");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdFieldGeneratorPassive", LITBundle.Equips);
 
         public class DiceAtkBehavior : BaseBuffBodyBehavior, IOnIncomingDamageOtherServerReciever
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.FieldGeneratorPassive;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdFieldGeneratorPassive;
 
             public void OnIncomingDamageOther(HealthComponent victimHealthComponent, DamageInfo damageInfo)
             {

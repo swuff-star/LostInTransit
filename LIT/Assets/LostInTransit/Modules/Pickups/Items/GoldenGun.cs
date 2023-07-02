@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class GoldenGun : ItemBase
     {
         private const string token = "LIT_ITEM_GOLDENGUN_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GoldenGun");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GoldenGun", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Maximum Gold Threshold", ConfigDesc = "The maximum amount of gold that Golden Gun will account for.")]
         [TokenModifier(token, StatTypes.Default, 2)]
@@ -31,12 +31,12 @@ namespace LostInTransit.Items
 
             public void OnDestroy()
             {
-                body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, 0);
+                body.SetBuffCount(LITContent.Buffs.bdGoldenGun.buffIndex, 0);
             }
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.damageMultAdd += 0.01f * body.GetBuffCount(LITContent.Buffs.GoldenGun.buffIndex);
+                args.damageMultAdd += 0.01f * body.GetBuffCount(LITContent.Buffs.bdGoldenGun.buffIndex);
             }
 
             private void FixedUpdate()
@@ -51,10 +51,10 @@ namespace LostInTransit.Items
                     float moneyPercent = (float)body.master.money / maxCost;
                     int targetBuffCount = Mathf.Min(maxBuffs, Mathf.FloorToInt(maxBuffs * moneyPercent));
 
-                    int currentBuffCount = body.GetBuffCount(LITContent.Buffs.GoldenGun.buffIndex);
+                    int currentBuffCount = body.GetBuffCount(LITContent.Buffs.bdGoldenGun.buffIndex);
                     if (targetBuffCount != currentBuffCount)
                     {
-                        body.SetBuffCount(LITContent.Buffs.GoldenGun.buffIndex, targetBuffCount);
+                        body.SetBuffCount(LITContent.Buffs.bdGoldenGun.buffIndex, targetBuffCount);
                     }
                 }
             }

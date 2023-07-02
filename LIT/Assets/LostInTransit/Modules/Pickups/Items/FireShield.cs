@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class FireShield : ItemBase
     {
         private const string token = "LIT_ITEM_FIRESHIELD_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("FireShield");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("FireShield", LITBundle.Items);
 
         //to-do: stacking, config
 

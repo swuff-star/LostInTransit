@@ -11,7 +11,7 @@ namespace LostInTransit.Items
     public class RapidMitosis : ItemBase
     {
         private const string token = "LIT_ITEM_RAPIDMITOSIS_DESC";
-        public override RoR2.ItemDef ItemDef { get; } = LITAssets.LoadAsset<RoR2.ItemDef>("RapidMitosis");
+        public override RoR2.ItemDef ItemDef { get; } = LITAssets.LoadAsset<RoR2.ItemDef>("RapidMitosis", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Equipment CDR Amount", ConfigDesc = "Equipment Cooldown Reduction per Rapid Mitosis.")]
         [TokenModifier(token, StatTypes.Default, 0)]

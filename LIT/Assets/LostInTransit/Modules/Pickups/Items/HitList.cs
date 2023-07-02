@@ -8,7 +8,7 @@ namespace LostInTransit.Items
     public class HitList : ItemBase
     {
         private const string token = "LIT_ITEM_HITLIST_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("HitList");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("HitList", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Chance to Mark Enemies", ConfigDesc = "Base chance for enemies to spawn Marked.")]
         [TokenModifier(token, StatTypes.Default, 0)]

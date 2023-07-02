@@ -10,7 +10,7 @@ namespace LostInTransit.Items
     public class WickedRing : ItemBase
     {
         private const string token = "LIT_ITEM_WICKEDRING_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("WickedRingNew");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("WickedRingNew", LITBundle.Items);
 
         [ConfigurableField(ConfigDesc = "Seconds removed from skill cooldowns on kill.")]
         [TokenModifier(token, StatTypes.Default, 0)]

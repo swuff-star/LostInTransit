@@ -10,7 +10,7 @@ namespace LostInTransit.Buffs
     /*[DisabledContent]
     public class LeechingRegen : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("LeechingRegen");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdLeechingRegen");
 
         /*public override void Initialize()
         {
@@ -22,7 +22,7 @@ namespace LostInTransit.Buffs
         public class LeechingRegenBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             //[BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            //public static BuffDef GetBuffDef() => LITContent.Buffs.LeechingRegen;
+            //public static BuffDef GetBuffDef() => LITContent.Buffs.bdLeechingRegen;
 
             public float duration = 5;
             public float totalRegen = 0;

@@ -7,12 +7,12 @@ namespace LostInTransit.Buffs
 {
     public class GoldenGunBuff : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("GoldenGun");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdGoldenGun", LITBundle.Items);
 
         public class GoldenGunBuffBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier
         {
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.GoldenGun;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdGoldenGun;
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {

@@ -9,7 +9,7 @@ namespace LostInTransit.Equipments
     public class Thqwib : EquipmentBase
     {
         private const string token = "LIT_EQUIP_THQWIB_DESC";
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("Thqwib");
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("Thqwib", LITBundle.Equips);
 
         [ConfigurableField(LITConfig.equips, ConfigName = "Damage per Thqwib", ConfigDesc = "Amount of damage each Thqwib deals on explosion, as a %.")]
         [TokenModifier(token, StatTypes.Default, 1)]

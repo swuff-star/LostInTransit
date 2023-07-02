@@ -9,7 +9,7 @@ namespace LostInTransit.Buffs
     //N- Buffs no longer have an "AddBehavior(ref CharacterBody body, int stacks)" method
     public sealed class AffixBlighted : BuffBase
     {
-        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("AffixBlighted");
+        public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixBlighted", LITBundle.Equips);
 
         //N- Buff behaviors now use moonstorm's base buff body behavior
         //The class itself is abstract and its in Moonstorm.Components
@@ -19,7 +19,7 @@ namespace LostInTransit.Buffs
             //It NEEDS to be static, return a buffDef, and have this attribute.
             //If youre not sure wether the behavior needs to be on client, on server, or both, just set "useOnClient" and "useOnServer" to true.
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.AffixBlighted;
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;
 
 
             public BlightedController MasterBehavior { get => body.masterObject?.GetComponent<BlightedController>(); }
@@ -28,7 +28,7 @@ namespace LostInTransit.Buffs
 
             public BuffDef secondBuff;
 
-            private GameObject SmokeEffect = LITAssets.LoadAsset<GameObject>("BlightSmoke");
+            private GameObject SmokeEffect = LITAssets.LoadAsset<GameObject>("BlightSmoke", LITBundle.Equips);
 
             private float stopwatch;
             private static float checkTimer = 0.5f;

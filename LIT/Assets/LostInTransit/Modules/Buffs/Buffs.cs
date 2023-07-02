@@ -18,7 +18,7 @@ namespace LostInTransit.Buffs
         {
             Instance = this;
             base.Initialize();
-            LITLogger.LogI($"Initializing Buffs...");
+            LITLog.Info($"Initializing Buffs...");
             GetBuffBases();
         }
 

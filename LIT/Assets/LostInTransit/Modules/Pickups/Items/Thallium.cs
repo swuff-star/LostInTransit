@@ -9,7 +9,7 @@ namespace LostInTransit.Items
     public class Thallium : ItemBase
     {
         public const string token = "LIT_ITEM_THALLIUM_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Thallium");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Thallium", LITBundle.Items);
 
         [ConfigurableField(ConfigDesc = "Chance to afflict Thallium Poisoning.")]
         [TokenModifier(token, StatTypes.Default, 0)]

@@ -10,7 +10,7 @@ namespace LostInTransit.Items
     public class BlessedDice : ItemBase
     {
         private const string token = "LIT_ITEM_BLESSEDDICE_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BlessedDice");
+        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BlessedDice", LITBundle.Items);
 
         [ConfigurableField(LITConfig.items, ConfigName = "Base duration of buff from Blessed Dice", ConfigDesc = "Base duration of buff after using a shrine.")]
         [TokenModifier(token, StatTypes.Default, 0)]
@@ -71,27 +71,27 @@ namespace LostInTransit.Items
                 switch (rng)
                 {
                     case 1:
-                        buff = LITContent.Buffs.DiceLuck;
+                        buff = LITContent.Buffs.bdDiceLuck;
                         break;
                     case 2:
                     case 7:
-                        buff = LITContent.Buffs.DiceCrit;
+                        buff = LITContent.Buffs.bdDiceCrit;
                         break;
                     case 3:
                     case 8:
-                        buff = LITContent.Buffs.DiceAtk;
+                        buff = LITContent.Buffs.bdDiceAtk;
                         break;
                     case 4:
                     case 9:
-                        buff = LITContent.Buffs.DiceMove;
+                        buff = LITContent.Buffs.bdDiceMove;
                         break;
                     case 5:
                     case 10:
-                        buff = LITContent.Buffs.DiceArmor;
+                        buff = LITContent.Buffs.bdDiceArmor;
                         break;
                     case 6:
                     case 11:
-                        buff = LITContent.Buffs.DiceRegen;
+                        buff = LITContent.Buffs.bdDiceRegen;
                         break;
                 }
                 return buff;
