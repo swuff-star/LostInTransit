@@ -25,7 +25,7 @@ namespace EntityStates.Drifter
 
         public override void OnEnter()
         {
-            Debug.Log("on enter");
+            //Debug.Log("on enter");
             if (isComboFinisher)
             {
                 hitBoxGroupName = "SwingLarge";
@@ -48,7 +48,7 @@ namespace EntityStates.Drifter
 
         public override void PlayAnimation()
         {
-            Debug.Log("play anim");
+            //Debug.Log("play anim");
             string animationStateName = "Swing" + swing;
             //PlayCrossfade("Gesture, Override", animationStateName, "Primary.playbackRate", duration, 0.1f);
         }
@@ -80,7 +80,7 @@ namespace EntityStates.Drifter
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
-            Debug.Log("modify overlap");
+            //Debug.Log("modify overlap");
             base.AuthorityModifyOverlapAttack(overlapAttack);
             DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit.scrapOnHit);
         }
