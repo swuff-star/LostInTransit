@@ -25,7 +25,7 @@ namespace LostInTransit
         Artifacts,
         Equips,
         Items,
-        Dev,
+        Characters,
         Shared
     }
     public class LITAssets : AssetsLoader<LITAssets>
@@ -36,7 +36,7 @@ namespace LostInTransit
         private const string ARTIFACTS = "litartifacts";
         private const string EQUIPS = "litequips";
         private const string ITEMS = "lititems";
-        private const string DEV = "litdev";
+        private const string CHARACTERS = "litcharacters";
         private const string SHARED = "litshared";
 
         private static Dictionary<LITBundle, AssetBundle> assetbundles = new Dictionary<LITBundle, AssetBundle>();
@@ -148,7 +148,7 @@ namespace LostInTransit
                     case ARTIFACTS: LoadAndAssign(path, LITBundle.Artifacts); break;
                     case EQUIPS: LoadAndAssign(path, LITBundle.Equips); break;
                     case ITEMS: LoadAndAssign(path, LITBundle.Items); break;
-                    case DEV: LoadAndAssign(path, LITBundle.Dev); break;
+                    case CHARACTERS: LoadAndAssign(path, LITBundle.Characters); break;
                     case SHARED: LoadAndAssign(path, LITBundle.Shared); break;
                     default:
                         {

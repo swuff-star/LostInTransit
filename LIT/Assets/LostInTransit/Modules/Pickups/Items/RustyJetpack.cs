@@ -14,11 +14,11 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Jump Power", ConfigDesc = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
         [TokenModifier(token, StatTypes.Percentage, 0)]
-        public static float addedJumpPower = 0.1f;
+        public static float addedJumpPower = 2f;
 
         [ConfigurableField(ConfigName = "Fall Speed Reduction", ConfigDesc = "Amount of gravity removed, as a pecent")]
         [TokenModifier(token, StatTypes.Percentage, 2)]
-        public static float reducedGravity = 0.5f;
+        public static float reducedGravity = 0.35f;
 
         [ConfigurableField(ConfigName = "Fall Speed Limit", ConfigDesc = "Maximum amount fall speed can be reduced by, in percent")]
         public static float minGrav = 90f;
@@ -34,10 +34,14 @@ namespace LostInTransit.Items
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.jumpPowerMultAdd += stack * addedJumpPower;
+                //args.jumpPowerMultAdd += stack * addedJumpPower;
+                args.baseJumpPowerAdd += stack * addedJumpPower;
             }
             private void FixedUpdate()
             {
+                if (!body.characterMotor || !body)
+                    return;
+
                 if (body.characterMotor.isGrounded)
                 {
                     return;

@@ -136,9 +136,9 @@ MonoBehaviour:
   - assetBundleName: lititems
     assets:
     - {fileID: 102900000, guid: c71102e18ae8cbc43aaa4b3f88fa70d5, type: 3}
-  - assetBundleName: litdev
+  - assetBundleName: litcharacters
     assets:
-    - {fileID: 102900000, guid: b351a27d3f2f9134097f2371192387d7, type: 3}
+    - {fileID: 102900000, guid: d84ad962302426e4f8d87cab03334a8d, type: 3}
   - assetBundleName: litshared
     assets:
     - {fileID: 102900000, guid: 592bc661cb027fe43834249a9798a139, type: 3}

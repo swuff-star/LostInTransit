@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: SurvivorDrifter
+  m_EditorClassIdentifier: 
+  bodyPrefab: {fileID: 3749074776551495628, guid: 40fa1f6bc5e6b7841b39aa2e1b7d0d31,
+    type: 3}
+  displayPrefab: {fileID: 4272906291158389615, guid: 27e34a49d29779e4d9e595c1896262d7,
+    type: 3}
+  unlockableName: 
+  unlockableDef: {fileID: 0}
+  displayNameToken: LIT_DRIFTER_BODY_NAME
+  descriptionToken: LIT_DRIFTER_DESCRIPTION
+  outroFlavorToken: LIT_DRIFTER_OUTRO_FLAVOR
+  mainEndingEscapeFailureFlavorToken: LIT_DRIFTER_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR
+  primaryColor: {r: 1, g: 1, b: 1, a: 0}
+  desiredSortPosition: 20
+  hidden: 0

@@ -21,12 +21,15 @@ MonoBehaviour:
   - {fileID: 5605638329512005404, guid: c50d31a1b60e23147b406c98b6e4ae69, type: 3}
   - {fileID: 1244418117784641, guid: 16f39f5c807f0a04283807b9afacb043, type: 3}
   skillDefs:
-  - {fileID: 11400000, guid: da084e84d7ee48c43bb94a0878ca5808, type: 2}
+  - {fileID: 11400000, guid: c8359a1b3e75d17439c0199cfba31fcf, type: 2}
   skillFamilies:
-  - {fileID: 11400000, guid: 66f84daf2dedf954ea841e7430bb4084, type: 2}
+  - {fileID: 11400000, guid: 1f4243ccecacef444b8b901a83a5643b, type: 2}
+  - {fileID: 11400000, guid: b302357a84d5b4f4f9fdc8d0631f499a, type: 2}
+  - {fileID: 11400000, guid: 9cbe35011717b5c4683bc403bad8be27, type: 2}
+  - {fileID: 11400000, guid: 5c705428493a8a042b9ab130b900d63f, type: 2}
   sceneDefs: []
   itemDefs:
-  - {fileID: 11400000, guid: f9f48e6d53754bf49b2880f8982b484b, type: 2}
+  - {fileID: 0}
   itemTierDefs: []
   itemRelationshipProviders: []
   itemRelationshipTypes: []
@@ -45,6 +48,7 @@ MonoBehaviour:
   miscPickupDefs: []
   entityStateConfigurations:
   - {fileID: 11400000, guid: 2fbcfec9346736f4fad759eb10c6bf57, type: 2}
+  - {fileID: 11400000, guid: 27c4dceb1220e014b91e58857d128cad, type: 2}
   entityStateTypes: []
   expansionDefs:
   - {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
