@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87511327926c1642a297d2033752f03, type: 3}
+  m_Name: sd4Drifter
+  m_EditorClassIdentifier: 
+  skillName: DrifterBag
+  skillNameToken: LIT_DRIFTER_BAG_NAME
+  skillDescriptionToken: LIT_DRIFTER_BAG_DESC
+  keywordTokens: []
+  icon: {fileID: 21300000, guid: 55d79350f056fbf4c9487cbacc07d0d5, type: 3}
+  activationStateMachineName: Weapon
+  activationState:
+    _typeName: EntityStates.Drifter.ScrapProjectile, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  interruptPriority: 1
+  baseRechargeInterval: 24
+  baseMaxStock: 1
+  rechargeStock: 1
+  requiredStock: 1
+  stockToConsume: 1
+  resetCooldownTimerOnUse: 0
+  fullRestockOnAssign: 1
+  dontAllowPastMaxStocks: 0
+  beginSkillCooldownOnSkillEnd: 0
+  cancelSprintingOnActivation: 1
+  forceSprintDuringState: 0
+  canceledFromSprinting: 0
+  isCombatSkill: 1
+  mustKeyPress: 0
+  scrapThreshold: 8

@@ -31,7 +31,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: comboFinisherDamageCoefficient
       fieldValue:
-        stringValue: 2.6
+        stringValue: 2.8
         objectValue: {fileID: 0}
     - fieldName: comboFinisherBaseDurationBeforeInterruptable
       fieldValue:
@@ -43,7 +43,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: damageCoefficient
       fieldValue:
-        stringValue: 1.6
+        stringValue: 1.8
         objectValue: {fileID: 0}
     - fieldName: hitBoxGroupName
       fieldValue:
@@ -60,11 +60,11 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: pushAwayForce
       fieldValue:
-        stringValue: 600
+        stringValue: 1200
         objectValue: {fileID: 0}
     - fieldName: forceVector
       fieldValue:
-        stringValue: 0 20 0
+        stringValue: 0 30 0
         objectValue: {fileID: 0}
     - fieldName: hitPauseDuration
       fieldValue:

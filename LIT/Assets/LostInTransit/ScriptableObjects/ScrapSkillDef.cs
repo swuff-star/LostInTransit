@@ -13,7 +13,7 @@ namespace LostInTransit.ScriptableObjects
     {
         [Header("Scrap Parameters")]
         [Tooltip("The required amount of scrap to perform this skill.")]
-        public float scrapThreshold;
+        public float scrapCost;
         protected class InstanceData : BaseSkillInstanceData
         {
             public DrifterScrapComponent dsc;
@@ -27,12 +27,14 @@ namespace LostInTransit.ScriptableObjects
         public bool HasScrap([NotNull] GenericSkill skillSlot)
         {
             DrifterScrapComponent dsc = ((InstanceData)skillSlot.skillInstanceData).dsc;
-            return (dsc.scrap >= scrapThreshold);
+            if (dsc == null)
+                return false;
+            return (dsc.scrap >= scrapCost);
         }
 
         public override bool CanExecute([NotNull] GenericSkill skillSlot)
         {
-            return HasScrap(skillSlot) && CanExecute(skillSlot);
+            return HasScrap(skillSlot) && base.CanExecute(skillSlot);
         }
 
         public override BaseSkillInstanceData OnAssigned([NotNull] GenericSkill skillSlot)

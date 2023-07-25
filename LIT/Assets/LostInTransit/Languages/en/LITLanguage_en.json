@@ -202,48 +202,34 @@
 
 		"LIT_MECHANICALSPIDER_NAME": "Mechanical Spider",
 		"LIT_UNLOCKABLE_LOG_MECHANICALSPIDER": "Mechanical Spider",
-		"LIT_MECHANICALSPIDER_LORE": "<style=cMono>Transmitting emergency signals... \n
-.\n
-. .\n
-. . .\n
-Warning! Transmission failure!\n\n</style>
-
-                           uuuuuuu\n
-                   uu$$$$$$$$$$$uu\n
-             uu$$$$$$$$$$$$$$$$$uu\n
-           u$$$$$$$$$$$$$$$$$$$$$u\n
-          u$$$$$$$$$$$$$$$$$$$$$$$u\n
-         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
-         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
-         u$$$$$$\"       \"$$$\"       \"$$$$$$u\n
-         \"$$$$\"            u$u             $$$$\"\n
-          $$$u              u$u             u$$$\n
-          $$$u            u$$$u           u$$$\n
-           \"$$$$uu$$$          $$$uu$$$$\"\n
-            \"$$$$$$$\"             \"$$$$$$$\"\n
-                  u$$$$$$$u$$$$$$$u\n
-                     u$\"$\"$\"$\"$\"$\"$u\n
-  uuu             $$u$ $ $ $ $u$$                 uuu\n
- u$$$$            $$$$$u$u$u$$$             u$$$$\n
-  $$$$$uu         \"$$$$$$$$$\"         uu$$$$$$\n
-u$$$$$$$$$$$uu    \"\"\"\"\"      uuuu$$$$$$$$$$\n
-$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\n
- \"\"\"            \"\"$$$$$$$$$$$uu \"\"$\"\"\"\n
-                  uuuu \"\"$$$$$$$$$$uuu\n
-  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\n
-  $$$$$$$$$$\"\"\"\"                     \"\"$$$$$$$$$$$\"\n
-   \"$$$$$\"                                           \"\"$$$$\"\"\n
-     $$$\"                                                 $$$$\"\n\n
-
-
-Hijacked by the Roider Union Pistolero.\n\n
-
-Next time use a real booter, captain. Money in our pockets.",
 
 		"LIT_EVOLEMURIAN_NAME": "Evolved Lemurian",
 
 		"LIT_EXPANSION_NAME": "Lost in Transit",
-		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game."
+		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game.",
 
+		"LIT_DRIFTER_BODY_NAME": "Drifter",
+		"LIT_DRIFTER_DESCRIPTION": "The Drifter is a scavanger who's resourcefulness literally pays off when warding off foes.",
+		"LIT_DRIFTER_OUTRO_FLAVOR": "..and so she left, bringing only the necessities.",
+		"LIT_DRIFTER_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR": "..and so she vanished, unrepentant of her lot.",
+		"LIT_DRIFTER_LORE": "Who knew that the others would go missing? Missing the last ship was a blessing in disguise. I'll need to make sure to stow away this time if I want to find anyone. The hull of the ship is only secondary.\n\nI need to make sure everyone is alive. My friends and family, everyone back home is waiting for me to bring them news about them. Their personal belongings are only secondary.\n\nWith unfamiliar life on the planet, I hope they found some sort of comfort. From monstrous creatures to hazardous environments, anything could have happened. Collecting samples is only secondary.\n\nThere could be anything on the planet, honestly. Ancient civilizations, undiscovered technology, unique cultures. Bringing anything back is only secondary. Yes, only secondary...",
+
+		"LIT_DRIFTER_PASSIVE_NAME": "Scavenger",
+		"LIT_DRIFTER_PASSIVE_DESC": "Striking enemies with the Drifter's bag has a chance to generate <style=cIsUtility>scrap</style>, which can be used for other skills.",
+
+		"LIT_KEYWORD_SCAVENGING": "<style=cKeywordName>Scavenging</style><style=cSub>Hitting enemies has a chance to generate scrap. Each hit in the combo has an added chance to generate scrap.</style>",
+		"LIT_KEYWORD_SCAVENGING2": "<style=cKeywordName>Scavenging</style><style=cSub>Hitting enemies has a chance to generate scrap.</style>",
+
+		"LIT_DRIFTER_SWINGBAG_NAME": "Blunt Force",
+		"LIT_DRIFTER_SWINGBAG_DESC": "<style=cIsUtility>Scavenging</style>. Swing in front, dealing <style=cIsDamage>180% damage</style>. Every 3rd hit deals <style=cIsDamage>280% damage</style> and <style=cIsUtility>Stuns</style> enemies.",
+
+		"LIT_DRIFTER_SCRAPTHROW_NAME": "Cleanup",
+		"LIT_DRIFTER_SCRAPTHROW_DESC": "Throw out 5 <style=cIsDamage>long-lasting</style> scrap for <style=cIsDamage>130% damage</style> each. <style=cIsDamage>Hold to reduce spread</style>. Has a small chance to spawn <style=cIsUtility>special projectiles</style>.",
+
+		"LIT_DRIFTER_VACUUM_NAME": "Suffocate",
+		"LIT_DRIFTER_VACUUM_DESC": "Hold to <style=cIsUtility>pull</style> enemies in, then slam with your bag for <style=cIsDamage>400% damage</style>. <style=cIsDamage>Enemies under 20% health</style> are <style=cIsHealth>consumed</style> and converted into <style=cIsUtility>scrap</style>.",
+
+		"LIT_DRIFTER_BAG_NAME": "Salvage",
+		"LIT_DRIFTER_BAG_DESC": "Consume a large amount of <style=cIsUtility>scrap</style> to spawn <style=cIsDamage>4</style> <style=cIsUtility>temporary</style> <style=cIsDamage>items</style>."
 	}
 }

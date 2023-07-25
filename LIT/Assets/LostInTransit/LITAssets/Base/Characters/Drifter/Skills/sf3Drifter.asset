@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sf3Drifter
   m_EditorClassIdentifier: 
   variants:
-  - skillDef: {fileID: 11400000, guid: c8359a1b3e75d17439c0199cfba31fcf, type: 2}
+  - skillDef: {fileID: 11400000, guid: fbd0d8df6e2b7cc408de080ec473bbfa, type: 2}
     unlockableName: 
     unlockableDef: {fileID: 0}
   defaultVariantIndex: 0

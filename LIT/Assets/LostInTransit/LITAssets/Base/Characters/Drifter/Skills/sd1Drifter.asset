@@ -15,8 +15,10 @@ MonoBehaviour:
   skillName: SwingBag
   skillNameToken: LIT_DRIFTER_SWINGBAG_NAME
   skillDescriptionToken: LIT_DRIFTER_SWINGBAG_DESC
-  keywordTokens: []
-  icon: {fileID: 0}
+  keywordTokens:
+  - LIT_KEYWORD_SCAVENGING
+  - KEYWORD_STUNNING
+  icon: {fileID: 21300000, guid: df26507f7e74e114d96961e6752ae2e4, type: 3}
   activationStateMachineName: Weapon
   activationState:
     _typeName: EntityStates.Drifter.SwingBag, LostInTransit, Version=0.0.0.0, Culture=neutral,

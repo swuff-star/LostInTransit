@@ -19,7 +19,7 @@ MonoBehaviour:
     serializedFields:
     - fieldName: baseDuration
       fieldValue:
-        stringValue: 0.8
+        stringValue: 0.3
         objectValue: {fileID: 0}
     - fieldName: projectilePrefab
       fieldValue:
@@ -28,7 +28,7 @@ MonoBehaviour:
           type: 3}
     - fieldName: damageCoef
       fieldValue:
-        stringValue: 3
+        stringValue: 0.4
         objectValue: {fileID: 0}
     - fieldName: procCoef
       fieldValue:
@@ -40,9 +40,13 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: projSpeed
       fieldValue:
-        stringValue: 30
+        stringValue: 25
         objectValue: {fileID: 0}
     - fieldName: scrapCost
       fieldValue:
-        stringValue: 2
+        stringValue: -2
+        objectValue: {fileID: 0}
+    - fieldName: projSpeedFast
+      fieldValue:
+        stringValue: 90
         objectValue: {fileID: 0}

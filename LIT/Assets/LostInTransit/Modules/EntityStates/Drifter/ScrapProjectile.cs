@@ -5,6 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//this is kinda coded like shit
+//should probably refactor charging / toss to be separate states.
+//i think the way this is done isn't really going to be viable when it comes to animating and polish.
+//(or, at least, not ideal)
+//problem for me then! just need to see how it feels!
 namespace EntityStates.Drifter
 {
     public class ScrapProjectile : BaseSkillState
@@ -17,6 +23,7 @@ namespace EntityStates.Drifter
         public static float procCoef;
         public static float recoil;
         public static float projSpeed;
+        public static float projSpeedFast;
 
         private bool hasFired;
 
@@ -44,41 +51,46 @@ namespace EntityStates.Drifter
             //Util.PlayAttackSpeedSound();
         }
 
-        public virtual void FireProjectile()
+        public virtual void ThrowScrap()
         {
             if (!hasFired)
             {
-                hasFired = true;
-
                 float damage = damageCoef * damageStat;
                 AddRecoil(-2f * recoil, -3f * recoil, -1f * recoil, 1f * recoil);
                 characterBody.AddSpreadBloom(0.33f * recoil);
                 Ray aimRay = GetAimRay();
 
-                Vector3 directionA = CalculateDirection(aimRay.direction, 0.4f);
+                Vector3 directionA = CalculateDirection(aimRay.direction, (fixedAge < duration) ? 0f : 0f);
                 FireProjectile(aimRay.origin, directionA, damage);
 
-                Vector3 directionB = CalculateDirection(aimRay.direction, -0.4f);
+                Vector3 directionB = CalculateDirection(aimRay.direction, (fixedAge < duration) ? -2.5f : -0.25f);
                 FireProjectile(aimRay.origin, directionB, damage);
 
-                Vector3 directionC = CalculateDirection(aimRay.direction, 0.8f);
+                Vector3 directionC = CalculateDirection(aimRay.direction, (fixedAge < duration) ? 2.5f : 0.25f);
                 FireProjectile(aimRay.origin, directionC, damage);
 
-                Vector3 directionD = CalculateDirection(aimRay.direction, -0.8f);
+                Vector3 directionD = CalculateDirection(aimRay.direction, (fixedAge < duration) ? -5f : -0.5f);
                 FireProjectile(aimRay.origin, directionD, damage);
 
+                Vector3 directionE = CalculateDirection(aimRay.direction, (fixedAge < duration) ? 5f : 0.5f);
+                FireProjectile(aimRay.origin, directionE, damage);
+
                 dsc.AddScrap(scrapCost);
+
+                hasFired = true;
             }
         }
 
-        private Vector3 CalculateDirection(Vector3 aimDirection, float angleOffsetX)
+        private Vector3 CalculateDirection(Vector3 aimDirection, float angleOffsetY)
         {
-            Quaternion rotation = Quaternion.Euler(angleOffsetX, 0f, 0f);
+            Quaternion rotation = Quaternion.Euler(0f, angleOffsetY, 0f);
             return rotation * aimDirection;
         }
 
         private void FireProjectile(Vector3 origin, Vector3 direction, float damage)
         {
+            float speed = (fixedAge >= duration) ? projSpeedFast : projSpeed;
+
             ProjectileManager.instance.FireProjectile(
                 projectilePrefab,
                 origin,
@@ -89,7 +101,23 @@ namespace EntityStates.Drifter
                 RollCrit(),
                 DamageColorIndex.Default,
                 null,
-                projSpeed);
+                speed);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (fixedAge >= duration * 0.7f && !hasFired && !inputBank.skill2.down)
+                ThrowScrap();
+
+            if (fixedAge >= duration && hasFired)
+                outer.SetNextStateToMain();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

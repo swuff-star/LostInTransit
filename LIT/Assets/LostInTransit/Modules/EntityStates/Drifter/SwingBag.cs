@@ -82,7 +82,21 @@ namespace EntityStates.Drifter
         {
             //Debug.Log("modify overlap");
             base.AuthorityModifyOverlapAttack(overlapAttack);
-            DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit.scrapOnHit);
+            switch(swing)
+            {
+                case 0:
+                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit10.scrapOnHit10);
+                    break;
+                case 1:
+                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit20.scrapOnHit20);
+                    break;
+                case 2:
+                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit30.scrapOnHit30);
+                    break;
+            }
+
+            if (isComboFinisher)
+                overlapAttack.damageType = DamageType.Stun1s;
         }
     }
 }

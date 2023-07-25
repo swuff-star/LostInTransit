@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: BitterRoot
   m_EditorClassIdentifier: 
-  tier: 0
+  deprecatedTier: 0
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_BITTERROOT_NAME
   pickupToken: LIT_ITEM_BITTERROOT_PICKUP
   descriptionToken: LIT_ITEM_BITTERROOT_DESC
