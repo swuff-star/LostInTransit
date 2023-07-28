@@ -37,7 +37,9 @@
         "R2API.RecalculateStats.dll",
         "R2API.Networking.dll",
         "R2API.Sound.dll",
-        "RiskyMod.dll"
+        "RiskyMod.dll",
+        "R2API.Items.dll",
+        "UnityEngine.UI.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

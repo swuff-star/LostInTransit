@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: escTemporaryItems
+  m_EditorClassIdentifier: 
+  targetType:
+    assemblyQualifiedName: EntityStates.Drifter.TemporaryItems, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: baseEntryDuration
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}
+    - fieldName: baseDropDuration
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}
+    - fieldName: dropletSpreadAngle
+      fieldValue:
+        stringValue: 30
+        objectValue: {fileID: 0}
+    - fieldName: dropletUpVelocity
+      fieldValue:
+        stringValue: 20
+        objectValue: {fileID: 0}
+    - fieldName: dropletForwardVelocity
+      fieldValue:
+        stringValue: 8
+        objectValue: {fileID: 0}
+    - fieldName: dropTable
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 11400000, guid: 6034645be2362974384f6670781b1015, type: 2}
+    - fieldName: numItems
+      fieldValue:
+        stringValue: 4
+        objectValue: {fileID: 0}
+    - fieldName: scrapcost
+      fieldValue:
+        stringValue: 10
+        objectValue: {fileID: 0}
+    - fieldName: itemDuration
+      fieldValue:
+        stringValue: 80
+        objectValue: {fileID: 0}

@@ -127,6 +127,7 @@ MonoBehaviour:
     assets:
     - {fileID: 102900000, guid: 15fa85ba063d4f14483a9fd9971fdb75, type: 3}
     - {fileID: 102900000, guid: f28e7e4fe1a1ef14eb3552448ab2ef8f, type: 3}
+    - {fileID: 102900000, guid: c1d6dfe9aa990e54e8ae2267775c03d2, type: 3}
   - assetBundleName: litartifacts
     assets:
     - {fileID: 102900000, guid: 872271561cfdfac47bf6159314b69aef, type: 3}
