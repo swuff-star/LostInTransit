@@ -6,6 +6,7 @@ using RoR2;
 
 namespace LostInTransit.Characters
 {
+    [DisabledContent]
     public sealed class Drifter : SurvivorBase
     {
         public override SurvivorDef SurvivorDef => LITAssets.LoadAsset<SurvivorDef>("SurvivorDrifter", LITBundle.Characters);

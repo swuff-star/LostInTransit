@@ -1,5 +1,8 @@
 {
 	"strings": {
+		"LIT_EXPANSION_NAME": "Lost in Transit",
+		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game.",
+
 		"LIT_ITEM_BARBEDWIRE_NAME": "Barbed Wire",
 		"LIT_ITEM_BARBEDWIRE_PICKUP": "Damage nearby enemies.",
 		"LIT_ITEM_BARBEDWIRE_DESC": "Deal <style=cIsDamage>80% damage per second</style> to enemies standing within a radius of <style=cIsUtility>7m</style> <style=cStack>(+1.5m per stack)</style>.",
@@ -205,8 +208,6 @@
 
 		"LIT_EVOLEMURIAN_NAME": "Evolved Lemurian",
 
-		"LIT_EXPANSION_NAME": "Lost in Transit",
-		"LIT_EXPANSION_DESC": "Adds content from the 'Lost in Transit' mod to the game.",
 
 		"LIT_DRIFTER_BODY_NAME": "Drifter",
 		"LIT_DRIFTER_DESCRIPTION": "The Drifter is a scavanger who's resourcefulness literally pays off when warding off foes.",
@@ -230,6 +231,25 @@
 		"LIT_DRIFTER_VACUUM_DESC": "Hold to <style=cIsUtility>pull</style> enemies in, then slam with your bag for <style=cIsDamage>400% damage</style>. <style=cIsDamage>Enemies under 20% health</style> are <style=cIsHealth>consumed</style> and converted into <style=cIsUtility>scrap</style>.",
 
 		"LIT_DRIFTER_BAG_NAME": "Salvage",
-		"LIT_DRIFTER_BAG_DESC": "Consume a large amount of <style=cIsUtility>scrap</style> to spawn <style=cIsDamage>4</style> <style=cIsUtility>temporary</style> <style=cIsDamage>items</style>."
+		"LIT_DRIFTER_BAG_DESC": "Consume a large amount of <style=cIsUtility>scrap</style> to spawn <style=cIsDamage>4</style> <style=cIsUtility>temporary</style> <style=cIsDamage>items</style>.",
+
+
+		"LIT_ROBOMANDO_BODY_NAME": "Robomando",
+		"LIT_ROBOMANDO_DESCRIPTION": "The Robomando model G comes equipped with everything it needs to extract resources from hostile envrionments.\n\n<!> RE-WIRE allows instant access to any company sanctioned containers or drone utilities.",
+		"LIT_ROBOMANDO_OUTRO_FLAVOR": "..and so it left nothing behind.",
+		"LIT_ROBOMANDO_MAIN_ENDING_ESCAPE_FAILURE_FLAOR": "..and so it vanished, taking everything with it.",
+		"LIT_ROBOMANDO_LORE": "muffin button",
+
+		"LIT_ROBOMANDO_PRIMARY_NAME": "Single Fire",
+		"LIT_ROBOMANDO_PRIMARY_DESCRIPTION": "Shoot once for <style=cIsDamage>60% damage</style>.",
+
+		"LIT_ROBOMANDO_SECONDARY_NAME": "De-Escalate",
+		"LIT_ROBOMANDO_SECONDARY_DESCRIPTION": "<style=cIsUtility>Shocking</style>. Fire a small electrical charge that <style=cIsDamage>pierces enemies</style> for <style=cIsDamage>180% damage</style>.",
+
+		"LIT_ROBOMANDO_UTILITY_NAME": "Evasive Maneuver",
+		"LIT_ROBOMANDO_UTILITY_DESCRIPTION": "Attempt to <style=cIsUtility>dive forward</style> a small distance. You <style=cIsUtility>gain 200 armor</style> early in the maneuver.",
+
+		"LIT_ROBOMANDO_SPECIAL_NAME": "Re-Wire",
+		"LIT_ROBOMANDO_SPECIAL_DESCRIPTION":  "Re-wire a mechanical object, <style=cIsUtility>activating it for free</style>."
 	}
 }

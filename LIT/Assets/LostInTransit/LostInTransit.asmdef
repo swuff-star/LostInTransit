@@ -39,7 +39,8 @@
         "R2API.Sound.dll",
         "RiskyMod.dll",
         "R2API.Items.dll",
-        "UnityEngine.UI.dll"
+        "UnityEngine.UI.dll",
+        "R2API.Addressables.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
