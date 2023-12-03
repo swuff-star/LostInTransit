@@ -3,14 +3,14 @@ using RoR2;
 
 namespace LostInTransit.Equipments
 {
-    [DisabledContent]
-    public class GoldPlatedBomb : EquipmentBase
+    //[DisabledContent]
+    public class UnstableWatch : EquipmentBase
     {
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("GoldPlatedBomb", LITBundle.Equips);
+        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("UnstableWatch", LITBundle.Equips);
 
         public override bool FireAction(EquipmentSlot slot)
         {
-            slot.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdMeds.buffIndex, 12);
+            slot.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdTimeStop.buffIndex, 8);
             return true;                                                 
         }                                                                       
     }                                                                           

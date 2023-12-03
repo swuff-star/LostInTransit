@@ -38,6 +38,8 @@ namespace LostInTransit
             public static BuffDef bdRootRegen;
             public static BuffDef bdShackled;
             public static BuffDef bdThalliumPoison;
+            public static BuffDef bdTimeStop;
+            public static BuffDef bdTimeStopDebuff;
         }
 
         public static class Elites
