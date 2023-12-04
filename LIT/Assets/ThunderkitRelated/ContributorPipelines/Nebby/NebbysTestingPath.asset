@@ -39,4 +39,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebc722807299b54bb8733330087d5e3, type: 3}
   m_Name: Constant
   m_EditorClassIdentifier: 
-  Value: D:\ProgramFiles\r2modman\DataFolder\RiskOfRain2\profiles\LITDev\BepInEx\plugins
+  Value: D:\ProgramFiles\r2modman\DataFolder\RiskOfRain2\profiles\SS2Dev\BepInEx\plugins

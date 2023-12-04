@@ -15,7 +15,7 @@ namespace LostInTransit.Modules
         public static Elites Instance { get; set; }
         public static MSEliteDef[] LoadedLITElites { get => LITContent.Instance.SerializableContentPack.eliteDefs as MSEliteDef[]; }
         public override R2APISerializableContentPack SerializableContentPack => LITContent.Instance.SerializableContentPack;
-        public override AssetBundle AssetBundle => LITAssets.Instance.MainAssetBundle;
+        public override AssetBundle AssetBundle => LITAssets.Instance.GetAssetBundle(LITBundle.Equips);
 
         public override void Initialize()
         {
