@@ -46,8 +46,9 @@ namespace LostInTransit
         {
             public static EliteDef Blighted;
             public static EliteDef Frenzied;
-            public static EliteDef Leeching;
+            public static EliteDef FrenziedHonor;
             public static EliteDef Volatile;
+            public static EliteDef VolatileHonor;
         }
 
         public static class Equipments
@@ -91,6 +92,11 @@ namespace LostInTransit
             public static ItemDef BeatingEmbryo;
             public static ItemDef FireBoots;
             public static ItemDef HitList;
+        }
+
+        public static class Artifacts
+        {
+            public static ArtifactDef Prestige;
         }
         public override string identifier => LITMain.GUID;
 
@@ -170,6 +176,10 @@ namespace LostInTransit
                 delegate
                 {
                     PopulateTypeFields(typeof(Items), ContentPack.itemDefs);
+                },
+                delegate
+                {
+                    PopulateTypeFields(typeof(Artifacts), ContentPack.artifactDefs);
                 }
             };
 

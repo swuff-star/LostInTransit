@@ -3,30 +3,111 @@ using Moonstorm;
 using Moonstorm.Components;
 using RoR2;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace LostInTransit.Buffs
 {
-    //N- Buffs no longer have an "AddBehavior(ref CharacterBody body, int stacks)" method
     public sealed class AffixBlighted : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixBlighted", LITBundle.Equips);
+        private static GameObject _blightedBodyAttachment;
 
-        //N- Buff behaviors now use moonstorm's base buff body behavior
-        //The class itself is abstract and its in Moonstorm.Components
+        public override void Initialize()
+        {
+            _blightedBodyAttachment = LITAssets.LoadAsset<GameObject>("BlightedBodyAttachment", LITBundle.Equips);
+        }
+
+        public class AffixBlightedBehaviour : BaseBuffBodyBehavior
+        {
+            [BuffDefAssociation]
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;
+            public BuffDef FirstEliteBuff => _first ? _second.eliteEquipmentDef.passiveBuffDef : null;
+            public BuffDef SecondEliteBuff => _second ? _second.eliteEquipmentDef.passiveBuffDef : null;
+
+            private EliteDef _first;
+            private EliteDef _second;
+            private NetworkedBodyAttachment _attachment;
+            private BlightedBodyAttachment _blightedAttachment;
+            private float _aiRandomizeEliteStopwatch;
+
+            private void Start()
+            {
+                _attachment = Instantiate(_blightedBodyAttachment).GetComponent<NetworkedBodyAttachment>();
+                _attachment.AttachToGameObjectAndSpawn(body.gameObject);
+                _blightedAttachment = _attachment.GetComponent<BlightedBodyAttachment>();
+                _aiRandomizeEliteStopwatch = LITContent.Equipments.AffixBlighted.cooldown;
+            }
+
+            public void RandomizeElites()
+            {
+                if (!NetworkServer.active)
+                    return;
+
+                _blightedAttachment.RandomizeElites();
+            }
+            
+            private void FixedUpdate()
+            {
+                UpdateIndividual(ref _first, _blightedAttachment.FirstIndex);
+                UpdateIndividual(ref _second, _blightedAttachment.SecondIndex);
+
+                //Makes ai blighted elites shuffle their elites every 60 seconds.
+                if(NetworkServer.active && !body.isPlayerControlled)
+                {
+                    _aiRandomizeEliteStopwatch -= Time.fixedDeltaTime;
+                    if(_aiRandomizeEliteStopwatch < 0)
+                    {
+                        _aiRandomizeEliteStopwatch = LITContent.Equipments.AffixBlighted.cooldown;
+                        RandomizeElites();
+                    }
+                }
+            }
+
+            private void UpdateIndividual(ref EliteDef eliteDef, EliteIndex index)
+            {
+                //If we dont have an eliteDef, and the incoming index is not none, update our current eliteDef
+                if(!eliteDef)
+                {
+                    if(index != EliteIndex.None)
+                    {
+                        eliteDef = EliteCatalog.GetEliteDef(index);
+                        if(NetworkServer.active && eliteDef.eliteEquipmentDef.passiveBuffDef)
+                        {
+                            body.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                        }
+                    }
+                }
+                else  //However, if we do have an elitedef, and the incoming inddex is different, update buffs.
+                {
+                    if (eliteDef.eliteIndex == index)
+                        return;
+
+                    if(NetworkServer.active)
+                        body.RemoveBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+    
+                    eliteDef = EliteCatalog.GetEliteDef(index);
+                    
+                    if(NetworkServer.active)
+                        body.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                }
+            }
+
+            private void OnDestroy()
+            {
+                if (_attachment)
+                    Destroy(_attachment.gameObject);
+
+                if (FirstEliteBuff)
+                    body.RemoveBuff(FirstEliteBuff);
+                if (SecondEliteBuff)
+                    body.RemoveBuff(SecondEliteBuff);
+            }
+        }
+
+        //Leaving this for the sake of seeing if we reimplement any of this shit later.
+        /*
         public class AffixBlightedBehavior : BaseBuffBodyBehavior, IStatItemBehavior
         {
-            //N- This attribute is needed for the system to automatically take care of adding the behavior or not depending on the buff stacks.
-            //It NEEDS to be static, return a buffDef, and have this attribute.
-            //If youre not sure wether the behavior needs to be on client, on server, or both, just set "useOnClient" and "useOnServer" to true.
-            [BuffDefAssociation(useOnClient = true, useOnServer = true)]
-            public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;
-
-
-            public BlightedController MasterBehavior { get => body.masterObject?.GetComponent<BlightedController>(); }
-
-            public BuffDef firstBuff;
-
-            public BuffDef secondBuff;
 
             private GameObject SmokeEffect = LITAssets.LoadAsset<GameObject>("BlightSmoke", LITBundle.Equips);
 
@@ -35,39 +116,15 @@ namespace LostInTransit.Buffs
 
             public void Start()
             {
-                MasterBehavior.enabled = true;
-                MasterBehavior.BuffBehavior = this;
-
                 body.onSkillActivatedServer += RemoveBuff;
             }
 
             private void RemoveBuff(GenericSkill obj = null)
             {
-                //if (body.hasCloakBuff)
-                    //body.RemoveBuff(RoR2Content.Buffs.Cloak);
-                //SpawnEffect();
+                if (body.hasCloakBuff)
+                    body.RemoveBuff(RoR2Content.Buffs.Cloak);
+                SpawnEffect();
                 stopwatch = 0f;
-            }
-
-            public void SetElites(int index1, int index2)
-            {
-                EliteDef firstElite = EliteCatalog.GetEliteDef((EliteIndex)index1);
-                EliteDef secondElite = EliteCatalog.GetEliteDef((EliteIndex)index2);
-
-                //Dont replace the buff if theyre a match.
-                if (firstBuff != firstElite.eliteEquipmentDef.passiveBuffDef)
-                {
-                    body.RemoveBuff(firstBuff);
-                    firstBuff = firstElite.eliteEquipmentDef.passiveBuffDef;
-                    body.AddBuff(firstBuff);
-                }
-
-                if (secondBuff != secondElite.eliteEquipmentDef.passiveBuffDef)
-                {
-                    body.RemoveBuff(secondBuff);
-                    secondBuff = secondElite.eliteEquipmentDef.passiveBuffDef;
-                    body.AddBuff(secondBuff);
-                }
             }
 
             public void FixedUpdate()
@@ -75,13 +132,13 @@ namespace LostInTransit.Buffs
                 stopwatch += Time.fixedDeltaTime;
                 if (stopwatch > checkTimer && !body.HasBuff(RoR2Content.Buffs.Cloak))
                 {
-                    //body.AddBuff(RoR2Content.Buffs.Cloak);
+                    body.AddBuff(RoR2Content.Buffs.Cloak);
                 }
                 else if (Util.CheckRoll(1))
                 {
                     stopwatch = 0; //Doing this to ensure they're visible for a moment
-                    //RemoveBuff();
-                    //SpawnEffect();
+                    RemoveBuff();
+                    SpawnEffect();
                 }
             }
 
@@ -93,7 +150,7 @@ namespace LostInTransit.Buffs
                     origin = body.transform.position
                 };
                 EffectManager.SpawnEffect(SmokeEffect, data, true);
-                //Util.PlaySound("BlightAppear", body.gameObject); too obnoxious
+                Util.PlaySound("BlightAppear", body.gameObject); too obnoxious
             }
 
             public void RecalculateStatsStart() { }
@@ -116,18 +173,13 @@ namespace LostInTransit.Buffs
 
             public void OnDestroy()
             {
-                if (MasterBehavior)
-                    MasterBehavior.enabled = false;
                 if (body)
                 {
-                    body?.RemoveBuff(firstBuff);
-                    body?.RemoveBuff(secondBuff);
-
                     body.onSkillActivatedServer -= RemoveBuff;
 
-                    //body?.RemoveBuff(RoR2Content.Buffs.Cloak);
+                    body?.RemoveBuff(RoR2Content.Buffs.Cloak);
                 }
             }
-        }
+        }*/
     }
 }
