@@ -12,7 +12,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Maximum Extra Damage per Lopper", ConfigDesc = "Maximum extra damage dealt by Ol' Lopper.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float lopperMaxBonus = 0.5f;
+        public static float lopperMaxBonus = 0.6f;
 
 
         public class LopperBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever

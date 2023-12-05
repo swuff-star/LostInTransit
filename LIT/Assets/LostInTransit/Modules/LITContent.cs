@@ -40,6 +40,9 @@ namespace LostInTransit
             public static BuffDef bdThalliumPoison;
             public static BuffDef bdTimeStop;
             public static BuffDef bdTimeStopDebuff;
+            public static BuffDef bdToxin;
+            public static BuffDef bdToxinCooldown;
+            public static BuffDef bdToxinReady;
         }
 
         public static class Elites
@@ -92,6 +95,8 @@ namespace LostInTransit
             public static ItemDef BeatingEmbryo;
             public static ItemDef FireBoots;
             public static ItemDef HitList;
+            public static ItemDef RazorPenny;
+            public static ItemDef TheToxin;
         }
 
         public static class Artifacts

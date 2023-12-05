@@ -22,7 +22,7 @@ namespace LostInTransit.Items
         public class RazorPennyBehavior : BaseItemBodyBehavior, IBodyStatArgModifier, IOnDamageDealtServerReceiver
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static ItemDef GetItemDef() => LITContent.Items.MysteriousVial;
+            public static ItemDef GetItemDef() => LITContent.Items.RazorPenny;
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
                 args.critAdd += pennyCrit * stack;
