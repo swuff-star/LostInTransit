@@ -2,22 +2,28 @@
 using Moonstorm;
 using RoR2;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    [DisabledContent]
     public class AffixBlighted : EliteEquipmentBase
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
             LITAssets.LoadAsset<MSEliteDef>("Blighted", LITBundle.Equips),
         };
+
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixBlighted", LITBundle.Equips);
-       // public override MSAspectAbilityDataHolder AspectAbilityData { get; } = LITAssets.LoadAsset<MSAspectAbilityDataHolder>("AbilityBlighted");
 
         [ConfigurableField(ConfigName = "Boss Blighted", ConfigDesc = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
         public static bool bossBlighted = false;
+
+
+        public override void Initialize()
+        {
+            HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.artifactDefs, LITAssets.LoadAsset<ArtifactDef>("Prestige", LITBundle.Artifacts));
+        }
 
         public override void AddBehavior(ref CharacterBody body, int stack)
         {
@@ -26,20 +32,16 @@ namespace LostInTransit.Equipments
 
         public override bool FireAction(EquipmentSlot slot)
         {
-            /*if (MSUtil.IsModInstalled("com.TheMysticSword.AspectAbilities"))
+            if(slot.TryGetComponent<Buffs.AffixBlighted.AffixBlightedBehaviour>(out var behaviour))
             {
-                var component = slot.characterBody.GetComponent<Buffs.AffixBlighted.AffixBlightedBehavior>();
-                if (component)
-                {
-                    component.MasterBehavior.Ability();
-                    return true;
-                }
-            }*/
+                behaviour.RandomizeElites();
+                return true;
+            }
             return false;
         }
 
-        //N- Due to the nature of us usiong "ItemBehavior" for equipments, Equipment behaviors still inherit from CharacterBody.ItemBehavior
-        //Chances of this changing are extremely minimal.
+        //Stat increase is done via having this equipment, to avoid huge stat changes when using wake of vultures
+        //plus, having this kind of power is pog, and if you get the drop then i think you've earned the powertrip -N
         public class BlightStatIncrease : CharacterBody.ItemBehavior
         {
             public void Start()

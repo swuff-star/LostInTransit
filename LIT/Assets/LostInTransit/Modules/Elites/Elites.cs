@@ -15,7 +15,7 @@ namespace LostInTransit.Modules
         public static Elites Instance { get; set; }
         public static MSEliteDef[] LoadedLITElites { get => LITContent.Instance.SerializableContentPack.eliteDefs as MSEliteDef[]; }
         public override R2APISerializableContentPack SerializableContentPack => LITContent.Instance.SerializableContentPack;
-        public override AssetBundle AssetBundle => LITAssets.Instance.MainAssetBundle;
+        public override AssetBundle AssetBundle => LITAssets.Instance.GetAssetBundle(LITBundle.Equips);
 
         public override void Initialize()
         {
@@ -23,7 +23,6 @@ namespace LostInTransit.Modules
             base.Initialize();
             LITLog.Info($"Initializing Elites...");
             GetInitializedEliteEquipmentBases();
-            OnListCreated += LateEliteSetup;
         }
 
         protected override IEnumerable<EliteEquipmentBase> GetInitializedEliteEquipmentBases()
@@ -33,48 +32,6 @@ namespace LostInTransit.Modules
                 .ToList()
                 .ForEach(elite => AddElite(elite));
             return null;
-        }
-
-        private void LateEliteSetup(ReadOnlyCollection<MSEliteDef> eliteCollection)
-        {
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Volatile", LITBundle.Equips)))
-            {
-                VolatileSpitebomb.BeginSetup();
-            }
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Blighted", LITBundle.Equips)))
-            {
-                Blight.BeginSetup();
-            }
-            if (eliteCollection.Contains(LITAssets.LoadAsset<MSEliteDef>("Leeching", LITBundle.Equips)))
-            {
-                RoR2Application.onLoad += () =>
-                {
-                    var grandpa = Resources.Load<GameObject>("prefabs/characterbodies/grandparentbody");
-                    if(grandpa)
-                    {
-                        var charLoc = grandpa.GetComponentInChildren<ChildLocator>();
-                        if(charLoc)
-                        {
-                            var headChild = charLoc.FindChild("Head");
-                            HG.ArrayUtils.ArrayAppend(ref charLoc.transformPairs, new ChildLocator.NameTransformPair
-                            {
-                                name = "RingBottom",
-                                transform = headChild.Find("head.2")
-                            });
-                            HG.ArrayUtils.ArrayAppend(ref charLoc.transformPairs, new ChildLocator.NameTransformPair
-                            {
-                                name = "RingMiddle",
-                                transform = headChild.Find("head.2/head.3")
-                            });
-                            HG.ArrayUtils.ArrayAppend(ref charLoc.transformPairs, new ChildLocator.NameTransformPair
-                            {
-                                name = "RingTop",
-                                transform = headChild.Find("head.2/head.3/head.4")
-                            });
-                        }
-                    }
-                };
-            }
         }
     }
 }

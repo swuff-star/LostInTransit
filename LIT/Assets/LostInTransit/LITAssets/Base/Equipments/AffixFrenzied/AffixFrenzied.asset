@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupModelPrefab: {fileID: 3561644326314829447, guid: c76aed5a451cc2d408a6426c829bf150,
     type: 3}
-  cooldown: 25
+  cooldown: 8
   nameToken: LIT_EQUIP_AFFIXFRENZIED_NAME
   pickupToken: LIT_EQUIP_AFFIXFRENZIED_PICKUP
   descriptionToken: LIT_EQUIP_AFFIXFRENZIED_DESC
@@ -23,8 +23,8 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   colorIndex: 5
   canDrop: 0
-  dropOnDeathChance: 0
-  canBeRandomlyTriggered: 1
+  dropOnDeathChance: 0.0025
+  canBeRandomlyTriggered: 0
   enigmaCompatible: 0
   isLunar: 0
   isBoss: 0

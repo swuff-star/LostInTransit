@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupModelPrefab: {fileID: 1621178573039501, guid: 8b177f650bd617c48b25949950220ecb,
     type: 3}
-  cooldown: 40
+  cooldown: 5
   nameToken: LIT_EQUIP_AFFIXVOLATILE_NAME
   pickupToken: LIT_EQUIP_AFFIXVOLATILE_PICKUP
   descriptionToken: LIT_EQUIP_AFFIXVOLATILE_DESC
@@ -23,8 +23,8 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   colorIndex: 5
   canDrop: 0
-  dropOnDeathChance: 0
-  canBeRandomlyTriggered: 1
+  dropOnDeathChance: 0.0025
+  canBeRandomlyTriggered: 0
   enigmaCompatible: 0
   isLunar: 0
   isBoss: 0

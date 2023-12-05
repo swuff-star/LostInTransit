@@ -5,160 +5,161 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using R2API;
+using EntityStates;
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
     public class AffixFrenzied : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixFrenzied", LITBundle.Equips);
 
-        public class AffixFrenziedBehavior : BaseBuffBodyBehavior, IStatItemBehavior
+        private static GameObject _blinkReadyEffect;
+        private static Type _stunState;
+        private static Type _shockState;
+        public override void Initialize()
         {
-            [BuffDefAssociation(useOnClient = true, useOnServer = true)]
+            base.Initialize();
+            _blinkReadyEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedTPReady", LITBundle.Equips);
+            _stunState = typeof(StunState);
+            _shockState = typeof(ShockState);
+        }
+
+        //Rewrote this because i hate my old code -N
+        public class AffixFrenziedBehaviour : BaseBuffBodyBehavior, IBodyStatArgModifier
+        {
+            [BuffDefAssociation()]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixFrenzied;
+            private InputBankTest _inputBank;
+            private EquipmentSlot _slot;
+            private SetStateOnHurt _stateOnHurt;
+            private EntityStateMachine _stateOnHurtTargetMachine;
+            private GameObject _blinkReadyInstance;
+            private float _aiCooldownStopwatch;
 
-            public float blinkCooldown = 8;
+            protected override void Awake()
+            {
+                base.Awake();
+                _inputBank = GetComponent<InputBankTest>();
+                _slot = GetComponent<EquipmentSlot>();
+                _stateOnHurt = GetComponent<SetStateOnHurt>();
 
-            public GameObject BlinkReadyEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedTPReady", LITBundle.Equips);
-
-            public GameObject AbilityEffect = LITAssets.LoadAsset<GameObject>("EffectFrenziedAbility", LITBundle.Equips);
-
-            public GameObject BlinkReadyInstance;
-
-            private GameObject AbilityInstance;
-
-            public bool blinkReady;
-
-            private bool doingAbility = false;
-
-            public float blinkStopwatch;
-
-            private float abilityStopwatch;
-
-            private float cdrMult = 1;
-
-            private NetworkIdentity networkIdentity;
-
-            private SetStateOnHurt setStateOnhurt;
+                if(_stateOnHurt)
+                {
+                    _stateOnHurtTargetMachine = _stateOnHurt.targetStateMachine;
+                }
+            }
 
             private void Start()
             {
-                body.RecalculateStats();
-                networkIdentity = gameObject.GetComponent<NetworkIdentity>();
-                gameObject.GetComponent<SetStateOnHurt>();
+                body.MarkAllStatsDirty();
             }
 
             private void FixedUpdate()
             {
-                blinkStopwatch += Time.fixedDeltaTime;
-                //abilityStopwatch += doingAbility ? Time.fixedDeltaTime : 0;
-
-                if (blinkStopwatch > blinkCooldown / cdrMult)
+                //AI case
+                if(!body.isPlayerControlled)
                 {
-                    blinkReady = true;
-                    //Debug.Log("network authority: " + Util.HasEffectiveAuthority(gameObject));
-                    if (!BlinkReadyInstance)
-                    {
-                        BlinkReadyInstance = Instantiate(BlinkReadyEffect, body.aimOriginTransform);
-                        if (BlinkReadyInstance)
-                            BlinkReadyInstance.transform.localScale *= body.radius;
-                    }
+                    AIFixedUpdate();
+                    UpdateVisuals(true);
+                    return;
                 }
-                /*if (abilityStopwatch >= 10)
-                {
-                    abilityStopwatch = 0;
-                    doingAbility = false;
-                    cdrMult = 1;
-                    body.RecalculateStats();
 
-                    if (AbilityInstance)
-                        Destroy(AbilityInstance);
-                }*/
+                //Player case
 
-                bool resetDash = body.healthComponent.isInFrozenState;
-                if (!resetDash)
+                //Dont upate visuals if our slot is not affix frenzied.
+                if (!HasAffix())
+                    return;
+
+                UpdateVisuals(false);
+            }
+
+            private void UpdateVisuals(bool isAI)
+            {
+                //Player case
+                if(!isAI)
                 {
-                    if (setStateOnhurt)
+                    if (_slot.stock > 0)
                     {
-                        Type state = setStateOnhurt.targetStateMachine.state.GetType();
-                        if (state == typeof(EntityStates.StunState) || state == typeof(EntityStates.ShockState))
+                        if(!_blinkReadyInstance)
                         {
-                            resetDash = true;
+                            _blinkReadyInstance = Instantiate(_blinkReadyEffect, body.aimOriginTransform ? body.aimOriginTransform : transform);
+                            _blinkReadyInstance.transform.localScale *= body.radius;
                         }
-                    }    
-                }    
-
-                if (resetDash)
-                {
-                    blinkStopwatch = 0f;
-                    blinkReady = false;
-                }    
-
-                if (Util.HasEffectiveAuthority(networkIdentity))
-                {
-                    /*if (blinkReady && body.isPlayerControlled && Input.GetKeyDown(LITConfig.frenziedBlink.Value))
-                        Blink();*/
-                    if (blinkReady && !body.isPlayerControlled)
-                        Blink();
-                }
-                else
-                {
-                    Debug.Log("No Network Identity found for Frenzying " + body.baseNameToken + ". Canceling dash.");
-                    blinkReady = false;
                     }
+                    else if (_blinkReadyInstance)
+                        Destroy(_blinkReadyInstance);
+                    return;
+                }
+
+                //AI case
+                bool hasAffix = HasAffix();
+                if(hasAffix && _slot.stock > 0 || !hasAffix && _aiCooldownStopwatch < 0)
+                {
+                    if(!_blinkReadyInstance)
+                    {
+                        _blinkReadyInstance = Instantiate(_blinkReadyEffect, body.aimOriginTransform ? body.aimOriginTransform : transform);
+                        _blinkReadyInstance.transform.localScale *= body.radius;
+                    }
+                }
+                else if(_blinkReadyInstance)
+                    Destroy(_blinkReadyInstance);
             }
 
-            //Todo: turn this ESM stuff into probably a networked body attachment?
-            private void Blink()
+            //Related code is ran only if the body is controlled dby an AI
+            private void AIFixedUpdate()
             {
-                
-                var bodyStateMachine = EntityStateMachine.FindByCustomName(body.gameObject, "Body");
-                if (body.healthComponent.alive && bodyStateMachine)
+                //AI Case, we check the dedicated buff related cooldown.
+                if (!(_aiCooldownStopwatch < 0))
+                    _aiCooldownStopwatch -= Time.fixedDeltaTime;
+
+                if (_aiCooldownStopwatch <= 0 && Util.HasEffectiveAuthority(gameObject))
                 {
-                    //Todd Howard Voice: It just works.
-                    bodyStateMachine.SetNextState(new EntityStates.Elites.FrenziedBlink());
-                    blinkStopwatch = 0;
-                    blinkReady = false;
+                    //If somehow the ai has more equip stocks, we can make themm tp every 2 seconds as long as they have stocks, idk soundsd funny lmao -N
+                    if (HasAffix() && _slot.stock > 0)
+                    {
+                        if(NetworkServer.active)
+                            _slot.ExecuteIfReady();
+                        _aiCooldownStopwatch = 2;
+                    }
+                    else if(!HasAffix()) //We dont have the affix itself, teleport anyways and enter buff specific cooldown
+                    {
+                        Equipments.AffixFrenzied.FireActionStatic(gameObject);
+                        _aiCooldownStopwatch = LITContent.Equipments.AffixFrenzied.cooldown;
+                    }
+                }
+
+                bool isFrozen = body.healthComponent.isInFrozenState;
+                bool isStunned = false;
+                if (_stateOnHurt)
+                {
+                    Type currentTargetMachineState = _stateOnHurtTargetMachine.state.GetType();
+                    isStunned = currentTargetMachineState == _stunState || currentTargetMachineState == _shockState;
+                }
+
+                if (isFrozen || isStunned)
+                {
+                    _aiCooldownStopwatch = 4;
                 }
             }
 
-            internal void Ability()
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                /*doingAbility = true;
-                cdrMult = 2;
-                AbilityInstance = Instantiate(AbilityEffect, body.aimOriginTransform);
-                if (AbilityInstance)
-                    AbilityInstance.transform.localScale *= body.bestFitRadius;
-                body.RecalculateStats();*/
+                args.moveSpeedMultAdd += 0.5f;
+                args.attackSpeedMultAdd += 0.5f;
+
+                args.cooldownMultAdd -= 0.5f;
             }
 
-            public void RecalculateStatsStart() { }
-            public void RecalculateStatsEnd()
+            private bool HasAffix()
             {
-                body.moveSpeed *= 1.5f;
-                body.attackSpeed *= 1.5f;
-
-                //Ability Innactive = 0.5f, 50% cdr
-                //Ability Active = 0.75f, 75% cdr
-                var cooldownModifier = 0.5f - (0.5f / cdrMult * (cdrMult - 1));
-
-                if (body.skillLocator.primary)
-                    body.skillLocator.primary.cooldownScale *= cooldownModifier;
-                if (body.skillLocator.secondary)
-                    body.skillLocator.secondary.cooldownScale *= cooldownModifier;
-                if (body.skillLocator.utility)
-                    body.skillLocator.utility.cooldownScale *= cooldownModifier;
-                if (body.skillLocator.special)
-                    body.skillLocator.special.cooldownScale *= cooldownModifier;
+                return _slot && _slot.equipmentIndex == LITContent.Equipments.AffixFrenzied.equipmentIndex;
             }
 
             private void OnDestroy()
             {
-                if (BlinkReadyInstance)
-                    Destroy(BlinkReadyInstance);
-                if (AbilityInstance)
-                    Destroy(AbilityInstance);
+                if (_blinkReadyInstance)
+                    Destroy(_blinkReadyInstance);
             }
         }
     }

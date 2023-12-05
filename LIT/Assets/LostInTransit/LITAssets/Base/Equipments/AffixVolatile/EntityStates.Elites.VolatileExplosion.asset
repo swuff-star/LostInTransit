@@ -13,23 +13,19 @@ MonoBehaviour:
   m_Name: EntityStates.Elites.VolatileExplosion
   m_EditorClassIdentifier: 
   targetType:
-    assemblyQualifiedName: EntityStates.Elites.VolatileExplosion, LostInTransit,
+    assemblyQualifiedName: EntityStates.AffixVolatile.SelfDestruct, LostInTransit,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   serializedFieldsCollection:
     serializedFields:
     - fieldName: baseDuration
       fieldValue:
-        stringValue: 1
+        stringValue: 5
         objectValue: {fileID: 0}
     - fieldName: chargingEffectPrefab
       fieldValue:
         stringValue: 
         objectValue: {fileID: 5621309772430644042, guid: ee666236100bd5b45ada8fbbb3bad19d,
           type: 3}
-    - fieldName: explosionEffectPrefab
-      fieldValue:
-        stringValue: 
-        objectValue: {fileID: 0}
     - fieldName: chargingSoundString
       fieldValue:
         stringValue: Play_item_use_BFG_charge
@@ -38,15 +34,11 @@ MonoBehaviour:
       fieldValue:
         stringValue: Play_Jellyfish_detonate
         objectValue: {fileID: 0}
-    - fieldName: explosionDamageCoef
-      fieldValue:
-        stringValue: 12
-        objectValue: {fileID: 0}
     - fieldName: baseExplosionRadius
       fieldValue:
         stringValue: 10
         objectValue: {fileID: 0}
-    - fieldName: explosionForce
+    - fieldName: baseForce
       fieldValue:
-        stringValue: 5000
+        stringValue: 1000
         objectValue: {fileID: 0}

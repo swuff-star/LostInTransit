@@ -1,63 +1,70 @@
 ﻿using LostInTransit.Equipments;
+using System.Collections.Generic;
 using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using System.Collections.ObjectModel;
+using LostInTransit.Elites;
 
 namespace LostInTransit.Components
 {
-    public class BlightDirector : NetworkBehaviour
+    public class BlightDirector : MonoBehaviour
     {
+        public const float MAX_SPAWN_RATE = 1f;
+        public const float MIN_TIME_BEFORE_KILLS_COUNT = 1200f;
+        public const float SPAWN_RATE_PER_MONSTER_KILLED = 0.001f;
+
         public static BlightDirector Instance { get; private set; }
 
-        private PlayerCharacterMasterController[] PlayerCharMasters { get => PlayerCharacterMasterController.instances.ToArray(); }
+        ReadOnlyCollection<PlayerCharacterMasterController> PlayerCharacterMasters => PlayerCharacterMasterController.instances;
 
-        public DifficultyDef RunDifficulty { get => DifficultyCatalog.GetDifficultyDef(Run.instance.selectedDifficulty); }
+        public Run Run { get; private set; }
 
-        public const float maxSpawnRate = 1f;
+        public DifficultyDef RunDifficulty => DifficultyCatalog.GetDifficultyDef(Run.selectedDifficulty);
 
-        public const float minTimeBeforeKillsCount = 1200f; //This roughly causes kills to only count past 20 minutes in drizzle.
+        public float MaxSpawnRate => (MAX_SPAWN_RATE * RunDifficulty.scalingValue) + GetBeadCount();
 
-        public float MaxSpawnRateWithDiffCoef { get => (1f * RunDifficulty.scalingValue) + GetTotalBeadCount(); }
+        public float MinTimeBeforeKillsCount => (MIN_TIME_BEFORE_KILLS_COUNT / RunDifficulty.scalingValue);
 
-        public float MinTimeBeforeKillsCountWithDiffCoef { get => (minTimeBeforeKillsCount / RunDifficulty.scalingValue); }
-
-        [SyncVar]
-        public float SpawnRate = 0;
-
-
-        public const float spawnRatePerMonsterKilled = 0.001f;
-
-        [SyncVar]
-        private ulong monstersKilled;
-
-        private bool IsPrestigeArtifactEnabled
+        public float CurrentSpawnRate { get; private set; }
+        public ulong MonstersKilled
         {
             get
             {
-                var blightArtifact = LITAssets.LoadAsset<ArtifactDef>("Prestige", LITBundle.Artifacts);
-                if (blightArtifact)
+                return _monstersKilled;
+            }
+            set
+            {
+                if(_monstersKilled != value)
                 {
-                    return RunArtifactManager.instance.IsArtifactEnabled(blightArtifact);
+                    _monstersKilled = (ulong)Mathf.Max(0, value);
+                    RecalculateSpawnChance();
                 }
-                return false;
             }
         }
+        private ulong _monstersKilled;
+        public bool IsPrestigeActive => RunArtifactManager.instance.IsArtifactEnabled(LITContent.Artifacts.Prestige);
+        public bool IsHonorActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef);
+        public bool IsSwarmsActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.swarmsArtifactDef);
 
-        private bool IsHonorArtifactEnabled
+        private SceneDef _moonScene;
+        private SceneDef _moon2Scene;
+
+        private void Awake()
         {
-            get
+            if (!BlightedElites.Initialized)
             {
-                return RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef);
+                Destroy(this);
+                return;
             }
+
+            _moonScene = SceneCatalog.GetSceneDefFromSceneName("moon");
+            _moon2Scene = SceneCatalog.GetSceneDefFromSceneName("moon2");
+            Run = GetComponentInParent<Run>();
         }
 
-        private SceneDef CommencementScene { get => SceneCatalog.GetSceneDefFromSceneName("moon2"); }
-
-        private EquipmentIndex BlightedEquipIndex { get => LITAssets.LoadAsset<EquipmentDef>("AffixBlighted", LITBundle.Equips).equipmentIndex; }
-
-        void Start()
+        private void Start()
         {
             Instance = this;
             RecalculateSpawnChance();
@@ -66,117 +73,153 @@ namespace LostInTransit.Components
             CharacterBody.onBodyStartGlobal += TrySpawn;
         }
 
-        [Server]
-        private void OnEnemyKilled(DamageReport obj)
+        //Who knew fucking guard clauses where good? -N
+        private void TrySpawn(CharacterBody obj)
         {
-            if (Run.instance.GetRunStopwatch() > MinTimeBeforeKillsCountWithDiffCoef)
-            {
-                var victimBody = obj.victimBody;
-                var attackerBody = obj.attackerBody;
-                if (victimBody && attackerBody)
-                {
-                    var victimTeamComponent = victimBody.teamComponent;
-                    if (victimTeamComponent)
-                    {
-                        if (victimTeamComponent.teamIndex == TeamIndex.Monster || victimTeamComponent.teamIndex == TeamIndex.Lunar)
-                        {
-                            if (attackerBody.isPlayerControlled && SpawnRate < MaxSpawnRateWithDiffCoef)
-                            {
-                                monstersKilled += 1 * ((ulong)Run.instance?.loopClearCount + 1);
-                                RecalculateSpawnChance();
-                            }
-                        }
-                    }
-                }
-            }
+            if (!Stage.instance)
+                return;
+
+            var checkRoll = Util.CheckRoll(CurrentSpawnRate);
+
+            if (!checkRoll)
+                return;
+
+            var currentSceneDef = Stage.instance.sceneDef;
+
+            if (currentSceneDef == _moon2Scene || currentSceneDef == _moonScene)
+                return;
+
+            var teamIndex = obj.teamComponent.teamIndex;
+            if (!IsEnemyTeam(teamIndex))
+                return;
+
+            bool canChampionBeBlighted = IsHonorActive || true; //change true constant to config check
+            if (!canChampionBeBlighted && obj.isChampion)
+                return;
+
+            MakeBlighted(obj);
         }
 
-        private void TrySpawn(CharacterBody body)
+        private void OnEnemyKilled(DamageReport obj)
         {
-            var stageNotCommencement = (Stage.instance?.sceneDef?.sceneDefIndex != CommencementScene.sceneDefIndex);
-            var isEnemy = (body.teamComponent?.teamIndex != TeamIndex.Player);
-            var hasComponent = ((bool)body.master?.GetComponent<BlightedController>());
-            var isntChampion = !body.isChampion;
-
-            if (IsHonorArtifactEnabled || AffixBlighted.bossBlighted)
+            if(!(Run.GetRunStopwatch() > MinTimeBeforeKillsCount))
             {
-                if (stageNotCommencement && isEnemy && hasComponent)
-                {
-                    if (Util.CheckRoll(SpawnRate))
-                    {
-                        MakeBlighted(body);
-                    }   //Commenting this out as right now, EVERYTHING is becoming Blighted; hopefully this serves as a temp fix.
-                }
+                return;
             }
 
-            else if (stageNotCommencement && isEnemy && hasComponent && isntChampion)
-            {
-                if (Util.CheckRoll(SpawnRate))
-                {
-                    MakeBlighted(body);
-                }
-            }
+            if (!(CurrentSpawnRate < MaxSpawnRate))
+                return;
+
+            var victimBody = obj.victimBody;
+            var attackerBody = obj.attackerBody;
+
+            if (!victimBody || !attackerBody)
+                return;
+
+            var victimTeam = obj.victimTeamIndex;
+            if (!IsEnemyTeam(victimTeam))
+                return;
+
+            var attackerTeam = obj.attackerTeamIndex;
+            if (attackerTeam != TeamIndex.Player)
+                return;
+
+            MonstersKilled += 1 * ((ulong)Run.loopClearCount + 1);
         }
 
         private void MakeBlighted(CharacterBody body)
         {
-            if (body.master?.GetComponent<BlightedController>())
+            MonstersKilled -= CalculateCostToTurnBlighted(body);
+
+            var inventory = body.inventory;
+
+            if (inventory && NetworkServer.active)
             {
-                monstersKilled -= 10;
-                var inventory = body.inventory;
-
-                inventory.SetEquipmentIndex(BlightedEquipIndex);
-                body.isElite = true;
-                body.GetComponent<CharacterMaster>().isBoss = true;
-                
-
+                inventory.SetEquipmentIndex(LITContent.Equipments.AffixBlighted.equipmentIndex);
                 inventory.RemoveItem(RoR2Content.Items.BoostHp, inventory.GetItemCount(RoR2Content.Items.BoostHp));
                 inventory.RemoveItem(RoR2Content.Items.BoostDamage, inventory.GetItemCount(RoR2Content.Items.BoostDamage));
+            }
 
-                DeathRewards rewards = body.GetComponent<DeathRewards>();
-                if (rewards)
-                {
-                    rewards.expReward *= 7;
-                    rewards.goldReward *= 7;
-                }
+            DeathRewards deathRewards = body.GetComponent<DeathRewards>();
+            if(deathRewards)
+            {
+                deathRewards.expReward *= 7;
+                deathRewards.goldReward *= 7;
             }
         }
 
-        [Server]
-        private void RecalculateSpawnChance()
+        private ulong CalculateCostToTurnBlighted(CharacterBody body)
         {
-            if (IsPrestigeArtifactEnabled)
+            ulong cost = 5;
+            switch(body.hullClassification)
             {
-                SpawnRate = 10f;
-                return;
+                case HullClassification.Human:
+                    break;
+                case HullClassification.Golem:
+                    cost += 5;
+                    break;
+                case HullClassification.BeetleQueen:
+                    cost += 10;
+                    break;
             }
 
-            float baseSpawnChance = 0;
-            if (RunDifficulty.scalingValue > 3)
-                baseSpawnChance = 0.1f * (RunDifficulty.scalingValue - 2);
-
-            float monstersKilledModifier = 0;
-            int divisor = 1;
-            if (RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.Swarms))
-                divisor = 2;
-            monstersKilledModifier = (monstersKilled * spawnRatePerMonsterKilled * RunDifficulty.scalingValue) / divisor;
-
-            float finalSpawnChance = baseSpawnChance + monstersKilledModifier;
-            SpawnRate = Mathf.Min(finalSpawnChance, MaxSpawnRateWithDiffCoef);
+            if(body.isChampion)
+            {
+                cost += 10;
+            }
+            return cost;
         }
 
-        private float GetTotalBeadCount()
+        private int GetBeadCount()
         {
-            float sharedBeadCount = 0;
-            for (int i = 0; i < PlayerCharMasters.Length; i++)
+            int sharedBeadCount = 0;
+            for (int i = 0; i < PlayerCharacterMasters.Count; i++)
             {
-                var inventory = PlayerCharMasters[i].master?.inventory;
+                var playableMaster = PlayerCharacterMasters[i];
+                if (!playableMaster)
+                    continue;
+
+                var master = playableMaster.master;
+                if (!master)
+                    continue;
+
+                var inventory = master.inventory;
+                if (!inventory)
+                    continue;
+
                 sharedBeadCount += inventory.GetItemCount(RoR2Content.Items.LunarTrinket);
             }
             return sharedBeadCount;
         }
+        private bool IsEnemyTeam(TeamIndex index)
+        {
+            return index == TeamIndex.Monster || index == TeamIndex.Lunar || index == TeamIndex.Void;
+        }
 
-        void OnDestroy()
+        private void RecalculateSpawnChance()
+        {
+            if (IsPrestigeActive)
+            {
+                CurrentSpawnRate = 10f;
+                return;
+            }
+
+            float baseSpawnChance = 0;
+            var runScalingValue = RunDifficulty.scalingValue;
+            if(RunDifficulty.scalingValue > 3)
+            {
+                baseSpawnChance = 0.1f * (runScalingValue - 2);
+            }
+
+            float monstersKilledModifier = 0;
+            int divisor = IsSwarmsActive ? 2 : 1;
+            monstersKilledModifier = (MonstersKilled * SPAWN_RATE_PER_MONSTER_KILLED * runScalingValue) / divisor;
+
+            float finalSpawnChance = baseSpawnChance + monstersKilledModifier;
+            CurrentSpawnRate = Mathf.Min(finalSpawnChance, MaxSpawnRate);
+        }
+
+        private void OnDestroy()
         {
             GlobalEventManager.onCharacterDeathGlobal -= OnEnemyKilled;
             CharacterBody.onBodyStartGlobal -= TrySpawn;
