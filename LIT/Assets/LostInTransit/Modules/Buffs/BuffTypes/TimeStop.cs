@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace LostInTransit.Buffs
 {
-    //[DisabledContent]
+    [DisabledContent]
     public class TimeStop : BuffBase
     {
         public static GameObject buffWard = LITAssets.LoadAsset<GameObject>("TimeStopSphere", LITBundle.Equips);

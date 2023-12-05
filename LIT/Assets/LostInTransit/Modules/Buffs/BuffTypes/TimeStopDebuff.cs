@@ -6,7 +6,7 @@ using Moonstorm.Components;
 
 namespace LostInTransit.Buffs
 {
-    //[DisabledContent]
+    [DisabledContent]
     public class TimeStopDebuff : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdTimeStopDebuff", LITBundle.Equips);
