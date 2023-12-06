@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: FireShield
   m_EditorClassIdentifier: 
-  tier: 0
+  deprecatedTier: 0
+  _itemTierDef: {fileID: 0}
   nameToken: LIT_ITEM_FIRESHIELD_NAME
   pickupToken: LIT_ITEM_FIRESHIELD_PICKUP
   descriptionToken: LIT_ITEM_FIRESHIELD_DESC
   loreToken: LIT_ITEM_FIRESHIELD_LORE
   unlockableDef: {fileID: 0}
-  pickupModelPrefab: {fileID: 0}
+  pickupModelPrefab: {fileID: 1527599707885345219, guid: a2611264a0414564db9aa1edbeb6e6cd,
+    type: 3}
   pickupIconSprite: {fileID: 0}
   hidden: 0
   canRemove: 1
