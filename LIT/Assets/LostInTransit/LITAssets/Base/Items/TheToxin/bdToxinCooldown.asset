@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: bdToxinCooldown
   m_EditorClassIdentifier: 
   iconPath: 
-  iconSprite: {fileID: 21300000, guid: 5aaee06a3de74df4685e441332507a66, type: 3}
+  iconSprite: {fileID: 21300000, guid: 90a90e0645507064ebdd228d0927be52, type: 3}
   buffColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
   canStack: 0
   eliteDef: {fileID: 0}
-  isDebuff: 0
-  isCooldown: 0
+  isDebuff: 1
+  isCooldown: 1
   isHidden: 0
   startSfx: {fileID: 0}

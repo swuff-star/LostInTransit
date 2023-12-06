@@ -5,6 +5,7 @@ using Moonstorm.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using RoR2.Orbs;
 
 namespace LostInTransit.Buffs
 {
@@ -16,7 +17,9 @@ namespace LostInTransit.Buffs
         {
             [BuffDefAssociation(useOnClient = true, useOnServer = true)]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdToxinReady;
-            //public static GameObject rangeIndicator = LITAssets.LoadAsset<GameObject>("ToxinIndicator", LITBundle.Items);
+            public static GameObject rangeIndicator = LITAssets.LoadAsset<GameObject>("ToxinIndicator", LITBundle.Items);
+            private GameObject indicatorInstance;
+            private WardUtils indicatorUtils;
             private SphereSearch search;
             private List<HurtBox> hits;
             private float checkTime = 0.333f;
@@ -29,6 +32,11 @@ namespace LostInTransit.Buffs
                 search.mask = LayerIndex.entityPrecise.mask;
                 search.radius = Items.TheToxin.toxinRadius;
                 AttemptInfect();
+
+                indicatorInstance = Instantiate(rangeIndicator);
+                indicatorUtils = indicatorInstance.GetComponent<WardUtils>();
+                indicatorUtils.radius = Items.TheToxin.toxinRadius * 2;
+                indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(gameObject);
             }
 
             public void FixedUpdate()
@@ -42,6 +50,12 @@ namespace LostInTransit.Buffs
                         AttemptInfect();
                     }    
                 }
+            }
+
+            public void OnDestroy()
+            {
+                if (indicatorUtils != null)
+                    indicatorUtils.shouldDestroy = true;
             }
 
             public void AttemptInfect()
@@ -75,7 +89,15 @@ namespace LostInTransit.Buffs
 
                 if (closestBody != null)
                 {
-                    closestBody.AddTimedBuff(LITContent.Buffs.bdToxin, Items.TheToxin.toxinDur);
+                    //closestBody.AddTimedBuff(LITContent.Buffs.bdToxin, Items.TheToxin.toxinDur);
+                    Orbs.ToxinOrb toxinOrb = new Orbs.ToxinOrb();
+                    toxinOrb.origin = transform.position;
+                    toxinOrb.target = closestBody.mainHurtBox;
+                    OrbManager.instance.AddOrb(toxinOrb);
+
+                    if (indicatorUtils != null)
+                        indicatorUtils.shouldDestroy = true;
+
                     body.RemoveBuff(LITContent.Buffs.bdToxinReady);
                     body.AddTimedBuff(LITContent.Buffs.bdToxinCooldown, Items.TheToxin.toxinCD);
                 }

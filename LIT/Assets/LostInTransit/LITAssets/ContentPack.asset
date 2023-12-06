@@ -25,6 +25,7 @@ MonoBehaviour:
   - {fileID: 4810695085588704024, guid: fad1a98848b7e174699f831765a68cc9, type: 3}
   - {fileID: 5695429952154084445, guid: 59e590ab3e4cbaf4892a4e07d6d448e2, type: 3}
   - {fileID: 3974588144608092081, guid: e7c3259b600124f41a257da22105fa03, type: 3}
+  - {fileID: 1531237222543017, guid: f87bb1f441ad4ba4bb2c508823566d44, type: 3}
   skillDefs:
   - {fileID: 11400000, guid: c8359a1b3e75d17439c0199cfba31fcf, type: 2}
   - {fileID: 11400000, guid: 24d36c9658c9da946ab2292b7b40eebb, type: 2}

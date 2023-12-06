@@ -21,7 +21,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Toxin Infection Range", ConfigDesc = "Range of which enemies will become infected by The Toxin.")]
         [TokenModifier(token, StatTypes.Default, 2)]
-        public static float toxinRadius = 4f;
+        public static float toxinRadius = 8f;
 
         [ConfigurableField(ConfigName = "Toxin Armor Debuff", ConfigDesc = "Armor removed by the debuff inflicted by The Toxin.")]
         [TokenModifier(token, StatTypes.Default, 4)]
@@ -37,6 +37,15 @@ namespace LostInTransit.Items
                 if (!body.HasBuff(LITContent.Buffs.bdToxinCooldown) && !body.HasBuff(LITContent.Buffs.bdToxinReady))
                 {
                     body.SetBuffCount(LITContent.Buffs.bdToxinReady.buffIndex, 1);
+                }
+            }
+
+            public void OnDestroy()
+            {
+                if (body.GetItemCount(LITContent.Items.TheToxin) == 0)
+                {
+                    body.SetBuffCount(LITContent.Buffs.bdToxinReady.buffIndex, 0);
+                    body.SetBuffCount(LITContent.Buffs.bdToxinCooldown.buffIndex, 0);
                 }
             }
         }

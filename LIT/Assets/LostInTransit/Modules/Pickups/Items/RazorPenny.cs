@@ -12,7 +12,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Crit per Razor Penny", ConfigDesc = "Extra Crit added per penny.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        public static float pennyCrit = 6.5f;
+        public static float pennyCrit = 4f;
 
         [ConfigurableField(ConfigName = "Gold per Crit", ConfigDesc = "Gold gained on crit.")]
         [TokenModifier(token, StatTypes.Default, 1)]

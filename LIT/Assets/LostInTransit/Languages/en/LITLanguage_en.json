@@ -53,6 +53,14 @@
 		"LIT_ITEM_SPROUTINGEGG_PICKUP": "Attach leeching seeds to an enemy.",
 		"LIT_ITEM_SPROUTINGEGG_DESC": "Attach <style=cIsHealing>leeching seeds</style> to up to <style=cIsUtility>1</style> <style=cStack>(+1 per stack)</style> enemy, <style=cIsDamage>damaging</style> them and <style=cIsHealing>healing</style> you for <style=cIsHealing>15%</style> damage per second.",
 
+		"LIT_ITEM_RAZORPENNY_NAME": "Razor Penny",
+		"LIT_ITEM_RAZORPENNY_PICKUP": "Slightly increase 'Critical Strike' chance, and 'Critical Strikes' earn money.",
+		"LIT_ITEM_RAZORPENNY_DESC": "Gain <style=cIsDamage>{0}%</style> <style=cStack>(+{0}% per stack)</style> <style=cIsDamage>critical chance</style>, and earn <style=cIsUtility>${1}</style> <style=cStack>(+${1} per stack, scaling over time)</style> when landing a <style=cIsDamage>critical strike</style>.",
+
+		"LIT_ITEM_THETOXIN_NAME": "The Toxin",
+		"LIT_ITEM_THETOXIN_PICKUP": "Infected!",
+		"LIT_ITEM_THETOXIN_DESC": "<style=cIsHealth>Infect</style> nearby enemies for <style=cIsDamage>{1}%</style> seconds, causing them to lose <style=cIsDamage>{4}%</style> <style=cStack>(+{4}% per stack)</style> <style=cIsDamage>armor</style>.",
+
 		"LIT_ITEM_ARMSRACE_NAME": "Arms Race",
 		"LIT_ITEM_ARMSRACE_PICKUP": "Using interactables summons temporary drones. Drones are equipped with gated shields.",
 		"LIT_ITEM_ARMSRACE_DESC": "Purchased <style=cIsUtility>drones</style> are given <style=cIsHealing>8%</style> <style=cStack>(+8% per stack)</style> of their health as <style=cIsHealing>shield</style>, as well as a <style=cIsDamage>9%</style> <style=cStack>(+9% per stack)</style> chance to fire <style=cIsDamage>mortars</style> and <style=cIsDamage>missiles</style>.",
@@ -250,6 +258,6 @@
 		"LIT_ROBOMANDO_UTILITY_DESCRIPTION": "Attempt to <style=cIsUtility>dive forward</style> a small distance. You <style=cIsUtility>gain 200 armor</style> early in the maneuver.",
 
 		"LIT_ROBOMANDO_SPECIAL_NAME": "Re-Wire",
-		"LIT_ROBOMANDO_SPECIAL_DESCRIPTION":  "Re-wire a mechanical object, <style=cIsUtility>activating it for free</style>."
+		"LIT_ROBOMANDO_SPECIAL_DESCRIPTION": "Re-wire a mechanical object, <style=cIsUtility>activating it for free</style>."
 	}
 }

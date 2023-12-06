@@ -19,7 +19,8 @@ MonoBehaviour:
   descriptionToken: LIT_ITEM_THETOXIN_DESC
   loreToken: LIT_ITEM_THETOXIN_LORE
   unlockableDef: {fileID: 0}
-  pickupModelPrefab: {fileID: 0}
+  pickupModelPrefab: {fileID: 7872352530661880419, guid: f5426c0ba6fd65e4e842b30d502e72c8,
+    type: 3}
   pickupIconSprite: {fileID: 21300000, guid: 989d66e6d753c6e488af5ad08edf7166, type: 3}
   hidden: 0
   canRemove: 1
