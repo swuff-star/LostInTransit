@@ -66,6 +66,8 @@ namespace LostInTransit
             public static EquipmentDef GiganticAmethyst;
             public static EquipmentDef GoldPlatedBomb;
             public static EquipmentDef Thqwib;
+            public static EquipmentDef Prescriptions;
+            public static EquipmentDef UnstableWatch;
         }
 
         public static class Items

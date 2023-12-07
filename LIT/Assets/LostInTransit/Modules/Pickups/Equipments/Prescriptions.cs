@@ -1,4 +1,5 @@
-﻿using Moonstorm;
+﻿using LostInTransit.Items;
+using Moonstorm;
 using RoR2;
 
 namespace LostInTransit.Equipments
@@ -10,7 +11,8 @@ namespace LostInTransit.Equipments
 
         public override bool FireAction(EquipmentSlot slot)
         {
-            slot.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdMeds.buffIndex, 12);
+            float timeMult = BeatingEmbryoManager.Procs(slot) ? 1 : 2;
+            slot.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdMeds.buffIndex, 12 * timeMult);
             return true;                                                 
         }                                                                       
     }                                                                           

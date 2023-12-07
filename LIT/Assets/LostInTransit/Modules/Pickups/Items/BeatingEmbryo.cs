@@ -10,23 +10,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using EntityStates.GoldGat;
+using UnityEngine.Networking;
+using EntityStates.QuestVolatileBattery;
 
 namespace LostInTransit.Items
 {
-    /*TODO:
-     * > FireBallDash (Volcanic Egg) and Gateway (Eccentric Vase) are on blacklist, find unique upgrades (On blacklist because they use vehicles.)
-     * > BFG (Preon) just lowers how fast the bfg projectile appears, must figure out how to fire a XIConstruct death laser.}
-     * > Primordial cube may do nothing if doubled, need more testing
-     * > Executive card may do nothing if doubled, needs more testing.
-     * > Recycler may do nothing if doubled, needs more testing.
-     * > Gnarled Woodsprite needs testing.
-     * > Radar Scanner still useless
-     * > Remote Caffeinator seems to spawn 2 vending machines, only one seems interactable? needs more testing
-     * > Make the upgraded royal capacitor spawn a AOE effect alongside the lightning strike
-     * > The Crowdfunder does nothing, needs more testing
-     * > Add more funny messages to the used trophy hunter's tricorn
-     */
-
     /*
      * The following equipments dont get any special methods/hooks because using the equipment memthod twice yeilds the "Improved" result.
      * 
@@ -36,19 +24,25 @@ namespace LostInTransit.Items
      * FireMolotov
      * 
      * The following equipments dont have any special features ddue to being difficult to implement.
-     * FireFireballDash
+     * AffixBlighted
+     * AffixFrenzied
+     * AffixVolatile
+     * 
+     * Other LIT Equipment have their embryo interaction codeed in their equipment class.
      */
 
     public class BeatingEmbryo : ItemBase
     {
         public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeatingEmbryo", LITBundle.Items);
 
-        public string[] bossHunterOptions = new string[] { "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT" };
+        private const string VANILLA_BBOSSHUNTER_CONSUMED_TOKEN = "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT";
+        public string[] bossHunterOptions = new string[] { VANILLA_BBOSSHUNTER_CONSUMED_TOKEN, "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_1", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_2", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_3", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_4" };
 
         public override void Initialize()
         {
             //Crit On use special buff
             HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.buffDefs, LITAssets.LoadAsset<BuffDef>("bdHiddenCritDamage", LITBundle.Items));
+            ProcTrackerBeatingEmbryoBehaviour._bfg10kController = LITAssets.LoadAsset<GameObject>("BFG10KBodyAttachment", LITBundle.Items);
             RecalculateStatsAPI.GetStatCoefficients += (body, args) =>
             {
                 if (body.GetBuffCount(LITContent.Buffs.bdHiddenCritDamage) > 0)
@@ -61,7 +55,7 @@ namespace LostInTransit.Items
             //commmented out hooks are methods that are almost finished, but produce invalid IL
             RoR2Application.onLoad += () =>
             {
-                On.RoR2.EquipmentSlot.FireBfg += FireBFG; //*
+                BeatingEmbryoManager.AddEmbryoEffect(RoR2Content.Equipment.BFG, FireBFG);
                 IL.RoR2.EquipmentSlot.FireBlackhole += FireBlackHole; //*
                 IL.RoR2.EquipmentSlot.FireDroneBackup += FireDroneBackup;
                 IL.RoR2.EquipmentSlot.FireMeteor += FireMeteor;
@@ -72,11 +66,11 @@ namespace LostInTransit.Items
                 IL.RoR2.EquipmentSlot.FireBurnNearby += FireBurnNearby;
                 IL.RoR2.EquipmentSlot.FireScanner += FireScanner;
                 IL.RoR2.EquipmentSlot.FireCrippleWard += FireCrippleWard;
-                //IL.RoR2.EquipmentSlot.FireGateway += FireGateway;
-                IL.RoR2.EquipmentSlot.FireTonic += FireTonic; //*
+                IL.RoR2.EquipmentSlot.FireGateway += FireGateway;
+                IL.RoR2.EquipmentSlot.FireTonic += FireTonic;
                 BeatingEmbryoManager.AddEmbryoEffect(RoR2Content.Equipment.Cleanse, FireCleanse);
-                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.FireBallDash);
-                //IL.RoR2.EquipmentSlot.FireRecycle += FireRecycle;
+                IL.RoR2.EquipmentSlot.FireFireBallDash += FireFireBallDash;
+                IL.RoR2.EquipmentSlot.FireRecycle += FireRecycle;
                 IL.RoR2.EquipmentSlot.FireGainArmor += FireGainArmor;
                 IL.RoR2.EquipmentSlot.FireLifeStealOnHit += FireLifeStealOnHit;
                 IL.RoR2.EquipmentSlot.FireTeamWarCry += FireTeamWarCry;
@@ -86,7 +80,15 @@ namespace LostInTransit.Items
                 IL.RoR2.EquipmentSlot.FireBossHunterConsumed += FireBossHunterConsumed;
                 IL.RoR2.EquipmentSlot.FireGummyClone += FireGummyClone;
                 IL.RoR2.Items.MultiShopCardUtils.OnPurchase += MultiShopCardUtils_OnPurchase;
-                //IL.EntityStates.GoldGat.GoldGatFire.FireBullet += GoldGat;
+                IL.EntityStates.GoldGat.GoldGatFire.FireBullet += GoldGat;
+                IL.EntityStates.QuestVolatileBattery.CountDown.Detonate += QuestVolatileBattery; ;
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.AffixVolatile);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.AffixFrenzied);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.AffixBlighted);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.GiganticAmethyst);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.Prescriptions);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.Thqwib);
+                BeatingEmbryoManager.AddToBlackList(LITContent.Equipments.UnstableWatch);
             };
         }
 
@@ -116,16 +118,21 @@ namespace LostInTransit.Items
             }
         }
 
-        //Todo: Xi Construct Mega Laser
-        private bool FireBFG(On.RoR2.EquipmentSlot.orig_FireBfg orig, EquipmentSlot self)
+        //This is absolutely unecesary but its fucking epic. BFG10K death laser.
+        //Note: might not be networked, idk
+        private bool FireBFG(EquipmentSlot self)
         {
-            var val = orig(self);
-            if (BeatingEmbryoManager.Procs(self))
+            ProcTrackerBeatingEmbryoBehaviour tracker = null;
+            if (self.TryGetComponent(out tracker))
             {
-                self.bfgChargeTimer /= 2;
-                self.subcooldownTimer /= 2;
+                if(tracker.BFG10kAttachment)
+                {
+                    return false;
+                }
+                tracker.SpawnBFG10KAttachmentAndFire();
+                return true;
             }
-            return val;
+            return self.FireBfg();
         }
 
         //Doubles lifetime
@@ -206,8 +213,8 @@ namespace LostInTransit.Items
             if(BeatingEmbryoManager.Procs(self))
             {
                 JetpackController controller = JetpackController.FindJetpackController(self.gameObject);
-                controller.boostCooldown /= 2;
-                controller.boostSpeedMultiplier *= 2;
+                controller.boostCooldown /= 1.5f;
+                controller.boostSpeedMultiplier *= 1.5f;
             }
             return result;
         }
@@ -331,12 +338,12 @@ namespace LostInTransit.Items
             }
         }
 
-        //Doubles distance and lifetime of the gateway, currently doesnt work.
+        //Doubles distance and lifetime of the gateway
         private void FireGateway(ILContext il)
         {
-            /*var cursor = new ILCursor(il);
+            var cursor = new ILCursor(il);
 
-            var flag = cursor.TryGotoNext(x => x.MatchLdcR4(1000f));
+            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(1000f));
             if(flag)
             {
                 cursor.Emit(OpCodes.Ldarg_0);
@@ -348,6 +355,7 @@ namespace LostInTransit.Items
                     }
                     return maxDistance;
                 });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Gateway);
             }
 
             flag = cursor.TryGotoNext(MoveType.After, x => x.MatchDup(),
@@ -365,11 +373,10 @@ namespace LostInTransit.Items
                     return lifetime;
                 });
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Gateway);
-            }*/
+            }
         }
 
-
-        //Doubled tonic buff. Todo: increased affliction chance by 10%.
+        //Doubled tonic buff. Doubled affliction chance
         private void FireTonic(ILContext il)
         {
             var cursor = new ILCursor(il);
@@ -387,6 +394,23 @@ namespace LostInTransit.Items
                     }
                     return duration;
                 });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Tonic);
+            }
+
+            flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(80f));
+
+            if(flag)
+            {
+                cursor.Emit(OpCodes.Ldarg_0);
+                cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((chanceForNoAffliction, slot) =>
+                {
+                    if (BeatingEmbryoManager.Procs(slot))
+                    {
+                        return chanceForNoAffliction / 2;
+                    }
+                    return chanceForNoAffliction;
+                });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Tonic);
             }
         }
 
@@ -416,28 +440,58 @@ namespace LostInTransit.Items
             return slot.FireCleanse();
         }
 
+        //Increased target speeed, increased damage coefficient.
+        private void FireFireBallDash(ILContext il)
+        {
+            var cursor = new ILCursor(il);
+
+            bool flag = cursor.TryGotoNext(x => x.MatchStloc(1));
+
+            if (flag)
+            {
+                cursor.Emit(OpCodes.Dup);
+                cursor.Emit(OpCodes.Ldarg_0);
+                cursor.EmitDelegate<Action<GameObject, EquipmentSlot>>((vehicleObject, slot) =>
+                {
+                    if (BeatingEmbryoManager.Procs(slot) && vehicleObject.TryGetComponent<FireballVehicle>(out var fireballVehicle))
+                    {
+                        fireballVehicle.targetSpeed *= 1.5f;
+                        fireballVehicle.overlapDamageCoefficient *= 1.5f;
+                        fireballVehicle.blastDamageCoefficient *= 1.5f;
+                    }
+                });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.FireBallDash);
+            }
+        }
+
         //Duplicate the original pickup. said duplicate cant be recycled.
-        //Doesnt work, idk why.
         private void FireRecycle(ILContext il)
         {
-            /*var cursor = new ILCursor(il);
+            var cursor = new ILCursor(il);
 
-            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdfld<GenericPickupController>(nameof(GenericPickupController.pickupIndex)));
+            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdfld<EquipmentSlot.UserTargetInfo>(nameof(EquipmentSlot.UserTargetInfo.pickupController)),
+                x => x.MatchStloc(0));
 
             if(flag)
             {
                 cursor.Emit(OpCodes.Ldloc_0);
+                cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Action<GenericPickupController, EquipmentSlot>>((pickupController, slot) =>
                 {
-                    if(BeatingEmbryoManager.Procs(slot))
+                    if(pickupController && !pickupController.Recycled && BeatingEmbryoManager.Procs(slot))
                     {
-                        var duplicate = GameObject.Instantiate(pickupController.gameObject);
-                        duplicate.GetComponent<GenericPickupController>().NetworkRecycled = true;
-                        NetworkServer.Spawn(duplicate);
+                        GenericPickupController.CreatePickupInfo pickupInfo = new GenericPickupController.CreatePickupInfo
+                        {
+                            pickupIndex = pickupController.NetworkpickupIndex,
+                            position = pickupController.transform.position + Vector3.up * 2,
+                            rotation = pickupController.transform.rotation
+                        };
+                        GenericPickupController duplicate = GenericPickupController.CreatePickup(pickupInfo);
+                        duplicate.NetworkRecycled = true;
                     }
                 });
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Recycle);
-            }*/
+            }
         }
 
         //Doubled buff duration
@@ -604,29 +658,19 @@ namespace LostInTransit.Items
         {
             var cursor = new ILCursor(il);
 
-            ILLabel label = null;
-            cursor.GotoNext(x => x.MatchBrfalse(out label));
-
-            var flag = cursor.TryGotoNext(x => x.MatchNewobj<Chat.BodyChatMessage>());
+            bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdstr(VANILLA_BBOSSHUNTER_CONSUMED_TOKEN));
 
             if(flag)
             {
                 cursor.Emit(OpCodes.Ldarg_0);
-                cursor.EmitDelegate<Func<EquipmentSlot, bool>>(slot =>
+                cursor.EmitDelegate<Func<string, EquipmentSlot, string>>((originalToken, slot) =>
                 {
                     if (BeatingEmbryoManager.Procs(slot))
                     {
-                        Chat.SendBroadcastChat(new Chat.BodyChatMessage
-                        {
-                            bodyObject = slot.gameObject,
-                            token = bossHunterOptions[slot.rng.RangeInt(0, bossHunterOptions.Length)]
-                        });
-                        slot.subcooldownTimer = 1;
-                        return true;
+                        return slot.rng.NextElementUniform(bossHunterOptions);
                     }
-                    return false;
+                    return originalToken;
                 });
-                cursor.Emit(OpCodes.Brfalse, label);
                 BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.BossHunterConsumed);
             }
         }
@@ -684,7 +728,7 @@ namespace LostInTransit.Items
         //Increased damage and reduced cost
         private void GoldGat(ILContext il)
         {
-            /*var cursor = new ILCursor(il);
+            var cursor = new ILCursor(il);
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchStloc(2));
 
@@ -713,7 +757,7 @@ namespace LostInTransit.Items
             if(flag)
             {
                 cursor.Emit(OpCodes.Ldarg_0);
-                cursor.EmitDelegate<Func<GoldGatFire, float, float>>((state, damage) =>
+                cursor.EmitDelegate<Func<float, GoldGatFire, float>>((damage, state) =>
                 {
                     ProcTrackerBeatingEmbryoBehaviour tracker = null;
                     if (state.body?.TryGetComponent(out tracker) ?? false)
@@ -723,9 +767,50 @@ namespace LostInTransit.Items
                     return damage;
                 });
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.GoldGat);
-            }*/
+            }
         }
 
+        //Increased damage coefficient and radius.
+        private void QuestVolatileBattery(ILContext il)
+        {
+            var cursor = new ILCursor(il);
+
+            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt<HealthComponent>("get_" + nameof(HealthComponent.fullCombinedHealth)),
+                x => x.MatchLdcR4(3));
+
+            if(flag)
+            {
+                cursor.Emit(OpCodes.Ldarg_0);
+                cursor.EmitDelegate<Func<float, CountDown, float>>((damage, state) =>
+                {
+                    ProcTrackerBeatingEmbryoBehaviour tracker = null;
+                    if(state?.networkedBodyAttachment.attachedBody.TryGetComponent(out tracker) ?? false)
+                    {
+                        return tracker.Procs() ? damage * 10f : damage;
+                    }
+                    return damage;
+                });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.QuestVolatileBattery);
+            }
+
+            flag = cursor.TryGotoNext(MoveType.After, x => x.MatchDup(),
+                x => x.MatchLdsfld<CountDown>(nameof(CountDown.explosionRadius)));
+
+            if(flag)
+            {
+                cursor.Emit(OpCodes.Ldarg_0);
+                cursor.EmitDelegate<Func<float, CountDown, float>>((radius, state) =>
+                {
+                    ProcTrackerBeatingEmbryoBehaviour tracker = null;
+                    if (state?.networkedBodyAttachment.attachedBody.TryGetComponent(out tracker) ?? false)
+                    {
+                        return tracker.Procs() ? radius * 5f : radius;
+                    }
+                    return radius;
+                });
+                BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.QuestVolatileBattery);
+            }
+        }
         #endregion
 
         public class ProcTrackerBeatingEmbryoBehaviour : BaseItemBodyBehavior
@@ -733,6 +818,15 @@ namespace LostInTransit.Items
             [ItemDefAssociation]
             public static ItemDef GetItemDef() => LITContent.Items.BeatingEmbryo;
             public bool HasProccedThisFrame { get; internal set; }
+            public NetworkedBodyAttachment BFG10kAttachment { get; private set; }
+            public static GameObject _bfg10kController;
+
+            public void SpawnBFG10KAttachmentAndFire()
+            {
+                BFG10kAttachment = Instantiate(_bfg10kController).GetComponent<NetworkedBodyAttachment>();
+                BFG10kAttachment.AttachToGameObjectAndSpawn(body.gameObject);
+                BFG10kAttachment.GetComponent<EntityStateMachine>().SetNextState(new EntityStates.BFG.ChargeBFG10KLaser());
+            }
             private void FixedUpdate()
             {
                 if (HasProccedThisFrame)
@@ -774,8 +868,11 @@ namespace LostInTransit.Items
 
     public static class BeatingEmbryoManager
     {
+        public const string EMBRYO_EFFECT_DESC = "LIT_EMBRYO_EFFECT_DESC";
+        public const string EMBRYO_TOKEN_SUFFIX = "_EMBRYO";
         private static readonly HashSet<EquipmentDef> _blacklist = new HashSet<EquipmentDef>();
         private static readonly Dictionary<EquipmentDef, Func<EquipmentSlot, bool>> _equipToFunction = new Dictionary<EquipmentDef, Func<EquipmentSlot, bool>>();
+        private static ItemDef embryoDef;
 
         public static Func<EquipmentSlot, bool> GetFunc(EquipmentDef def)
         {
@@ -788,7 +885,8 @@ namespace LostInTransit.Items
 
         public static void AddToBlackList(EquipmentDef equipmentDef)
         {
-            _blacklist.Add(equipmentDef);
+            if(equipmentDef)
+                _blacklist.Add(equipmentDef);
         }
 
         public static void AddEmbryoEffect(EquipmentDef equipmentDef, Func<EquipmentSlot, bool> equipmentEffect)
@@ -799,7 +897,24 @@ namespace LostInTransit.Items
         [SystemInitializer(typeof(EquipmentCatalog), typeof(ItemCatalog))]
         private static void Init()
         {
+            embryoDef = LITAssets.LoadAsset<ItemDef>("BeatingEmbryo", LITBundle.Items);
             On.RoR2.EquipmentSlot.PerformEquipmentAction += PerformUpgradedAction;
+            On.RoR2.Language.GetLocalizedStringByToken += Language_GetLocalizedStringByToken;
+        }
+
+        //Returns an embryo desc
+        private static string Language_GetLocalizedStringByToken(On.RoR2.Language.orig_GetLocalizedStringByToken orig, Language self, string token)
+        {
+            var val = orig(self, token);
+            if(embryoDef.itemIndex != ItemIndex.None)
+            {
+                var constructed = $"{token}{EMBRYO_TOKEN_SUFFIX}";
+                if(self.stringsByToken.ContainsKey(constructed))
+                {
+                    return Language.GetStringFormatted(EMBRYO_EFFECT_DESC, val, Language.GetString(constructed));
+                }
+            }
+            return val;
         }
 
         private static bool PerformUpgradedAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)

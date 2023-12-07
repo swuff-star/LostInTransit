@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: matTracerLeeching
-  m_Shader: {fileID: 4800000, guid: 9b2024ee08a5bfc418ff897991e84323, type: 2}
+  m_Name: matBFG10KFire 1
+  m_Shader: {fileID: 4800000, guid: 81e2940ed81972c4aa729667a0a32648, type: 2}
   m_ShaderKeywords: USE_CLOUDS VERTEXCOLOR _DISPLACEMENTMODE_OFF _DISTORTIONQUALITY_HIGH
-    _EMISSION _REFLECTIONTYPE_NONE
-  m_LightmapFlags: 1
+    _REFLECTIONTYPE_NONE
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,11 +37,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cloud1Tex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 54466b52beafaf5408fe7804cc914657, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cloud2Tex:
-        m_Texture: {fileID: 2800000, guid: 201331d33b5a9a84fbbd27a437812d8f, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cube:
@@ -101,10 +101,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 337118f8c21a34f45b33fc80bcf59a78, type: 2}
+        m_Texture: {fileID: 2800000, guid: 85e6529a904d43a49a86a9350782ee51, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MaskTex:
+    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -129,14 +129,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: 2505daf5355e2a44db3d0e73b4b4df3f, type: 3}
+        m_Texture: {fileID: 2800000, guid: d621b3f6145bb4a498d6c58267fd8e4a, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 1, y: 1}
     - _SliceAlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -146,28 +142,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaBias: 0
-    - _AlphaBoost: 1.81
-    - _AlphaThreshold: 0.03
+    - _AlphaBoost: 1.6
     - _Amplitude: 0.05
-    - _AngleLimit: 0.5
     - _BlueChannelBias: 0
     - _BlueChannelSmoothness: 0
-    - _Boost: 2.92
+    - _Boost: 1
     - _BumpLargeStrength: 1
     - _BumpScale: 1
     - _BumpStrength: 1
     - _CalcTextureAlphaOn: 0
     - _CloudOffsetOn: 0
-    - _CloudOn: 0
     - _CloudsOn: 1
     - _ColorsOn: 0
     - _Cull: 0
-    - _Cutoff: 0.855
-    - _DecalBlendMode: 0
-    - _DecalDstBlend: 10
+    - _Cutoff: 0.5
     - _DecalLayer: 0
-    - _DecalSrcBlend: 1
-    - _Depth: 0.2
+    - _Depth: 0.5
     - _DepthOffset: 0
     - _DetailNormalMapScale: 1
     - _DisableRemapOn: 0
@@ -176,7 +166,7 @@ Material:
     - _DistortionQuality: 0
     - _DistortionStrength: 0.1
     - _DitherOn: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EdgeFade: 1
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
@@ -212,19 +202,13 @@ Material:
     - _GreenChannelBias: 0
     - _GreenChannelSmoothness: 0
     - _InternalSimpleBlendMode: 0
-    - _InvFade: 2.7
+    - _InvFade: 1.3
     - _LimbPrimeMask: 1
     - _LimbRemovalOn: 0
-    - _LimitTo: 0
-    - _MaskMultiplier: 1
-    - _MaskNormals: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalBlendMode: 0
-    - _NormalMultiplier: 1
     - _NormalStrength: 1
     - _OcclusionStrength: 1
-    - _OffsetAlpha: 0
     - _OffsetAmount: 0
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -241,7 +225,7 @@ Material:
     - _SliceBandHeight: 1
     - _SliceHeight: 5
     - _Smoothing: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularExponent: 1
     - _SpecularHighlights: 1
@@ -249,12 +233,10 @@ Material:
     - _Speed: 1
     - _SplatmapOn: 0
     - _SplatmapTileScale: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _Steepness: 1
     - _Tess: 4
     - _UVSec: 0
-    - _UVSwapOn: 0
-    - _UseColor: 0
     - _UseUV1On: 0
     - _VertexAlphaOn: 0
     - _VertexColorOn: 1
@@ -265,13 +247,13 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CutoffScroll: {r: 15, g: 15, b: 13, a: 13}
+    - _CutoffScroll: {r: 20, g: 30, b: 0, a: 20}
     - _DepthColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _Speeds: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _SpeedsLarge: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
