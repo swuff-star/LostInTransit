@@ -1,4 +1,4 @@
-﻿using RoR2.ContentManagement;
+using RoR2.ContentManagement;
 using R2API.ScriptableObjects;
 using R2API.ContentManagement;
 using Moonstorm.Loaders;
@@ -43,6 +43,7 @@ namespace LostInTransit
             public static BuffDef bdToxin;
             public static BuffDef bdToxinCooldown;
             public static BuffDef bdToxinReady;
+            public static BuffDef bdHiddenCritDamage;
         }
 
         public static class Elites
