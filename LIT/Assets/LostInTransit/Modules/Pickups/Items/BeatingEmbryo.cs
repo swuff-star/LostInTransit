@@ -584,21 +584,20 @@ namespace LostInTransit.Items
         {
             var cursor = new ILCursor(il);
 
-            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdloca(5),
-                x => x.MatchLdarg(0),
-                x => x.MatchCallOrCallvirt<EquipmentSlot>("get_" + nameof(EquipmentSlot.characterBody)),
-                x => x.MatchCallOrCallvirt<CharacterBody>("get_" + nameof(CharacterBody.damage)));
+            var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt<ProjectileManager>("get_" + (nameof(ProjectileManager.instance))),
+                x => x.MatchLdloc(4));
 
             if(flag)
             {
                 cursor.Emit(OpCodes.Ldarg_0);
-                cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((damageStat, slot) =>
+                cursor.EmitDelegate<Func<FireProjectileInfo, EquipmentSlot, FireProjectileInfo>>((projectileInfo, slot) =>
                 {
                     if (BeatingEmbryoManager.Procs(slot))
                     {
-                        return damageStat * 2;
+                        ProjectileManager.instance.FireProjectile(projectileInfo);
+                        return projectileInfo;
                     }
-                    return damageStat;
+                    return projectileInfo;
                 });
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.DeathProjectile);
             }

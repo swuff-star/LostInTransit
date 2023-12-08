@@ -49,7 +49,7 @@ namespace LostInTransit.Buffs
             {
                 if (body && body.HasBuff(BuffDef))
                 {
-                    return behemothCount + 1;
+                    return behemothCount + 2;
                 }
                 return behemothCount;
             });
@@ -73,8 +73,12 @@ namespace LostInTransit.Buffs
 
             public void OnTakeDamageServer(DamageReport damageReport)
             {
-                //This makes any AI body self detonate if they have the buff
                 var healthComponent = body.healthComponent;
+                //If we're dead, destroy the attachment to avoid detonation post mortem
+                if (!healthComponent.alive && _attachment)
+                    Destroy(_attachment.gameObject);
+
+                //This makes any AI body self detonate if they have the buff
                 if(healthComponent && healthComponent.isHealthLow && !body.isPlayerControlled)
                 {
                     TryExplode();
