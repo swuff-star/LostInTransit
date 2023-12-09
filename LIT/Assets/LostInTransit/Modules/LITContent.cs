@@ -15,6 +15,7 @@ namespace LostInTransit
         public static class Buffs
         {
             public static BuffDef bdAffixBlighted;
+            public static BuffDef bdAffixBlightedFake;
             public static BuffDef bdAffixFrenzied;
             public static BuffDef bdAffixLeeching;
             public static BuffDef bdAffixVolatile;
