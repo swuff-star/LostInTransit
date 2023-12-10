@@ -34,7 +34,8 @@ namespace LostInTransit.Buffs
                         {
                             for (int i = 0; i < rendererInfos.Length; i++)
                             {
-                                if (!rendererInfos[i].ignoreOverlays)
+                                //pls work
+                                if (rendererInfos[i].renderer && !rendererInfos[i].ignoreOverlays)
                                 {
                                     GameObject effect = AddToxinParticles(rendererInfos[i].renderer, wtf.coreTransform);
                                     if (effect != null)

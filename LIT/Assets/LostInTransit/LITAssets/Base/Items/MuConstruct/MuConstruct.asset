@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: MuConstruct
+  m_EditorClassIdentifier: 
+  deprecatedTier: 0
+  _itemTierDef: {fileID: 0}
+  nameToken: LIT_ITEM_MYSTERIOUSVIAL_NAME
+  pickupToken: LIT_ITEM_MYSTERIOUSVIAL_PICKUP
+  descriptionToken: LIT_ITEM_MYSTERIOUSVIAL_DESC
+  loreToken: LIT_ITEM_MYSTERIOUSVIAL_LORE
+  unlockableDef: {fileID: 0}
+  pickupModelPrefab: {fileID: 5725420231832809925, guid: 0761b5d184a038b418a02f4620c3e8a4,
+    type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 6f887910780ebfa428735483e951a76b, type: 3}
+  hidden: 0
+  canRemove: 1
+  tags: 02000000
+  requiredExpansion: {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}

@@ -80,6 +80,7 @@ namespace LostInTransit
             public static ItemDef LifeSavings;
             public static ItemDef LifeSavingsUsed;
             public static ItemDef MeatNugget;
+            public static ItemDef MuConstruct;
             public static ItemDef MysteriousVial;
             public static ItemDef PhotonCannon;
             public static ItemDef PrisonShackles;

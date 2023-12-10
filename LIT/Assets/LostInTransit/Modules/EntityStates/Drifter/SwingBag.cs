@@ -1,4 +1,5 @@
-﻿using LostInTransit.DamageTypes;
+﻿using LostInTransit.Components;
+using LostInTransit.DamageTypes;
 using R2API;
 using RoR2;
 using RoR2.Skills;
@@ -13,6 +14,8 @@ namespace EntityStates.Drifter
     {
         public int swing = 0;
 
+        public static float swingTimeCoefficient = 1.5f;
+
         public static float baseDurationBeforeInterruptable;
 
         public static float comboFinisherBaseDuration;
@@ -22,6 +25,8 @@ namespace EntityStates.Drifter
         public static float comboFinisherBaseDurationBeforeInterruptable;
 
         private float durationBeforeInterruptable;
+
+        private DrifterBagComponent dbc;
 
         public override void OnEnter()
         {
@@ -34,6 +39,10 @@ namespace EntityStates.Drifter
                 baseDuration = comboFinisherBaseDuration;
             }
             durationBeforeInterruptable = (isComboFinisher ? (comboFinisherBaseDurationBeforeInterruptable / attackSpeedStat) : (baseDurationBeforeInterruptable / attackSpeedStat));
+
+            dbc = characterBody.GetComponent<DrifterBagComponent>();
+            if (dbc != null)
+                dbc.bagDown = true;
 
             base.OnEnter();
         }
@@ -50,7 +59,7 @@ namespace EntityStates.Drifter
         {
             //Debug.Log("play anim");
             string animationStateName = "Swing" + swing;
-            //PlayCrossfade("Gesture, Override", animationStateName, "Primary.playbackRate", duration, 0.1f);
+            PlayCrossfade("Gesture, Override", animationStateName, "Primary.playbackRate", duration * swingTimeCoefficient, 0.1f);
         }
 
         void SteppedSkillDef.IStepSetter.SetStep(int i)

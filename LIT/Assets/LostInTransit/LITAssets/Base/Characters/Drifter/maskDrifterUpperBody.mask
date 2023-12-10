@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskDrifterUpperBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: AttackStraps
+    m_Weight: 1
+  - m_Path: BagStraps
+    m_Weight: 1
+  - m_Path: BaseStraps
+    m_Weight: 1
+  - m_Path: Camera
+    m_Weight: 0
+  - m_Path: DrifterArmature
+    m_Weight: 0
+  - m_Path: DrifterArmature/Backpack
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/BagSmear.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/BagSmear.l/BagSmear.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/BagSmear.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/BagSmear.r/BagSmear.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/Flap.1
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/Flap.1/Flap.2
+    m_Weight: 1
+  - m_Path: DrifterArmature/Backpack/Flap.1/Flap.2/Flap.2_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/BagStrap.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/BagStrap.l/BagStrap.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/BagStrap.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/BagStrap.r/BagStrap.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.l/calf.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.l/calf.l/foot.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.l/calf.l/foot.l/toe.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.l/calf.l/foot.l/toe.l/toe.l_end
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.r/calf.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.r/calf.r/foot.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.r/calf.r/foot.r/toe.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/pelvis/thigh.r/calf.r/foot.r/toe.r/toe.r_end
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/Physics
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/Physics/Physics_end
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/base/stomach
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.1.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.1.l/finger1.2.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.1.l/finger1.2.l/finger1.3.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.1.l/finger1.2.l/finger1.3.l/finger1.3.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger3.1.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger3.1.l/finger3.2.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger3.1.l/finger3.2.l/finger3.3.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/finger3.1.l/finger3.2.l/finger3.3.l/finger3.3.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.1.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.1.l/thumb.2.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.1.l/thumb.2.l/thumb.2.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.1.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.1.r/finger1.2.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.1.r/finger1.2.r/finger1.3.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.1.r/finger1.2.r/finger1.3.r/finger1.3.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger3.1.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger3.1.r/finger3.2.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger3.1.r/finger3.2.r/finger3.3.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/finger3.1.r/finger3.2.r/finger3.3.r/finger3.3.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.1.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.1.r/thumb.2.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/clavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.1.r/thumb.2.r/thumb.2.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/head
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/head/HeadSmear.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/head/HeadSmear.l/HeadSmear.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/head/HeadSmear.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/base/stomach/chest/head/HeadSmear.r/HeadSmear.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Elbow.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Elbow.l/Elbow.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Elbow.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Elbow.r/Elbow.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/footik.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/footik.l/footik.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/footik.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/footik.r/footik.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Handik.l
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Handik.l/Handik.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Handik.r
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/Handik.r/Handik.r_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/knee.l
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/knee.l/knee.l_end
+    m_Weight: 1
+  - m_Path: DrifterArmature/ROOT/knee.r
+    m_Weight: 0
+  - m_Path: DrifterArmature/ROOT/knee.r/knee.r_end
+    m_Weight: 1
+  - m_Path: DrifterBody
+    m_Weight: 0

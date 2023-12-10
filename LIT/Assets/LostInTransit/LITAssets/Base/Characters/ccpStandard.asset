@@ -25,10 +25,10 @@ MonoBehaviour:
       alpha: 0
     pivotVerticalOffset:
       value: 1.37
-      alpha: 0
+      alpha: 1
     idealLocalCameraPos:
       value: {x: 0, y: 0, z: -8.18}
-      alpha: 0
+      alpha: 1
     fov:
       value: 0
       alpha: 0
