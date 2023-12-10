@@ -1,4 +1,4 @@
-﻿using RoR2.ContentManagement;
+using RoR2.ContentManagement;
 using R2API.ScriptableObjects;
 using R2API.ContentManagement;
 using Moonstorm.Loaders;
@@ -15,6 +15,7 @@ namespace LostInTransit
         public static class Buffs
         {
             public static BuffDef bdAffixBlighted;
+            public static BuffDef bdAffixBlightedFake;
             public static BuffDef bdAffixFrenzied;
             public static BuffDef bdAffixLeeching;
             public static BuffDef bdAffixVolatile;
@@ -43,6 +44,7 @@ namespace LostInTransit
             public static BuffDef bdToxin;
             public static BuffDef bdToxinCooldown;
             public static BuffDef bdToxinReady;
+            public static BuffDef bdHiddenCritDamage;
         }
 
         public static class Elites
@@ -65,6 +67,8 @@ namespace LostInTransit
             public static EquipmentDef GiganticAmethyst;
             public static EquipmentDef GoldPlatedBomb;
             public static EquipmentDef Thqwib;
+            public static EquipmentDef Prescriptions;
+            public static EquipmentDef UnstableWatch;
         }
 
         public static class Items

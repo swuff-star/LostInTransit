@@ -19,7 +19,7 @@ MonoBehaviour:
     serializedFields:
     - fieldName: baseDuration
       fieldValue:
-        stringValue: 5
+        stringValue: 3
         objectValue: {fileID: 0}
     - fieldName: chargingEffectPrefab
       fieldValue:
@@ -36,7 +36,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: baseExplosionRadius
       fieldValue:
-        stringValue: 10
+        stringValue: 25
         objectValue: {fileID: 0}
     - fieldName: baseForce
       fieldValue:

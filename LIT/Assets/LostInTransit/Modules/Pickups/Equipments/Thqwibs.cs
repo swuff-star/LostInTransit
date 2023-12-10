@@ -1,4 +1,5 @@
-﻿using Moonstorm;
+﻿using LostInTransit.Items;
+using Moonstorm;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -58,10 +59,11 @@ namespace LostInTransit.Equipments
                     magnitude = direction.magnitude;
                     ray2.direction = direction;
                 }
+                float damageMult = BeatingEmbryoManager.Procs(slot) ? 2 : 1;
                 for (int i = 0; i < thqwibAmount; i++)
                 {
                     Quaternion rotation = Util.QuaternionSafeLookRotation(Util.ApplySpread(ray2.direction, 0, 25, 1f, 1f));
-                    ProjectileManager.instance.FireProjectile(Projectiles.ThqwibProjectile.ThqwibProj, ray2.origin, rotation, slot.gameObject, charBody.damage * (damage / 100), 0f, Util.CheckRoll(charBody.crit, charBody?.master), DamageColorIndex.Default, null, magnitude);
+                    ProjectileManager.instance.FireProjectile(Projectiles.ThqwibProjectile.ThqwibProj, ray2.origin, rotation, slot.gameObject, charBody.damage * (damage / 100) * damageMult, 0f, Util.CheckRoll(charBody.crit, charBody?.master), DamageColorIndex.Default, null, magnitude);
                 }
                 return true;
             }

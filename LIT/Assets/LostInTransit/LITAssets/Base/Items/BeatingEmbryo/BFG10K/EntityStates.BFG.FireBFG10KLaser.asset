@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: EntityStates.BFG.FireBFG10KLaser
+  m_EditorClassIdentifier: 
+  targetType:
+    assemblyQualifiedName: EntityStates.BFG.FireBFG10KLaser, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: duration
+      fieldValue:
+        stringValue: 4
+        objectValue: {fileID: 0}
+    - fieldName: hitEffectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 1901958057954886, guid: becacfa68e45f5a43afa76fed9461984,
+          type: 3}
+    - fieldName: laserPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 1187715252344748, guid: a270d08fce8e22643800fa2bf4df3bbf,
+          type: 3}
+    - fieldName: damageCoefficient
+      fieldValue:
+        stringValue: 20
+        objectValue: {fileID: 0}
+    - fieldName: procCoefficient
+      fieldValue:
+        stringValue: 1.5
+        objectValue: {fileID: 0}
+    - fieldName: force
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: minSpread
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: maxSpread
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: bulletCount
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}
+    - fieldName: fireFrequency
+      fieldValue:
+        stringValue: 20
+        objectValue: {fileID: 0}
+    - fieldName: maxDistance
+      fieldValue:
+        stringValue: 2048
+        objectValue: {fileID: 0}

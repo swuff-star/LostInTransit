@@ -2,9 +2,13 @@
 using BepInEx.Configuration;
 using HG.Reflection;
 using LostInTransit.Modules;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using Moonstorm;
 using R2API;
 using R2API.Utils;
+using RoR2;
+using System;
 using System.Linq;
 using System.Security;
 using System.Security.Permissions;
@@ -13,7 +17,7 @@ using System.Security.Permissions;
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 #pragma warning restore CS0618
 [module: UnverifiableCode]
-[assembly: SearchableAttribute.OptIn]
+[assembly: HG.Reflection.SearchableAttribute.OptIn]
 
 namespace LostInTransit
 {

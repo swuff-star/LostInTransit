@@ -80,8 +80,8 @@ namespace LostInTransit.Items
                     }
                     else
                     {
-                        Debug.Log("Shieldgating IL Hook failed! Reverting to OnIncomingDamageServer method.");
-                        Debug.Log("Guardian's Heart Shieldgating may trigger incorrectly, especially if on enemies.");
+                        LITLog.Fatal("Shieldgating IL Hook failed! Reverting to OnIncomingDamageServer method.");
+                        LITLog.Fatal("Guardian's Heart Shieldgating may trigger incorrectly, especially if on enemies.");
                     }
                 };
             }

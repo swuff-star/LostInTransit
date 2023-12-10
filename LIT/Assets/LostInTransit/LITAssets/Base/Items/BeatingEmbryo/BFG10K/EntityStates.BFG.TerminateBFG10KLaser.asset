@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: EntityStates.BFG.TerminateBFG10KLaser
+  m_EditorClassIdentifier: 
+  targetType:
+    assemblyQualifiedName: EntityStates.BFG.TerminateBFG10KLaser, LostInTransit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: duration
+      fieldValue:
+        stringValue: 2
+        objectValue: {fileID: 0}
+    - fieldName: muzzleEffectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 1034541298767316, guid: f8a7424628bc1684c876032609b71ab2,
+          type: 3}
+    - fieldName: explosionEffectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 1622976071587042, guid: bad214f4c0cc8794eab9fbc15afe3205,
+          type: 3}
+    - fieldName: blastDamageCoefficient
+      fieldValue:
+        stringValue: 60
+        objectValue: {fileID: 0}
+    - fieldName: blastForce
+      fieldValue:
+        stringValue: 6000
+        objectValue: {fileID: 0}
+    - fieldName: radius
+      fieldValue:
+        stringValue: 15
+        objectValue: {fileID: 0}
+    - fieldName: blastBonusForce
+      fieldValue:
+        stringValue: 0 2000 0
+        objectValue: {fileID: 0}
+    - fieldName: enterSoundString
+      fieldValue:
+        stringValue: Play_majorConstruct_m1_laser_end
+        objectValue: {fileID: 0}

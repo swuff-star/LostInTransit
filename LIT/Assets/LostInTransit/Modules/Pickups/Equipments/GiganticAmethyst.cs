@@ -1,4 +1,5 @@
-﻿using Moonstorm;
+﻿using LostInTransit.Items;
+using Moonstorm;
 using RoR2;
 
 namespace LostInTransit.Equipments
@@ -13,6 +14,10 @@ namespace LostInTransit.Equipments
             if ((bool)!sloc)
             {
                 return false;
+            }
+            if(BeatingEmbryoManager.Procs(slot))
+            {
+                sloc.ApplyAmmoPack();
             }
             sloc.ApplyAmmoPack();
             Util.PlaySound("AmethystProc", slot.characterBody.gameObject); //Why the fuck is this called "AmethystProc", theres nothing to proc, wtf swuff
