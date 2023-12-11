@@ -79,6 +79,7 @@ namespace LostInTransit
             public static ItemDef BitterRoot;
             public static ItemDef BlessedDice;
             public static ItemDef EnergyCell;
+            public static ItemDef CoolantCell;
             public static ItemDef GoldenGun;
             public static ItemDef GuardiansHeart;
             public static ItemDef LifeSavings;
@@ -102,6 +103,7 @@ namespace LostInTransit
             public static ItemDef HitList;
             public static ItemDef RazorPenny;
             public static ItemDef TheToxin;
+            public static ItemDef LockedJewel;
         }
 
         public static class Artifacts

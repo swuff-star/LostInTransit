@@ -2,6 +2,8 @@
 using RoR2;
 using System;
 using RoR2.Items;
+using R2API;
+using UnityEngine;
 
 namespace LostInTransit.Items
 {
@@ -16,7 +18,7 @@ namespace LostInTransit.Items
         public static float bonusAttackSpeed = 0.4f;
 
 
-        public class EnergyCellBehavior : BaseItemBodyBehavior, IStatItemBehavior, IOnIncomingDamageServerReceiver
+        public class EnergyCellBehavior : BaseItemBodyBehavior, IStatItemBehavior, IOnTakeDamageServerReceiver
         {
             //★. ..will look up and shout "stop doing everything in the FixedUpdate method!"... and I'll look down and whisper "no".
             //★ Jokes aside, this makes sense to do inside FixedUpdate, right? I figure doing it in RecalculateStats wouldn't update properly, since... well, it's only when RecalculateStats is called.
@@ -27,12 +29,17 @@ namespace LostInTransit.Items
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.EnergyCell;
 
-            public float missingHealthPercent;
             public float healthFraction;
+            private HealthComponent _healthComponent;
 
-            public void OnIncomingDamageServer(DamageInfo damageInfo)
+            private void Start()
             {
-                body.RecalculateStats();
+                _healthComponent = body.healthComponent;
+            }
+
+            public void OnTakeDamageServer(DamageReport _)
+            {
+                body.MarkAllStatsDirty();
             }
 
             public void RecalculateStatsEnd()
@@ -46,13 +53,13 @@ namespace LostInTransit.Items
 
             private void FixedUpdate()
             {
-                missingHealthPercent = (1 - body.healthComponent.combinedHealthFraction);
-                healthFraction = body.healthComponent.combinedHealthFraction - 0.1f;
-                if (body.healthComponent.combinedHealthFraction > 0.9f)
+                float combinedHealthFraction = _healthComponent.combinedHealthFraction;
+                healthFraction = combinedHealthFraction - 0.1f;
+                if (combinedHealthFraction > 0.9f)
                 {
                     healthFraction = 1;
                 }
-                if (body.healthComponent.combinedHealthFraction < 0f)
+                else if (combinedHealthFraction < 0f)
                 {
                     healthFraction = 0;
                 }
