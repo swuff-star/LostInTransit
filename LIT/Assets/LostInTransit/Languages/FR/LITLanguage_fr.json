@@ -1,0 +1,249 @@
+{
+	"strings": {
+		"LIT_ITEM_BARBEDWIRE_NAME": "Barbelé",
+		"LIT_ITEM_BARBEDWIRE_PICKUP": "Inflige des dégâts aux ennemis à proximité.",
+		"LIT_ITEM_BARBEDWIRE_DESC": "Inflige <style=cIsDamage>80% de dégâts par seconde</style> aux ennemis se trouvant dans un rayon de <style=cIsUtility>7m</style> <style=cStack>(+1,5m par cumul)</style>.",
+		"LIT_ITEM_BARDBEDWIRE_LORE": "Ils ont trouvé la source du signal. Peut-être un peu trop tard, malheureusement.\n\nLe corps d'un soldat gisait mort sur le sol, tenant le dispositif de signal dans sa main.\n\nLe soldat était armé de son pistolet réglementaire, ainsi que de quelques accessoires étranges et non conventionnels. Le plus remarquable était le rouleau de fil barbelé enroulé autour de sa poitrine et de ses jambes, recouvrant sa combinaison blindée.\n\nLe fil était taché du sang de nombreuses créatures différentes. Il semble avoir fait son travail. Juste pas assez bien.",
+
+		"LIT_ITEM_BITTERROOT_NAME": "Racine Amère",
+		"LIT_ITEM_BITTERROOT_PICKUP": "Régénère la santé à chaque élimination.",
+		"LIT_ITEM_BITTERROOT_DESC": "Augmente <style=cIsHealing>la régénération de santé de base</style> de <style=cIsHealing>3 pv/s</style> pendant <style=cIsUtility>3s</style> <style=cStack>(+3s par cumul)</style> après avoir éliminé un ennemi.",
+		"LIT_ITEM_BITTERROOT_LORE": "Commande : Rhizome à Croissance Rapide, 30 livres\nNuméro de Suivi : 40**********\nLivraison Estimée : 18/05/2056\nMode d'Expédition : Économie en Vrac\nAdresse de Livraison : Arjun Catering, Esdrict, Mars\nDétails de l'envoi :\n\nVoici votre \"truffe vénusienne rare\", Arj'.\n\nUn de ces jours, ces riches clients que vous appelez valets vont réaliser que ces repas gastronomiques cinq étoiles que vous préparez sont produits en série par une unité CHEF douteuse qui renverse de l'huile partout, mais en attendant, continuez à plumer ces rats.\n\nOh, et j'ai inclus un certificat 'authentique' d'authenticité aussi, au cas où les inspecteurs viendraient fouiner de nouveau.",
+		"LIT_ITEM_BITTERROOT_LORE_SOUL": "Pour moi, c'est la <style=cIsHealing>Racine Amère</style>. Le meilleur objet courant. Je demande même des <style=cIsHealing>Racines Amères</style> supplémentaires, et le <color=#41D1F7>Newt</color> est si amical et plus que disposé à obéir.\n\nUne fois, j'ai demandé une <style=cIsHealing>Racine Amère</style> et il m'en a donné trois. J'ai dit,  \"Wow, <style=cIsDamage>trois gratuites</style> !\"  et le gentil et amical <color=#41D1F7>Newt</color> a ri et a dit, \" et le gentil et amical <color=#41D1F7>Newt</color> a ri et a dit,\"\n\nMaintenant, le <color=#41D1F7>Newt</color> me salue en disant \"Eh bien, c'est <style=cIsDamage>3-gratuit</style> !\" et me donne TOUJOURS trois <style=cIsHealing>Racines Amères</style>. L'ambiance est tellement amusante et cool dans mon <style=cWorldEvent>Bazar Entre les Temps</style> local, j'y vais au moins 3 fois par course pour <color=#41D1F7>Geste du Noyé</color> et la <color=#F45A45>marmite Bobine Tesla instable</color> en utilisant des objets bruts au lieu de ferraille, à l'Étape 1 - 2 pour les <style=cWorldEvent>Champs du Néant</style> en <color=#B53F80>Typhon</color>, et peut-être une fois pour la <color=#41D1F7>Pureté</color> quand je suis pressé mais que je veux une course géniale qui soit amusante, rapide et qui réponde à mes besoins quotidiens en matière de divertissement.\n\nJe ploc même mes <color=#41D1F7>Pièces Lunaires</color> dans le <color=#41D1F7>Voyant Lunaire</color>, c'est incroyable ! Quel super <style=cWorldEvent>Recoin Caché</style>.",
+
+		"LIT_ITEM_BLESSEDDICE_NAME": "Dé Béni",
+		"LIT_ITEM_BLESSEDDICE_PICKUP": "L'utilisation d'un autel confère une amélioration aléatoire.",
+		"LIT_ITEM_BLESSEDDICE_DESC": "L'utilisation d'un autel confère une <style=cIsDamage>amélioration aléatoire</style> qui dure {0} <style=cStack>(+{1} par cumul)</style> secondes.",
+		"LIT_ITEM_BLESSEDDICE_LORE": "Entrée non trouvée\n\n<style=cMono>/404\n\nNous n'avons pas pu trouver l'entrée ci-dessus sur nos serveurs.</style>\n\n<style=cIsDamage>Vouliez-vous dire : </style><style=cIsHealing>/wiki/SnakeEyes</style>\n\nAlternativement, vous pouvez visiter la <style=cIsHealing>Page Principale</style> ou lire <style=cIsHealing>plus d'informations</style> sur ce type d'erreur.",
+
+		"LIT_ITEM_MEATNUGGET_NAME": "Nugget de Viande",
+		"LIT_ITEM_MEATNUGGET_PICKUP": "Les ennemis ont une chance de laisser tomber des nuggets régénératives lorsqu'ils sont touchés.",
+		"LIT_ITEM_MEATNUGGET_DESC": "Vos attaques ont <style=cIsUtility>8%</style> de chance de faire apparaître un <style=cIsHealing>nugget</style> augmentant la <style=cIsHealing>régénération de santé de base</style> de <style=cIsHealing>+1,6 pv/s</style> pendant <style=cIsUtility>2</style> secondes <style=cStack>(+2 secondes par cumul)</style>.",
+		"LIT_ITEM_MEATNUGGET_LORE": "\"Tu n'as rien essayé du tout ?\"\n\n\"Non.\"\n\n\"Même pas une bouchée ?\"\n\n\"Non, je n'ai pas fait.\"\n\n\"Allez. Comment tu sais si ça a mauvais goût ?\"\n\n\"Je ne le sais pas, mais je ne vais pas manger un cube de viande que j'ai trouvé déballé dans un coffre.\"\n\n\"...Tes critères sont trop élevés.\"\n\n\"Ouais, et tu es dégoûtant.\"\n\n\"Oh, s'il te plaît. Et si tu me le passes, j'essaierai ?\"\n\n\"D'accord, mais si tu finis à l'infirmerie, ce n'est pas de ma faute.\"\n\n\n<style=cMono>//--TICKET INFIRMERIE C55-4-24-7-//\nAdmis : Nathaniel Emmond\nSymptômes : Nausées, vomissements\nCause la plus probable : Intoxication alimentaire\nTraitement : À déterminer\nNotes supplémentaires : Aucune</style>",
+		"LIT_ITEM_MEATNUGGET_LORE_SOUL": "Salut, c'est Vince avec le Slap Drone. Vous allez être de bonne humeur toute la journée, car vous allez chasser vos soucis avec le Slap Drone. Maintenant, regardez ici, voici un Steak de Bison. Un coup, vous avez de gros morceaux pour un ragoût, deux coups vous hachez en une seconde. Et, regardez ceci, lorsque vous ajoutez un Fungus Actif : plus vous le faites, plus il devient fin, vous n'avez pas besoin de changer de lames.\n\nMaintenant, vous adorez Tooth Monster -- vous détestez l'activer. Vous savez que vous détestez tuer des monstres -- c'est pourquoi vous n'avez pas d'xp dans votre course. Regardez ceci, un coup... guérison ! J'aime aussi le Medkit, mais de temps en temps ajoutez le Tooth, mettez-le au moins sur le dessus du Medkit.\n\nVous allez changer vos habitudes de pluie. Infusion, Graine de Sangsue, des trucs que nous voulons, 5 secondes. 4 ou 5 secondes, c'est fait. Cette chose, ce Limace semble ennuyeuse. Arrêtez d'avoir une Limace Prudente, arrêtez d'avoir une vie prudente. Ajoutez cette Limace en la mettant comme ça, maintenant vous allez avoir une belle, Limace, salade. Regardez ça, vous allez avoir une vie passionnante maintenant.\n\nRegardez, voici un Planula dur. Un coup, vous ajoutez la Faux ; vous ajoutez la Plante de Bureau. Et ce que vous pouvez faire, c'est mélanger les choses, ajouter la Teinture et vous allez adorer ça. Vous n'avez pas le temps de subir des dégâts, les dégâts s'en vont.\n\nVous allez adorer mes mods. Regardez ceci : Fiole, Dungus. Livré avec une déchiqueteuse pour que vous puissiez tout faire dans la déchiqueteuse. D'accord, ou vous pouvez le faire dans le chaudron, comme vous le souhaitez. Si facile, un doigt, si je peux le faire avec un doigt, vous pouvez le faire avec toute votre main. Les enfants peuvent le faire. Vous savez ce qu'ils facturent au Bazar ? Une pièce pour des rerolls au Bazar. Ajoutez quelques Boucliers si vous voulez. Donc, vous pouvez le faire pour 10 dollars. Arrêtez de jeter votre argent par les fenêtres. Vous savez, pas seulement des mods, qu'en est-il des DLC ? Mettez un Fungus Pleureur, regardez ça, n'est-ce pas magnifique dans votre partie.",
+
+		"LIT_ITEM_LIFESAVINGS_NAME": "Économie de Secours",
+		"LIT_ITEM_LIFESAVINGS_PICKUP": "Se casse pour de l'argent au début de la prochaine étape.",
+		"LIT_ITEM_LIFESAVINGS_DESC": "<style=cIsUtility>Casse 1 cumul</style> pour <style=cIsUtility>75 $</style> au début des <style=cIsUtility>1</style> prochaines <style=cIsUtility>1</style> <style=cStack>(+1 par cumul)</style> étapes. <style=cIsUtility>Évolue avec le temps.</style>",
+		"LIT_ITEM_LIFESAVINGS_LORE": "Ce gamin n'avait aucune idée de ce qu'il envoyait à sa mère, n'est-ce pas ? Bien sûr, il y a de la monnaie qui traîne ici, mais ce n'est en aucun cas le trésor. C'est une époque révolue où la plupart des gens utilisaient de l'argent physique. Pratiquement les seuls qui utilisent encore du physique sont ceux qui ne veulent pas être retracés ou quelque chose du genre. Avec l'avènement de la monnaie électronique, il n'y a presque plus besoin de tirelires. Même les enfants ont maintenant leurs propres cartes et comptes.\n\nCe que le gamin a envoyé était une antiquité ! Cela a probablement été transmis dans sa famille de génération en génération. Un objet en état impeccable datant de plusieurs siècles ? Les collectionneurs feraient presque n'importe quoi pour l'avoir sur leur cheminée. Cet objet a plus de valeur que ma maison, et elle ne fera qu'augmenter.\n\nOn va bientôt partir sur la lune !",
+
+		"LIT_ITEM_LIFESAVINGSUSED_NAME": "Économie de Secours (Cassé)",
+		"LIT_ITEM_LIFESAVINGSUSED_PICKUP": "Ne dépensez pas tout d'un coup !",
+		"LIT_ITEM_LIFESAVINGSUSED_DESC": "Ne dépensez pas tout d'un coup !",
+
+		"LIT_ITEM_MORTARTUBE_NAME": "Tube Mortier",
+		"LIT_ITEM_MORTARTUBE_PICKUP": "Chance de lancer un mortier en touchant.",
+		"LIT_ITEM_MORTARTUBE_DESC": "<style=cIsDamage>9%</style> de chance de lancer un <style=cIsDamage>mortier</style> <style=cStack>(+1 par cumul)</style> pour un <style=cIsDamage>total de 170% de dégâts</style>.",
+		"LIT_ITEM_MORTARTUBE_LORE": "Qu'est-ce que tu penses que c'est ?\" Graham avait placé le curieux tube noir devant lui, fixant le canon avec un œil attentif. Quelque chose de vert et d'argenté se trouvait à l'arrière.\n\nordan restait désintéressé, fouillant à travers des débris et des éclats. \"Probablement un club. Arrête de me déranger.\"\n\nGraham le tenait au-dessus de sa tête, examinant son numéro de série effacé et son étiquette. \"Je pense que c'est un pistolet.\" Il y avait en effet un petit levier en bas. Jordan n'avait clairement pas prêté attention à sa description.\n\nCela a attiré l'attention de Jordan. \"Peut-être une antiquité ?\"  Il grimpa vers Graham, s'asseyant à côté de lui, faisant signe pour le 'pistolet'.\n\nPassant devant leur nouvelle fascination, Graham inclina l'extrémité de son canon vers le bas, et quelque chose commença à glisser.\n\nBoom.",
+
+		"LIT_ITEM_MYSTERIOUSVIAL_NAME": "Fiole Mystérieuse",
+		"LIT_ITEM_MYSTERIOUSVIAL_PICKUP": "Augmente la régénération de santé.",
+		"LIT_ITEM_MYSTERIOUSVIAL_DESC": "Augmente la <style=cIsHealing>régénération de santé de base</style> de <style=cIsHealing>+0,8 pv/s</style> <style=cStack>(+0,8 pv/s par cumul)</style>.",
+		"LIT_ITEM_MYSTERIOUSVIAL_LORE": "Commande : boîte de Fioles, Remplies\nNuméro de suivi : 888******\nLivraison estimée : 13/04/2056\nMode d'expédition : Standard\nAdresse de livraison : C-A Chemical Testing, Acpo, Vénus\nDétails de l'envoi :\n\nRécupéré lors d'une perquisition en laboratoire en raison de soupçons de risque biologique entourant l'endroit. La substance dans la fiole semble avoir des propriétés régénératrices surnaturelles, à la fois pour ce à quoi elle est appliquée et pour elle-même. Les fioles en verre contenant le gel se sont avérées indestructibles, et la substance elle-même se régénère chaque fois qu'un morceau en est retiré. C'est vraiment quelque chose de fascinant, franchement.\n\n...Oh, oui, et faites attention à ne pas en mettre sur votre peau. L'un de nos travailleurs en a eu un peu sur son bras, et il semble s'être directement fondu avec sa chair. Le verdict est encore en suspens pour savoir s'il compte techniquement comme une tumeur",
+
+		"LIT_ITEM_RUSTYJETPACK_NAME": "Réacteur Détérioré",
+		"LIT_ITEM_RUSTYJETPACK_PICKUP": "Augmente la hauteur de saut, réduit la vitesse de chute.",
+		"LIT_ITEM_RUSTYJETPACK_DESC": "Sautez <style=cIsUtility>{0}% plus haut</style> <style=cStack>(+{0}% par cumul)</style> et <style=cIsUtility>chutez {2}% plus lentement</style> <style=cStack>(+{2}% par cumul)</style> tout en maintenant le saut.",
+		"LIT_ITEM_RUSTYJETPACK_LORE": "<style=cMono>Enregistrement du Musée de la Technologie et des Sciences Terran.</style>\n\nDepuis sa création, l'humanité a toujours rêvé de voler. Pouvoir voler, c'est pouvoir voyager librement ; sans les tracas de l'escalade, de la natation ou de la course. Bien que l'humanité ait réussi à naviguer sur Terre sans cette capacité, explorer l'espace représente un défi beaucoup plus difficile.\n\nLe réacteur personnel Brezhnev 1033-VZ-1 \"Tuscarora\" est un exemple de l'une des premières tentatives de l'homme pour conquérir tous les terrains. Malgré son utilisation célèbre dans le film \"Vénusienne V\", le Tuscarora est uniquement capable de vol à basse altitude à moins de 1094 mètres dans l'atmosphère vénusienne. Ce modèle était principalement utilisé pour aider les équipages de vaisseaux à effectuer des travaux de maintenance sur les coques extérieures des vaisseaux spatiaux en orbite, bien qu'il soit parfois utilisé par les unités de largage de l'UES pour se déplacer sur les champs de bataille. Ce modèle a servi de modèle pour de nombreuses innovations dans la technologie du vol personnel, telles que les modèles à base de protons de Shinkawa Heavy Industries que l'on peut trouver dans l'exposition Armes et Tactiques, ainsi que les combinaisons ENV couramment portées par les fonctionnaires de la Haute Cour lors de l'exploration de l'espace lointain.",
+
+		"LIT_ITEM_SPROUTINGEGG_NAME": "Œuf Germé",
+		"LIT_ITEM_SPROUTINGEGG_PICKUP": "Attache des graines vampiriques à un ennemi.",
+		"LIT_ITEM_SPROUTINGEGG_DESC": "Attache des <style=cIsHealing>graines vampiriques</style> à jusqu'à <style=cIsUtility>1</style> <style=cStack>(+1 par cumul)</style> ennemi, les <style=cIsDamage>endommageant</style> et vous <style=cIsHealing>soignant</style> pour <style=cIsHealing>15%</style> des dégâts par seconde.",
+
+		"LIT_ITEM_ARMSRACE_NAME": "Course aux Armements",
+		"LIT_ITEM_ARMSRACE_PICKUP": "L'utilisation d'éléments interactifs invoque des drones temporaires. Les drones sont équipés de boucliers à barrière.",
+		"LIT_ITEM_ARMSRACE_DESC": "Les <style=cIsUtility>drones</style> achetés reçoivent <style=cIsHealing>8%</style> <style=cStack>(+8% par cumul)</style> de leur santé comme <style=cIsHealing>bouclier</style>, ainsi qu'une chance de <style=cIsDamage>9%</style> <style=cStack>(+9% par cumul)</style> de tirer des <style=cIsDamage>mortiers</style> et des <style=cIsDamage>missiles</style>.",
+		"LIT_ITEM_ARMSRACE_LORE": "<style=cMono>Extrait du manuel d'utilisation du Service de Défense Automatisé de la marque KS-I :</style>\n\nBonjour, et merci pour votre achat de notre Kit d'Amélioration Universel pour Drones ! (KAUD)\n\nBien que nous croyions que les droides de la marque KS-I soient le summum de la défense automatisée, la technologie moderne nous a permis de dépasser ce que nous croyions possible en termes d'interface utilisateur et d'installation d'armements.\n\nAvec votre achat, nous vous recommandons de lire le manuel complet de l'utilisateur pour connaître toutes les nouvelles commandes disponibles pour les drones améliorés avant de vous engager dans des scénarios de combat potentiellement dangereux.\n\nPour l'installation, placez simplement le KAUD non emballé dans n'importe quelle fente KS-I non modifiée. Après l'installation, veuillez attendre au moins cinq minutes avant de donner un ordre.\n\nN'oubliez pas : Les voix que vous pourriez entendre de votre drone après l'installation ne sont qu'un sous-produit d'une intelligence artificielle de haute qualité. Si cela persiste, veuillez contacter votre spécialiste mécanique KS-I local !",
+
+		"LIT_ITEM_BECKONINGCAT_NAME": "Chat Attirant",
+		"LIT_ITEM_BECKONINGCAT_PICKUP": "Les monstres d'élite ont une chance de laisser tomber des objets.",
+		"LIT_ITEM_BECKONINGCAT_DESC": "Les monstres d'élite ont une chance de <style=cIsUtility>4.5%</style> <style=cStack>(+1.5% par cumul)</style> de laisser tomber des objets à leur mort. Les objets laissés ont une chance de <style=cIsUtility>6%</style> <style=cStack>(+1% par cumul)</style> d'être <color=#9ce562>Peu Commun</color>, et une chance de <style=cIsUtility>0.5%</style> <style=cStack>(+0.25% par cumul)</style> d'être <color=#e58262>Rare</color>.",
+		"LIT_ITEM_BECKONINGCAT_LORE": "Des gouttes de pluie légères tombent autour d'un restaurant rétro. Le bruit est sourd, mais augmente lentement en volume. Leur porte-bonheur est assis là, sa patte qui ploc, ploc, ploc. \"Hé, Papy. Ne pensez-vous pas qu'il est temps de fermer? Personne ne va venir dans ces conditions.\"\n\nLe vieil homme est simplement assis derrière le comptoir, sirotant quelque chose de chaud, et se divertissant en regardant leur vieux chat en plastique. ploc, ploc, ploc. \"Non, mon garçon. C'est précisément pour cette raison que nous devrions rester ouverts. Quelqu'un est en route.\"\n\nLe jeune homme lève les yeux au ciel et ferme la porte, car le bruit devient maintenant trop fort. Le grondement lointain du tonnerre fait craquer la vieille structure, le porte-bonheur cliquetant sur la table. ploc, ploc, ploc. \"Je suis sûr qu'ils rentrent chez eux au moins. Eh bien, nous pouvons toujours faire un peu de rangement en attendant que ça passe\"\n\nLa porte s'ouvre alors qu'une femme imposante entre, habillée comme si elle était un commandant ou une fonctionnaire gouvernementale. En se débarrassant de l'eau sur son manteau, elle parcourt le menu sur le comptoir avec le porte-bonheur. ploc, ploc, ploc. \"Tu vois, mon garçon ? Il y a toujours quelqu'un qui pourrait avoir besoin d'un peu d'aide. Et qui sommes-nous pour les repousser ? Quand il pleut, il pleut après tout.\"\n\nLa femme part rapidement dans la tempête, et tout est calme, sauf pour le léger staccato des gouttes de pluie. Cependant, la femme revient bientôt, suivie d'un petit peloton de soldats. Apparemment, une célébration nocturne pour la victoire dans le seul magasin encore ouvert à moitié correct. La femme fait un signe de tête au vieil homme alors qu'elle place sa carte à côté du porte-bonheur, et sa patte ploc, ploc, ploc.",
+
+		"LIT_ITEM_BECKONINGCAT_PURIST_NAME": "Trèfle à 56 feuilles",
+		"LIT_ITEM_BECKONINGCAT_PURIST_PICKUP": "Les monstres d'élite ont une chance de laisser tomber des objets.",
+		"LIT_ITEM_BECKONINGCAT_PURIST_DESC": "Les monstres d'élite ont une chance de <style=cIsUtility>4.5%</style> <style=cStack>(+1.5% par cumul)</style> de laisser tomber des objets à leur mort. Les objets laissés ont une chance de <style=cIsUtility>5%</style> <style=cStack>(+1% par cumul)</style> d'être <color=#81d047>Peu Commun</color>, et une chance de <style=cIsUtility>0.5%</style> <style=cStack>(+0.25% par cumul)</style> d'être <color=#f26060>Rare</color>.",
+		"LIT_ITEM_BECKONINGCAT_PURIST_LORE": "<style=cDeath>WORK IN PROGRESS</style>",
+
+		"LIT_ITEM_GUARDIANSHEART_NAME": "Cœur du Gardien",
+		"LIT_ITEM_GUARDIANSHEART_PICKUP": "Tous les boucliers deviennent verrouillés, bloquant les dégâts excédentaires.",
+		"LIT_ITEM_GUARDIANSHEART_DESC": "Gagnez <style=cIsHealing>60 points de bouclier</style>. Tous les boucliers deviennent <style=cIsUtility>verrouillés</style>, <style=cIsHealing>bloquant</style> tout dommage excédant votre quantité actuelle de bouclier, et conférant <style=cIsUtility>40 points d'armure</style> pendant <style=cIsUtility>3</style> <style=cStack>(+50% par cumul)</style> secondes.",
+		"LIT_ITEM_GUARDIANSHEART_LORE": "========================================\n====   Traducteur Automatique MyBabel   ====\n====     [Version 12.45.1.009 ]   ======\n========================================\nEntraînement… <100000000 cycles>\nEntraînement… <100000000 cycles>\nEntraînement… <100000000 cycles>\nEntraînement… <9023657 cycles>\nEn Pause…\nAfficher le résultat partiel ? Y/N\nY\n========================================\n\nPremier cycle. <Son> offrande a été plantée à la fois dans [Dex] et [Mozu]. Aucun changement immédiat, mais nous allons les suivre de près.\n\nTroisième cycle. Déjà, les sujets montrent des signes de croissance et débordent d'énergie. [Dex] a du mal à s'endormir, mais <Il> nous a assuré que l'excitation diminuera.\n\nSeptième cycle. [Mozu] prétend se sentir mal à l'aise, mais sinon aucun effet négatif persistant n'apparaît. Les deux sujets grandissent à un rythme spectaculaire.\n\nQuatorzième cycle. [Mozu] s'est effondrée et ne répond pas. <Il> nous a dit que c'est à prévoir parmi les faibles. Son cœur bat toujours, même après que nous l'ayons retiré de son corps. [Dex] vit et continue de croître rapidement.\n\nVingt-huitième cycle. La croissance de [Dex] a été phénoménale. Il a grandi autant en un mois que d'autres mettraient plusieurs centaines de mois à grandir. <Il> est satisfait du travail que nous avons accompli. <Il> nous dit de jeter le corps de [Mozu], mais de conserver son cœur. Il bat toujours.",
+
+		"LIT_ITEM_ENERGYCELL_NAME": "Cellule d'énergie",
+		"LIT_ITEM_ENERGYCELL_PICKUP": "Attaque plus rapidement lorsque la santé est basse.",
+		"LIT_ITEM_ENERGYCELL_DESC": "Gagnez une <style=cIsDamage>vitesse d'attaque</style> proportionnelle au <style=cIsHealth>pourcentage de santé manquante</style>, jusqu'à un maximum de <style=cIsDamage>+40%</style> <style=cStack>(+20% par cumul)</style> <style=cIsDamage>vitesse d'attaque</style> avec <style=cIsHealth>10% de santé restante ou moins</style>.",
+		"LIT_ITEM_ENERGYCELL_LORE": "<style=cMono>\\\\RAPPORT D'INCIDENT DE CRONTECH LABS F2056-8-19-17-33-27\\\\</style>\n\nRésumé de l'incident : Panne de courant, provoquée par une surcharge du système central.\n\nDurée de l'incident : Deux heures.\n\nCause de l'incident : Un imbécile pensait pouvoir s'en tirer en utilisant certaines des cellules d'énergie de fusion dans la console du système central pour le redémarrer, au lieu de le brancher comme il se doit. Même si c'est écrit sur le boîtier de ne pas le faire.\n\nNotes supplémentaires : Gardez un œil sur Harv. Et nous allons avoir besoin d'une nouvelle livraison de ces cellules bientôt.\n\n<style=cMono>FIN DU RAPPORT D'INCIDENT.</style>",
+
+		"LIT_ITEM_GOLDENGUN_NAME": "Pistolet d'Or",
+		"LIT_ITEM_GOLDENGUN_PICKUP": "Plus d'or, plus de dégâts.",
+		"LIT_ITEM_GOLDENGUN_DESC": "Infligez des <style=cIsDamage>dégâts supplémentaires</style> en fonction de l'or <style=cIsUtility>détenu</style>, jusqu'à un supplément de <style=cIsDamage>+40% de dégâts</style> <style=cStack>(+20% par cumul)</style> à <style=cIsUtility>300 pièces d'or</style> <style=cStack>(+150 par cumul, évoluant avec le temps)</style>.",
+		"LIT_ITEM_GOLDENGUN_LORE": "Commande : Artefact d'arme à feu vénusienne\nNuméro de suivi : 420****\nLivraison estimée : 19/02/2056\nMode d'expédition : Prioritaire\nAdresse de livraison : 3017 Turnbuckle Lane, Old York, Terre\nDétails de l'envoi :\n\nJamais rien vu de tel. J'espère que vous et votre équipe pourriez jeter un œil.\n\nDaté de plus d'un millénaire, nous l'avons trouvé dans les ruines du Secteur M-Quatre, entouré d'une grande structure en ruine. Comparé aux artefacts environnants, il a le double de leur âge et présente des niveaux de radiation beaucoup plus élevés.\n\nIl semble s'agir d'un Desert Eagle modifié - production terrienne, probablement à la fin du XXe siècle - modifié pour être alimenté par le haut avec des pièces de monnaie, et les tirer à travers son canon beaucoup plus grand que la moyenne. Plaqué en or pur 24 carats, il sera probablement l'artefact le plus précieux que nous ayons jamais collecté - mais j'aimerais attendre avant de le mettre aux enchères.\n\nJe suis intrigué par deux détails spécifiques sur l'arme à feu. En bas de la crosse, un étrange symbole triangulaire, qui ressemble à l'« Œil de la Providence » utilisé sur la monnaie américaine, ainsi qu'une paire d'initiales : « Y.V. » Nos archives ne montrent aucun individu avec ces initiales spécifiques vivant dans le M-Quatre avant l'effondrement. Peut-être que votre personnel plus expérimenté pourrait approfondir l'examen ?\n\nTout le meilleur, Docteur Harold Deluca",
+
+		"LIT_ITEM_SMARTSHOPPER_NAME": "Client Avisé",
+		"LIT_ITEM_SMARTSHOPPER_PICKUP": "50% de remise sur le prochain achat !",
+		"LIT_ITEM_SMARTSHOPPER_DESC": "<style=cIsUtility>Acheter</style> un objet interactif avec de l'or rembourse <style=cSharp>50%</style> du prix.",
+		"LIT_ITEM_SMARTSHOPPER_LORE": "Commande : Portefeuille\nNuméro de suivi : 100****\nLivraison estimée : 02/04/2057\nMode d'expédition : Prioritaire\nAdresse de livraison : Boîte postale 18789, Alcore, Mars\nDétails de l'envoi :\n\nCes choses n'étaient PAS censées être divulguées. Certains gamins montrent déjà leur \"portefeuille magique\" qui imprime de l'argent ! C'est partout dans les fichues actualités ! Tu vas payer pour ça, tu entends ? Pour chaque portefeuille manquant quand je te verrai, je te couperai un doigt. À bientôt, Alex.",
+
+		"LIT_ITEM_PRISONSHACKLES_NAME": "Menottes de prisonnier",
+		"LIT_ITEM_PRISONSHACKLES_PICKUP": "Ralentit la vitesse d'attaques des ennemies touché par une attaque",
+		"LIT_ITEM_PRISONSHACKLES_DESC": "En cas d'attaque réeussie, <style=cIsUtility>ralentit</style> de <style=cIsUtility>-30% de vitesse d'attaque</style> pendant <style=cIsUtility>2s</style> <style=cStack>(+2s par cumul)</style>.",
+		"LIT_ITEM_PRISONSHACKLES_LORE": "Trois silhouettes étaient assises en groupe à l'extérieur du mur extérieur du fort. Chacune tenait un objet, tous connectés par des fils pour assembler un dispositif plus important.\n\nL'une des silhouettes attacha un fil à sa partie du dispositif, puis prit la parole. \"On est prêts ? \"\n\nCelui tenant le panneau de contrôle répondit : \" Oui, tout est prêt. Une fois que j'actionnerai l'interrupteur, ce petit engin devrait désactiver chaque paire de menottes holographiques dans un rayon de trois milles.\"\n\n\"Génial. Incroyable ! Kult sera libre en un rien de temps !\n\nLa troisième silhouette murmura au premier : \"Hé, baisse d'un ton.\"\n\nPendant que les trois parlaient, la deuxième silhouette termina ses dernières vérifications et actionna l'interrupteur sur son dispositif.\n\n...\n\nEt rien ne se passa.\n\nChacune des silhouettes manipula son morceau de dispositif, puis l'interrupteur fut actionné à nouveau.\n\n...\n\nEt rien ne se passa.\n\nLe trio commença à se disputer. Des accusations de sabotage et d'incompétence résonnèrent dans l'obscurité. En fin de compte, aucun d'entre eux ne semblait réaliser exactement pourquoi l'EMP ne fonctionnait pas.\n\nAvec du recul, il est assez évident pourquoi l'EMP ne fonctionnait pas. Après tout, il est plutôt difficile de désactiver des entraves qui n'ont pas besoin d'être activées en premier lieu.",
+
+		"LIT_ITEM_LOPPER_NAME": "Le Vieux Trancheur",
+		"LIT_ITEM_LOPPER_PICKUP": "Inflige davantage de dégâts aux victimes déjà blessées.",
+		"LIT_ITEM_LOPPER_DESC": "Infligez <style=cIsDamage>2%</style> <style=cStack>(+2% par cumul)</style> de dégâts supplémentaires pour chaque <style=cIsHealth>1% de vie</style> manquant chez les ennemis, jusqu'à un maximum de <style=cIsDamage>50%</style> <style=cStack>(+50% par cumul)</style> de dégâts.",
+		"LIT_ITEM_LOPPER_LORE": "<style=cMono>// --AUTO-TRANSCRIPTION À PARTIR DU STOCKAGE DES PREUVES DU COMMISSARIAT DE [Supprimé] -- //\n\n</style>Un portail fermé se referme alors que deux hommes entrent dans la pièce. \"Nous l'avons en notre possession, n'est-ce pas ?\"\n\nLe plus jeune des deux soulève une assez grande caisse dans ses mains. \"Oui, monsieur, je l'ai juste ici.\"\n\nLe vétéran barbu sourit en se caressant la barbe. \"Parfait. Ça devrait être facile, alors.\"\n\nUn gros thud résonne dans toute la pièce lorsque la caisse est posée sur une table d'inspection. \"Penses-tu que ça va marcher ?\"\n\nLe cliquetis du métal se fait entendre alors que le vétéran inspecte et ouvre la caisse. \"Aucune raison que ça ne fonctionne pas. Il est sans défense maintenant, donc soit il vient à nous, soit nous allons à lui.\"\n\nLe jeune homme se déplace d'un pied à l'autre avec anxiété. \"Mais ne trouvez-vous pas ça étrange, monsieur ?\"\n\n\"De quelle manière ?\"\n\nOn peut entendre le froissement de papiers, alors que le ton du jeune homme devient plus professionnel. \"Ils disent qu'il était inséparable de sa hache, et pourtant, il l'a envoyée à quelqu'un pour des réparations. Ça ne semble pas correct.\"\n\nLe vétéran grogne simplement et fait un geste de la main pour écarter sa remarque. \"Comme tu l'as dit, il avait besoin de réparations. C'est aussi simple que ça. N'y pense pas trop.\"\n\nLe jeune homme soupire alors que le portail fermé s'ouvre à nouveau \"Désolé, monsieur. J'ai juste un mauvais pressentiment à ce sujet...\"",
+
+		"LIT_ITEM_REPULCHEST_NAME": "Armure de Répulsion",
+		"LIT_ITEM_REPULCHEST_PICKUP": "Obtenez une augmentation massive d'armure tous les six coups.",
+		"LIT_ITEM_REPULCHEST_DESC": "Être touché <style=cIsUtility>6</style> fois active l'armure de répulsion, conférant <style=cIsUtility>500 points d'armure</style> et <style=cIsUtility>renvoyant les projectiles</style> pendant <style=cIsUtility>3</style> <style=cStack>(+1.5 par cumul)</style> secondes.",
+		"LIT_ITEM_REPULCHEST_LORE": "Le survivant était assis, recroquevillé derrière un rocher. Son itinéraire le conduisait à travers une vallée balayée par la neige, et il avait déjà suffisamment énervé ces animaux pour que cela devienne compliqué. Cela semblait presque désespéré. La seule chose qui jouait en sa faveur était cette armure de répulsion défectueuse et quelques seringues d'adrénaline qu'il avait gardées pour les urgences.\n\nPeu importe. Il enfonça l'une des seringues et se mit à courir à travers la vallée.\n\nUne boule de feu heurte son dos, entravant sa foulée. Il continue de courir.\n\nDeux éclairs visant ses jambes l'arrêtent, ne serait-ce que brièvement. Continue de courir.\n\nL'un de ces démons l'attrape et lui laisse une paire de griffures suppurantes sur le côté. Continue de courir.\n\nIl y était presque. Sa course se transforme en une course folle. Il était concentré. Déterminé. Et échouant à remarquer le bison qui chargeait dans sa direction.\n\nIl fut envoyé en l'air et atterrit sur le dos. Allons, lève-toi et continue de courir. Il reconnut l'éclat vert distinct d'une grande lueur de volonté éclairant la neige autour de lui. Zut. On dirait que sa chance est enfin épuisée.\n\nIl lança deux orbes de flamme verte directement vers lui lorsqu'il se remit sur pied. À sa grande surprise, les boules de feu furent renvoyées directement vers la volonté, l'engloutissant dans un feu vert brillant. Il profita de l'opportunité offerte par l'armure et acheva son évasion. Le point de ralliement n'était plus qu'à quelques miles maintenant.",
+
+		"LIT_ITEM_HITLIST_NAME": "La Liste des Cibles",
+		"LIT_ITEM_HITLIST_PICKUP": "Les ennemis ont une chance d'être marqués. Tuer les ennemis marqués augmente temporairement les dégâts.",
+		"LIT_ITEM_HITLIST_DESC": "Les ennemis ont une chance de <style=cIsDamage>5%</style> <style=cStack>(+2.5% par cumul)</style> d'être <style=cIsDamage>marqués</style> lors de leur apparition. Tuer un ennemi <style=cIsDamage>marqué</style> augmente les dégâts de base de <style=cIsDamage>50%</style> pendant <style=cIsDamage>20 secondes</style>.",
+		"LIT_ITEM_HITLIST_LORE": "<style=cMono>Sujet : Re : N'oublie pas ce qu'ils ont fait\nEnvoyé par : Anonyme aleph@pisces.serkta.net</style>\n\n...Écoute, mec. Je comprends que renvoyer ça n'est pas une bonne image pour moi, mais je ne peux pas prendre ce boulot. J'ai quelques problèmes avec la façon dont tu gères ça.\n\nPremièrement, tu m'as envoyé une liste papier. Allez, on est en 2056. Mets-toi à jour, mec.\n\nDeuxièmement, tu me paies trop peu pour autant de cibles. Tu me donnes pratiquement de la monnaie de poche d'avance, et des promesses vagues sur la réalisation ne suffiront pas pour plus d'une douzaine de noms.\n\n...Oh, et ces noms. Maintenant, je comprends que la spécificité est importante dans quelque chose comme ça, mais il n'y a aucune façon en enfer que tu aies besoin de \"Jugemu Jugemu Go-Ko-no-Suki\" euh, \"-rikire Kaijari-sugiyo\"... Tu sais qui. Pas moyen que tu aies besoin que ce gars soit mort à ce point.\n\nAvec tout le respect que je te dois, je ne suis pas ton homme. Bonne chance ailleurs.",
+
+		"LIT_ITEM_RAPIDMITOSIS_NAME": "Mitose Rapide",
+		"LIT_ITEM_RAPIDMITOSIS_PICKUP": "Réduction du temps de recharge de l'équipement. L'utilisation de l'équipement accorde une réduction temporaire du temps de recharge des compétences.",
+		"LIT_ITEM_RAPIDMITOSIS_DESC": "Réduit le <style=cIsUtility>temps de recharge de l'équipement</style> de <style=cIsUtility>30%</style> <style=cStack>(+30% par cumul)</style>. L'utilisation de votre <style=cIsUtility>équipement</style> réduit les <style=cIsUtility>temps de recharge des compétences</style> de <style=cIsUtility>40%</style> pendant 6 secondes.",
+		"LIT_ITEM_RAPIDMITOSIS_LORE": "<style=cMono>Images de surveillance /7.14.010957-7.16.010957/ récupérées du Centre de Recherche Cellulaire, Baie C-3.\n\nLecture...</style>\n\n[SOUPIRS] « Docteur Messer, monsieur ! Quelque chose ne va pas avec la chambre froide ! »\n\n« Lee ! Calme-toi. Que se passe-t-il ? »\n\n« Je faisais la vérification des unités de stockage à froid, et la température de l'unité B était sept degrés plus élevée que la normale. »\n\n« P-pourquoi n'as-tu pas simplement corrigé cela sur place ?! »\n\n« J'ai essayé ! L'interface ne fonctionnait pas ! Elle a dû dysfonctionner pendant la panne de courant de la nuit dernière. »\n\n« ...C'est probable. Est-ce que quelque chose a été endommagé ? »\n\n« J-je ne peux pas dire, la porte ne s'ouvrait pas non plus. Je ne sais pas pourquoi. »\n\n« La porte ne s'ouvrait pas ?... Attends. C'était quelle unité, encore ? »\n\n« Euh, l'unité B, monsieur. »\n\n« ...Oh, [CENSURÉ] ! Lee, cours avec moi ! Mets-toi en contact avec le gestionnaire de secteur et dis-leur de mettre le laboratoire en pause jusqu'à ce que nous puissions résoudre cela. »\n\n« Q-quoi ? N'est-ce pas un peu extrême pour un simple dysfonctionnement de la chambre froide ? »\n\n« Pas du tout, je t'assure. »\n\n<style=cMono>Fin de l'enregistrement.\n\nRejouer ?</style>",
+
+		"LIT_ITEM_PHOTONCANNON_NAME": "Turbine Laser",
+		"LIT_ITEM_PHOTONCANNON_PICKUP": "L'utilisation de vos compétences charge un laser puissant.",
+		"LIT_ITEM_PHOTONCANNON_DESC": "Gagnez <style=cIsDamage>{0}%</style> <style=cStack>(+{1}% par cumul)</style> de charge chaque seconde <style=cIsUtility>pour chaque compétence en temps de recharge</style>. À <style=cIsDamage>charge maximale</style>, tirez un laser massif infligeant <style=cIsDamage>{2}%</style> de dégâts.",
+		"LIT_ITEM_PHOTONCANNON_LORE": "Turbine laser de remplacement pour la centrale électrique photonique. L'objet est trompeusement petit, mais il détient une puissance immense. Gardez-le loin de toutes les sources électromagnétiques ; il se chargera du champ, et si le condensateur est surchargé, il SE déchargera.",
+
+		"LIT_ITEM_TELESCOPICSIGHT_NAME": "Viseur Télescopique",
+		"LIT_ITEM_TELESCOPICSIGHT_PICKUP": "Les attaques ont une chance de tuer instantanément les ennemis.",
+		"LIT_ITEM_TELESCOPICSIGHT_DESC": "Vos attaques ont une chance de <style=cIsDamage>1%</style> <style=cStack>(+0,5% par cumul)</style> de <style=cIsDamage>tuer instantanément</style> un <style=cIsDamage>ennemi non-boss</style>.",
+		"LIT_ITEM_TELESCOPICSIGHT_LORE": "\"Le viseur est équipé d'infrarouge, de vision nocturne, d'une évaluation du vent intégrée, d'ajustements de grossissement intégrés entre cinq et vingt-cinq fois, et d'une technologie de tir intelligent adaptative pour garantir le tir parfait. Je l'ai acheté en surplus militaire, mais je n'ai aucune idée de comment il s'est retrouvé là.\"\n\n\"Tu fais comme si le fusil lui-même était une pièce jointe pour le viseur.\"\n\n\"Ha ! Eh bien, c'est en supplément. Mais je te le fais à prix réduit ! Amis et famille.\"\n\n\"Juste une dernière question.\"\n\n\"Vas-y.\"\n\n\"En aurais-tu deux de plus ?\"",
+
+		"LIT_ITEM_THALLIUM_NAME": "Thallium",
+		"LIT_ITEM_THALLIUM_PICKUP": "Chance d'infliger un empoisonnement au thallium lors de l'impact.",
+		"LIT_ITEM_THALLIUM_DESC": "Vos attaque ont <style=cIsDamage>10%</style> de chance d'infliger un empoisonnement au thallium pour <style=cIsDamage>500%</style> <style=cStack>(+250% par cumul)</style> des dégâts de base de la victime tout en la ralentissant de <style=cIsUtility>75%</style> en vitesse de déplacement.",
+		"LIT_ITEM_THALLIUM_LORE": "Vous l'avez découvert incrusté au sommet d'une petite colline, entouré d'herbe morte.\n\nDes insectes morts.\n\nDes lézards morts.\n\nL'arbre sous lequel il se trouvait avait depuis longtemps rendu l'âme.\n\nL'écorce brune était devenue une poussière blanche, emportée par le vent.\n\nLa poussière sentait la décomposition.\n\nCette scène, pour quiconque d'autre, serait accablante.\n\nUn lieu maudit, maudit par quelque chose d'inconnu.\n\nMais vous avez creusé plus profondément.\n\nVous avez trouvé quelque chose... de pire.\n\nUne note. Un présage. Une promesse.\n\nMais vous étiez heureux qu'elle n'ait jamais été réalisée.\n\nPour son bien.",
+
+		"LIT_ITEM_WICKEDRING_NAME": "Bague Malfaisante",
+		"LIT_ITEM_WICKEDRING_PICKUP": "Tuer des ennemis réduit les temps de recharge des compétences.",
+		"LIT_ITEM_WICKEDRING_DESC": "Tuer des ennemis <style=cIsUtility>réduit tous les temps de recharge des compétences</style> de <style=cIsUtility>1</style> <style=cStack>(+1 par cumul)</style> seconde.",
+		"LIT_ITEM_WICKEDRING_LORE": "Une bague du défunt Roi. La dernière de nombreuses reliques maudites d'un royaume oublié.\n\nDotée du pouvoir des âmes mêmes de sa progéniture, il a sacrifié l'avenir de ses enfants pour celui de ses sujets. Le Roi a utilisé la puissance de ses bagues pour protéger et gouverner pendant des générations.\n\nLe Roi avait sacrifié beaucoup, tout cela pour le bien de ceux qui l'adoreraient. L'adoration, cependant, est une ressource dangereuse. Une ressource digne des divinités, pas de simples mortels. Une vérité simple qu'il avait oubliée.\n\nLe Roi avait trop cru en son propre peuple, en sa propre force, en ses propres bagues. Le Roi avait défié la mort pendant des générations. Beaucoup plus longtemps que tout homme ne devrait vivre, encore moins gouverner. Le Roi pensait avoir vaincu la mort. Il pensait avoir accédé à une figure digne du culte de son peuple.\n\nHélas, sa sagesse infinie céda devant l'hubris. Il pensait pouvoir défier <style=cDeath>Elle</style> et permettre à son royaume de prospérer sous son règne pour des éons à venir. Mais la mort est quelque chose que personne ne peut éviter et elle mène tous au même terme. Il fut puni par la perte de ce pour quoi il avait tant sacrifié, avant de se sacrifier lui-même pour un dernier espoir. Son âme ne s'échappant jamais du même tourment qu'il avait infligé à ses fils.\n\n~Memento Mori",
+
+		"LIT_EQUIP_GIGANTICAMETHYST_NAME": "Améthyste Gigantesque",
+		"LIT_EQUIP_GIGANTICAMETHYST_PICKUP": "Réinitialise les temps de recharge des compétences à l'utilisation.",
+		"LIT_EQUIP_GIGANTICAMETHYST_DESC": "<style=cIsUtility>Réinitialise tous les temps de recharge des compétences</style> à l'utilisation.",
+		"LIT_EQUIP_GIGANTICAMETHYST_LORE": "Riche ! Riche que je suis !\nJaloux, jaloux ils étaient.\nC'est à moi ! Tout à moi !\n\nBarry voulait le rendre.\nMais nous n'allions jamais rendre !\nAlors je l'ai rendu à la terre.\n\nSamantha voulait le partager.\nMais le casser aurait ruiné son éclat !\nAlors je l'ai brisée.\n\nJe leur ai dit que nous ne revenions pas.\nIls ne me croyaient pas !\nMaintenant, nous sommes tous ici, pour l'éternité.\n\nMoi, mes amis, et mon cristal.",
+
+		"LIT_EQUIP_CAPTAINSBROOCH_NAME": "Broche du Capitaine",
+		"LIT_EQUIP_CAPTAINSBROOCH_PICKUP": "Invoquez l'Arsenal du Capitaine.",
+		"LIT_EQUIP_CAPTAINSBROOCH_DESCRIPTION": "Invoquez l'<style=cIsUtility>Arsenal du Capitaine</style> depuis l'<style=cIsUtility>l'UES Safe Travels</style>.",
+
+		"LIT_EQUIP_GENERATOR_NAME": "Projecteur de Champ Intrinsèque",
+		"LIT_EQUIP_GENERATOR_PICKUP": "En cas de dégâts mortels, survit avec 1 point de vie et bénéficie de 8 secondes d'invincibilité. Consommé lors de l'utilisation.",
+		"LIT_EQUIP_GENERATOR_DESC": "En cas de <style=cIsHealth>dommages létaux</style>, survit avec <style=cIsHealth>1 point de vie</style> et bénéficie de <style=cIsUtility>8 secondes</style> d'<style=cIsUtility>invincibilité</style>. L'équipement est <style=cIsUtility>consommé</style> lors de l'utilisation.",
+
+		"LIT_EQUIP_GENERATORUSED_NAME": "Projecteur de Champ Intrinsèque (Consommé)",
+		"LIT_EQUIP_GENERATORUSED_PICKUP": "Sonne étrange, mais il n'y a pas grand-chose d'autre.",
+
+		"LIT_EQUIP_SHATTEREDMIRROR_NAME": "Miroir Brisé",
+		"LIT_EQUIP_SHATTEREDMIRROR_PICKUP": "Invoque un partenaire d'ombre pendant 15 secondes.",
+		"LIT_EQUIP_SHATTEREDMIRROR_DESC": "<style=cIsUtility>Invoque un partenaire d'ombre</style> pendant 15 secondes à l'utilisation.",
+		"LIT_EQUIP_SHATTEREDMIRROR_LORE": "Sais-tu ce qui te définit ? Ce dont tu es capable d'accomplir ? Ce que tu es incapable de réaliser ? Beaucoup de gens ne savent pas comment répondre à ces questions. Certains vivent leur vie à la recherche de telles réponses.\n\nLes réponses sont disponibles pour tous ceux qui les recherchent, mais elles se trouvent profondément à l'intérieur. Elles se trouvent seulement dans les recoins les plus profonds du psychisme que la plupart souhaitent éviter. Réservées à ceux qui ont la détermination de regarder leurs ombres les plus sombres.\n\nAs-tu la résolution de chercher ces réponses ? La volonté de te confronter vraiment à toi-même ? Si c'est le cas, alors tiens-toi droit avec une force connue de trop peu. Tiens-toi fier à côté de toi-même et transforme ta faiblesse en croissance. Accepte tes démons comme tes alliés les plus proches et surmonte tes épreuves.",
+
+		"LIT_EQUIP_THQWIB_NAME": "Thqwib",
+		"LIT_EQUIP_THQWIB_PICKUP": "Relâchez un essaim de thqwibs, explosant au contact.",
+		"LIT_EQUIP_THQWIB_DESC": "Libérez une essaim de <style=cIsDamage>30 thqwibs</style>, explosant au contact pour <style=cIsDamage>200%</style> de dégâts.",
+		"LIT_EQUIP_THQWIB_LORE": "Les Thqwibs <style=cStack>(pl. Thqwibs, voir ci-dessous pour les variantes)</style> sont des créatures molles semblables à des mollusques, appartenant à un ordre actuellement non établi. Contrairement à la plupart des mollusques et céphalopodes, les Thqwibs sont asymétriques et peuvent avoir entre cinq et neuf tentacules. Chaque Thqwib possède un grand noyau central qui fonctionne comme un cerveau. Aucune pièce buccale n'a été découverte lors des dissections. Leurs corps mous peuvent radicalement changer de forme, mais éclatent facilement sous l'application d'une légère force. En raison de la grande quantité de liquide acide stockée dans leur corps, cela peut être dangereux pour les matières biologiques autour de l'explosion. Comme les céphalopodes, les Thqwibs utilisent leurs tentacules en conjonction avec un siphon spécialisé pour se déplacer à travers l'atmosphère de Teegarden b.\n\nLes Thqwibs habitent diverses régions de Teegarden b, à toutes les altitudes et températures, et grandissent rapidement, atteignant leur maturité en seulement quelques mois. Avec leur excellente résistance environnementale et leur reproduction rapide, ils peuvent facilement envahir une zone en essaims, ce qui peut entraîner l'évacuation massive d'autres habitants. Ces essaims sont appelés des \"odes\". Entrer dans une ode n'est pas recommandé.",
+
+		"LIT_EQUIP_PRESCRIPTIONS_NAME": "Ordonnances",
+		"LIT_EQUIP_PRESCRIPTIONS_PICKUP": "Augmente les dégâts, la vitesse d'attaque et l'armure.",
+		"LIT_EQUIP_PRESCRIPTIONS_DESC": "Augmente la <style=cIsDamage>vitesse d'attaque</style> de <style=cIsDamage>70%</style>, les <style=cIsDamage>dégâts</style> de <style=cIsDamage>20%</style>, et l'<style=cIsUtility>armure</style> de <style=cIsUtility>20</style> pendant <style=cIsUtility>12</style> secondes.",
+		"LIT_EQUIP_PRESCRIPTIONS_LORE": "Commande: Médicament de C. Licht pour 4/56\nNuméro de suivi: 643*******\nLivraison estimée: 04/03/2056\nMode d'expédition: Priorité élevée\nAdresse de livraison: 554 Washington St., Corydon, Terre\nDétails de l'envoi:\n\nPrescriptions mensuelles de Calvin Lichgt. Ne doit pas être laissé sans réfrigération pendant plus de 6 heures.\n\nPrenez un comprimé tous les jours avec votre repas du soir. Si vous en prenez plus d'un, vous pourriez subir des effets secondaires négatifs.\n\nJe le pense sérieusement. NE prenez PAS plus d'un par jour. Aucun de nous ne veut revivre le mois dernier.",
+
+		"LIT_EQUIP_PILLAGEDGOLD_NAME": "Or pillé",
+		"LIT_EQUIP_PILLAGEDGOLD_PICKUP": "Frapper les ennemis donne de l'or.",
+		"LIT_EQUIP_PILLAGEDGOLD_DESC": "Pendant 14 secondes, gagnez <style=cIsUtility>1</style> or à chaque coup.",
+
+		"LIT_EQUIP_DYNAMITEPLUNGER_NAME": "Piston de dynamite",
+		"LIT_EQUIP_DYNAMITEPLUNGER_PICKUP": "Frapper les ennemis a une chance de faire tomber de la dynamite. Détonation à l'utilisation.",
+
+		"LIT_EQUIP_AFFIXLEECHING_NAME": "Gémissements gutturaux",
+		"LIT_EQUIP_AFFIXLEECHING_PICKUP": "Devenez un aspect du parasitisme.",
+		"ASPECTABILITIES_LIT_EQUIP_AFFIXLEECHING_PICKUP": "Restaure la santé des alliés proches à chaque coup.",
+		"LIT_EQUIP_AFFIXLEECHING_DESC": "Devenez un aspect du parasitisme.",
+		"LIT_EQUIP_AFFIXLEECHING_LORE": "<style=cDeath>Hé, attends un peu là, partenaire ! Tu n'étais pas censé voir ça... Rends-moi service et signale ça aux auteurs, d'accord ? ...Et ne le refais pas !</style>",
+
+		"LIT_EQUIP_AFFIXVOLATILE_NAME": "Tourment persistant",
+		"LIT_EQUIP_AFFIXVOLATILE_PICKUP": "Devenez un aspect de l'instabilité.",
+		"ASPECTABILITIES_LIT_EQUIP_AFFIXVOLATILE_PICKUP": "Chargez une mini-explosion qui inflige des dégâts aux ennemis à proximité.",
+		"LIT_EQUIP_AFFIXVOLATILE_DESC": "Devenez un aspect de l'instabilité.",
+		"LIT_EQUIP_AFFIXVOLATILE_LORE": "<style=cDeath>Hé, attends un peu là, partenaire ! Tu n'étais pas censé voir ça... Rends-moi service et signale ça aux auteurs, d'accord ? ...Et ne le refais pas !</style>",
+
+		"LIT_EQUIP_AFFIXFRENZIED_NAME": "Rage Primordiale",
+		"LIT_EQUIP_AFFIXFRENZIED_PICKUP": "Devenez un aspect de l'effervescence.",
+		"ASPECTABILITIES_LIT_EQUIP_AFFIXFRENZIED_PICKUP": "Réduction des temps de recharge à l'utilisation.",
+		"LIT_EQUIP_AFFIXFRENZIED_DESC": "Devenez un aspect de l'effervescence.",
+		"LIT_EQUIP_AFFIXFRENZIED_LORE": "<style=cDeath>Hé, attends un peu là, partenaire ! Tu n'étais pas censé voir ça... Rends-moi service et signale ça aux auteurs, d'accord ? ...Et ne le refais pas !</style>",
+
+		"LIT_EQUIP_AFFIXBLIGHTED_NAME": "Trahison du rempart",
+		"msRaceDroneMods": null,
+		"LIT_EQUIP_AFFIXBLIGHTED_PICKUP": "Devenez une autre âme égarée.",
+		"ASPECTABILITIES_LIT_EQUIP_AFFIXBLIGHTED_PICKUP": "Remélange vos 2 améliorations d'élite.",
+		"LIT_EQUIP_AFFIXBLIGHTED_DESC": "Devenez une autre âme égarée.",
+		"LIT_EQUIP_AFFIXBLIGHTED_LORE": "<style=cDeath>Hé, attends un peu là, partenaire ! Tu n'étais pas censé voir ça... Rends-moi service et signale ça aux auteurs, d'accord ? ...Et ne le refais pas !</style>",
+
+		"LIT_MODIFIER_BLIGHTED": "Égaré {0}",
+		"LIT_ELITE_MODIFIER_LEECHING": "Parasite {0}",
+		"LIT_ELITE_MODIFIER_VOLATILE": "Instable {0}",
+		"LIT_ELITE_MODIFIER_FRENZIED": "Enragé {0}",
+
+		"ELITE_MODIFIER_GOLD": "Aurique {0}",
+
+		"LIT_MECHANICALSPIDER_NAME": "Araignée Mécanique",
+		"LIT_UNLOCKABLE_LOG_MECHANICALSPIDER": "Araignée Mécanique",
+		"LIT_MECHANICALSPIDER_LORE": "<style=cMono>Transmission de signaux d'urgence... \n
+.\n
+. .\n
+. . .\n
+Attention ! Échec de la transmission !\n\n</style>
+
+                           uuuuuuu\n
+                   uu$$$$$$$$$$$uu\n
+             uu$$$$$$$$$$$$$$$$$uu\n
+           u$$$$$$$$$$$$$$$$$$$$$u\n
+          u$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$$$$$$$$$$$$$$$$$$$$u\n
+         u$$$$$$\"       \"$$$\"       \"$$$$$$u\n
+         \"$$$$\"            u$u             $$$$\"\n
+          $$$u              u$u             u$$$\n
+          $$$u            u$$$u           u$$$\n
+           \"$$$$uu$$$          $$$uu$$$$\"\n
+            \"$$$$$$$\"             \"$$$$$$$\"\n
+                  u$$$$$$$u$$$$$$$u\n
+                     u$\"$\"$\"$\"$\"$\"$u\n
+  uuu             $$u$ $ $ $ $u$$                 uuu\n
+ u$$$$            $$$$$u$u$u$$$             u$$$$\n
+  $$$$$uu         \"$$$$$$$$$\"         uu$$$$$$\n
+u$$$$$$$$$$$uu    \"\"\"\"\"      uuuu$$$$$$$$$$\n
+$$$$\"\"\"$$$$$$$$$$uuu   uu$$$$$$$$$\"\"\"$$$\"\n
+ \"\"\"            \"\"$$$$$$$$$$$uu \"\"$\"\"\"\n
+                  uuuu \"\"$$$$$$$$$$uuu\n
+  u$$$uuu$$$$$$$$$uu \"\"$$$$$$$$$$$uuu$$$\n
+  $$$$$$$$$$\"\"\"\"                     \"\"$$$$$$$$$$$\"\n
+   \"$$$$$\"                                           \"\"$$$$\"\"\n
+     $$$\"                                                 $$$$\"\n\n
+
+
+Piraté par le Roider Union Pistolero.\n\n
+
+La prochaine fois, utilise un véritable booter, capitaine. De l'argent dans nos poches.",
+
+		"LIT_EVOLEMURIAN_NAME": "Lémurien Évolué",
+
+		"LIT_EXPANSION_NAME": "Lost in Transit",
+		"LIT_EXPANSION_DESC": "Ajoute du contenu du mod 'Lost in Transit' au jeu."
+
+	}
+}
