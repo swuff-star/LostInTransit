@@ -9,6 +9,7 @@ using R2API;
 using UnityEngine.Networking;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -73,6 +74,7 @@ namespace LostInTransit.Items
                                 ))
                             {
                                 healthAfterShieldBreak = self.body.maxHealth;
+                                self.body.AddTimedBuffAuthority(LITContent.Buffs.bdGuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, self.body.inventory.GetItemCount(LITContent.Items.GuardiansHeart)));
                             }
                             return healthAfterShieldBreak;
                         });
@@ -99,6 +101,11 @@ namespace LostInTransit.Items
             public static ItemDef GetItemDef() => LITContent.Items.GuardiansHeart;
 
             public float currentShield;
+            private CharacterModel model;
+            private List<GameObject> displayList;
+            private GameObject displayObject;
+            private ChildLocator displayCL;
+            private Animator displayAnimator;
 
             public void Awake()
             {
@@ -112,11 +119,38 @@ namespace LostInTransit.Items
                 {
                     bool currentlyHasShield = body.healthComponent.shield > 0;
 
-                    if (hadShield && !currentlyHasShield && body.maxShield > 0f) // you should only get armor if you could have had shield
+                    if (displayAnimator != null)
                     {
-                        body.AddTimedBuffAuthority(LITContent.Buffs.bdGuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, stack));
+                        if (body.HasBuff(LITContent.Buffs.bdGuardiansHeartBuff))
+                            displayAnimator.speed = 2;
+                        else if (currentlyHasShield)
+                            displayAnimator.speed = 1;
+                        else
+                            displayAnimator.speed = 0;
                     }
-                    hadShield = currentlyHasShield;
+                }
+            }
+
+            private void Start()
+            {
+                model = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+
+                if (model != null)
+                {
+                    displayList = model.GetItemDisplayObjects(LITContent.Items.GuardiansHeart.itemIndex);
+
+                    if (displayList != null)
+                    {
+                        displayObject = displayList[0];
+                        if (displayObject != null)
+                        {
+                            displayCL = displayObject.GetComponent<ChildLocator>();
+                            if (displayCL != null)
+                            {
+                                displayAnimator = displayCL.FindChild("Base").gameObject.GetComponent<Animator>();
+                            }
+                        }
+                    }
                 }
             }
 

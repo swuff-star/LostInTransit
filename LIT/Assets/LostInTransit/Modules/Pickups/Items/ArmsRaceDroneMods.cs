@@ -17,11 +17,12 @@ namespace LostInTransit.Items
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.ArmsRaceDroneMods;
 
-            public float currentShield;
-            private void FixedUpdate()
+            public void Awake()
             {
-                currentShield = body.healthComponent.shield;
+                base.Awake();
+                body.RecalculateStats();
             }
+
             public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
                 if (body.healthComponent.shield >= 1f && damageInfo.damage >= body.healthComponent.shield + body.healthComponent.barrier)
@@ -35,7 +36,7 @@ namespace LostInTransit.Items
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.baseShieldAdd += (body.maxHealth * (0.01f * ArmsRace.extraShield));
+                args.baseShieldAdd += (body.maxHealth * (0.01f * ArmsRace.extraShield * stack));
             }
         }
     }

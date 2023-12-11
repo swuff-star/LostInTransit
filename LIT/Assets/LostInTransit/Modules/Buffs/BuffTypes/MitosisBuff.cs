@@ -12,18 +12,12 @@ namespace LostInTransit.Buffs
     {
         public override BuffDef BuffDef => LITAssets.LoadAsset<BuffDef>("bdMitosisBuff", LITBundle.Items);
 
-        public class MitosisBuffBehavior : BaseBuffBodyBehavior, IBodyStatArgModifier, IStatItemBehavior
+        public class MitosisBuffBehavior : BaseBuffBodyBehavior, IStatItemBehavior
         {
             [BuffDefAssociation]
             private static BuffDef GetBuffDef() => LITContent.Buffs.bdMitosisBuff;
-
-            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
-            {
-                if (body.HasBuff(LITContent.Buffs.bdMitosisBuff))
-                {
-                    //args.cooldownReductionAdd += Items.RapidMitosis.mitosisSkillCD;
-                }
-            }
+            private GameObject effectInstance;
+            private List<GameObject> effectInstances;
 
             public void RecalculateStatsEnd()
             {
@@ -41,6 +35,66 @@ namespace LostInTransit.Buffs
                             body.skillLocator.special.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
                     }
                 }
+            }
+
+            public void Start()
+            {
+                GameObject charModel = body.modelLocator.modelTransform.gameObject;
+                if (charModel != null)
+                {
+                    CharacterModel cm = charModel.GetComponent<CharacterModel>();
+                    if (cm != null)
+                    {
+                        CharacterModel.RendererInfo[] rendererInfos = cm.baseRendererInfos;
+                        if (rendererInfos != null)
+                        {
+                            for (int i = 0; i < rendererInfos.Length; i++)
+                            {
+                                //pls work
+                                if (rendererInfos[i].renderer && !rendererInfos[i].ignoreOverlays)
+                                {
+                                    GameObject effect = AddParticles(rendererInfos[i].renderer, body.coreTransform);
+                                    if (effect != null)
+                                    {
+                                        //effectInstances.Add(effect);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            private GameObject AddParticles(Renderer modelRenderer, Transform targetParentTransform)
+            {
+                if (modelRenderer is MeshRenderer || modelRenderer is SkinnedMeshRenderer)
+                {
+                    GameObject effectPrefab = Instantiate(LITAssets.LoadAsset<GameObject>("MitosisEffect", LITBundle.Items), targetParentTransform);
+                    ParticleSystem ps = effectPrefab.GetComponent<ParticleSystem>();
+                    ParticleSystem.ShapeModule shape = ps.shape;
+                    if (modelRenderer != null)
+                    {
+                        if (modelRenderer is MeshRenderer)
+                        {
+                            shape.shapeType = ParticleSystemShapeType.MeshRenderer;
+                            shape.meshRenderer = (MeshRenderer)modelRenderer;
+                        }
+                        else if (modelRenderer is SkinnedMeshRenderer)
+                        {
+                            shape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+                            shape.skinnedMeshRenderer = (SkinnedMeshRenderer)modelRenderer;
+                        }
+                    }
+                    ParticleSystem.MainModule main = ps.main;
+                    ps.gameObject.SetActive(true);
+                    BoneParticleController bpc = effectPrefab.GetComponent<BoneParticleController>();
+                    if (bpc != null && modelRenderer is SkinnedMeshRenderer)
+                    {
+                        bpc.skinnedMeshRenderer = (SkinnedMeshRenderer)modelRenderer;
+                    }
+                    return effectPrefab;
+                }
+                return null;
             }
 
             public void RecalculateStatsStart()

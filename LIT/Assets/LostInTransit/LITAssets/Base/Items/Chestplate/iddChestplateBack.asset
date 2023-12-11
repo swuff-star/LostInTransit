@@ -15,6 +15,9 @@ MonoBehaviour:
   keyAsset: {fileID: 11400000, guid: 16bd12c9b3269654fb2876d8eef533f2, type: 2}
   displayPrefabs:
   - {fileID: 5604199128578125354, guid: 23ed55462c821dc4380d583fdea5bed5, type: 3}
+  - {fileID: 5150827154168827026, guid: 9390448ca4fef3042aefa18bbe082281, type: 3}
+  - {fileID: 6204061220804846972, guid: 9f7043eccc8bfcd43a0ad2dde6497e09, type: 3}
+  - {fileID: 9170693617921829878, guid: be1dfdc7822e56e41bbe67bce6b6af08, type: 3}
   displayPrefab: {fileID: 5604199128578125354, guid: 23ed55462c821dc4380d583fdea5bed5,
     type: 3}
   namedDisplayDictionary:
@@ -26,6 +29,27 @@ MonoBehaviour:
     displayRules:
     - ruleType: 0
       displayPrefabIndex: 0
+      childName: Base
+      localPos: {x: 0, y: 0, z: 0}
+      localAngles: {x: 0, y: 0, z: 0}
+      localScales: {x: 0, y: 0, z: 0}
+      limbMask: 0
+    - ruleType: 0
+      displayPrefabIndex: 1
+      childName: Base
+      localPos: {x: 0, y: 0, z: 0}
+      localAngles: {x: 0, y: 0, z: 0}
+      localScales: {x: 0, y: 0, z: 0}
+      limbMask: 0
+    - ruleType: 0
+      displayPrefabIndex: 2
+      childName: Base
+      localPos: {x: 0, y: 0, z: 0}
+      localAngles: {x: 0, y: 0, z: 0}
+      localScales: {x: 0, y: 0, z: 0}
+      limbMask: 0
+    - ruleType: 0
+      displayPrefabIndex: 3
       childName: Base
       localPos: {x: 0, y: 0, z: 0}
       localAngles: {x: 0, y: 0, z: 0}

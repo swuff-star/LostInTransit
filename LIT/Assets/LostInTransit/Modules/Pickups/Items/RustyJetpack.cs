@@ -4,6 +4,9 @@ using System;
 using UnityEngine;
 using R2API;
 using RoR2.Items;
+using System.Collections.Generic;
+using UnityEngine.Networking;
+using System.Timers;
 
 namespace LostInTransit.Items
 {
@@ -27,29 +30,111 @@ namespace LostInTransit.Items
         {
             [ItemDefAssociation(useOnServer = true, useOnClient = true)]
             public static ItemDef GetItemDef() => LITContent.Items.RustyJetpack;
-            public void RecalculateStatsEnd()
-            {
-                //body.jumpPower += addedJumpPower + ((addedJumpPower / 2) * (stack - 1));
-            }
+            private CharacterModel model;
+            private List<GameObject> displayList;
+            private GameObject displayObject;
+            private ChildLocator displayCL;
+            private GameObject jetsSmall;
+            private GameObject jetsLarge;
+            private GameObject jetR;
+            private GameObject jetL;
 
+            int jumpTimes = 0;
+
+            private bool hasTriedToSetPrefab = false;
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
                 //args.jumpPowerMultAdd += stack * addedJumpPower;
                 args.baseJumpPowerAdd += stack * addedJumpPower;
             }
+            private void Reset(ref CharacterMotor.HitGroundInfo hitGroundInfo)
+            {
+                jumpTimes = 0;
+            }
+
+            private void Start()
+            {
+                if (NetworkServer.active)
+                    body.characterMotor.onHitGroundServer += Reset;
+                else
+                    body.characterMotor.onHitGroundAuthority += Reset;
+
+                model = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+
+                if (model != null)
+                {
+                    displayList = model.GetItemDisplayObjects(LITContent.Items.RustyJetpack.itemIndex);
+
+                    if (displayList != null)
+                    {
+                        displayObject = displayList[0];
+                        if (displayObject != null)
+                        {
+                            displayCL = displayObject.GetComponent<ChildLocator>();
+                            if (displayCL != null)
+                            {
+                                jetsSmall = displayCL.FindChild("Jets").gameObject;
+                                jetsLarge = displayCL.FindChild("JetsBig").gameObject;
+                            }
+                        }
+                    }
+                }
+            }
+
             private void FixedUpdate()
             {
                 if (!body.characterMotor || !body)
                     return;
+
+                if (hasTriedToSetPrefab == false)
+                {
+                    hasTriedToSetPrefab = true;
+
+                    model = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+
+                    if (model != null)
+                    {
+                        displayList = model.GetItemDisplayObjects(LITContent.Items.RustyJetpack.itemIndex);
+                        //Debug.Log("found model");
+                        if (displayList != null)
+                        {
+                            displayObject = displayList[0];
+                            //Debug.Log("found display list");
+                            if (displayObject != null)
+                            {
+                                displayCL = displayObject.GetComponent<ChildLocator>();
+                                //Debug.Log("found display object");
+                                if (displayCL != null)
+                                {
+                                    //Debug.Log("found display cl");
+                                    jetsSmall = displayCL.FindChild("Jets").gameObject;
+                                    jetsLarge = displayCL.FindChild("JetsBig").gameObject;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (body.inputBank.jump.justPressed && jumpTimes < body.maxJumpCount)
+                {
+                    jumpTimes++;
+                    jetsLarge.SetActive(true);
+                }
 
                 if (body.characterMotor.isGrounded)
                 {
                     return;
                 }
 
+                if (body.inputBank.jump.down && !body.characterMotor.isGrounded)
+                    jetsSmall.SetActive(true);
+                else
+                    jetsSmall.SetActive(false);
+
                 if (body.inputBank.jump.down)
                 {
                     body.characterMotor.velocity.y -= Time.fixedDeltaTime * Physics.gravity.y * reducedGravity;
+                    
                 }    
             }
         }

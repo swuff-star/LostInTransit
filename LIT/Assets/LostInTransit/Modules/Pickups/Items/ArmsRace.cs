@@ -18,15 +18,18 @@ namespace LostInTransit.Items
 
         public class ArmsRaceBehavior : BaseItemBodyBehavior
         {
-            public int previousStack;
+            public int previousStack = 0;
 
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.ArmsRace;
 
-            public void Start()
+            public MinionOwnership minionOwnership;
+
+            private void OnEnable()
             {
                 UpdateAllMinions(stack);
                 MasterSummon.onServerMasterSummonGlobal += OnServerMasterSummonGlobal;
+                minionOwnership = body.GetComponent<MinionOwnership>();
             }
 
             public void FixedUpdate()
@@ -34,16 +37,17 @@ namespace LostInTransit.Items
                 if (previousStack != stack)
                 {
                     UpdateAllMinions(stack);
-                }    
+                }
             }
 
-            public void UpdateAllMinions(int stack)
+            public void UpdateAllMinions(int newStack)
             {
                 if (body)
                 {
+                    CharacterBody body = this.body;
                     if ((body != null) ? body.master : null)
                     {
-                        MinionOwnership.MinionGroup minionGroup = MinionOwnership.MinionGroup.FindGroup(body.master.netId);
+                        MinionOwnership.MinionGroup minionGroup = MinionOwnership.MinionGroup.FindGroup(this.body.master.netId);
                         if (minionGroup != null)
                         {
                             foreach (MinionOwnership minionOwnership in minionGroup.members)
@@ -56,11 +60,12 @@ namespace LostInTransit.Items
                                         CharacterBody body2 = component.GetBody();
                                         if (body2)
                                         {
-                                            UpdateMinionInventory(component.inventory, body2.bodyFlags, stack);
+                                            UpdateMinionInventory(component.inventory, body2.bodyFlags, newStack);
                                         }
                                     }
                                 }
-                            } 
+                            }
+                            previousStack = newStack;
                         }
                     }
                 }
@@ -93,7 +98,7 @@ namespace LostInTransit.Items
                     }
                     else if (itemCount > stack)
                     {
-                        inventory.RemoveItem(LITContent.Items.ArmsRaceDroneMods, stack - itemCount);
+                        inventory.RemoveItem(LITContent.Items.ArmsRaceDroneMods, itemCount - stack);
                     }    
                 }
                 else
