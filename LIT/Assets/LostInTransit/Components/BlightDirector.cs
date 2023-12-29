@@ -79,6 +79,9 @@ namespace LostInTransit.Components
             if (!Stage.instance)
                 return;
 
+            if (IsInBlacklist(obj))
+                return;
+
             var checkRoll = Util.CheckRoll(CurrentSpawnRate);
 
             if (!checkRoll)
@@ -93,7 +96,7 @@ namespace LostInTransit.Components
             if (!IsEnemyTeam(teamIndex))
                 return;
 
-            bool canChampionBeBlighted = IsHonorActive || true; //change true constant to config check
+            bool canChampionBeBlighted = IsPrestigeActive;
             if (!canChampionBeBlighted && obj.isChampion)
                 return;
 
@@ -191,6 +194,7 @@ namespace LostInTransit.Components
             }
             return sharedBeadCount;
         }
+
         private bool IsEnemyTeam(TeamIndex index)
         {
             return index == TeamIndex.Monster || index == TeamIndex.Lunar || index == TeamIndex.Void;
@@ -217,6 +221,11 @@ namespace LostInTransit.Components
 
             float finalSpawnChance = baseSpawnChance + monstersKilledModifier;
             CurrentSpawnRate = Mathf.Min(finalSpawnChance, MaxSpawnRate);
+        }
+
+        private bool IsInBlacklist(CharacterBody body)
+        {
+            return IsPrestigeActive ? BlightedElites.PrestigeBodyBlacklist.Contains(body.bodyIndex) : BlightedElites.RegularBodyBlacklist.Contains(body.bodyIndex);
         }
 
         private void OnDestroy()

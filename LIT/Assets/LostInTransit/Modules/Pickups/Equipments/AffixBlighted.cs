@@ -84,11 +84,12 @@ namespace LostInTransit.Equipments
         {
             public void Start()
             {
-                body.baseMaxHealth *= 7.0f;
+                body.baseMaxHealth *= 13.5f;
                 body.baseDamage *= 1.6f;
-                body.baseMoveSpeed *= 1.1f;
+                body.baseMoveSpeed *= 1.2f;
 
                 body.PerformAutoCalculateLevelStats();
+                body.MarkAllStatsDirty();
 
                 body.healthComponent.health = body.healthComponent.fullHealth;
 
@@ -106,10 +107,11 @@ namespace LostInTransit.Equipments
             {
                 if(body.healthComponent.alive)
                 {
-                    body.baseMaxHealth /= 7.0f;
+                    body.baseMaxHealth /= 13.5f;
                     body.baseDamage /= 1.4f;
                     body.baseMoveSpeed /= 1.1f;
                     body.PerformAutoCalculateLevelStats();
+                    body.MarkAllStatsDirty();
                 }
             }
         }
