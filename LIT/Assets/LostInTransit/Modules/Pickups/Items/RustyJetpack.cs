@@ -16,11 +16,11 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RustyJetpack", LITBundle.Items);
 
         [ConfigurableField(ConfigName = "Jump Power", ConfigDesc = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
-        [TokenModifier(token, StatTypes.Percentage, 0)]
+        [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float addedJumpPower = 2f;
 
         [ConfigurableField(ConfigName = "Fall Speed Reduction", ConfigDesc = "Amount of gravity removed, as a pecent")]
-        [TokenModifier(token, StatTypes.Percentage, 2)]
+        [TokenModifier(token, StatTypes.MultiplyByN, 2, 100)]
         public static float reducedGravity = 0.35f;
 
         [ConfigurableField(ConfigName = "Fall Speed Limit", ConfigDesc = "Maximum amount fall speed can be reduced by, in percent")]

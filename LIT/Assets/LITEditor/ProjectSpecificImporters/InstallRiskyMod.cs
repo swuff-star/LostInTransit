@@ -15,6 +15,6 @@ namespace LostInTransit.Editor.ImportExtensions
 
         public override string Description => "Installs RiskyMod, which LIT has cross compatibility with.";
 
-        public override int Priority => Moonstorm.EditorUtils.Importers.Constants.Priority.InstallRiskOfOptions - 1;
+        public override int Priority => MSU.Editor.Importers.Constants.Priority.InstallDependencies - 1;
     }
 }

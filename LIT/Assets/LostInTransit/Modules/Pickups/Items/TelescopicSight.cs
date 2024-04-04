@@ -32,7 +32,7 @@ namespace LostInTransit.Items
         public static float cooldownReductio = 2f;
 
         [ConfigurableField(ConfigDesc = "Percentage of max health that's dealt to set exceptions when activated on them.")]
-        [TokenModifier(token, StatTypes.Percentage, 2)]
+        [TokenModifier(token, StatTypes.MultiplyByN, 2, 100)]
         public static float exceptionHealthPercentage = 0.2f;
 
         [ConfigurableField( ConfigDesc = "Whether Telescopic Sight should instakill elites.")]

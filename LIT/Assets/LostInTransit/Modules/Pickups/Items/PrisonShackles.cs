@@ -12,7 +12,7 @@ namespace LostInTransit.Items
 
         public static string section;
         [ConfigurableField(ConfigName = "Slow Multiplier", ConfigDesc = "Multiplier added to the shackled body's movement speed.")]
-        [TokenModifier(token, StatTypes.Percentage, 0)]
+        [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float slowMultiplier = 0.3f;
 
         [ConfigurableField(ConfigName = "Duration", ConfigDesc = "Base duration of the Shackled debuff.")]

@@ -13,7 +13,7 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("SmartShopper", LITBundle.Items);
 
         [ConfigurableField(ConfigDesc = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
-        [TokenModifier(token, StatTypes.Percentage, 0)]
+        [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float refundAmount = 0.5f;
 
         public class SmartShopperBehavior : BaseItemBodyBehavior

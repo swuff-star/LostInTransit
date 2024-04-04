@@ -17,7 +17,7 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigDesc = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
         [TokenModifier(token, StatTypes.Default, 1)]
-        [TokenModifier(token, StatTypes.DivideBy2, 2)]
+        [TokenModifier(token, StatTypes.DivideByN, 2, 2)]
         public static float totalDamage = 500f;
 
         [ConfigurableField(ConfigDesc = "How much the victim is slowed by.")]

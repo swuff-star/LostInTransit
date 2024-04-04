@@ -15,12 +15,12 @@ namespace LostInTransit.Items
 
         [ConfigurableField(ConfigName = "Maximum Gold Threshold", ConfigDesc = "The maximum amount of gold that Golden Gun will account for.")]
         [TokenModifier(token, StatTypes.Default, 2)]
-        [TokenModifier(token, StatTypes.DivideBy2, 3)]
+        [TokenModifier(token, StatTypes.DivideByN, 3, 2)]
         public static uint goldCap = 300;
 
         [ConfigurableField(ConfigName = "Maximum Damage Bonus", ConfigDesc = "The maximum amount of bonus damage Golden Gun grants.")]
         [TokenModifier(token, StatTypes.Default, 0)]
-        [TokenModifier(token, StatTypes.DivideBy2, 1)]
+        [TokenModifier(token, StatTypes.DivideByN, 1, 2)]
         public static uint goldNeeded = 40;
 
 

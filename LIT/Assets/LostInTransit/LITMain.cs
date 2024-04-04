@@ -63,8 +63,6 @@ namespace LostInTransit
             new LITContent().Init();
             new LITLanguage().Init();
             new LITTempItems().Init();
-
-            ConfigurableFieldManager.AddMod(this);
         }
     }
 }
