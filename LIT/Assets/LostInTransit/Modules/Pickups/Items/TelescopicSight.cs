@@ -1,44 +1,44 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
     [DisabledContent]
-    public class TelescopicSight : ItemBase
+    public class TelescopicSight : LITItem
     {
         private const string token = "LIT_ITEM_TELESCOPICSIGHT_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("TelescopicSight", LITBundle.Items);
 
         public static string section;
 
-        [ConfigurableField(ConfigDesc = "Base proc chance for Telescopic Sight.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Base proc chance for Telescopic Sight.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float baseProcChance = 1f;
 
-        [ConfigurableField(ConfigName = "Proc Chance per Stack", ConfigDesc = "Extra proc chance per stack of sights.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Proc Chance per Stack", ConfigDescOverride = "Extra proc chance per stack of sights.")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static float procChancePerStack = 0.5f;
 
-        [ConfigurableField(ConfigDesc = "Whether Telescopic Sight's instant kill should have a cooldown.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Whether Telescopic Sight's instant kill should have a cooldown.")]
         public static bool enableCooldown = true;
 
-        [ConfigurableField(ConfigDesc = "Cooldown between Telescopic Sight activations.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Cooldown between Telescopic Sight activations.")]
         [TokenModifier(token, StatTypes.Default, 3)]
         public static float cooldownDuration = 20f;
 
-        [ConfigurableField(ConfigDesc = "Seconds removed from cooldown per stack.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Seconds removed from cooldown per stack.")]
         [TokenModifier(token, StatTypes.Default, 4)]
         public static float cooldownReductio = 2f;
 
-        [ConfigurableField(ConfigDesc = "Percentage of max health that's dealt to set exceptions when activated on them.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Percentage of max health that's dealt to set exceptions when activated on them.")]
         [TokenModifier(token, StatTypes.MultiplyByN, 2, 100)]
         public static float exceptionHealthPercentage = 0.2f;
 
-        [ConfigurableField( ConfigDesc = "Whether Telescopic Sight should instakill elites.")]
+        [RiskOfOptionsConfigureField( ConfigDescOverride = "Whether Telescopic Sight should instakill elites.")]
         public static bool instakillElites = true;
 
-        [ConfigurableField( ConfigDesc = "Whether Telescopic Sight should instakill boss monsters.")]
+        [RiskOfOptionsConfigureField( ConfigDescOverride = "Whether Telescopic Sight should instakill boss monsters.")]
         public static bool instakillBosses = false;
 
 

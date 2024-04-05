@@ -1,18 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Moonstorm;
+using MSU;
 using RoR2;
+using RoR2.ContentManagement;
 
 namespace LostInTransit.Characters
 {
-    [DisabledContent]
-    public sealed class Robomando : SurvivorBase
+#if DEBUG
+    public sealed class Robomando : LITSurvivor
     {
-        public override SurvivorDef SurvivorDef => LITAssets.LoadAsset<SurvivorDef>("SurvivorRobomando", LITBundle.Characters);
+        public override SurvivorDef SurvivorDef => _survivorDef;
+        private SurvivorDef _survivorDef;
 
-        public override GameObject BodyPrefab => LITAssets.LoadAsset<GameObject>("RobomandoBody", LITBundle.Characters);
+        public override NullableRef<GameObject> MasterPrefab => _masterPrefab;
+        private GameObject _masterPrefab;
 
-        public override GameObject MasterPrefab => null;
+        public override GameObject CharacterPrefab => _characterPrefab;
+        private GameObject _characterPrefab;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * SurvivorDef - "SurvivorRobomando" - Characters
+             * GameObject - "RobomandoBody" - Characters
+             */
+            yield return null;
+        }
     }
+#endif
 }

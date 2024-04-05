@@ -1,11 +1,11 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
-using Moonstorm.Components;
+
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
+    /*[DisabledContent]
     public class DiceArmor : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceArmor", LITBundle.Items);
@@ -20,5 +20,5 @@ namespace LostInTransit.Buffs
                 args.armorAdd += Items.BlessedDice.armorAmount;
             }
         }
-    }
+    }*/
 }

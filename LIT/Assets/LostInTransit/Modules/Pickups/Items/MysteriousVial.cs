@@ -1,16 +1,16 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class MysteriousVial : ItemBase
+    public class MysteriousVial : LITItem
     {
         private const string token = "LIT_ITEM_MYSTERIOUSVIAL_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MysteriousVial", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Extra Regen Per Vial", ConfigDesc = "Extra Regeneration added per vial.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Extra Regen Per Vial", ConfigDescOverride = "Extra Regeneration added per vial.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float vialRegen = 0.8f;
 

@@ -1,17 +1,17 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
-using Moonstorm.Components;
+
 
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    public class FieldGeneratorPassive : BuffBase
+    /*public class FieldGeneratorPassive : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdFieldGeneratorPassive", LITBundle.Equips);
 
-        public class DiceAtkBehavior : BaseBuffBodyBehavior, /*IOnIncomingDamageOtherServerReciever,*/ IOnTakeDamageServerReceiver
+        public class DiceAtkBehavior : BaseBuffBodyBehavior, /*IOnIncomingDamageOtherServerReciever,*IOnTakeDamageServerReceiver
         {
             [BuffDefAssociation(useOnServer = true, useOnClient = true)]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdFieldGeneratorPassive;
@@ -26,7 +26,7 @@ namespace LostInTransit.Buffs
                     body.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
                     
                 }
-            }*/
+            }
 
             public void OnTakeDamageServer(DamageReport damageReport)
             {
@@ -39,5 +39,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }
+    }*/
 }

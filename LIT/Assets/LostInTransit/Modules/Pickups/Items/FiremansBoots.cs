@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
@@ -9,16 +9,16 @@ using System;
 namespace LostInTransit.Items
 {
     [DisabledContent]
-    public class FiremansBoots : ItemBase
+    public class FiremansBoots : LITItem
     {
         private const string token = "LIT_ITEM_FIREMANSBOOTS_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("FireBoots", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Chance to Ignite", ConfigDesc = "Chance to Ignite on Hit.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Chance to Ignite", ConfigDescOverride = "Chance to Ignite on Hit.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float igniteChance = 8f;
 
-        [ConfigurableField(ConfigName = "Ignite Damage Coefficient", ConfigDesc = "Damage coefficient of dealt ignite debuffs.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Ignite Damage Coefficient", ConfigDescOverride = "Damage coefficient of dealt ignite debuffs.")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static float igniteCoef = 2.4f;
 

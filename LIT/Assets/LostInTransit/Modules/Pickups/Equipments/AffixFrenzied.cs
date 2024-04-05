@@ -1,11 +1,11 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    public class AffixFrenzied : EliteEquipmentBase
+    public class AffixFrenzied : LITEliteEquipment
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {

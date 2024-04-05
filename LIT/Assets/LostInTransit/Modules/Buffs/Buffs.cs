@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using R2API.ScriptableObjects;
 using RoR2;
 using RoR2.ContentManagement;
@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace LostInTransit.Buffs
 {
-    public sealed class Buffs : BuffModuleBase
+    /*public sealed class Buffs : BuffModuleBase
     {
         public static Buffs Instance { get; set; }
         public static BuffDef[] LoadedLITBuffs { get => LITContent.Instance.SerializableContentPack.buffDefs; }
@@ -30,5 +30,5 @@ namespace LostInTransit.Buffs
             return null;
         }
 
-    }
+    }*/
 }

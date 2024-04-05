@@ -1,19 +1,19 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
     [DisabledContent]
-    public class ArmsRace : ItemBase
+    public class ArmsRace : LITItem
     {
         private const string token = "LIT_ITEM_ARMSRACE_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRace", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Shield Amount", ConfigDesc = "Percentage of max health granted to drones as shield, per stack.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Amount", ConfigDescOverride = "Percentage of max health granted to drones as shield, per stack.")]
         public static float extraShield = 8f;
         
-        [ConfigurableField(ConfigName = "Shield Gating", ConfigDesc = "Whether or not drones should be given gated shields.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Gating", ConfigDescOverride = "Whether or not drones should be given gated shields.")]
         public static bool shieldGating = true;
 
         public class ArmsRaceBehavior : BaseItemBodyBehavior

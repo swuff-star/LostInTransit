@@ -1,5 +1,5 @@
 ﻿using LostInTransit.Buffs;
-using Moonstorm;
+using MSU;
 using RoR2;
 using System;
 using RoR2.Items;
@@ -8,7 +8,7 @@ using R2API;
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public class ArmsRaceDroneMods : ItemBase
+    public class ArmsRaceDroneMods : LITItem
     {
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRaceDroneModifiers", LITBundle.Items);
 

@@ -1,16 +1,16 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using RoR2.Items;
 using System;
 
 namespace LostInTransit.Items
 {
-    public class Lopper : ItemBase
+    public class Lopper : LITItem
     {
         private const string token = "LIT_ITEM_LOPPER_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Lopper", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Maximum Extra Damage per Lopper", ConfigDesc = "Maximum extra damage dealt by Ol' Lopper.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Extra Damage per Lopper", ConfigDescOverride = "Maximum extra damage dealt by Ol' Lopper.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float lopperMaxBonus = 0.6f;
 

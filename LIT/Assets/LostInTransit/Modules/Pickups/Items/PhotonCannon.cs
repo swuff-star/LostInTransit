@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using UnityEngine;
@@ -9,24 +9,24 @@ namespace LostInTransit.Items
 {
     //It's called Photon Cannon because the Laser Turbine powers a Photon Power Plant (and also because Iron Man in MvC is cool as fuck)
     [DisabledContent]
-    public class PhotonCannon : ItemBase
+    public class PhotonCannon : LITItem
     {
         private const string token = "LIT_ITEM_PHOTONCANNON_DESC";
         public override ItemDef ItemDef { get;} = LITAssets.LoadAsset<ItemDef>("PhotonCannon", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Charge gained per second", ConfigDesc = "Amount of charge gained every second for each skill on cooldown")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Charge gained per second", ConfigDescOverride = "Amount of charge gained every second for each skill on cooldown")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float baseCharge = 1f;
 
-        [ConfigurableField(ConfigName = "Bonus charge from stacks", ConfigDesc = "Additional charge per turbine")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus charge from stacks", ConfigDescOverride = "Additional charge per turbine")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static float stackCharge = 0.5f;
 
-        [ConfigurableField(ConfigName = "Laser damage", ConfigDesc = "Amount of damage the laser deals")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Laser damage", ConfigDescOverride = "Amount of damage the laser deals")]
         [TokenModifier(token, StatTypes.Default, 2)]
         public static float laserDamage = 2000f;
 
-        [ConfigurableField(ConfigName = "Use static charge timer", ConfigDesc = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Use static charge timer", ConfigDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
         public static bool skillIssue = false;
 
         public class PhotonCannonBehavior : BaseItemBodyBehavior

@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Items
 {
-    public class LockedJewel : ItemBase
+    public class LockedJewel : LITItem
     {
         public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("LockedJewel", LITBundle.Items);
 

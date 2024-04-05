@@ -1,11 +1,11 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using UnityEngine;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class LifeSavingsUsed : ItemBase
+    public class LifeSavingsUsed : LITItem
     {
         private const string token = "LIT_ITEM_LIFESAVINGSUSED_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavingsUsed", LITBundle.Items);

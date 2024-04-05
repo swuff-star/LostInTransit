@@ -1,20 +1,20 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class RazorPenny : ItemBase
+    public class RazorPenny : LITItem
     {
         private const string token = "LIT_ITEM_RAZORPENNY_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RazorPenny", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Crit per Razor Penny", ConfigDesc = "Extra Crit added per penny.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Crit per Razor Penny", ConfigDescOverride = "Extra Crit added per penny.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float pennyCrit = 4f;
 
-        [ConfigurableField(ConfigName = "Gold per Crit", ConfigDesc = "Gold gained on crit.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Gold per Crit", ConfigDescOverride = "Gold gained on crit.")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static float critGold = 1f;
 

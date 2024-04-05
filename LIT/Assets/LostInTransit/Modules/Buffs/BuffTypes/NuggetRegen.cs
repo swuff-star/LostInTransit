@@ -1,13 +1,13 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using UnityEngine;
 using R2API;
-using Moonstorm.Components;
+
 
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    public class NuggetRegen : BuffBase
+    /*public class NuggetRegen : BuffBase
     {
         public override BuffDef BuffDef { get;} = LITAssets.LoadAsset<BuffDef>("bdNuggetRegen", LITBundle.Items);
 
@@ -28,5 +28,5 @@ namespace LostInTransit.Buffs
                 args.baseRegenAdd += (Items.MeatNugget.regenAdded + ((Items.MeatNugget.regenAdded / 5) * body.level)) * buffStacks;
             }
         }
-    }
+    }*/
 }

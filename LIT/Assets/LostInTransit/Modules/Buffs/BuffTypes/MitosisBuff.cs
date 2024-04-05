@@ -1,5 +1,5 @@
-﻿using Moonstorm;
-using Moonstorm.Components;
+﻿using MSU;
+
 using R2API;
 using RoR2;
 using System.Collections;
@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LostInTransit.Buffs
 {
-    public class MitosisBuff : BuffBase
+    /*public class MitosisBuff : BuffBase
     {
         public override BuffDef BuffDef => LITAssets.LoadAsset<BuffDef>("bdMitosisBuff", LITBundle.Items);
 
@@ -102,5 +102,5 @@ namespace LostInTransit.Buffs
 
             }
         }
-    }
+    }*/
 }

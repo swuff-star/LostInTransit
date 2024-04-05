@@ -1,7 +1,7 @@
 ﻿using LostInTransit.Items;
-using Moonstorm;
+using MSU;
 using RoR2;
-using Moonstorm.Components;
+
 using R2API;
 using RoR2.Projectile;
 using UnityEngine;
@@ -13,7 +13,7 @@ using System.Collections;
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    public class RepulsionArmorActive : BuffBase
+    /*public class RepulsionArmorActive : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdRepulsionArmorActive", LITBundle.Items);
         //private Ray aimRay;
@@ -71,7 +71,7 @@ namespace LostInTransit.Buffs
             /*public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
                 damageInfo.damage *= ((100f - RepulsionArmor.damageResist) * 0.01f);
-            }*/
-        }
-    }
+            }
+}
+    }*/
 }

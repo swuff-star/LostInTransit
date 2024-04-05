@@ -1,11 +1,11 @@
 ﻿using LostInTransit.Items;
-using Moonstorm;
+using MSU;
 using RoR2;
 
 namespace LostInTransit.Equipments
 {
     [DisabledContent]
-    public class UnstableWatch : EquipmentBase
+    public class UnstableWatch : LITEquipment
     {
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("UnstableWatch", LITBundle.Equips);
 

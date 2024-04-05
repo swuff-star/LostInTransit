@@ -1,12 +1,12 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
-using Moonstorm.Components;
+
 
 namespace LostInTransit.Buffs
 {
-    [DisabledContent]
+    /*[DisabledContent]
     public class DiceAtk : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceAtk", LITBundle.Items);
@@ -21,5 +21,5 @@ namespace LostInTransit.Buffs
                 args.attackSpeedMultAdd += (Items.BlessedDice.atkAmount / 100);
             }
         }
-    }
+    }*/
 }

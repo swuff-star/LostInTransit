@@ -1,7 +1,7 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
-using Moonstorm.Components;
+
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using RoR2.Orbs;
 
 namespace LostInTransit.Buffs
 {
-    public class ToxinReady : BuffBase
+    /*public class ToxinReady : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdToxinReady", LITBundle.Items);
 
@@ -103,5 +103,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }
+    }*/
 }

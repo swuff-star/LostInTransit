@@ -1,5 +1,4 @@
-﻿using LostInTransit.DamageTypes;
-using R2API;
+﻿using R2API;
 using RoR2;
 using RoR2.Skills;
 using System.Collections;
@@ -25,7 +24,7 @@ namespace EntityStates.Drifter
         {
             //Debug.Log("modify overlap");
             base.AuthorityModifyOverlapAttack(overlapAttack);
-            DamageAPI.AddModdedDamageType(overlapAttack, ExecuteToScrap.executeToScrap);
+            DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ExecuteToScrap);
         }
     }
 }

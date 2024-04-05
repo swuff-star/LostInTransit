@@ -1,5 +1,5 @@
-﻿using Moonstorm;
-using Moonstorm.Components;
+﻿using MSU;
+
 using RoR2;
 using UnityEngine;
 using R2API;

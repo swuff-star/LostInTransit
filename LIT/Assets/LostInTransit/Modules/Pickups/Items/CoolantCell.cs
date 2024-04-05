@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using R2API;
 using RoR2;
 using RoR2.Items;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    public class CoolantCell : VoidItemBase
+    public class CoolantCell : VoidLITItem
     {
         public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("CoolantCell", LITBundle.Items);
 

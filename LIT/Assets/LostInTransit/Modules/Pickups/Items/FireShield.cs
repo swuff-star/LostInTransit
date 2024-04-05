@@ -1,28 +1,76 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using RoR2.Items;
 using UnityEngine;
 using R2API;
 using System;
 using UnityEngine.AddressableAssets;
+using RoR2.ContentManagement;
+using System.Collections;
+using R2API;
+using static R2API.DamageAPI;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    //[DisabledContent]
-    public class FireShield : ItemBase
+    public class FireShield : LITItem
     {
         private const string token = "LIT_ITEM_FIRESHIELD_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("FireShield", LITBundle.Items);
+        public static DamageAPI.ModdedDamageType FireShieldDamageType { get; private set; }
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-        [ConfigurableField(ConfigName = "Base Damage Coefficient", ConfigDesc = "Base damage dealt by Fire Shield.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float dmgCoef = 3f;
+        private static GameObject _explosionVFX;
 
-        [ConfigurableField(ConfigName = "Burn Damage Coefficient", ConfigDesc = "Added burn damage per stack.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float burnCoef = 1f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base damage dealt by Fire Shield.")]
+        [FormatToken(token)]
+        public static float baseDamageCoefficient = 3f;
 
-        //to-do: stacking, config
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added burn damage per stack.")]
+        [FormatToken(token, 1)]
+        public static float burnDamageCoefficient = 1f;
+        public override void Initialize()
+        {
+            FireShieldDamageType = DamageAPI.ReserveDamageType();
+
+            GlobalEventManager.onServerDamageDealt += Ignite;
+        }
+
+        private void Ignite(DamageReport report)
+        {
+            CharacterBody attackerBody = report.attackerBody;
+            DamageInfo damageInfo = report.damageInfo;
+            if (DamageAPI.HasModdedDamageType(damageInfo, FireShieldDamageType))
+            {
+                var dotInfo = new InflictDotInfo()
+                {
+                    attackerObject = attackerBody.gameObject,
+                    victimObject = report.victim.gameObject,
+                    dotIndex = DotController.DotIndex.Burn,
+                    duration = 2f,
+                    damageMultiplier = attackerBody.GetItemCount(LITContent.Items.FireShield) * Items.FireShield.burnDamageCoefficient
+                };
+                StrengthenBurnUtils.CheckDotForUpgrade(report.attackerBody.inventory, ref dotInfo);
+                DotController.InflictDot(ref dotInfo);
+            }
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            // ItemDef - "FireShield" - Items
+
+            var request = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ExplosionVFX.prefab");
+            while(!request.IsDone)
+                yield return null;
+
+            _explosionVFX = request.Result;
+        }
 
         public class FireShieldBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver
         {
@@ -37,7 +85,7 @@ namespace LostInTransit.Items
                     blastAttack = new BlastAttack()
                     {
                         position = body.corePosition,
-                        baseDamage = body.damage * dmgCoef,
+                        baseDamage = body.damage * baseDamageCoefficient,
                         baseForce = 2000f,
                         bonusForce = Vector3.up * 750f,
                         radius = 2f,
@@ -53,15 +101,13 @@ namespace LostInTransit.Items
                     DamageAPI.AddModdedDamageType(blastAttack, DamageTypes.FireShield.fireShield);
                     blastAttack.Fire();
 
-                    //EffectManager.SimpleEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ExplosionVFX.prefab").WaitForCompletion(), body.transform.position, Quaternion.identity.normalized, true);
-
                     EffectData effectData = new EffectData
                     {
                         origin = body.corePosition,
                         scale = 4.5f,
                         rotation = new Quaternion(90, 0, 0, 0)
                     };
-                    EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ExplosionVFX.prefab").WaitForCompletion(), effectData, true);
+                    EffectManager.SpawnEffect(_explosionVFX, effectData, true);
                 }
             }
         }

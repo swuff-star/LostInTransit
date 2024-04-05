@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
@@ -6,7 +6,7 @@ using RoR2.Items;
 namespace LostInTransit.Items
 {
     [DisabledContent]
-    public class MuConstruct : ItemBase
+    public class MuConstruct : LITItem
     {
         private const string token = "LIT_ITEM_MUCONSTRUCT_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MuConstruct", LITBundle.Items);

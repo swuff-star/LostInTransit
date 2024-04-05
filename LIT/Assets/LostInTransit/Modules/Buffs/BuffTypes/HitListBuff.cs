@@ -1,12 +1,12 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
-using Moonstorm.Components;
+
 
 namespace LostInTransit.Buffs
 {
-    public class HitListBuff : BuffBase
+    /*public class HitListBuff : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdHitListBuff", LITBundle.Items);
 
@@ -25,5 +25,5 @@ namespace LostInTransit.Buffs
                 body.RecalculateStats();
             }
         }
-    }
+    }*/
 }

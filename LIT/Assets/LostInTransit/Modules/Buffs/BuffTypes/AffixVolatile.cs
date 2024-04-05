@@ -1,8 +1,8 @@
 ﻿using LostInTransit.Elites;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Moonstorm;
-using Moonstorm.Components;
+using MSU;
+
 using R2API;
 using RoR2;
 using RoR2.Artifacts;
@@ -15,7 +15,7 @@ namespace LostInTransit.Buffs
 {
     //★ I did something naughty and just... commented out a lot of errors instead of fixing them. I plan on redoing this anyway so... oh well.
     //N - haha i've done it, i've fixed this shit :steam_happy:
-    public class AffixVolatile : BuffBase
+    /*public class AffixVolatile : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixVolatile", LITBundle.Equips);
         private static Type _explodingStateType;
@@ -106,5 +106,5 @@ namespace LostInTransit.Buffs
                     Destroy(_attachment.gameObject);
             }
         }
-    }
+    }*/
 }

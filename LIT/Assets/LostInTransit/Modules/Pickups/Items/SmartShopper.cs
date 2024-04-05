@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using RoR2.Items;
@@ -7,12 +7,12 @@ using UnityEngine;
 namespace LostInTransit.Items
 {
     [DisabledContent]
-    public class SmartShopper : ItemBase
+    public class SmartShopper : LITItem
     {
         private const string token = "LIT_ITEM_SMARTSHOPPER_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("SmartShopper", LITBundle.Items);
 
-        [ConfigurableField(ConfigDesc = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
         [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float refundAmount = 0.5f;
 

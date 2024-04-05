@@ -2,7 +2,7 @@
     "name": "LostInTransit",
     "references": [
         "GUID:a44f47cf3ada4435dbc516bad0bc86fe",
-        "GUID:027c693fefcac6548859a0eec81eed3d"
+        "GUID:08e20a9dcb84ac748840227dcac08af2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -40,7 +40,8 @@
         "RiskyMod.dll",
         "R2API.Items.dll",
         "UnityEngine.UI.dll",
-        "R2API.Addressables.dll"
+        "R2API.Addressables.dll",
+        "RiskOfOptions.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

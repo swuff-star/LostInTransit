@@ -1,7 +1,7 @@
 ﻿using KinematicCharacterController;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Moonstorm;
+using MSU;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 
 namespace LostInTransit.Equipments
 {
-    public class AffixBlighted : EliteEquipmentBase
+    public class AffixBlighted : LITEliteEquipment
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {
@@ -20,7 +20,7 @@ namespace LostInTransit.Equipments
 
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixBlighted", LITBundle.Equips);
 
-        [ConfigurableField(ConfigName = "Boss Blighted", ConfigDesc = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Boss Blighted", ConfigDescOverride = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
         public static bool bossBlighted = false;
 
 

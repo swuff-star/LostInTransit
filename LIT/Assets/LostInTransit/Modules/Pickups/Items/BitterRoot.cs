@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using RoR2.Items;
 using UnityEngine;
@@ -8,20 +8,20 @@ using System;
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public class BitterRoot : ItemBase
+    public class BitterRoot : LITItem
     {
         private const string token = "LIT_ITEM_BITTERROOT_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BitterRoot", LITBundle.Items);
 
-        /*[ConfigurableField(LITConfig.items, ConfigName = "Extra Maximum Health per Root", ConfigDesc = "Extra percentage of maximum health added per root")]
+        /*[RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Extra Maximum Health per Root", ConfigDescOverride = "Extra percentage of maximum health added per root")]
         [TokenModifier(token, StatTypes.Default)]
         public static float rootIncrease = 4f;*/
 
-        [ConfigurableField(LITConfig.items, ConfigName = "Regen per Root", ConfigDesc = "Amount of regen on kill per Root.")]
+        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Regen per Root", ConfigDescOverride = "Amount of regen on kill per Root.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float rootRegen = 3f;
 
-        [ConfigurableField(LITConfig.items, ConfigName = "Regen Duration", ConfigDesc = "Duration of regen on kill per Root.")]
+        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Regen Duration", ConfigDescOverride = "Duration of regen on kill per Root.")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static float rootRegenDur = 3f;
 

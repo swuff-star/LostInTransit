@@ -1,5 +1,5 @@
 ﻿using LostInTransit.Components;
-using Moonstorm;
+using MSU;
 using R2API;
 using RoR2;
 using RoR2.ExpansionManagement;

@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using UnityEngine;
@@ -10,20 +10,20 @@ using System.Timers;
 
 namespace LostInTransit.Items
 {
-    public class RustyJetpack : ItemBase
+    public class RustyJetpack : LITItem
     {
         private const string token = "LIT_ITEM_RUSTYJETPACK_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RustyJetpack", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Jump Power", ConfigDesc = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Jump Power", ConfigDescOverride = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
         [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float addedJumpPower = 2f;
 
-        [ConfigurableField(ConfigName = "Fall Speed Reduction", ConfigDesc = "Amount of gravity removed, as a pecent")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Fall Speed Reduction", ConfigDescOverride = "Amount of gravity removed, as a pecent")]
         [TokenModifier(token, StatTypes.MultiplyByN, 2, 100)]
         public static float reducedGravity = 0.35f;
 
-        [ConfigurableField(ConfigName = "Fall Speed Limit", ConfigDesc = "Maximum amount fall speed can be reduced by, in percent")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Fall Speed Limit", ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
         public static float minGrav = 90f;
 
         public class RustyJetpackBehavior : BaseItemBodyBehavior, IBodyStatArgModifier

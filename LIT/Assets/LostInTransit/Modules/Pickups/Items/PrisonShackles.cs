@@ -1,25 +1,25 @@
 ﻿using LostInTransit.Buffs;
-using Moonstorm;
+using MSU;
 using RoR2;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class PrisonShackles : ItemBase
+    public class PrisonShackles : LITItem
     {
         private const string token = "LIT_ITEM_PRISONSHACKLES_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("PrisonShackles", LITBundle.Items);
 
         public static string section;
-        [ConfigurableField(ConfigName = "Slow Multiplier", ConfigDesc = "Multiplier added to the shackled body's movement speed.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Slow Multiplier", ConfigDescOverride = "Multiplier added to the shackled body's movement speed.")]
         [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
         public static float slowMultiplier = 0.3f;
 
-        [ConfigurableField(ConfigName = "Duration", ConfigDesc = "Base duration of the Shackled debuff.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Duration", ConfigDescOverride = "Base duration of the Shackled debuff.")]
         [TokenModifier(token, StatTypes.Default, 1)]
         public static int duration = 2;
 
-        [ConfigurableField(ConfigName = "Stacking Duration", ConfigDesc = "Extra duration of the Shackled debuff per stack of shackles.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Stacking Duration", ConfigDescOverride = "Extra duration of the Shackled debuff per stack of shackles.")]
         [TokenModifier(token, StatTypes.Default, 2)]
         public static int durationStack = 2;
 

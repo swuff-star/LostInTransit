@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Equipments
 {
-    public class AffixVolatile : EliteEquipmentBase
+    //Add volatile damage type here!
+    public class AffixVolatile : LITEliteEquipment
     {
         public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
         {

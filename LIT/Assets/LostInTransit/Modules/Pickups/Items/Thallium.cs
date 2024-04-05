@@ -1,33 +1,33 @@
 ﻿using LostInTransit.Buffs;
-using Moonstorm;
+using MSU;
 using RoR2;
 using UnityEngine;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class Thallium : ItemBase
+    public class Thallium : LITItem
     {
         public const string token = "LIT_ITEM_THALLIUM_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Thallium", LITBundle.Items);
 
-        [ConfigurableField(ConfigDesc = "Chance to afflict Thallium Poisoning.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Chance to afflict Thallium Poisoning.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float procChance = 10f;
 
-        [ConfigurableField(ConfigDesc = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
         [TokenModifier(token, StatTypes.Default, 1)]
         [TokenModifier(token, StatTypes.DivideByN, 2, 2)]
         public static float totalDamage = 500f;
 
-        [ConfigurableField(ConfigDesc = "How much the victim is slowed by.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "How much the victim is slowed by.")]
         [TokenModifier(token, StatTypes.Default, 3)]
         public static float slowMultiplier = 75f;
 
-        [ConfigurableField(ConfigDesc = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
         public static int poisonDuration = 4;
 
-        [ConfigurableField(ConfigName = "Poison is Fixed Duration", ConfigDesc = "If enabled, stacks increase the damage per tick instead of the total duration")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Poison is Fixed Duration", ConfigDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
         public static bool noTimeToDie = false;
 
         public class ThalliumBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver

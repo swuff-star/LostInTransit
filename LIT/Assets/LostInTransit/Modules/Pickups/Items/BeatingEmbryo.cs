@@ -1,6 +1,6 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Moonstorm;
+using MSU;
 using R2API;
 using RoR2;
 using RoR2.Items;
@@ -31,7 +31,7 @@ namespace LostInTransit.Items
      * Other LIT Equipment have their embryo interaction codeed in their equipment class.
      */
 
-    public class BeatingEmbryo : ItemBase
+    public class BeatingEmbryo : LITItem
     {
         public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeatingEmbryo", LITBundle.Items);
 

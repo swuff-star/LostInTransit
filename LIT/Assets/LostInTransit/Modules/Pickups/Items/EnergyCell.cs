@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using System;
 using RoR2.Items;
@@ -8,12 +8,12 @@ using UnityEngine;
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public class EnergyCell : ItemBase
+    public class EnergyCell : LITItem
     {
         private const string token = "LIT_ITEM_ENERGYCELL_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("EnergyCell", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Maximum Attack Speed per Cell", ConfigDesc = "Maximum amount of attack speed per item held.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Attack Speed per Cell", ConfigDescOverride = "Maximum amount of attack speed per item held.")]
         //[TokenModifier(token, StatTypes.Percentage)]
         public static float bonusAttackSpeed = 0.4f;
 

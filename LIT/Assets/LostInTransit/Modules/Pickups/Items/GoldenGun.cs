@@ -1,5 +1,5 @@
 ﻿using LostInTransit.Buffs;
-using Moonstorm;
+using MSU;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -8,17 +8,17 @@ using R2API;
 
 namespace LostInTransit.Items
 {
-    public class GoldenGun : ItemBase
+    public class GoldenGun : LITItem
     {
         private const string token = "LIT_ITEM_GOLDENGUN_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GoldenGun", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Maximum Gold Threshold", ConfigDesc = "The maximum amount of gold that Golden Gun will account for.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Gold Threshold", ConfigDescOverride = "The maximum amount of gold that Golden Gun will account for.")]
         [TokenModifier(token, StatTypes.Default, 2)]
         [TokenModifier(token, StatTypes.DivideByN, 3, 2)]
         public static uint goldCap = 300;
 
-        [ConfigurableField(ConfigName = "Maximum Damage Bonus", ConfigDesc = "The maximum amount of bonus damage Golden Gun grants.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Damage Bonus", ConfigDescOverride = "The maximum amount of bonus damage Golden Gun grants.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         [TokenModifier(token, StatTypes.DivideByN, 1, 2)]
         public static uint goldNeeded = 40;

@@ -1,13 +1,12 @@
 ﻿using LostInTransit.Components;
-using Moonstorm;
-using Moonstorm.Components;
+using MSU;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace LostInTransit.Buffs
 {
-    public sealed class AffixBlighted : BuffBase
+    /*public sealed class AffixBlighted : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixBlighted", LITBundle.Equips);
         private static GameObject _blightedBodyAttachment;
@@ -180,6 +179,6 @@ namespace LostInTransit.Buffs
                     body?.RemoveBuff(RoR2Content.Buffs.Cloak);
                 }
             }
-        }*/
-    }
+        }
+    }*/
 }

@@ -1,10 +1,10 @@
 ﻿using LostInTransit.Items;
-using Moonstorm;
+using MSU;
 using RoR2;
 
 namespace LostInTransit.Equipments
 {
-    public class GiganticAmethyst : EquipmentBase
+    public class GiganticAmethyst : LITEquipment
     {
         public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("GiganticAmethyst", LITBundle.Equips);
 

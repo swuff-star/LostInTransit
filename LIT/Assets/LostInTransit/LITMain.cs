@@ -1,10 +1,9 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using HG.Reflection;
-using LostInTransit.Modules;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Moonstorm;
+using MSU;
 using R2API;
 using R2API.Utils;
 using RoR2;
@@ -40,6 +39,27 @@ namespace LostInTransit
         internal const string MODNAME = "Lost in Transit";
         internal const string VERSION = "0.4.0";
 
+        internal static LITMain Instance { get; private set; }
+
+        public static bool RiskyModInstalled { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+
+            new LITLog(Logger);
+            new LITConfig(this);
+            new LITContent(this);
+
+            LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
+
+            RiskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
+        }
+
+        /*internal const string GUID = "com.ContactLight.LostInTransit";
+        internal const string MODNAME = "Lost in Transit";
+        internal const string VERSION = "0.4.0";
+
         public static LITMain instance;
 
         public static PluginInfo pluginInfo;
@@ -63,6 +83,6 @@ namespace LostInTransit
             new LITContent().Init();
             new LITLanguage().Init();
             new LITTempItems().Init();
-        }
+        }*/
     }
 }

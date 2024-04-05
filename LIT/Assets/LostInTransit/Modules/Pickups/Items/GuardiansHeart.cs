@@ -1,7 +1,7 @@
 ﻿using LostInTransit.Buffs;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Moonstorm;
+using MSU;
 using RoR2;
 using System;
 using RoR2.Items;
@@ -14,21 +14,21 @@ using System.Collections.Generic;
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public class GuardiansHeart : ItemBase
+    public class GuardiansHeart : LITItem
     {
         private const string token = "LIT_ITEM_GUARDIANSHEART_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GuardiansHeart", LITBundle.Items);
 
-        [ConfigurableField(ConfigName = "Shield per Heart", ConfigDesc = "Amount of shield added per heart.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield per Heart", ConfigDescOverride = "Amount of shield added per heart.")]
         public static float extraShield = 60;
 
-        [ConfigurableField(ConfigName = "Bonus Armor", ConfigDesc = "Amount of armor added when heart breaks.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus Armor", ConfigDescOverride = "Amount of armor added when heart breaks.")]
         public static float heartArmor = 40;
 
-        [ConfigurableField(ConfigName = "Bonus Armor Duration", ConfigDesc = "Length of the Heart's armor debuff.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus Armor Duration", ConfigDescOverride = "Length of the Heart's armor debuff.")]
         public static float heartArmorDur = 3f;
 
-        [ConfigurableField(ConfigName = "Shield Gating", ConfigDesc = "Whether the Heart should block damage past the remaining shield when broken.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Gating", ConfigDescOverride = "Whether the Heart should block damage past the remaining shield when broken.")]
         public static bool shieldGating = true;
 
         public static bool hadShield = false;

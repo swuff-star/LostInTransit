@@ -1,4 +1,4 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using R2API;
 using RoR2.Items;
@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    public class WickedRing : ItemBase
+    public class WickedRing : LITItem
     {
         private const string token = "LIT_ITEM_WICKEDRING_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("WickedRingNew", LITBundle.Items);
 
-        [ConfigurableField(ConfigDesc = "Seconds removed from skill cooldowns on kill.")]
+        [RiskOfOptionsConfigureField(ConfigDescOverride = "Seconds removed from skill cooldowns on kill.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static float secondsRemovedPerKill = 1f;
 

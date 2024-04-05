@@ -1,5 +1,4 @@
 ﻿using LostInTransit.Components;
-using LostInTransit.DamageTypes;
 using R2API;
 using RoR2;
 using RoR2.Skills;
@@ -94,13 +93,13 @@ namespace EntityStates.Drifter
             switch(swing)
             {
                 case 0:
-                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit10.scrapOnHit10);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit10);
                     break;
                 case 1:
-                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit20.scrapOnHit20);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit20);
                     break;
                 case 2:
-                    DamageAPI.AddModdedDamageType(overlapAttack, ScrapOnHit30.scrapOnHit30);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit30);
                     break;
             }
 

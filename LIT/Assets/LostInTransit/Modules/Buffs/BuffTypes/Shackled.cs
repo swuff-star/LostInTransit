@@ -1,10 +1,10 @@
-﻿using Moonstorm;
-using Moonstorm.Components;
+﻿using MSU;
+
 using RoR2;
 
 namespace LostInTransit.Buffs
 {
-    public class Shackled : BuffBase
+    /*public class Shackled : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdShackled", LITBundle.Items);
 
@@ -23,5 +23,5 @@ namespace LostInTransit.Buffs
             {
             }
         }
-    }
+    }*/
 }

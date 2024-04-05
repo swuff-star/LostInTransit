@@ -1,17 +1,17 @@
-﻿using Moonstorm;
+﻿using MSU;
 using RoR2;
 using UnityEngine;
 using RoR2.Items;
 
 namespace LostInTransit.Items
 {
-    public class LifeSavings : ItemBase
+    public class LifeSavings : LITItem
     {
         private const string token = "LIT_ITEM_LIFESAVINGS_DESC";
         public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavings", LITBundle.Items);
         public static ItemDef itemDef;
 
-        [ConfigurableField(ConfigName = "Money per Life Savings", ConfigDesc = "Money granted per Life Savings.")]
+        [RiskOfOptionsConfigureField(ConfigNameOverride = "Money per Life Savings", ConfigDescOverride = "Money granted per Life Savings.")]
         [TokenModifier(token, StatTypes.Default, 0)]
         public static int moneyPerSavings = 75;
 
