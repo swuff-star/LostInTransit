@@ -50,6 +50,7 @@ namespace LostInTransit
             new LITLog(Logger);
             new LITConfig(this);
             new LITContent();
+            new LITTempItems().Init();
 
             LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
 
