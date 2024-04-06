@@ -3,18 +3,40 @@ using RoR2;
 using System;
 using RoR2.Items;
 using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    [DisabledContent]
-    public class SmartShopper : LITItem
+#if DEBUG
+    public sealed class SmartShopper : LITItem
     {
-        private const string token = "LIT_ITEM_SMARTSHOPPER_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("SmartShopper", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_SMARTSHOPPER_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigDescOverride = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
-        [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100)]
         public static float refundAmount = 0.5f;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private static ItemDef _itemDef;
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "SmartShopper" - Items
+             */
+            yield break;
+        }
 
         public class SmartShopperBehavior : BaseItemBodyBehavior
         {
@@ -43,9 +65,9 @@ namespace LostInTransit.Items
             private void TryToRefund(Interactor interactor, IInteractable interactable, UnityEngine.GameObject interactableObject)
             {
                 var pInteraction = interactableObject.GetComponent<PurchaseInteraction>();
-                if(pInteraction)
+                if (pInteraction)
                 {
-                    if(pInteraction.costType == CostTypeIndex.Money && CanRefund)
+                    if (pInteraction.costType == CostTypeIndex.Money && CanRefund)
                     {
                         DoRefund((uint)pInteraction.cost);
                     }
@@ -61,26 +83,9 @@ namespace LostInTransit.Items
 
             private void UpdateStacks()
             {
-                maxRefunds = body.inventory.GetItemCount(LITAssets.LoadAsset<ItemDef>("SmartShopper", LITBundle.Items));
+                maxRefunds = body.inventory.GetItemCount(LITContent.Items.SmartShopper);
             }
         }
-
-        /*public class SmartShopperBehavior : CharacterBody.ItemBehavior, IOnKilledOtherServerReceiver
-        {
-            public void OnKilledOtherServer(DamageReport damageReport)
-            {
-                var deathRewards = damageReport.victimBody.GetComponent<DeathRewards>();
-                float smartShopperGold;
-                if (deathRewards)
-                {
-                    //Debug.WriteLine("Gold before Smart Shopper: " + deathRewards.goldReward);
-                    smartShopperGold = usesExpScaling ? (uint)(deathRewards.goldReward * Math.Pow(goldAmount, 1 / stack)) : (uint)(deathRewards.goldReward * goldAmount * stack);
-                    //Debug.WriteLine("And that, times " + 0.25f * stack + "...");
-                    //Debug.WriteLine("Comes out to " + smartShopperGold + " extra gold!");
-
-                    body.master.GiveMoney((uint)smartShopperGold);
-                }
-            }
-        }*/
     }
+#endif
 }

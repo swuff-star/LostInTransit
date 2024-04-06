@@ -1,57 +1,72 @@
 ﻿using MSU;
+using MSU.Config;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2.Items;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Items
 {
     //N- Items no longer have an "AddBehavior(ref CharacterBody body, int stacks)" method
-    public class BeckoningCat : LITItem
+
+    public sealed class BeckoningCat : LITItem
     {
-        private const string token = "LIT_ITEM_BECKONINGCAT_DESC";
+        private const string TOKEN = "LIT_ITEM_BECKONINGCAT_DESC";
 
-        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeckoningCat", LITBundle.Items);
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base chance for Elites to drop an item.")]
+        [FormatToken(TOKEN)]
+        public static float baseDropChance = 4.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Base Drop Chance", ConfigDescOverride = "Base chance for Elites to drop an item.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float baseChance = 4.5f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added chance for Elites to drop an item per stack.")]
+        [FormatToken(TOKEN,1)]
+        public static float stackingDropChance = 1.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Stacking Drop Chance", ConfigDescOverride = "Added chance for Elites to drop an item per stack.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float stackChance = 1.5f;
-        
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Maximum Drop Chance Cap", ConfigDescOverride = "Maximum possible chance for Elites to drop an item, regardless of stacks.")]
-        public static float capChance = 100f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum possible chance for Elites to drop an item, regardless of stacks.")]
+        public static float maximumDropChance = 100f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Uncommon Item Chance", ConfigDescOverride = "Chance for Elites to drop an Uncommon (Green) item.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Uncommon Item Chance", ConfigDescOverride = "Chance for Elites to drop an Uncommon (Green) item.")]
+        [FormatToken(TOKEN, 2)]
         public static float greenItemChance = 6f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Uncommon Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop an Uncommon (Green) item per stack.")]
-        [TokenModifier(token, StatTypes.Default, 3)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Uncommon Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop an Uncommon (Green) item per stack.")]
+        [FormatToken(TOKEN, 3)]
         public static float greenItemStack = 1f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Rare Item Chance", ConfigDescOverride = "Chance for Elites to drop a Rare (Red) item.")]
-        [TokenModifier(token, StatTypes.Default, 4)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Rare Item Chance", ConfigDescOverride = "Chance for Elites to drop a Rare (Red) item.")]
+        [FormatToken(TOKEN, 4)]
         public static float redItemChance = 0.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Rare Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop a Rare (Red) item per stack.")]
-        [TokenModifier(token, StatTypes.Default, 5)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Rare Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop a Rare (Red) item per stack.")]
+        [FormatToken(TOKEN, 5)]
         public static float redItemStack = 0.25f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Use Luck", ConfigDescOverride = "Whether Luck should be accounted for in all Beckoning Cat-related rolls.")]
-        public static bool usesLuck = true;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Luck should be accounted for in all Beckoning Cat-related rolls.")]
+        public static bool useLuck = true;
 
-        //N- Item Behaviors now use RoR2's "BaseItemBodyBehavior" class
-        //The class itself is abstract and its in RoR2.Items
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /* ItemDef - "BeckoningCat" - Items
+             */
+            yield break;
+        }
+
         public class BeckoningCatBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver
         {
-            //N- This attribute is needed for the system to automatically take care of adding the behavior or not depending on the item's stacks.
-            //it NEEDS to be static, return an itemDef, and have this attribute.
-            //If you're not sure whether the behavior needs to be on client, on server, or both, just set "useOnClient" and "useOnServer" to true.
-
-            //SIDENOTE: Use on client is false, which means that client's game objects wont have this behavior, but this is ok, as IOnKilledOtherServerReceiver runs only on server.
             [ItemDefAssociation(useOnClient = false, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.BeckoningCat;
 
@@ -77,10 +92,10 @@ namespace LostInTransit.Items
                 var dropLocation = damageReport.attackerBody.transform.position;
                 for (int i = 0; i < victimBody.eliteBuffCount; i++)
                 {
-                    if (victimBody.isElite && Roll(Mathf.Min(baseChance + (stackChance * (stack - 1)), capChance), 0))
+                    if (victimBody.isElite && Roll(Mathf.Min(baseDropChance + (stackingDropChance * (stack - 1)), maximumDropChance), 0))
                     {
                         //Debug.Log("Rolling for item...");
-                        var redItem = usesLuck ? Roll(redItemChance + (redItemStack * (stack - 1)), body.master.luck) : Roll(redItemChance + (redItemStack * (stack - 1)), 0);
+                        var redItem = useLuck ? Roll(redItemChance + (redItemStack * (stack - 1)), body.master.luck) : Roll(redItemChance + (redItemStack * (stack - 1)), 0);
                         //Debug.Log($"red Item? {redItem}");
                         if (redItem)
                         {
@@ -88,7 +103,7 @@ namespace LostInTransit.Items
                             SpawnItem(redItems, nextRedItem);
                             return;
                         }
-                        var greenItem = usesLuck ? Roll(greenItemChance + (greenItemStack * (stack - 1)), body.master.luck) : Roll(greenItemChance + (greenItemStack * (stack - 1)), 0);
+                        var greenItem = useLuck ? Roll(greenItemChance + (greenItemStack * (stack - 1)), body.master.luck) : Roll(greenItemChance + (greenItemStack * (stack - 1)), 0);
                         //Debug.Log($"green Item? {greenItem}");
                         if (greenItem)
                         {

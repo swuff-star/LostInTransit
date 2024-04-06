@@ -1,20 +1,47 @@
 ﻿using MSU;
+using MSU.Config;
+using R2API;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2.Items;
+using System.Collections;
+using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    [DisabledContent]
-    public class ArmsRace : LITItem
+#if DEBUG
+    public sealed class ArmsRace : LITItem
     {
-        private const string token = "LIT_ITEM_ARMSRACE_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("ArmsRace", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_ARMSRACE_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Amount", ConfigDescOverride = "Percentage of max health granted to drones as shield, per stack.")]
-        public static float extraShield = 8f;
-        
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Gating", ConfigDescOverride = "Whether or not drones should be given gated shields.")]
+        public override NullableRef<GameObject> ItemDisplayPrefab => throw new System.NotImplementedException();
+
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Percentage of max health granted to drones as shield, per stack.")]
+        public static float shieldAmount = 8f;
+
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether or not drones should be given gated shields.")]
         public static bool shieldGating = true;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "ArmsRace" - Items
+             * ItemDef - "ArmsRaceDroneModifiers" - Items
+             */
+            yield return null;
+        }
 
         public class ArmsRaceBehavior : BaseItemBodyBehavior
         {
@@ -84,7 +111,7 @@ namespace LostInTransit.Items
                             UpdateMinionInventory(summonMasterInstance.inventory, body.bodyFlags, stack);
                         }
                     }
-                }    
+                }
             }
 
             public void UpdateMinionInventory(Inventory inventory, CharacterBody.BodyFlags bodyFlags, int stack)
@@ -99,7 +126,7 @@ namespace LostInTransit.Items
                     else if (itemCount > stack)
                     {
                         inventory.RemoveItem(LITContent.Items.ArmsRaceDroneMods, itemCount - stack);
-                    }    
+                    }
                 }
                 else
                 {
@@ -113,5 +140,34 @@ namespace LostInTransit.Items
                 MasterSummon.onServerMasterSummonGlobal -= OnServerMasterSummonGlobal;
             }
         }
+
+        public class ArmsRaceDroneModsBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
+        {
+            [ItemDefAssociation(useOnClient = true, useOnServer = true)]
+            public static ItemDef GetItemDef() => LITContent.Items.ArmsRaceDroneMods;
+
+            public void Awake()
+            {
+                base.Awake();
+                body.RecalculateStats();
+            }
+
+            public void OnIncomingDamageServer(DamageInfo damageInfo)
+            {
+                if (body.healthComponent.shield >= 1f && damageInfo.damage >= body.healthComponent.shield + body.healthComponent.barrier)
+                {
+                    if (ArmsRace.shieldGating == true && !(damageInfo.damageType == DamageType.BypassArmor || damageInfo.damageType == DamageType.BypassOneShotProtection))
+                    {
+                        damageInfo.damage = body.healthComponent.shield + body.healthComponent.barrier;
+                    }
+                }
+            }
+
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+            {
+                args.baseShieldAdd += (body.maxHealth * (0.01f * ArmsRace.shieldAmount * stack));
+            }
+        }
     }
+#endif
 }

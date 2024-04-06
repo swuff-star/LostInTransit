@@ -1,19 +1,26 @@
 ﻿using MSU;
 using RoR2;
+using RoR2.ContentManagement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    public class AffixFrenzied : LITEliteEquipment
+    public sealed class AffixFrenzied : LITEliteEquipment
     {
-        public override List<MSEliteDef> EliteDefs { get; } = new List<MSEliteDef>
+        public override List<EliteDef> EliteDefs => _eliteDefs;
+        private List<EliteDef> _eliteDefs;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override EquipmentDef EquipmentDef => _equipmentDef;
+        private EquipmentDef _equipmentDef;
+
+        public override bool Execute(EquipmentSlot slot)
         {
-             LITAssets.LoadAsset<MSEliteDef>("Frenzied", LITBundle.Equips),
-             LITAssets.LoadAsset<MSEliteDef>("FrenziedHonor", LITBundle.Equips)
-        };
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("AffixFrenzied", LITBundle.Items);
-        
+            return FireActionStatic(slot.gameObject);
+        }
+
         internal static bool FireActionStatic(GameObject bodyObj)
         {
             var bodyStateMachine = EntityStateMachine.FindByCustomName(bodyObj, "Body");
@@ -28,9 +35,31 @@ namespace LostInTransit.Equipments
             return false;
         }
 
-        public override bool FireAction(EquipmentSlot slot)
+        public override void Initialize()
         {
-            return FireActionStatic(slot.gameObject);
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ExtendedEliteDef - "Frenzied" - Equips
+             * ExtendedEliteDef - "FrenziedHonor" - Equips
+             * EquipmentDef - "AffixFrenzied" - Equips
+             */
+            yield break;
+        }
+
+        public override void OnEquipmentLost(CharacterBody body)
+        {
+        }
+
+        public override void OnEquipmentObtained(CharacterBody body)
+        {
         }
     }
 }

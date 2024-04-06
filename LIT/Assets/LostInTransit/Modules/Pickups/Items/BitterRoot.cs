@@ -4,26 +4,45 @@ using RoR2.Items;
 using UnityEngine;
 using R2API;
 using System;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    //[DisabledContent]
-    public class BitterRoot : LITItem
+    public sealed class BitterRoot : LITItem
     {
-        private const string token = "LIT_ITEM_BITTERROOT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BitterRoot", LITBundle.Items);
+        public const string TOKEN = "LIT_ITEM_BITTERROOT_DESC";
 
-        /*[RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Extra Maximum Health per Root", ConfigDescOverride = "Extra percentage of maximum health added per root")]
-        [TokenModifier(token, StatTypes.Default)]
-        public static float rootIncrease = 4f;*/
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of regen on kill per Root.")]
+        [FormatToken(TOKEN, 0)]
+        public static float regenAmount = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Regen per Root", ConfigDescOverride = "Amount of regen on kill per Root.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float rootRegen = 3f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Duration of regen on kill per Root.")]
+        [FormatToken(TOKEN, 1)]
+        public static float regenDuration = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Regen Duration", ConfigDescOverride = "Duration of regen on kill per Root.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float rootRegenDur = 3f;
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "BitterRoot" - Items
+             */
+            yield break;
+        }
 
         public class BitterRootBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver
         {
@@ -32,13 +51,8 @@ namespace LostInTransit.Items
 
             public void OnKilledOtherServer(DamageReport damageReport)
             {
-                body.AddTimedBuffAuthority(LITContent.Buffs.bdRootRegen.buffIndex, rootRegenDur * stack);
+                body.AddTimedBuffAuthority(LITContent.Buffs.bdRootRegen.buffIndex, regenDuration * stack);
             }
-
-            /*public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
-            {
-                args.healthMultAdd += (rootIncrease/100) * stack;  
-            }*/
         }
     }
 }

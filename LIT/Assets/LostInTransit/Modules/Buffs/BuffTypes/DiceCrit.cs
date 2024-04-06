@@ -6,8 +6,8 @@ using RoR2.Items;
 
 namespace LostInTransit.Buffs
 {
-    /*[DisabledContent]
-    /*public class DiceCrit : BuffBase
+    [DisabledContent]
+    public class DiceCrit : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceCrit", LITBundle.Items);
 
@@ -20,5 +20,5 @@ namespace LostInTransit.Buffs
                 args.critAdd += Items.BlessedDice.critAmount;
             }
         }
-    }*/
+    }
 }

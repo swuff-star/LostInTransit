@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace LostInTransit.Buffs
 {
-    /* public class Toxin : BuffBase
+     public class Toxin : BuffBase
      {
          public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdToxin", LITBundle.Items);
 
@@ -94,13 +94,13 @@ namespace LostInTransit.Buffs
                          if (dot != null)
                              dot.enabled = true;
                      }
-                 }
-}
+                 }*/
+             }
 
-public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
                 args.armorAdd -= Items.TheToxin.toxinArmorDebuff;
             }
         }
-    }*/
+    }
 }

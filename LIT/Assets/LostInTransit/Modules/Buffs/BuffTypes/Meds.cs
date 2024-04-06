@@ -7,7 +7,7 @@ using RoR2.Items;
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    /*public class Meds : BuffBase
+    public class Meds : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdMeds", LITBundle.Equips);
 
@@ -28,5 +28,5 @@ namespace LostInTransit.Buffs
                 body.RecalculateStats();
             }
         }
-    }*/
+    }
 }

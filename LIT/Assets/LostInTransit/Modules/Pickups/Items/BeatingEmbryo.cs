@@ -12,6 +12,8 @@ using UnityEngine;
 using EntityStates.GoldGat;
 using UnityEngine.Networking;
 using EntityStates.QuestVolatileBattery;
+using RoR2.ContentManagement;
+using System.Collections;
 
 namespace LostInTransit.Items
 {
@@ -31,27 +33,21 @@ namespace LostInTransit.Items
      * Other LIT Equipment have their embryo interaction codeed in their equipment class.
      */
 
-    public class BeatingEmbryo : LITItem
+    public sealed class BeatingEmbryo : LITItem
     {
-        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("BeatingEmbryo", LITBundle.Items);
-
         private const string VANILLA_BBOSSHUNTER_CONSUMED_TOKEN = "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT";
         public string[] bossHunterOptions = new string[] { VANILLA_BBOSSHUNTER_CONSUMED_TOKEN, "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_1", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_2", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_3", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_4" };
 
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        private BuffDef _hiddenCritDamage;
+
+        private static GameObject _bfg10kController;
         public override void Initialize()
         {
-            //Crit On use special buff
-            HG.ArrayUtils.ArrayAppend(ref LITContent.Instance.SerializableContentPack.buffDefs, LITAssets.LoadAsset<BuffDef>("bdHiddenCritDamage", LITBundle.Items));
-            RecalculateStatsAPI.GetStatCoefficients += (body, args) =>
-            {
-                if (body.GetBuffCount(LITContent.Buffs.bdHiddenCritDamage) > 0)
-                {
-                    args.critDamageMultAdd += 1;
-                }
-            };
-
-            //Preon10k
-            ProcTrackerBeatingEmbryoBehaviour._bfg10kController = LITAssets.LoadAsset<GameObject>("BFG10KBodyAttachment", LITBundle.Items);
+            RecalculateStatsAPI.GetStatCoefficients += HandleHiddenCritDamage;
 
             //Lines with //* are methods that are either unfinished, or have ToDo's
             //commmented out hooks are methods that are almost finished, but produce invalid IL
@@ -94,9 +90,31 @@ namespace LostInTransit.Items
             };
         }
 
-        #region Upgraded Effects
+        private void HandleHiddenCritDamage(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.GetBuffCount(LITContent.Buffs.bdHiddenCritDamage) > 0)
+            {
+                args.critDamageMultAdd += 1;
+            }
+        }
 
-        //Fires a blackhole on the opoosite direction
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "BeatingEmbryo" - Items
+             * BuffDef - "bdHiddenCritDamage" - Items
+             * GameObject - "BFG10KBodyAttachment" - Items
+             */
+            yield break;
+        }
+
+        #region Upgraded Effects
+        //Fires a blackhole on the oposite direction
         //Todo, maybe instead of two blackholes it fires a special blackhole that inflicts a debuff?
         private void FireBlackHole(ILContext il)
         {
@@ -114,7 +132,7 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldloc, 0);
             cursor.EmitDelegate<Action<EquipmentSlot, Ray>>((slot, ray) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     ProjectileManager.instance.FireProjectile(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/GravSphere"), slot.transform.position, Util.QuaternionSafeLookRotation(-ray.direction), slot.gameObject, 0f, 0f, crit: false);
                 }
@@ -131,7 +149,7 @@ namespace LostInTransit.Items
             ProcTrackerBeatingEmbryoBehaviour tracker = null;
             if (self.TryGetComponent(out tracker))
             {
-                if(tracker.BFG10kAttachment)
+                if (tracker.BFG10kAttachment)
                 {
                     return false;
                 }
@@ -149,7 +167,7 @@ namespace LostInTransit.Items
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(25f),
                 x => x.MatchStloc(1));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increase DroneBackup lifetime.");
                 return;
@@ -159,11 +177,11 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldloc, 1);
             cursor.EmitDelegate<Func<EquipmentSlot, float, float>>((slot, lifetime) =>
             {
-                return BeatingEmbryoManager.Procs(slot) ? lifetime * 2 : lifetime;
+                return BeatingEmbryoManager.BeatingEmbryoProcs(slot) ? lifetime * 2 : lifetime;
             });
             cursor.Emit(OpCodes.Stloc_1);
-            BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.DroneBackup);
 
+            BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.DroneBackup);
         }
 
         //Increased meteors and blast radius
@@ -174,7 +192,7 @@ namespace LostInTransit.Items
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt(typeof(UnityEngine.Object), nameof(UnityEngine.Object.Instantiate)),
                 x => x.MatchCallOrCallvirt(typeof(GameObject), nameof(GameObject.GetComponent)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increase meteor radius, count, and frequency.");
                 return;
@@ -184,7 +202,7 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Action<MeteorStormController, EquipmentSlot>>((controller, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     controller.blastRadius *= 2;
                     controller.waveCount = Mathf.RoundToInt(controller.waveCount * 1.5f);
@@ -192,6 +210,7 @@ namespace LostInTransit.Items
                     controller.waveMaxInterval /= 1.5f;
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Meteor);
         }
 
@@ -204,8 +223,8 @@ namespace LostInTransit.Items
                 x => x.MatchCallOrCallvirt<EquipmentSlot>("get_" + nameof(EquipmentSlot.characterBody)),
                 x => x.MatchLdsfld(typeof(RoR2Content.Buffs), nameof(RoR2Content.Buffs.FullCrit)),
                 x => x.MatchLdcR4(8f));
-            
-            if(!flag)
+
+            if (!flag)
             {
                 LogEmbryoHookFailed("CritOnUse 100% Crit Damage increase.");
                 return;
@@ -214,12 +233,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((fullCritDuration, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     slot.characterBody.AddTimedBuff(LITContent.Buffs.bdHiddenCritDamage, fullCritDuration);
                 }
                 return fullCritDuration;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Meteor);
         }
 
@@ -227,7 +247,7 @@ namespace LostInTransit.Items
         private bool FireJetpack(On.RoR2.EquipmentSlot.orig_FireJetpack orig, EquipmentSlot self)
         {
             var result = orig(self);
-            if(BeatingEmbryoManager.Procs(self))
+            if (BeatingEmbryoManager.BeatingEmbryoProcs(self))
             {
                 JetpackController controller = JetpackController.FindJetpackController(self.gameObject);
                 controller.boostCooldown /= 1.5f;
@@ -245,7 +265,7 @@ namespace LostInTransit.Items
                 x => x.MatchLdcR4(30),
                 x => x.MatchMul());
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Lightning damage increase.");
                 return;
@@ -254,12 +274,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((damageMultiplier, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return damageMultiplier * 2f;
                 }
                 return damageMultiplier;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Lightning);
         }
 
@@ -272,7 +293,7 @@ namespace LostInTransit.Items
                 x => x.MatchBr(out _),
                 x => x.MatchLdcR4(0.1f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double PassiveHealing initial fraction.");
                 return;
@@ -281,12 +302,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((fraction, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return fraction * 2;
                 }
                 return fraction;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.PassiveHealing);
 
         }
@@ -298,7 +320,7 @@ namespace LostInTransit.Items
 
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(12));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double BurnNearby duration.");
                 return;
@@ -307,12 +329,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((duration, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return duration * 2;
                 }
                 return duration;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.BurnNearby);
         }
 
@@ -324,7 +347,7 @@ namespace LostInTransit.Items
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt(typeof(Quaternion), "get_" + nameof(Quaternion.identity)),
                 x => x.MatchCallOrCallvirt(typeof(UnityEngine.Object), nameof(UnityEngine.Object.Instantiate)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double scanner's radius and reveal duration.");
                 return;
@@ -334,13 +357,14 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Action<GameObject, EquipmentSlot>>((scannerObj, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     var scanner = scannerObj.GetComponent<RoR2.ChestRevealer>();
                     scanner.revealDuration *= 2;
                     scanner.radius *= 2;
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Scanner);
         }
 
@@ -351,7 +375,7 @@ namespace LostInTransit.Items
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt(typeof(UnityEngine.Object), nameof(UnityEngine.Object.Instantiate)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double CrippleWard's radius and buff duration.");
                 return;
@@ -361,13 +385,14 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Action<GameObject, EquipmentSlot>>((ward, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     var buffWard = ward.GetComponent<BuffWard>();
                     buffWard.radius *= 2;
                     buffWard.buffDuration *= 2;
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.CrippleWard);
         }
 
@@ -377,7 +402,7 @@ namespace LostInTransit.Items
             var cursor = new ILCursor(il);
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(1000f));
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double Gateway max distance.", "Distance will not be changed.");
             }
@@ -386,7 +411,7 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((maxDistance, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return maxDistance * 2;
                     }
@@ -400,7 +425,7 @@ namespace LostInTransit.Items
             flag = cursor.TryGotoNext(MoveType.After, x => x.MatchDup(),
                 x => x.MatchLdcR4(30f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double Gateway Lifetime.", "Lifetime will not be changed");
             }
@@ -409,7 +434,7 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((lifetime, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return lifetime * 2;
                     }
@@ -418,7 +443,7 @@ namespace LostInTransit.Items
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Gateway);
             }
 
-            if(!flag && !flag2)
+            if (!flag && !flag2)
             {
                 LITLog.Fatal("ILHook for Gateway failed, equipment will activate twice.");
             }
@@ -431,7 +456,7 @@ namespace LostInTransit.Items
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdsfld(typeof(EquipmentSlot), nameof(EquipmentSlot.tonicBuffDuration)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double tonic buff duration", "Duration will not be changed");
             }
@@ -440,7 +465,7 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((duration, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return duration * 2;
                     }
@@ -452,7 +477,7 @@ namespace LostInTransit.Items
             bool flag2 = flag;
             flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(80f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Divide chance for no affliction", "Affliction chance will not be changed");
             }
@@ -461,7 +486,7 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((chanceForNoAffliction, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return chanceForNoAffliction / 2;
                     }
@@ -470,7 +495,7 @@ namespace LostInTransit.Items
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Tonic);
             }
 
-            if(!flag && !flag2)
+            if (!flag && !flag2)
             {
                 LITLog.Fatal("ILHook for Tonic failed, equipment will activate twice.");
             }
@@ -519,13 +544,14 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Action<GameObject, EquipmentSlot>>((vehicleObject, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot) && vehicleObject.TryGetComponent<FireballVehicle>(out var fireballVehicle))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot) && vehicleObject.TryGetComponent<FireballVehicle>(out var fireballVehicle))
                 {
                     fireballVehicle.targetSpeed *= 1.5f;
                     fireballVehicle.overlapDamageCoefficient *= 1.5f;
                     fireballVehicle.blastDamageCoefficient *= 1.5f;
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.FireBallDash);
         }
 
@@ -537,7 +563,7 @@ namespace LostInTransit.Items
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdfld<EquipmentSlot.UserTargetInfo>(nameof(EquipmentSlot.UserTargetInfo.pickupController)),
                 x => x.MatchStloc(0));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Create Recycler Duplicate Pickup");
                 return;
@@ -547,7 +573,7 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Action<GenericPickupController, EquipmentSlot>>((pickupController, slot) =>
             {
-                if (pickupController && !pickupController.Recycled && BeatingEmbryoManager.Procs(slot))
+                if (pickupController && !pickupController.Recycled && BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     GenericPickupController.CreatePickupInfo pickupInfo = new GenericPickupController.CreatePickupInfo
                     {
@@ -559,6 +585,7 @@ namespace LostInTransit.Items
                     duplicate.NetworkRecycled = true;
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.Recycle);
         }
 
@@ -569,7 +596,7 @@ namespace LostInTransit.Items
 
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(5f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double GainArmor Duration");
                 return;
@@ -578,12 +605,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((duration, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return duration * 2;
                 }
                 return duration;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.GainArmor);
         }
 
@@ -594,7 +622,7 @@ namespace LostInTransit.Items
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdcR4(8f));
 
-            if(flag)
+            if (flag)
             {
                 LogEmbryoHookFailed("Double LifeSteal Duration");
                 return;
@@ -603,12 +631,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((duration, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return duration * 2;
                 }
                 return duration;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.LifestealOnHit);
         }
 
@@ -619,7 +648,7 @@ namespace LostInTransit.Items
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdsfld(typeof(RoR2Content.Buffs), nameof(RoR2Content.Buffs.TeamWarCry)),
                 x => x.MatchLdcR4(7));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double TeamWarCry's caster duration");
             }
@@ -628,12 +657,13 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((selfDuration, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return selfDuration * 2;
                     }
                     return selfDuration;
                 });
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.TeamWarCry);
             }
 
@@ -643,7 +673,7 @@ namespace LostInTransit.Items
                 x => x.MatchLdsfld(typeof(RoR2Content.Buffs), nameof(RoR2Content.Buffs.TeamWarCry)),
                 x => x.MatchLdcR4(7f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Double TeamWarCry team duration");
             }
@@ -652,12 +682,13 @@ namespace LostInTransit.Items
                 cursor.Emit(OpCodes.Ldarg_0);
                 cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((otherDuration, slot) =>
                 {
-                    if (BeatingEmbryoManager.Procs(slot))
+                    if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                     {
                         return otherDuration * 2;
                     }
                     return otherDuration;
                 });
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.TeamWarCry);
             }
 
@@ -675,7 +706,7 @@ namespace LostInTransit.Items
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt<ProjectileManager>("get_" + (nameof(ProjectileManager.instance))),
                 x => x.MatchLdloc(4));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Fire second DeathProjectile.");
                 return;
@@ -684,13 +715,14 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<FireProjectileInfo, EquipmentSlot, FireProjectileInfo>>((projectileInfo, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     ProjectileManager.instance.FireProjectile(projectileInfo);
                     return projectileInfo;
                 }
                 return projectileInfo;
             });
+
             BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.DeathProjectile);
         }
 
@@ -703,7 +735,7 @@ namespace LostInTransit.Items
                 x => x.MatchCallOrCallvirt<EquipmentSlot>("get_" + nameof(EquipmentSlot.characterBody)),
                 x => x.MatchCallOrCallvirt<CharacterBody>("get_" + nameof(CharacterBody.damage)));
 
-            if(flag)
+            if (flag)
             {
                 LogEmbryoHookFailed("Double VendingMachine Damage");
                 return;
@@ -712,12 +744,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<float, EquipmentSlot, float>>((damageStat, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return damageStat * 2;
                 }
                 return damageStat;
             });
+
             BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.VendingMachine);
         }
 
@@ -728,7 +761,7 @@ namespace LostInTransit.Items
 
             bool flag = cursor.TryGotoNext(x => x.MatchCallOrCallvirt<PickupDropletController>(nameof(PickupDropletController.CreatePickupDroplet)));
 
-            if(flag)
+            if (flag)
             {
                 LogEmbryoHookFailed("Drop secondary BossHunter pickup.");
                 return;
@@ -740,11 +773,12 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldloc_3);
             cursor.EmitDelegate<Action<EquipmentSlot, DeathRewards, Vector3, Vector3>>((slot, rewards, vector, normalized) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     PickupDropletController.CreatePickupDroplet(rewards.bossDropTable.GenerateDrop(slot.rng), vector, normalized);
                 }
             });
+
             BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.BossHunter);
         }
 
@@ -756,7 +790,7 @@ namespace LostInTransit.Items
 
             bool flag = cursor.TryGotoNext(MoveType.After, x => x.MatchLdstr(VANILLA_BBOSSHUNTER_CONSUMED_TOKEN));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("BossHunterConsumed additional messages.");
                 return;
@@ -765,12 +799,13 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<string, EquipmentSlot, string>>((originalToken, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     return slot.rng.NextElementUniform(bossHunterOptions);
                 }
                 return originalToken;
             });
+
             BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.BossHunterConsumed);
         }
 
@@ -782,7 +817,7 @@ namespace LostInTransit.Items
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCall<ProjectileManager>("get_" + nameof(ProjectileManager.instance)),
                 x => x.MatchLdloc(4));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Fire secondary GummyClone");
                 return;
@@ -790,14 +825,14 @@ namespace LostInTransit.Items
             cursor.Emit(OpCodes.Ldarg_0);
             cursor.EmitDelegate<Func<FireProjectileInfo, EquipmentSlot, FireProjectileInfo>>((info, slot) =>
             {
-                if (BeatingEmbryoManager.Procs(slot))
+                if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
                 {
                     ProjectileManager.instance.FireProjectile(info);
                 }
                 return info;
             });
-            BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.GummyClone);
 
+            BeatingEmbryoManager.AddToBlackList(DLC1Content.Equipment.GummyClone);
         }
 
         //Increased gold gain
@@ -812,7 +847,7 @@ namespace LostInTransit.Items
                 x => x.MatchLdloc(4),
                 x => x.MatchLdcR4(0.1f));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increase MultiShopCard cashback");
                 return;
@@ -837,7 +872,7 @@ namespace LostInTransit.Items
 
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchStloc(2));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Reduce GoldGat gold cost", "Gold cost will not be modified.");
             }
@@ -855,6 +890,7 @@ namespace LostInTransit.Items
                     return goldCost;
                 });
                 cursor.Emit(OpCodes.Stloc_2);
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.GoldGat);
             }
 
@@ -864,7 +900,7 @@ namespace LostInTransit.Items
                 p => p.MatchLdfld<BaseGoldGatState>(nameof(BaseGoldGatState.body)),
                 p => p.MatchCallOrCallvirt<CharacterBody>("get_" + nameof(CharacterBody.damage)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increase GoldGat damage", "Damage will not be modified");
             }
@@ -880,10 +916,11 @@ namespace LostInTransit.Items
                     }
                     return damage;
                 });
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.GoldGat);
             }
 
-            if(!flag && !flag2)
+            if (!flag && !flag2)
             {
                 LITLog.Fatal("ILHook for GoldGat failed, equipment will activate twice.");
             }
@@ -897,7 +934,7 @@ namespace LostInTransit.Items
             var flag = cursor.TryGotoNext(MoveType.After, x => x.MatchCallOrCallvirt<HealthComponent>("get_" + nameof(HealthComponent.fullCombinedHealth)),
                 x => x.MatchLdcR4(3));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increase QuestVolatileBattery Damage", "Damage will not be modified");
             }
@@ -913,6 +950,7 @@ namespace LostInTransit.Items
                     }
                     return damage;
                 });
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.QuestVolatileBattery);
             }
 
@@ -920,7 +958,7 @@ namespace LostInTransit.Items
             flag = cursor.TryGotoNext(MoveType.After, x => x.MatchDup(),
                 x => x.MatchLdsfld<CountDown>(nameof(CountDown.explosionRadius)));
 
-            if(!flag)
+            if (!flag)
             {
                 LogEmbryoHookFailed("Increse QuestVolatileBbattery Radius", "Radius will not be modified");
             }
@@ -936,15 +974,17 @@ namespace LostInTransit.Items
                     }
                     return radius;
                 });
+
                 BeatingEmbryoManager.AddToBlackList(RoR2Content.Equipment.QuestVolatileBattery);
             }
 
-            if(!flag && !flag2)
+            if (!flag && !flag2)
             {
                 LITLog.Fatal("ILHook for QuestVolatileBbattery failed. No changes where made.");
             }
         }
         #endregion
+
 
         private void LogEmbryoHookFailed(string message, string postMessage = null)
         {
@@ -958,7 +998,6 @@ namespace LostInTransit.Items
             public static ItemDef GetItemDef() => LITContent.Items.BeatingEmbryo;
             public bool? HasProccedThisFrame { get; internal set; }
             public NetworkedBodyAttachment BFG10kAttachment { get; private set; }
-            public static GameObject _bfg10kController;
 
             public void SpawnBFG10KAttachmentAndFire()
             {
@@ -979,7 +1018,7 @@ namespace LostInTransit.Items
                     return HasProccedThisFrame.Value;
                 }
 
-                if(Util.CheckRoll(MSUtil.InverseHyperbolicScaling(20, 20, 100, stack), body.master))
+                if (Util.CheckRoll(MSUtil.InverseHyperbolicScaling(20, 20, 100, stack), body.master))
                 {
 #if DEBUG
                     LITLog.Info("Embryo Proc for " + body);
@@ -990,18 +1029,12 @@ namespace LostInTransit.Items
                 HasProccedThisFrame = false;
                 return false;
             }
-
-
-            private static int GetCount(EquipmentSlot slot)
-            {
-                var inventory = slot.inventory;
-                if (!inventory)
-                    return 0;
-                return inventory.GetItemCount(LITContent.Items.BeatingEmbryo);
-            }
         }
     }
 
+    /// <summary>
+    /// A static class for managing the doubled effect of BeatingEmbryo
+    /// </summary>
     public static class BeatingEmbryoManager
     {
         public const string EMBRYO_EFFECT_DESC = "LIT_EMBRYO_EFFECT_DESC";
@@ -1010,21 +1043,36 @@ namespace LostInTransit.Items
         private static readonly Dictionary<EquipmentDef, Func<EquipmentSlot, bool>> _equipToFunction = new Dictionary<EquipmentDef, Func<EquipmentSlot, bool>>();
         private static ItemDef embryoDef;
 
+        /// <summary>
+        /// returns the "Improved" version of an equipment's activation using an On-Hook.
+        /// </summary>
+        /// <param name="def">The def to use</param>
+        /// <returns>The improved equipment action</returns>
         public static Func<EquipmentSlot, bool> GetFunc(EquipmentDef def)
         {
-            if(_equipToFunction.TryGetValue(def, out var func))
+            if (_equipToFunction.TryGetValue(def, out var func))
             {
                 return func;
             }
             return null;
         }
 
+        /// <summary>
+        /// Makes this equipment unable to be procced automatically by the manager's initial EquipmentSlot.PerformEquipmentAction hook
+        /// <br>This should be called if the equipment youre implementing already handles the beating embryo interaction,  or if you desire for beating embryo to ignore this equipment</br>
+        /// </summary>
+        /// <param name="equipmentDef">The equipment to add to the blacklist</param>
         public static void AddToBlackList(EquipmentDef equipmentDef)
         {
-            if(equipmentDef)
+            if (equipmentDef)
                 _blacklist.Add(equipmentDef);
         }
 
+        /// <summary>
+        /// Adds a new Embryo effect in the form of an override to the existing equipment's Activation effect
+        /// </summary>
+        /// <param name="equipmentDef">The equipmentDef</param>
+        /// <param name="equipmentEffect">The replacement Activation effect for this equipment</param>
         public static void AddEmbryoEffect(EquipmentDef equipmentDef, Func<EquipmentSlot, bool> equipmentEffect)
         {
             _equipToFunction.Add(equipmentDef, equipmentEffect);
@@ -1039,13 +1087,13 @@ namespace LostInTransit.Items
         }
 
         //Returns an embryo desc
-        private static string Language_GetLocalizedStringByToken(On.RoR2.Language.orig_GetLocalizedStringByToken orig, Language self, string token)
+        private static string Language_GetLocalizedStringByToken(On.RoR2.Language.orig_GetLocalizedStringByToken orig, Language self, string TOKEN)
         {
-            var val = orig(self, token);
-            if(embryoDef.itemIndex != ItemIndex.None)
+            var val = orig(self, TOKEN);
+            if (embryoDef.itemIndex != ItemIndex.None)
             {
-                var constructed = $"{token}{EMBRYO_TOKEN_SUFFIX}";
-                if(self.stringsByToken.ContainsKey(constructed))
+                var constructed = $"{TOKEN}{EMBRYO_TOKEN_SUFFIX}";
+                if (self.stringsByToken.ContainsKey(constructed))
                 {
                     return Language.GetStringFormatted(EMBRYO_EFFECT_DESC, val, Language.GetString(constructed));
                 }
@@ -1068,21 +1116,24 @@ namespace LostInTransit.Items
                 return orig(self, equipmentDef);
 
             //If the index has a funky function, use that instead of orig(self);
-            if(_equipToFunction.TryGetValue(equipmentDef, out var function))
+            if (_equipToFunction.TryGetValue(equipmentDef, out var function))
             {
                 return function(self);
             }
 
             //If the index does not have a funky function, use this for loop for triggering the equipment twice.
             bool result = false;
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 result = orig(self, equipmentDef);
             }
             return result;
         }
 
-        public static bool Procs(EquipmentSlot slot)
+        /// <summary>
+        /// Checks if BeatingEmbryo has procced this frame.
+        /// </summary>
+        public static bool BeatingEmbryoProcs(this EquipmentSlot slot)
         {
             if (!slot.TryGetComponent<BeatingEmbryo.ProcTrackerBeatingEmbryoBehaviour>(out var tracker))
             {
@@ -1092,4 +1143,5 @@ namespace LostInTransit.Items
             return tracker.Procs();
         }
     }
+   
 }

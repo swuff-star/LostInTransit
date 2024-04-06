@@ -1,6 +1,7 @@
 ﻿using MSU;
 using R2API;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2.Items;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,20 +10,37 @@ using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    public class CoolantCell : VoidLITItem
+    public class CoolantCell : LITVoidItem
     {
-        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("CoolantCell", LITBundle.Items);
-
         public static float baseValue = 0.2f;
         public static float stackingValue = 0.4f;
         public static float maxValue = 0.75f;
 
-        public override IEnumerable<ItemDef> LoadItemsToInfect()
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+        private ItemDef _energyCell;
+
+        public override List<ItemDef> GetInfectableItems()
         {
-            return new List<ItemDef>
-            {
-                LITAssets.LoadAsset<ItemDef>("EnergyCell", LITBundle.Items)
-            };
+            return new List<ItemDef> { _energyCell };
+        }
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false; //Figure out how to add this.
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "CoolantCell" - Items
+             */
+            yield break;
         }
 
         public class CoolantCellBehaviour : BaseItemBodyBehavior, IBodyStatArgModifier, IOnTakeDamageServerReceiver

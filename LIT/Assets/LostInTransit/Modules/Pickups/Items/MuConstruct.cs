@@ -2,19 +2,24 @@
 using RoR2;
 using R2API;
 using RoR2.Items;
+using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
 
 namespace LostInTransit.Items
 {
-    [DisabledContent]
-    public class MuConstruct : LITItem
+#if DEBUG
+    public sealed class MuConstruct : LITItem
     {
-        private const string token = "LIT_ITEM_MUCONSTRUCT_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MuConstruct", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_MUCONSTRUCT_DESC";
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
 
         public override void Initialize()
         {
-            base.Initialize();
-
             //ty ClassicItemsReturns for specific use cases
             On.RoR2.TeleporterInteraction.ChargingState.OnEnter += ChargingState_OnEnter;
             On.EntityStates.InfiniteTowerSafeWard.Active.OnEnter += Active_OnEnter;
@@ -67,25 +72,39 @@ namespace LostInTransit.Items
         {
             MuConstructBehavior.constructActive = false;
         }
-    }
 
-    public class MuConstructBehavior : BaseItemBodyBehavior
-    {
-        [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-        public static ItemDef GetItemDef() => LITContent.Items.MuConstruct;
-        public static bool constructActive = false;
-        public void FixedUpdate()
+        public override bool IsAvailable(ContentPack contentPack)
         {
-            if (constructActive)
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "MuConstruct" - Items
+             */
+            yield break;
+        }
+
+        public class MuConstructBehavior : BaseItemBodyBehavior
+        {
+            [ItemDefAssociation(useOnClient = true, useOnServer = true)]
+            public static ItemDef GetItemDef() => LITContent.Items.MuConstruct;
+            public static bool constructActive = false;
+            public void FixedUpdate()
+            {
+                if (constructActive)
+                {
+
+                }
+            }
+
+            public void ActivateMu()
             {
 
             }
         }
-
-        public void ActivateMu()
-        {
-
-        }
     }
+#endif
 }
 

@@ -1,45 +1,73 @@
 ﻿using MSU;
 using R2API;
 using RoR2.Items;
-using On.RoR2;
 using RoR2;
 using System;
 using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class RapidMitosis : LITItem
+    public sealed class RapidMitosis : LITItem
     {
-        private const string token = "LIT_ITEM_RAPIDMITOSIS_DESC";
-        public override RoR2.ItemDef ItemDef { get; } = LITAssets.LoadAsset<RoR2.ItemDef>("RapidMitosis", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_RAPIDMITOSIS_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Equipment CDR Amount", ConfigDescOverride = "Equipment Cooldown Reduction per Rapid Mitosis.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Equipment CDR Amount", ConfigDescOverride = "Equipment Cooldown Reduction per Rapid Mitosis.")]
+        [FormatToken(TOKEN)]
         public static float mitosisEquipCD = 0.30f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Skill CDR Amount", ConfigDescOverride = "Skill Cooldown Reduction granted via Rapid Mitosis.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Skill CDR Amount", ConfigDescOverride = "Skill Cooldown Reduction granted via Rapid Mitosis.")]
+        [FormatToken(TOKEN)]
         public static float mitosisSkillCD = 0.4f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Skill CDR Length", ConfigDescOverride = "Duration of the buff granted via Rapid Mitosis.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Skill CDR Length", ConfigDescOverride = "Duration of the buff granted via Rapid Mitosis.")]
+        [FormatToken(TOKEN)]
         public static float mitosisDur = 6f;
 
-        /*[RiskOfOptionsConfigureField(ConfigNameOverride = "Regeneration Amount", ConfigDescOverride = "Extra health regen given by Rapid Mitosis.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float mitosisRegen = 3.6f;*/
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-
-        public class RapidMitosisBehavior : BaseItemBodyBehavior, IBodyStatArgModifier  // I don't even think this needs an itemBehavior anymore.
+        public override void Initialize()
         {
-            [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static RoR2.ItemDef GetItemDef() => LITContent.Items.RapidMitosis;
+            On.RoR2.Inventory.CalculateEquipmentCooldownScale += Inventory_CalculateEquipmentCooldownScale;
+            On.RoR2.EquipmentSlot.RpcOnClientEquipmentActivationRecieved += ProcMitosis;
+        }
 
-            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+        private float Inventory_CalculateEquipmentCooldownScale(On.RoR2.Inventory.orig_CalculateEquipmentCooldownScale orig, Inventory self)
+        {
+            float num = orig(self);
+            num *= (1 - MSUtil.InverseHyperbolicScaling(mitosisEquipCD, mitosisEquipCD, 0.7f, self.GetItemCount(LITContent.Items.RapidMitosis)));
+            return num;
+        }
+
+        private static void ProcMitosis(On.RoR2.EquipmentSlot.orig_RpcOnClientEquipmentActivationRecieved orig, EquipmentSlot self)
+        {
+            orig(self);
+
+            if (self.hasAuthority && self.inventory)
             {
-                /*if (body.equipmentSlot.stock >= 1f)
-                { args.baseRegenAdd += mitosisRegen + ((mitosisRegen / 2) * (stack - 1)); }*/
+                int mitosisCount = self.inventory.GetItemCount(LITContent.Items.RapidMitosis);
+                if (mitosisCount > 0)
+                {
+                    self.characterBody.AddTimedBuffAuthority(LITContent.Buffs.bdMitosisBuff.buffIndex, Items.RapidMitosis.mitosisDur);
+                }
             }
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "RapidMitosis" - Items
+             */
+            yield break;
         }
     }
 }

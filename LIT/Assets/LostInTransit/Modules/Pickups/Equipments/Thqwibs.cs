@@ -14,18 +14,18 @@ namespace LostInTransit.Equipments
     //[DisabledContent]
     public class Thqwib : LITEquipment, IContentPackModifier
     {
-        private const string token = "LIT_EQUIP_THQWIB_DESC";
+        private const string TOKEN = "LIT_EQUIP_THQWIB_DESC";
 
         [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Number of Thqwibs tossed in a single bloom.")]
-        [FormatToken(token)]
+        [FormatToken(TOKEN)]
         public static int numberOfThqwibs = 20;
 
         [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Amount of damage each Thqwib deals on explosion, as a %.")]
-        [FormatToken(token, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 1)]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 1)]
         public static float damagePerThqwib = 2;
 
         [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Chance, per Thqwib, to activate On-Kill effects when exploding.\nDefault Average: 30x * 10% = 3 average On-Kill activations per bloom. Fun (OP) with Soulbound Catalyst.")]
-        [FormatToken(token, 2)]
+        [FormatToken(TOKEN, 2)]
         public static float onKillProcChance = 0f;
 
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
@@ -71,11 +71,11 @@ namespace LostInTransit.Equipments
                     magnitude = direction.magnitude;
                     ray2.direction = direction;
                 }
-                float damageMult = BeatingEmbryoManager.Procs(slot) ? 2 : 1;
+                float damageMult = BeatingEmbryoManager.BeatingEmbryoProcs(slot) ? 2 : 1;
                 for (int i = 0; i < numberOfThqwibs; i++)
                 {
                     Quaternion rotation = Util.QuaternionSafeLookRotation(Util.ApplySpread(ray2.direction, 0, 25, 1f, 1f));
-                    ProjectileManager.instance.FireProjectile(Projectiles.ThqwibProjectile.ThqwibProj, ray2.origin, rotation, slot.gameObject, charBody.damage * damagePerThqwib * damageMult, 0f, Util.CheckRoll(charBody.crit, charBody?.master), DamageColorIndex.Default, null, magnitude);
+                    ProjectileManager.instance.FireProjectile(_thqwibProjectile, ray2.origin, rotation, slot.gameObject, charBody.damage * damagePerThqwib * damageMult, 0f, Util.CheckRoll(charBody.crit, charBody?.master), DamageColorIndex.Default, null, magnitude);
                 }
                 return true;
             }

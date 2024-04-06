@@ -1,6 +1,8 @@
 ﻿using MSU;
 using RoR2;
+using RoR2.ContentManagement;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +14,30 @@ namespace LostInTransit.Items
 {
     public class LockedJewel : LITItem
     {
-        public override ItemDef ItemDef => LITAssets.LoadAsset<ItemDef>("LockedJewel", LITBundle.Items);
-
         public static float barrierGain = 20;
         public static int moneyGain = 8;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
         public override void Initialize()
         {
             GlobalEventManager.OnInteractionsGlobal += GlobalEventManager_OnInteractionsGlobal;
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "LockedJewel" - Items
+             */
+            yield break;
         }
 
         private void GlobalEventManager_OnInteractionsGlobal(Interactor arg1, IInteractable arg2, UnityEngine.GameObject arg3)
@@ -26,10 +45,10 @@ namespace LostInTransit.Items
             if (!NetworkServer.active)
                 return;
 
-            if (!InteractableIsPermittedForSpawn(arg3))
+            if (!MSUtil.IsInteractableValidForSpawns(arg3))
                 return;
 
-            if(!arg1.TryGetComponent<CharacterBody>(out var body))
+            if (!arg1.TryGetComponent<CharacterBody>(out var body))
                 return;
 
             var itemCount = body.GetItemCount(ItemDef);
@@ -46,27 +65,6 @@ namespace LostInTransit.Items
 
             if (body.master)
                 body.master.GiveMoney((uint)Run.instance.GetDifficultyScaledCost(moneyGain));
-        }
-
-        //N- Todo, add this method as a utility in MSU.
-        bool InteractableIsPermittedForSpawn(GameObject interactableGameObject)
-        {
-            if (!interactableGameObject)
-                return false;
-
-            if(interactableGameObject.TryGetComponent<InteractionProcFilter>(out var val))
-                return val.shouldAllowOnInteractionBeginProc;
-
-            if(interactableGameObject.TryGetComponent<GenericPickupController>(out _))
-                return false;
-
-            if (interactableGameObject.TryGetComponent<VehicleSeat>(out _))
-                return false;
-
-            if (interactableGameObject.TryGetComponent<NetworkUIPromptController>(out _))
-                return false;
-
-            return true;
         }
     }
 }

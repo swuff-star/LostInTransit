@@ -5,7 +5,7 @@ using RoR2;
 
 namespace LostInTransit.Buffs
 {
-    /* public class ThalliumPoison : BuffBase
+     public class ThalliumPoison : BuffBase
      {
          public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdThalliumPoison", LITBundle.Items);
          public static DotController.DotIndex index;
@@ -25,5 +25,5 @@ namespace LostInTransit.Buffs
                  args.moveSpeedReductionMultAdd += Items.Thallium.slowMultiplier;
              }
          }
-     }*/
+     }
 }

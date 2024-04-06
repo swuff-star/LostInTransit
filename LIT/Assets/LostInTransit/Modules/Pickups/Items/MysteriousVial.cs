@@ -2,27 +2,49 @@
 using RoR2;
 using R2API;
 using RoR2.Items;
+using MSU.Config;
+using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
 
 namespace LostInTransit.Items
 {
-    public class MysteriousVial : LITItem
+    public sealed class MysteriousVial : LITItem
     {
-        private const string token = "LIT_ITEM_MYSTERIOUSVIAL_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MysteriousVial", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_MYSTERIOUSVIAL_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Extra Regen Per Vial", ConfigDescOverride = "Extra Regeneration added per vial.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float vialRegen = 0.8f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra Regeneration added per vial.")]
+        [FormatToken(TOKEN)]
+        public static float regenBonus = 0.8f;
 
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-        public class MysteriousVialBehavior : BaseItemBodyBehavior, IBodyStatArgModifier
+        public override void Initialize()
         {
-            [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static ItemDef GetItemDef() => LITContent.Items.MysteriousVial;
-            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+            RecalculateStatsAPI.GetStatCoefficients += AddRegen;
+        }
+
+        private void AddRegen(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if(sender.TryGetItemCount(_itemDef, out int count))
             {
-                args.baseRegenAdd += (vialRegen + ((vialRegen / 5) * body.level)) * stack;
+                args.baseRegenAdd += (regenBonus + ((regenBonus / 5) * sender.level)) * count;
             }
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - MysteriousVial - Items
+             */
+            yield break;
         }
     }
 }

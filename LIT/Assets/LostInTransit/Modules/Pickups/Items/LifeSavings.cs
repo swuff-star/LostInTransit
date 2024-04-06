@@ -2,22 +2,29 @@
 using RoR2;
 using UnityEngine;
 using RoR2.Items;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class LifeSavings : LITItem
+    public sealed class LifeSavings : LITItem
     {
-        private const string token = "LIT_ITEM_LIFESAVINGS_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("LifeSavings", LITBundle.Items);
-        public static ItemDef itemDef;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Money per Life Savings", ConfigDescOverride = "Money granted per Life Savings.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static int moneyPerSavings = 75;
+        private const string TOKEN = "LIT_ITEM_LIFESAVINGS_DESC";
 
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Money granted per Life Savings.")]
+        [FormatToken(TOKEN)]
+        public static int moneyPerPig = 75;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        //rip piggo -N
+        private ItemDef _brokenPiggy;
         public override void Initialize()
         {
-            itemDef = ItemDef;
             CharacterBody.onBodyStartGlobal += GiveMoney;
         }
 
@@ -29,14 +36,25 @@ namespace LostInTransit.Items
             int count = inv.GetItemCount(ItemDef);
             if (count >= 1)
             {
-                obj.master.GiveMoney((uint)Run.instance.GetDifficultyScaledCost(moneyPerSavings));
-                //EffectManager.SimpleImpactEffect(HealthComponent.AssetReferences.gainCoinsImpactEffectPrefab, obj.corePosition, Vector3.up, true);
-                //EffectManager.SimpleImpactEffect(HealthComponent.AssetReferences.gainCoinsImpactEffectPrefab, obj.corePosition, Vector3.up, true);
+                obj.master.GiveMoney((uint)Run.instance.GetDifficultyScaledCost(moneyPerPig));
                 inv.RemoveItem(ItemDef);
-                inv.GiveItem(LifeSavingsUsed.itemDef);
-                CharacterMasterNotificationQueue.SendTransformNotification(obj.master, itemDef.itemIndex, LifeSavingsUsed.itemDef.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
-                //Debug.Log("Giving " + Run.instance.GetDifficultyScaledCost(25 * count) + " money");
+                inv.GiveItem(_brokenPiggy);
+                CharacterMasterNotificationQueue.SendTransformNotification(obj.master, _itemDef.itemIndex, _brokenPiggy.itemIndex, CharacterMasterNotificationQueue.TransformationType.Default);
             }
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "LifeSavings" - Items
+             * ItemDef - "LifeSavingsUsed" - Items
+             */
+            yield break;
         }
     }
 }

@@ -1,28 +1,65 @@
 ﻿using LostInTransit.Items;
 using MSU;
 using RoR2;
+using RoR2.ContentManagement;
+using System.Collections;
+using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    public class GiganticAmethyst : LITEquipment
+    public sealed class GiganticAmethyst : LITEquipment
     {
-        public override EquipmentDef EquipmentDef { get; } = LITAssets.LoadAsset<EquipmentDef>("GiganticAmethyst", LITBundle.Equips);
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override EquipmentDef EquipmentDef => _equipmentDef;
+        private EquipmentDef _equipmentDef;
 
-        public override bool FireAction(EquipmentSlot slot)
+        public override bool Execute(EquipmentSlot slot)
         {
             var sloc = slot.characterBody?.skillLocator;
             if ((bool)!sloc)
             {
                 return false;
             }
-            if(BeatingEmbryoManager.Procs(slot))
+            if (BeatingEmbryoManager.BeatingEmbryoProcs(slot))
             {
                 sloc.ApplyAmmoPack();
             }
             sloc.ApplyAmmoPack();
-            Util.PlaySound("AmethystProc", slot.characterBody.gameObject); //Why the fuck is this called "AmethystProc", theres nothing to proc, wtf swuff
-            return true;                                                        //you're proccing the amethyst what would you have called it?
-        }                                                                       //"amethystfire"? you aren't FIRING anything.
-    }                                                                           //"amethystuse" is dull.
-                                                                                //n- "AmethystActivation", duh.
-}                                                                               //long
+            //Nebby from the future here, i really love this banter so i'm keeping it.
+
+            //N: Why the fuck is this called "AmethystProc", theres nothing to proc, wtf swuff
+            //S: you're proccing the amethyst what would you have called it?
+            //S: "amethystfire"? you aren't FIRING anything.
+            //S: "amethystuse" is dull.
+            //N: "AmethystActivation", duh.
+            //S: long
+            Util.PlaySound("AmethystProc", slot.characterBody.gameObject);
+            return true;
+        }
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * EquipmentDef - "GiganticAmethyst" - Equips
+             */
+            yield break;
+        }
+
+        public override void OnEquipmentLost(CharacterBody body)
+        {
+        }
+
+        public override void OnEquipmentObtained(CharacterBody body)
+        {
+        }
+    }
+}

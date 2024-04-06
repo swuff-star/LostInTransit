@@ -36,7 +36,8 @@ namespace LostInTransit.Elites
         [SystemInitializer(typeof(EliteCatalog), typeof(BodyCatalog))]
         private static void Initialize()
         {
-            if (!EliteCatalog.eliteDefs.Contains(LITAssets.LoadAsset<MSEliteDef>("Blighted", LITBundle.Equips)))
+            //Would like to async load this, but idk how in this situation lmao -N
+            if (!EliteCatalog.eliteDefs.Contains(LITAssets.LoadAsset<ExtendedEliteDef>("Blighted", LITBundle.Equips)))
             {
                 return;
             }

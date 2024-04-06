@@ -10,25 +10,30 @@ using UnityEngine.Networking;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using System.Collections.Generic;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    //[DisabledContent]
     public class GuardiansHeart : LITItem
     {
-        private const string token = "LIT_ITEM_GUARDIANSHEART_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GuardiansHeart", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_GUARDIANSHEART_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield per Heart", ConfigDescOverride = "Amount of shield added per heart.")]
-        public static float extraShield = 60;
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus Armor", ConfigDescOverride = "Amount of armor added when heart breaks.")]
-        public static float heartArmor = 40;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of shield added per heart.")]
+        public static float extraShieldAmount = 60;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus Armor Duration", ConfigDescOverride = "Length of the Heart's armor debuff.")]
-        public static float heartArmorDur = 3f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of armor added when heart breaks.")]
+        public static float extraArmor = 40;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Shield Gating", ConfigDescOverride = "Whether the Heart should block damage past the remaining shield when broken.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Length of the Heart's armor debuff.")]
+        public static float extraArmorDuration = 3f;
+
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether the Heart should block damage past the remaining shield when broken.")]
         public static bool shieldGating = true;
 
         public static bool hadShield = false;
@@ -37,11 +42,11 @@ namespace LostInTransit.Items
 
         public override void Initialize()
         {
-            if (LITMain.RiskyModLoaded)
+            if (LITMain.RiskyModInstalled)
             {
                 if (RiskyModShieldGateEnabled())
                 {
-                    Debug.Log("RiskyMod Shieldgating detected - disabling Guardian's Heart shieldgating");
+                    LITLog.Info("RiskyMod Shieldgating detected - disabling Guardian's Heart shieldgating");
                     shieldGating = false;
                 }
             }
@@ -74,7 +79,7 @@ namespace LostInTransit.Items
                                 ))
                             {
                                 healthAfterShieldBreak = self.body.maxHealth;
-                                self.body.AddTimedBuffAuthority(LITContent.Buffs.bdGuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(heartArmorDur, 1.5f, 7f, self.body.inventory.GetItemCount(LITContent.Items.GuardiansHeart)));
+                                self.body.AddTimedBuffAuthority(LITContent.Buffs.bdGuardiansHeartBuff.buffIndex, MSUtil.InverseHyperbolicScaling(extraArmorDuration, 1.5f, 7f, self.body.inventory.GetItemCount(LITContent.Items.GuardiansHeart)));
                             }
                             return healthAfterShieldBreak;
                         });
@@ -93,6 +98,19 @@ namespace LostInTransit.Items
         private static bool RiskyModShieldGateEnabled()
         {
             return RiskyMod.Tweaks.CharacterMechanics.ShieldGating.enabled;
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "GuardiansHeart" - Items
+             */
+            yield break;
         }
 
         public class GuardiansHeartBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
@@ -161,7 +179,7 @@ namespace LostInTransit.Items
                 if (shieldGating && !hooked && body.healthComponent.shield > 0f
                     && damageInfo.damage > body.healthComponent.shield + body.healthComponent.barrier
                     //saw that riskymod checks for damage types this way, might prevent the errors idk.
-                    && !(  (damageInfo.damageType & DamageType.BypassArmor) == DamageType.BypassArmor
+                    && !((damageInfo.damageType & DamageType.BypassArmor) == DamageType.BypassArmor
                         || (damageInfo.damageType & DamageType.BypassBlock) == DamageType.BypassBlock
                         || (damageInfo.damageType & DamageType.BypassOneShotProtection) == DamageType.BypassOneShotProtection
                     ))
@@ -185,7 +203,7 @@ namespace LostInTransit.Items
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                args.baseShieldAdd += extraShield;
+                args.baseShieldAdd += extraShieldAmount;
             }
         }
     }

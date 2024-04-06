@@ -10,7 +10,7 @@ using EntityStates;
 
 namespace LostInTransit.Buffs
 {
-    /*public class AffixFrenzied : BuffBase
+    public class AffixFrenzied : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdAffixFrenzied", LITBundle.Equips);
 
@@ -162,5 +162,5 @@ namespace LostInTransit.Buffs
                     Destroy(_blinkReadyInstance);
             }
         }
-    }*/
+    }
 }

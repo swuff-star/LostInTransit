@@ -2,22 +2,45 @@
 using RoR2;
 using R2API;
 using RoR2.Items;
+using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class RazorPenny : LITItem
+    public sealed class RazorPenny : LITItem
     {
-        private const string token = "LIT_ITEM_RAZORPENNY_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RazorPenny", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_RAZORPENNY_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Crit per Razor Penny", ConfigDescOverride = "Extra Crit added per penny.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra Crit added per penny.")]
+        [FormatToken(TOKEN)]
         public static float pennyCrit = 4f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Gold per Crit", ConfigDescOverride = "Gold gained on crit.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float critGold = 1f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Gold gained on crit.")]
+        [FormatToken(TOKEN, 1)]
+        public static float goldPerCrit = 1f;
 
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "RazorPenny" - Items
+             */
+            yield break;
+        }
 
         public class RazorPennyBehavior : BaseItemBodyBehavior, IBodyStatArgModifier, IOnDamageDealtServerReceiver
         {
@@ -32,7 +55,7 @@ namespace LostInTransit.Items
             {
                 if (damageReport.damageInfo.crit == true)
                 {
-                    body.master.GiveMoney((uint)(stack * (Run.instance.stageClearCount + (critGold * 1f))));
+                    body.master.GiveMoney((uint)(stack * (Run.instance.stageClearCount + (goldPerCrit * 1f))));
                     EffectManager.SimpleImpactEffect(HealthComponent.AssetReferences.gainCoinsImpactEffectPrefab, damageReport.victimBody.transform.position, UnityEngine.Vector3.up, true);
                 }
             }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tokenPrefix: 
   mainManifest: {fileID: 0}
-  madeRoR2EKAssetsNonEditable: 0
+  madeRoR2EKAssetsNonEditable: 1

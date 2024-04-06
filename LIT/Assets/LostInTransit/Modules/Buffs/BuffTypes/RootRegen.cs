@@ -6,7 +6,7 @@ using R2API;
 
 namespace LostInTransit.Buffs
 {
-    /* public class RootRegen : BuffBase
+     public class RootRegen : BuffBase
      {
          public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdRootRegen", LITBundle.Items);
          public class RootRegenBehaviour : BaseBuffBodyBehavior, IBodyStatArgModifier
@@ -19,5 +19,5 @@ namespace LostInTransit.Buffs
                  args.baseRegenAdd += (Items.BitterRoot.rootRegen + ((Items.BitterRoot.rootRegen / 5) * body.level)) * buffStacks;
              }
          }
-     }*/
+     }
 }

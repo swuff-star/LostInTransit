@@ -7,7 +7,7 @@ using RoR2.Items;
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    /*public class DiceBarrier : BuffBase
+    public class DiceBarrier : BuffBase
     {
         //public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceBarrier");
 
@@ -31,5 +31,5 @@ namespace LostInTransit.Buffs
                 body.barrierDecayRate = origBarrierDecay;
             }
         }
-    }*/
+    }
 }

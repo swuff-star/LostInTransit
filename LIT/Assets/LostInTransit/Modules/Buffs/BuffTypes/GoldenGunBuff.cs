@@ -5,7 +5,7 @@ using R2API;
 
 namespace LostInTransit.Buffs
 {
-    /*public class GoldenGunBuff : BuffBase
+    public class GoldenGunBuff : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdGoldenGun", LITBundle.Items);
 
@@ -19,5 +19,5 @@ namespace LostInTransit.Buffs
                 //args.damageMultAdd += 0.01f * buffStacks;
             }
         }
-    }*/
+    }
 }

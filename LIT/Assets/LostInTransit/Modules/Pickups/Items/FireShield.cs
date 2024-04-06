@@ -13,9 +13,9 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class FireShield : LITItem
+    public sealed class FireShield : LITItem
     {
-        private const string token = "LIT_ITEM_FIRESHIELD_DESC";
+        private const string TOKEN = "LIT_ITEM_FIRESHIELD_DESC";
         public static DamageAPI.ModdedDamageType FireShieldDamageType { get; private set; }
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override ItemDef ItemDef => _itemDef;
@@ -24,11 +24,11 @@ namespace LostInTransit.Items
         private static GameObject _explosionVFX;
 
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base damage dealt by Fire Shield.")]
-        [FormatToken(token)]
+        [FormatToken(TOKEN)]
         public static float baseDamageCoefficient = 3f;
 
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added burn damage per stack.")]
-        [FormatToken(token, 1)]
+        [FormatToken(TOKEN, 1)]
         public static float burnDamageCoefficient = 1f;
         public override void Initialize()
         {
@@ -98,7 +98,7 @@ namespace LostInTransit.Items
                         teamIndex = body.teamComponent.teamIndex,
                         procCoefficient = 1.0f
                     };
-                    DamageAPI.AddModdedDamageType(blastAttack, DamageTypes.FireShield.fireShield);
+                    DamageAPI.AddModdedDamageType(blastAttack, FireShieldDamageType);
                     blastAttack.Fire();
 
                     EffectData effectData = new EffectData

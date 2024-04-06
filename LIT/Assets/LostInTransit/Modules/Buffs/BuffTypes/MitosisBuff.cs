@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LostInTransit.Buffs
 {
-    /*public class MitosisBuff : BuffBase
+    public class MitosisBuff : BuffBase
     {
         public override BuffDef BuffDef => LITAssets.LoadAsset<BuffDef>("bdMitosisBuff", LITBundle.Items);
 
@@ -102,5 +102,5 @@ namespace LostInTransit.Buffs
 
             }
         }
-    }*/
+    }
 }

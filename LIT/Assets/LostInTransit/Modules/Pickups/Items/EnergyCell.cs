@@ -4,28 +4,41 @@ using System;
 using RoR2.Items;
 using R2API;
 using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    //[DisabledContent]
-    public class EnergyCell : LITItem
+    public sealed class EnergyCell : LITItem
     {
-        private const string token = "LIT_ITEM_ENERGYCELL_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("EnergyCell", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_ENERGYCELL_DESC";
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount of attack speed per item held.")]
+        public static float maxAttackSpeedPerCell = 0.4f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Attack Speed per Cell", ConfigDescOverride = "Maximum amount of attack speed per item held.")]
-        //[TokenModifier(token, StatTypes.Percentage)]
-        public static float bonusAttackSpeed = 0.4f;
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-
-        public class EnergyCellBehavior : BaseItemBodyBehavior, IStatItemBehavior, IOnTakeDamageServerReceiver
+        public override void Initialize()
         {
-            //★. ..will look up and shout "stop doing everything in the FixedUpdate method!"... and I'll look down and whisper "no".
-            //★ Jokes aside, this makes sense to do inside FixedUpdate, right? I figure doing it in RecalculateStats wouldn't update properly, since... well, it's only when RecalculateStats is called.
-            //★ P.S. What do you call "FixedUpdate()"? Like, the name for it? It's a 'method', right? I am adding things inside of the method?
+        }
 
-            //1.- Yeah, i think this should be called on fixed update. the other option is to look at what watch metronome does for keeping the speed boost constant.
-            //2.- FixedUpdate is a method that gets called automatically by unity, remember that CharacterBody.ItemBehavior inherits from MonoBehavior, and all classes that inherit from MonoBehavior have access to FixedUpdate(), Update() among other methods.
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "EnergyCell" - Items
+             */
+            yield break;
+        }
+
+        public class EnergyCellBehavior : BaseItemBodyBehavior, IBodyStatArgModifier, IOnTakeDamageServerReceiver
+        {
             [ItemDefAssociation(useOnClient = true, useOnServer = true)]
             public static ItemDef GetItemDef() => LITContent.Items.EnergyCell;
 
@@ -42,13 +55,9 @@ namespace LostInTransit.Items
                 body.MarkAllStatsDirty();
             }
 
-            public void RecalculateStatsEnd()
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                body.attackSpeed += body.attackSpeed * (1 - healthFraction) * (float)(Math.Pow(bonusAttackSpeed, 1 / stack));
-            }
-
-            public void RecalculateStatsStart()
-            {
+                args.baseAttackSpeedAdd += body.baseAttackSpeed * (1 - healthFraction) * (float)Math.Pow(maxAttackSpeedPerCell, 1 / stack);
             }
 
             private void FixedUpdate()
@@ -63,7 +72,6 @@ namespace LostInTransit.Items
                 {
                     healthFraction = 0;
                 }
-                //★ Is there a better way to do this? From what I understand, Math.Floor() and Math.Ceil() are used to round numbers, rather than prevent them from exiting a specific range.
             }
         }
     }

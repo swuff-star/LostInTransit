@@ -7,7 +7,7 @@ using R2API;
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    /*public class GuardiansHeartBuff : BuffBase
+    public class GuardiansHeartBuff : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdGuardiansHeartBuff", LITBundle.Items);
 
@@ -33,5 +33,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }*/
+    }
 }

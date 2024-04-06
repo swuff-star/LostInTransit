@@ -5,7 +5,7 @@ using RoR2.Items;
 
 namespace LostInTransit.Buffs
 {
-    /*[DisabledContent]
+    [DisabledContent]
     public class DiceLuck : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceLuck", LITBundle.Items);
@@ -34,5 +34,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }*/
+    }
 }

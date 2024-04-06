@@ -13,7 +13,7 @@ using System.Collections;
 namespace LostInTransit.Buffs
 {
     //[DisabledContent]
-    /*public class RepulsionArmorActive : BuffBase
+    public class RepulsionArmorActive : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdRepulsionArmorActive", LITBundle.Items);
         //private Ray aimRay;
@@ -68,10 +68,10 @@ namespace LostInTransit.Buffs
                 body.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeededConfig);
             }
 
-            /*public void OnIncomingDamageServer(DamageInfo damageInfo)
+            public void OnIncomingDamageServer(DamageInfo damageInfo)
             {
                 damageInfo.damage *= ((100f - RepulsionArmor.damageResist) * 0.01f);
             }
-}
-    }*/
+        }
+    }
 }

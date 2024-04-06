@@ -131,9 +131,6 @@ namespace LostInTransit
                     ContentUtil.PopulateTypeFields(typeof(Artifacts), LITContentPack.artifactDefs);
                 }
             };
-
-
-            LITHooks.Init();
         }
 
         public static class Buffs

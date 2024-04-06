@@ -5,35 +5,59 @@ using MSU;
 using RoR2;
 using LostInTransit.Components;
 using RoR2.Items;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public class MeatNugget : LITItem
+    public sealed class MeatNugget : LITItem
     {
-        private const string token = "LIT_ITEM_MEATNUGGET_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("MeatNugget", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_MEATNUGGET_DESC";
 
-        public static GameObject MeatNuggetPickup = LITAssets.LoadAsset<GameObject>("MeatNuggetPickup", LITBundle.Items);
-
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Proc Chance", ConfigDescOverride = "Proc chance for Meat Nugget.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Proc chance for Meat Nugget.")]
+        [FormatToken(TOKEN, 0)]
         public static float procChance = 8f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Regen Additive", ConfigDescOverride = "Amount added to regen by nugget pickup.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float regenAdded = 1.6f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount added to regen by nugget pickup.")]
+        [FormatToken(TOKEN, 1)]
+        public static float regenBonus = 1.6f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Does Regen Stack", ConfigDescOverride = "If true, the regen buff duration can stack up to the number of Meat Nuggets you have.")]
-        public static bool doesStack = true;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "If true, the regen buff duration can stack up to the number of Meat Nuggets you have.")]
+        public static bool regenStacking = true;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Duration", ConfigDescOverride = "Base duration of the regen buff granted by dropped nuggets.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
-        public static float newBaseDuration = 2;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base duration of the regen buff granted by dropped nuggets.")]
+        [FormatToken(TOKEN, 2)]
+        public static float baseDuration = 2;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Stacking Duration", ConfigDescOverride = "Extra duration of the regen buff per stack of Meat Nugget.")]
-        [TokenModifier(token, StatTypes.Default, 3)]
-        public static float newStackDuration = 1;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra duration of the regen buff per stack of Meat Nugget.")]
+        [FormatToken(TOKEN, 3)]
+        public static float stackDuration = 1;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        private static GameObject _meatNuggetPickup;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "MeatNugget" - Items
+             * GameObject - "MeatNuggetPickup - Items
+             */
+            yield break;
+        }
 
         public class MeatNuggetBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver
         {
@@ -44,12 +68,12 @@ namespace LostInTransit.Items
                 GameObject victim = damageReport.victim.gameObject;
                 if (Util.CheckRoll(procChance * damageReport.damageInfo.procCoefficient, damageReport.attackerMaster))
                 {
-                    GameObject nugget = UnityEngine.Object.Instantiate<GameObject>(MeatNuggetPickup, victim.transform.position, UnityEngine.Random.rotation);
+                    GameObject nugget = UnityEngine.Object.Instantiate<GameObject>(_meatNuggetPickup, victim.transform.position, UnityEngine.Random.rotation);
                     nugget.GetComponent<TeamFilter>().teamIndex = damageReport.attackerTeamIndex;
                     NuggetPickup nugbuff = nugget.GetComponentInChildren<NuggetPickup>();
                     nugbuff.BuffTimer = CalcDuration();
-                    nugbuff.RegenMult = regenAdded;
-                    if (doesStack)
+                    nugbuff.RegenMult = regenBonus;
+                    if (regenStacking)
                     {
                         nugbuff.RegenStacks = stack;
                     }
@@ -61,8 +85,8 @@ namespace LostInTransit.Items
             }
             private float CalcDuration()
             {
-                float stackDuration = newStackDuration * (stack - 1);
-                return newBaseDuration + stackDuration;
+                float stackDuration = MeatNugget.stackDuration * (stack - 1);
+                return baseDuration + stackDuration;
             }
         }
     }

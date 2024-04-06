@@ -8,8 +8,9 @@ using UnityEngine;
 
 namespace LostInTransit.Components
 {
+    //Stores the available elite defs and networks which elites the blighted elite is using.
     [RequireComponent(typeof(NetworkedBodyAttachment))]
-    public class BlightedBodyAttachment : NetworkBehaviour
+    public class BlightedBodyAttachment : NetworkBehaviour, INetworkedBodyAttachmentListener
     {
         public EliteIndex FirstIndex => (EliteIndex)_firstEliteIndex;
         public EliteIndex SecondIndex => (EliteIndex)_secondEliteIndex;
@@ -20,13 +21,15 @@ namespace LostInTransit.Components
 
         private ReadOnlyCollection<EliteDef> _availableEliteDefs;
         private Xoroshiro128Plus _rng;
-        public void Start()
+        private CharacterBody attachedBody;
+
+        private void Awake()
         {
             if (!Run.instance)
                 return;
 
             _rng = new Xoroshiro128Plus(Run.instance.runRNG.nextUlong);
-            if(RunArtifactManager.instance)
+            if (RunArtifactManager.instance)
             {
                 _availableEliteDefs = RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef) ? BlightedElites.ElitesHonorEnabled : BlightedElites.ElitesHonorDisabled;
             }
@@ -34,10 +37,28 @@ namespace LostInTransit.Components
             {
                 _availableEliteDefs = BlightedElites.ElitesHonorDisabled;
             }
+        }
 
-            if(NetworkServer.active)
+
+        private void OnEnable()
+        {
+            if(attachedBody)
+            {
+                DoOnEnable();
+            }
+        }
+
+        public void OnAttachedBodyDiscovered(NetworkedBodyAttachment networkedBodyAttachment, CharacterBody attachedBody)
+        {
+            DoOnEnable();
+        }
+
+        private void DoOnEnable()
+        {
+            if (NetworkServer.active)
                 RandomizeElites();
         }
+
 
         [Server]
         public void RandomizeElites()

@@ -9,7 +9,7 @@ using RoR2.Orbs;
 
 namespace LostInTransit.Buffs
 {
-    /*public class ToxinReady : BuffBase
+    public class ToxinReady : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdToxinReady", LITBundle.Items);
 
@@ -103,5 +103,5 @@ namespace LostInTransit.Buffs
                 }
             }
         }
-    }*/
+    }
 }

@@ -3,29 +3,53 @@ using RoR2;
 using R2API;
 using RoR2.Items;
 using UnityEngine.Networking;
+using UnityEngine;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class TheToxin : LITItem
+    public sealed class TheToxin : LITItem
     {
-        private const string token = "LIT_ITEM_THETOXIN_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("TheToxin", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_THETOXIN_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Toxin Cooldown", ConfigDescOverride = "Time in seconds until The Toxin can re-infect.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float toxinCD = 6f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Time in seconds until The Toxin can re-infect.")]
+        [FormatToken(TOKEN, 0)]
+        public static float toxinCooldown = 6f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Toxin Duration", ConfigDescOverride = "Time in seconds that The Toxin infects enemies.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float toxinDur = 8f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Time in seconds that The Toxin infects enemies.")]
+        [FormatToken(TOKEN, 1)]
+        public static float toxinDuration = 8f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Toxin Infection Range", ConfigDescOverride = "Range of which enemies will become infected by The Toxin.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Range of which enemies will become infected by The Toxin.")]
+        [FormatToken(TOKEN, 2)]
         public static float toxinRadius = 8f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Toxin Armor Debuff", ConfigDescOverride = "Armor removed by the debuff inflicted by The Toxin.")]
-        [TokenModifier(token, StatTypes.Default, 4)]
-        public static float toxinArmorDebuff = 40f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Armor removed by the debuff inflicted by The Toxin.")]
+        [FormatToken(TOKEN, 3)]
+        public static float toxinArmorReduction = 40f;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "TheToxin" - Items
+             */
+            yield break;
+        }
 
         public class TheToxinBehavior : BaseItemBodyBehavior
         {

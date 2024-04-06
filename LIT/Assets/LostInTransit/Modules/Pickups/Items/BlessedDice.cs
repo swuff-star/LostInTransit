@@ -1,128 +1,131 @@
 ﻿using LostInTransit.Buffs;
 using MSU;
+using MSU.Config;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2.Items;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace LostInTransit.Items
 {
-    [DisabledContent]
+#if DEBUG
     public class BlessedDice : LITItem
     {
-        private const string token = "LIT_ITEM_BLESSEDDICE_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("BlessedDice", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_BLESSEDDICE_DESC";
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Base duration of buff from Blessed Dice", ConfigDescOverride = "Base duration of buff after using a shrine.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float newBaseTimer = 10f;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Duration of buff from Blessed Dice", ConfigDescOverride = "Added duration of buff per stack of Dice.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float newStackTimer = 5f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base duration of buff after using a shrine.")]
+        [FormatToken(TOKEN, 0)]
+        public static float baseBuffDuration = 10f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Barrier from buff", ConfigDescOverride = "Barrier/Temp HP gained while you have the shield buff, as a percentage of max health")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added duration of buff per stack of Dice.")]
+        [FormatToken(TOKEN, 1)]
+        public static float buffStackDuration = 5f;
+
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Barrier/Temp HP gained while you have the shield buff, as a percentage of max health")]
         public static float barrierAmount = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Barrier decay rate during buff", ConfigDescOverride = "Rate at which barrier decays while you have the Shield buff, as a percentage of normal decay rate.")]
-        public static float decayMult = 0f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Barrier decay rate during buff", ConfigDescOverride = "Rate at which barrier decays while you have the Shield buff, as a percentage of normal decay rate.")]
+        public static float barrierDecayRate = 0f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Armor from buff", ConfigDescOverride = "Armor added while you have the armor buff.")]
-        public static float armorAmount = 50f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS,  ConfigDescOverride = "Armor added while you have the armor buff.")]
+        public static float armorBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Move speed from buff", ConfigDescOverride = "Move speed added while you have the move speed buff, in percent.")]
-        public static float moveAmount = 50f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Move speed added while you have the move speed buff, in percent.")]
+        public static float movementSpeedBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Attack speed from buff", ConfigDescOverride = "Attack speed added while you have the attack speed buff, in percent.")]
-        public static float atkAmount = 50f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Attack speed added while you have the attack speed buff, in percent.")]
+        public static float attackBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Crit chance from buff", ConfigDescOverride = "Critical strike chance added while you have the critical strike buff, in percent.")]
-        public static float critAmount = 20f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Critical strike chance added while you have the critical strike buff, in percent.")]
+        public static float criticalChanceBonus = 20f;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Luck from buff", ConfigDescOverride = "Luck added while you have the luck buff. (Whole numbers only)")]
-        public static int luckAmount = 1;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Luck added while you have the luck buff. (Whole numbers only)")]
+        public static uint luckAmountBonus = 1;
 
-        [RiskOfOptionsConfigureField(LITConfig.items, ConfigNameOverride = "Weighted Rolls", ConfigDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Weighted Rolls", ConfigDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
         public static bool fairRolls = false;
 
-
-        /// <summary>
-        /// Todo: this needs to be probably on its own network behavior, mainly due to the usage of RNG, lol
-        /// </summary>
-        public class BlessedDiceBehavior : BaseItemBodyBehavior
+        public override void Initialize()
         {
-            [ItemDefAssociation(useOnClient = true, useOnServer = true)]
-            public static ItemDef GetItemDef() => LITContent.Items.BlessedDice;
+            GlobalEventManager.OnInteractionsGlobal += GiveDiceBuff;
+        }
 
-            private float CalcBuffTimer()
+        private void GiveDiceBuff(Interactor arg1, IInteractable arg2, GameObject arg3)
+        {
+            if (!NetworkServer.active)
+                return;
+
+            if (!MSUtil.IsInteractableValidForSpawns(arg3))
+                return;
+
+            if (!arg1.TryGetComponent<CharacterBody>(out var body))
+                return;
+
+            var itemCount = body.GetItemCount(_itemDef);
+            if (itemCount == 0)
+                return;
+
+            AddBuffToBody(body, itemCount);
+        }
+
+        private void AddBuffToBody(CharacterBody body, int itemCount)
+        {
+            int weight = 7;
+            if (!fairRolls)
             {
-                float stackTimer = newStackTimer * (stack - 1);
-                return newBaseTimer + stackTimer;
+                weight += 5;
             }
-            
-            private BuffDef ChooseRandomBuff()
+            BuffDef buff = null;
+            int rng = Run.instance.runRNG.RangeInt(1, weight);
+            switch (rng)
             {
-                int weight = 7;
-                if (!fairRolls)
-                { 
-                    weight += 5;
-                }
-                BuffDef buff = null;
-                int rng = Run.instance.runRNG.RangeInt(1, weight);
-                switch (rng)
-                {
-                    case 1:
-                        buff = LITContent.Buffs.bdDiceLuck;
-                        break;
-                    case 2:
-                    case 7:
-                        buff = LITContent.Buffs.bdDiceCrit;
-                        break;
-                    case 3:
-                    case 8:
-                        buff = LITContent.Buffs.bdDiceAtk;
-                        break;
-                    case 4:
-                    case 9:
-                        buff = LITContent.Buffs.bdDiceMove;
-                        break;
-                    case 5:
-                    case 10:
-                        buff = LITContent.Buffs.bdDiceArmor;
-                        break;
-                    case 6:
-                    case 11:
-                        buff = LITContent.Buffs.bdDiceRegen;
-                        break;
-                }
-                return buff;
-            }
-            
-            private void AddBuffOnShrine(Interactor interactor, IInteractable interactable, GameObject interactableObject)
-            {
-                MonoBehaviour monoBehaviour = (MonoBehaviour)interactable;
-                bool isPurchase = monoBehaviour.GetComponent<PurchaseInteraction>();
-                //These have to be nested to prevent NREs when checking for isShrine on non-purchase events
-                if (isPurchase)
-                {
-                    body.AddTimedBuff(ChooseRandomBuff(), CalcBuffTimer());
-                    /*if (interactableObject.GetComponent<PurchaseInteraction>().isShrine)
-                    {
-                        
-                    }*/
-                }
+                case 1:
+                    buff = LITContent.Buffs.bdDiceLuck;
+                    break;
+                case 2:
+                case 7:
+                    buff = LITContent.Buffs.bdDiceCrit;
+                    break;
+                case 3:
+                case 8:
+                    buff = LITContent.Buffs.bdDiceAtk;
+                    break;
+                case 4:
+                case 9:
+                    buff = LITContent.Buffs.bdDiceMove;
+                    break;
+                case 5:
+                case 10:
+                    buff = LITContent.Buffs.bdDiceArmor;
+                    break;
+                case 6:
+                case 11:
+                    buff = LITContent.Buffs.bdDiceRegen;
+                    break;
             }
 
-            
+            float duration = baseBuffDuration + (buffStackDuration * itemCount);
+            body.AddTimedBuff(buff, duration);
+        }
 
-            public void Start()
-            {
-                GlobalEventManager.OnInteractionsGlobal += AddBuffOnShrine;
-            }
-            
-            public void OnDestroy()
-            {
-                GlobalEventManager.OnInteractionsGlobal -= AddBuffOnShrine;
-            }
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "BlessedDice" - Items
+             */
+            yield break;
         }
     }
+#endif
 }

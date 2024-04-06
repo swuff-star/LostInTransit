@@ -3,32 +3,59 @@ using MSU;
 using RoR2;
 using UnityEngine;
 using RoR2.Items;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
+using R2API;
 
 namespace LostInTransit.Items
 {
-    public class Thallium : LITItem
+    public sealed class Thallium : LITItem
     {
-        public const string token = "LIT_ITEM_THALLIUM_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Thallium", LITBundle.Items);
+        public const string TOKEN = "LIT_ITEM_THALLIUM_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigDescOverride = "Chance to afflict Thallium Poisoning.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Chance to afflict Thallium Poisoning.")]
+        [FormatToken(TOKEN, 0)]
         public static float procChance = 10f;
 
-        [RiskOfOptionsConfigureField(ConfigDescOverride = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        [TokenModifier(token, StatTypes.DivideByN, 2, 2)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
+        [FormatToken(TOKEN, 1)]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 2, 2)]
         public static float totalDamage = 500f;
 
-        [RiskOfOptionsConfigureField(ConfigDescOverride = "How much the victim is slowed by.")]
-        [TokenModifier(token, StatTypes.Default, 3)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "How much the victim is slowed by.")]
+        [FormatToken(TOKEN, 3)]
         public static float slowMultiplier = 75f;
 
-        [RiskOfOptionsConfigureField(ConfigDescOverride = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
         public static int poisonDuration = 4;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Poison is Fixed Duration", ConfigDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Poison is Fixed Duration", ConfigDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
         public static bool noTimeToDie = false;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public static DotController.DotIndex ThalliumPoison { get; private set; }
+
+        public override void Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "Thallium" - Items
+             */
+            yield break;
+        }
 
         public class ThalliumBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver
         {
@@ -41,7 +68,7 @@ namespace LostInTransit.Items
                 var dotController = DotController.FindDotController(victim.gameObject);
                 bool flag = false;
                 if (dotController)
-                    flag = dotController.HasDotActive(ThalliumPoison.index);
+                    flag = dotController.HasDotActive(ThalliumPoison);
 
                 if (Util.CheckRoll(procChance * damageReport.damageInfo.procCoefficient) && !flag)
                 {
@@ -53,7 +80,7 @@ namespace LostInTransit.Items
                     {
                         attackerObject = attacker.gameObject,
                         victimObject = victim.gameObject,
-                        dotIndex = ThalliumPoison.index,
+                        dotIndex = ThalliumPoison,
                         duration = newDuration,
                         //G - dividing by attacker damage = 1, then multiply by victim damage for corrected damage
                         damageMultiplier = (damageReport.victimBody.damage / damageReport.attackerBody.damage) * (newDamage / newDuration)

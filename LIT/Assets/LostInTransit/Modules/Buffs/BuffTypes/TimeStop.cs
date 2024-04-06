@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace LostInTransit.Buffs
 {
-    /*
+    
     [DisabledContent]
-    /*public class TimeStop : BuffBase
+    public class TimeStop : BuffBase
     {
         public static GameObject buffWard = LITAssets.LoadAsset<GameObject>("TimeStopSphere", LITBundle.Equips);
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdTimeStop", LITBundle.Equips);
@@ -33,5 +33,5 @@ namespace LostInTransit.Buffs
                     Destroy(wardInstance);
             }
         }
-    }*/
+    }
 }

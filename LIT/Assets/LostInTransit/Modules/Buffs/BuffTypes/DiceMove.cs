@@ -6,7 +6,7 @@ using RoR2.Items;
 
 namespace LostInTransit.Buffs
 {
-    /*[DisabledContent]
+    [DisabledContent]
     public class DiceMove : BuffBase
     {
         public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdDiceMove", LITBundle.Items);
@@ -21,5 +21,5 @@ namespace LostInTransit.Buffs
                 args.moveSpeedMultAdd += (Items.BlessedDice.moveAmount / 100);
             }
         }
-    }*/
+    }
 }

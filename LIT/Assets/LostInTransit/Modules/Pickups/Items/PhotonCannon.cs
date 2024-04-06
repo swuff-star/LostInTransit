@@ -4,30 +4,53 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Items;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
     //It's called Photon Cannon because the Laser Turbine powers a Photon Power Plant (and also because Iron Man in MvC is cool as fuck)
-    [DisabledContent]
-    public class PhotonCannon : LITItem
+#if DEBUG
+    public sealed class PhotonCannon : LITItem
     {
-        private const string token = "LIT_ITEM_PHOTONCANNON_DESC";
-        public override ItemDef ItemDef { get;} = LITAssets.LoadAsset<ItemDef>("PhotonCannon", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_PHOTONCANNON_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Charge gained per second", ConfigDescOverride = "Amount of charge gained every second for each skill on cooldown")]
-        [TokenModifier(token, StatTypes.Default, 0)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of charge gained every second for each skill on cooldown")]
+        [FormatToken(TOKEN)]
         public static float baseCharge = 1f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Bonus charge from stacks", ConfigDescOverride = "Additional charge per turbine")]
-        [TokenModifier(token, StatTypes.Default, 1)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Additional charge per turbine")]
+        [FormatToken(TOKEN, 1)]
         public static float stackCharge = 0.5f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Laser damage", ConfigDescOverride = "Amount of damage the laser deals")]
-        [TokenModifier(token, StatTypes.Default, 2)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of damage the laser deals")]
+        [FormatToken(TOKEN, 2)]
         public static float laserDamage = 2000f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Use static charge timer", ConfigDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Use static charge timer", ConfigDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
         public static bool skillIssue = false;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return false;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "PhotonCannon" - Items
+             */
+            yield break;
+        }
 
         public class PhotonCannonBehavior : BaseItemBodyBehavior
         {
@@ -53,7 +76,7 @@ namespace LostInTransit.Items
             {
                 if (skillIssue)
                 {
-                    storedCharge += (baseCharge + (stackCharge * (stack - 1)))*0.2f;
+                    storedCharge += (baseCharge + (stackCharge * (stack - 1))) * 0.2f;
                 }
                 else
                 {
@@ -68,8 +91,9 @@ namespace LostInTransit.Items
             private void FireLaser()
             {
                 storedCharge = 0f;
-                Debug.Log("PEW PEW PEW"); //obviously laser code goes here
+                LITLog.Info("PEW PEW PEW"); //obviously laser code goes here
             }
         }
     }
+#endif
 }

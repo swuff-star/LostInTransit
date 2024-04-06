@@ -252,11 +252,11 @@ namespace LostInTransit
             newItem.canRemove = false;
             newItem.descriptionToken = original.descriptionToken; // add "temporary" ?
             newItem.name = "Temporary" + original.name;
-            newItem.nameToken = original.nameToken; // use token
+            newItem.nameToken = original.nameToken; // use TOKEN
             newItem.loreToken = original.loreToken; //
             newItem.pickupIconSprite = original.pickupIconSprite;
             newItem.pickupModelPrefab = original.pickupModelPrefab;
-            newItem.pickupToken = original.pickupToken; // use token
+            newItem.pickupToken = original.pickupToken; // use TOKEN
             ItemTag[] tags = ArrayUtils.Clone(original.tags);
             ArrayUtils.ArrayAppend(ref tags, temporaryItemTag);
             newItem.tags = tags;

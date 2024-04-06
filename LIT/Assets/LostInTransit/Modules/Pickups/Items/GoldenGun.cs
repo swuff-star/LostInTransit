@@ -5,24 +5,46 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Items;
 using R2API;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
     public class GoldenGun : LITItem
     {
-        private const string token = "LIT_ITEM_GOLDENGUN_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("GoldenGun", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_GOLDENGUN_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Gold Threshold", ConfigDescOverride = "The maximum amount of gold that Golden Gun will account for.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
-        [TokenModifier(token, StatTypes.DivideByN, 3, 2)]
-        public static uint goldCap = 300;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "The maximum amount of bonus damage Golden Gun grants.")]
+        [FormatToken(TOKEN)]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 1, 2)]
+        public static uint maxDamageBonus = 40;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Damage Bonus", ConfigDescOverride = "The maximum amount of bonus damage Golden Gun grants.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        [TokenModifier(token, StatTypes.DivideByN, 1, 2)]
-        public static uint goldNeeded = 40;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "The maximum amount of gold that Golden Gun will account for.")]
+        [FormatToken(TOKEN, 2)]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 3, 2)]
+        public static uint maxGoldThreshold = 300;
 
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "GoldenGun" - Items
+             */
+            yield break;
+        }
 
         public class GoldenGunBehavior : BaseItemBodyBehavior, IBodyStatArgModifier
         {
@@ -43,10 +65,10 @@ namespace LostInTransit.Items
             {
                 if (NetworkServer.active)
                 {
-                    int singleStackCost = Stage.instance ? Run.instance.GetDifficultyScaledCost((int)goldCap, Stage.instance.entryDifficultyCoefficient) : Run.instance.GetDifficultyScaledCost((int)goldCap);
+                    int singleStackCost = Stage.instance ? Run.instance.GetDifficultyScaledCost((int)maxGoldThreshold, Stage.instance.entryDifficultyCoefficient) : Run.instance.GetDifficultyScaledCost((int)maxGoldThreshold);
 
-                    int maxCost = singleStackCost + ((int)(0.5f * goldCap) * stack - 1);
-                    int maxBuffs = (int)goldNeeded + ((int)(0.5f * goldNeeded) * stack - 1);
+                    int maxCost = singleStackCost + ((int)(0.5f * maxGoldThreshold) * stack - 1);
+                    int maxBuffs = (int)maxDamageBonus + ((int)(0.5f * maxDamageBonus) * stack - 1);
 
                     float moneyPercent = (float)body.master.money / maxCost;
                     int targetBuffCount = Mathf.Min(maxBuffs, Mathf.FloorToInt(maxBuffs * moneyPercent));

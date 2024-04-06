@@ -4,38 +4,61 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Items;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    //[DisabledContent]
-    public class RepulsionArmor : LITItem
+    public sealed class RepulsionArmor : LITItem
     {
-        private const string token = "LIT_ITEM_REPULCHEST_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Chestplate", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_REPULCHEST_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Hits Needed to Activate", ConfigDescOverride = "Amount of times required to take damage before activating Repulsion Armor.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static int hitsNeededConfig = 6;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of times required to take damage before activating Repulsion Armor.")]
+        [FormatToken(TOKEN, 0)]
+        public static int hitsNeeded = 6;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Hits Needed per Stack", ConfigDescOverride = "Amount of extra hits needed per stack to activate Repulsion Armor.")] //This kinda sucks but is easy to include if anyone wanted it for some god-forsaken reason.
-        public static float hitsNeededConfigStack = 0f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of extra hits needed per stack to activate Repulsion Armor.")] //This kinda sucks but is easy to include if anyone wanted it for some god-forsaken reason.
+        public static float hitsNeededPerStack = 0f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Base Duration of Buff", ConfigDescOverride = "Amount of time the Repulsion Armor buff lasts.")]
-        [TokenModifier(token, StatTypes.Default, 2)]
-        public static float buffBaseLength = 3f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of armor added while the Repulsion Armor buff is active.")]
+        [FormatToken(TOKEN, 1)]
+        public static float armorBonus = 500f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Stacking Duration of Buff", ConfigDescOverride = "Extra aount of time added to the Repulsion Armor buff per stack.")]
-        [TokenModifier(token, StatTypes.Default, 3)]
-        public static float buffStackLength = 1.5f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of time the Repulsion Armor buff lasts.")]
+        [FormatToken(TOKEN, 2)]
+        public static float buffBaseDuration = 3f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Duration", ConfigDescOverride = "Maximum length of the Repulsion Armor buff. Set to 0 to disable.")]
-        public static float durCap = 0f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra aount of time added to the Repulsion Armor buff per stack.")]
+        [FormatToken(TOKEN, 3)]
+        public static float buffStackDuration = 1.5f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Damage Reduction", ConfigDescOverride = "Amount of armor added while the Repulsion Armor buff is active.")]
-        [TokenModifier(token, StatTypes.Default, 1)]
-        public static float damageResist = 500f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum length of the Repulsion Armor buff. Set to 0 to disable.")]
+        public static float maximumBuffDuration = 0f;
 
         public static bool badFix = false;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "Chestplate" - Items
+             */
+            yield break;
+        }
 
         public class RepulsionArmorBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver
         {
@@ -46,7 +69,7 @@ namespace LostInTransit.Items
             {
                 if (!body.HasBuff(LITContent.Buffs.bdRepulsionArmorActive) && !body.HasBuff(LITContent.Buffs.bdRepulsionArmorCD))
                 {
-                    body.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, hitsNeededConfig);    //hitsNeededConfig should be an int
+                    body.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, hitsNeeded);
                 }
             }
 
@@ -62,7 +85,7 @@ namespace LostInTransit.Items
 
                     if (currentCDCount <= 0)
                     {
-                        body.AddTimedBuff(LITContent.Buffs.bdRepulsionArmorActive.buffIndex, (buffBaseLength + buffStackLength * (stack - 1)));
+                        body.AddTimedBuff(LITContent.Buffs.bdRepulsionArmorActive.buffIndex, (buffBaseDuration + buffStackDuration * (stack - 1)));
                     }
                 }
             }

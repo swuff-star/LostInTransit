@@ -7,24 +7,47 @@ using RoR2.Items;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Timers;
+using RoR2.ContentManagement;
+using System.Collections;
+using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class RustyJetpack : LITItem
+    public sealed class RustyJetpack : LITItem
     {
-        private const string token = "LIT_ITEM_RUSTYJETPACK_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("RustyJetpack", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_RUSTYJETPACK_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Jump Power", ConfigDescOverride = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
-        [TokenModifier(token, StatTypes.MultiplyByN, 0, 100)]
-        public static float addedJumpPower = 2f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100)]
+        public static float jumpPower = 2f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Fall Speed Reduction", ConfigDescOverride = "Amount of gravity removed, as a pecent")]
-        [TokenModifier(token, StatTypes.MultiplyByN, 2, 100)]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of gravity removed, as a pecent")]
+        [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 2)]
         public static float reducedGravity = 0.35f;
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Fall Speed Limit", ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
-        public static float minGrav = 90f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
+        public static float minGravity = 90f;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => throw new NotImplementedException();
+
+        public override ItemDef ItemDef => throw new NotImplementedException();
+
+        public override void Initialize()
+        {
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            return true;
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "RustyJetpack" - Items
+             */
+            yield break;
+        }
 
         public class RustyJetpackBehavior : BaseItemBodyBehavior, IBodyStatArgModifier
         {
@@ -44,8 +67,7 @@ namespace LostInTransit.Items
             private bool hasTriedToSetPrefab = false;
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
-                //args.jumpPowerMultAdd += stack * addedJumpPower;
-                args.baseJumpPowerAdd += stack * addedJumpPower;
+                args.baseJumpPowerAdd += stack * jumpPower;
             }
             private void Reset(ref CharacterMotor.HitGroundInfo hitGroundInfo)
             {
@@ -95,18 +117,13 @@ namespace LostInTransit.Items
                     if (model != null)
                     {
                         displayList = model.GetItemDisplayObjects(LITContent.Items.RustyJetpack.itemIndex);
-                        //Debug.Log("found model");
                         if (displayList != null)
                         {
                             displayObject = displayList[0];
-                            //Debug.Log("found display list");
                             if (displayObject != null)
                             {
-                                displayCL = displayObject.GetComponent<ChildLocator>();
-                                //Debug.Log("found display object");
                                 if (displayCL != null)
                                 {
-                                    //Debug.Log("found display cl");
                                     jetsSmall = displayCL.FindChild("Jets").gameObject;
                                     jetsLarge = displayCL.FindChild("JetsBig").gameObject;
                                 }
@@ -134,8 +151,8 @@ namespace LostInTransit.Items
                 if (body.inputBank.jump.down)
                 {
                     body.characterMotor.velocity.y -= Time.fixedDeltaTime * Physics.gravity.y * reducedGravity;
-                    
-                }    
+
+                }
             }
         }
     }

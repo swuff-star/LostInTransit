@@ -6,8 +6,8 @@ using RoR2.Items;
 
 namespace LostInTransit.Buffs
 {
-    /*[DisabledContent]
-    /* public class TimeStopDebuff : BuffBase
+    [DisabledContent]
+     public class TimeStopDebuff : BuffBase
      {
          public override BuffDef BuffDef { get; } = LITAssets.LoadAsset<BuffDef>("bdTimeStopDebuff", LITBundle.Equips);
 
@@ -27,5 +27,5 @@ namespace LostInTransit.Buffs
              {
              }
          }
-     }*/
+     }
 }

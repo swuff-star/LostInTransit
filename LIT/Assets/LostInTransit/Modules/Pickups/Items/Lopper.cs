@@ -1,19 +1,43 @@
 ﻿using MSU;
+using MSU.Config;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2.Items;
 using System;
+using System.Collections;
+using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    public class Lopper : LITItem
+    public class Looper : LITItem
     {
-        private const string token = "LIT_ITEM_LOPPER_DESC";
-        public override ItemDef ItemDef { get; } = LITAssets.LoadAsset<ItemDef>("Lopper", LITBundle.Items);
+        private const string TOKEN = "LIT_ITEM_LOOPER_DESC";
 
-        [RiskOfOptionsConfigureField(ConfigNameOverride = "Maximum Extra Damage per Lopper", ConfigDescOverride = "Maximum extra damage dealt by Ol' Lopper.")]
-        [TokenModifier(token, StatTypes.Default, 0)]
-        public static float lopperMaxBonus = 0.6f;
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum extra damage dealt by each stack of Ol' Lopper.")]
+        [FormatToken(TOKEN)]
+        public static float maxBonus = 0.6f;
 
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        public override void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsAvailable(ContentPack contentPack)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IEnumerator LoadContentAsync()
+        {
+            /*
+             * ItemDef - "Looper" - Items
+             */
+            yield break;
+        }
 
         public class LopperBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever
         {
@@ -22,9 +46,7 @@ namespace LostInTransit.Items
 
             public void OnIncomingDamageOther(HealthComponent healthComponent, DamageInfo damageInfo)
             {
-                //Debug.Log("Damage before Lopper: " + damageInfo.damage);
-                damageInfo.damage += stack * (damageInfo.damage * Math.Min(((1f - healthComponent.combinedHealthFraction) * 2f), lopperMaxBonus));
-                //Debug.Log("Damage after Lopper: " + damageInfo.damage);
+                damageInfo.damage += stack * (damageInfo.damage * Math.Min(((1f - healthComponent.combinedHealthFraction) * 2f), maxBonus));
             }
         }
     }

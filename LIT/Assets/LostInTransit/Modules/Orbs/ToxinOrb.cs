@@ -30,7 +30,7 @@ namespace LostInTransit.Orbs
         public override void OnArrival()
         {
             if (targetBody)
-                targetBody.AddTimedBuff(LITContent.Buffs.bdToxin, Items.TheToxin.toxinDur);
+                targetBody.AddTimedBuff(LITContent.Buffs.bdToxin, Items.TheToxin.toxinDuration);
         }
     }
 }
