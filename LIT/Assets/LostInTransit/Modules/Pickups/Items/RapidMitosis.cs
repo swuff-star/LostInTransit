@@ -7,6 +7,7 @@ using UnityEngine;
 using RoR2.ContentManagement;
 using System.Collections;
 using MSU.Config;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -29,6 +30,8 @@ namespace LostInTransit.Items
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
+
+        private BuffDef _mitosisBuff;
 
         public override void Initialize()
         {
@@ -66,8 +69,101 @@ namespace LostInTransit.Items
         {
             /*
              * ItemDef - "RapidMitosis" - Items
+             * BuffDef - "bdMitosisBuff" - Items
              */
             yield break;
+        }
+
+        //I'm pretty sure that recalculatestatsAPI can now handle skill cooldown scales? might be a good idea to switch to that ASAP
+        public class MitosisBuffBehavior : BuffBehaviour, IStatItemBehavior
+        {
+            [BuffDefAssociation]
+            private static BuffDef GetBuffDef() => LITContent.Buffs.bdMitosisBuff;
+            private GameObject effectInstance;
+            private List<GameObject> effectInstances;
+
+            public void RecalculateStatsEnd()
+            {
+                if (CharacterBody.HasBuff(LITContent.Buffs.bdMitosisBuff))
+                {
+                    if (CharacterBody.skillLocator)
+                    {
+                        if (CharacterBody.skillLocator.primary)
+                            CharacterBody.skillLocator.primary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (CharacterBody.skillLocator.secondary)
+                            CharacterBody.skillLocator.secondary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (CharacterBody.skillLocator.utility)
+                            CharacterBody.skillLocator.utility.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (CharacterBody.skillLocator.special)
+                            CharacterBody.skillLocator.special.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                    }
+                }
+            }
+
+            public void OnEnable()
+            {
+                GameObject charModel = CharacterBody.modelLocator.modelTransform.gameObject;
+                if (charModel != null)
+                {
+                    CharacterModel cm = charModel.GetComponent<CharacterModel>();
+                    if (cm != null)
+                    {
+                        CharacterModel.RendererInfo[] rendererInfos = cm.baseRendererInfos;
+                        if (rendererInfos != null)
+                        {
+                            for (int i = 0; i < rendererInfos.Length; i++)
+                            {
+                                //pls work
+                                if (rendererInfos[i].renderer && !rendererInfos[i].ignoreOverlays)
+                                {
+                                    GameObject effect = AddParticles(rendererInfos[i].renderer, CharacterBody.coreTransform);
+                                    if (effect != null)
+                                    {
+                                        //effectInstances.Add(effect);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            private GameObject AddParticles(Renderer modelRenderer, Transform targetParentTransform)
+            {
+                if (modelRenderer is MeshRenderer || modelRenderer is SkinnedMeshRenderer)
+                {
+                    GameObject effectPrefab = Instantiate(LITAssets.LoadAsset<GameObject>("MitosisEffect", LITBundle.Items), targetParentTransform);
+                    ParticleSystem ps = effectPrefab.GetComponent<ParticleSystem>();
+                    ParticleSystem.ShapeModule shape = ps.shape;
+                    if (modelRenderer != null)
+                    {
+                        if (modelRenderer is MeshRenderer)
+                        {
+                            shape.shapeType = ParticleSystemShapeType.MeshRenderer;
+                            shape.meshRenderer = (MeshRenderer)modelRenderer;
+                        }
+                        else if (modelRenderer is SkinnedMeshRenderer)
+                        {
+                            shape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+                            shape.skinnedMeshRenderer = (SkinnedMeshRenderer)modelRenderer;
+                        }
+                    }
+                    ParticleSystem.MainModule main = ps.main;
+                    ps.gameObject.SetActive(true);
+                    BoneParticleController bpc = effectPrefab.GetComponent<BoneParticleController>();
+                    if (bpc != null && modelRenderer is SkinnedMeshRenderer)
+                    {
+                        bpc.skinnedMeshRenderer = (SkinnedMeshRenderer)modelRenderer;
+                    }
+                    return effectPrefab;
+                }
+                return null;
+            }
+
+            public void RecalculateStatsStart()
+            {
+
+            }
         }
     }
 }

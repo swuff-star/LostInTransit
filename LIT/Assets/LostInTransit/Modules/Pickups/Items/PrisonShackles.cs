@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using MSU;
 using MSU.Config;
 using RoR2;
@@ -29,8 +29,16 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
+        private BuffDef _shackled;
         public override void Initialize()
         {
+            R2API.RecalculateStatsAPI.GetStatCoefficients += HandleSlow;
+        }
+
+        private void HandleSlow(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if(sender.HasBuff(LITContent.Buffs.bdShackled))
+                sender.attackSpeed *= (1 - slowMultiplier);
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -42,6 +50,7 @@ namespace LostInTransit.Items
         {
             /*
              * ItemDef - "PrisonShackles" - Items
+             * BuffDef - "bdShackled" - Items
              */
             yield break;
         }

@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MSU;
@@ -20,10 +20,6 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_GUARDIANSHEART_DESC";
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
-        public override ItemDef ItemDef => _itemDef;
-        private ItemDef _itemDef;
-
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of shield added per heart.")]
         public static float extraShieldAmount = 60;
 
@@ -39,6 +35,12 @@ namespace LostInTransit.Items
         public static bool hadShield = false;
 
         public static bool hooked = false;
+
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        private BuffDef _guardiansHeartBuff;
 
         public override void Initialize()
         {
@@ -146,6 +148,11 @@ namespace LostInTransit.Items
                         else
                             displayAnimator.speed = 0;
                     }
+
+                    if(currentlyHasShield && body.HasBuff(LITContent.Buffs.bdGuardiansHeartBuff))
+                    {
+                        body.RemoveBuff(LITContent.Buffs.bdGuardiansHeartBuff);
+                    }
                 }
             }
 
@@ -204,6 +211,7 @@ namespace LostInTransit.Items
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
                 args.baseShieldAdd += extraShieldAmount;
+                args.armorAdd += body.HasBuff(LITContent.Buffs.bdGuardiansHeartBuff) ? extraArmor : 0;
             }
         }
     }

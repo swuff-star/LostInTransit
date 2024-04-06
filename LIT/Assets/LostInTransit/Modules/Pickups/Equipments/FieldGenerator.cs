@@ -14,6 +14,8 @@ namespace LostInTransit.Equipments
         private EquipmentDef _equipmentDef;
         private EquipmentDef _consumedEquipmentDef;
 
+        private BuffDef _fieldGeneratorPassive;
+
         public override bool Execute(EquipmentSlot slot)
         {
             return false;
@@ -33,6 +35,7 @@ namespace LostInTransit.Equipments
             /*
              * EquipmentDef - "FieldGenerator" - Equips
              * EquipmentDef - "FieldGeneratorUsed" - Equips
+             * BuffDef - "FieldGeneratorPassive" - Equips
              */
             yield break;
         }
@@ -43,6 +46,35 @@ namespace LostInTransit.Equipments
 
         public override void OnEquipmentObtained(CharacterBody body)
         {
+        }
+
+        public class FieldGeneratorBehaviour : BuffBehaviour, IOnIncomingDamageOtherServerReciever, IOnTakeDamageServerReceiver
+        {
+            [BuffDefAssociation]
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdFieldGeneratorPassive;
+
+            public void OnIncomingDamageOther(HealthComponent victimHealthComponent, DamageInfo damageInfo)
+            {
+                if (damageInfo.damage >= victimHealthComponent.health)
+                {
+                    damageInfo.damage = victimHealthComponent.health - 1;
+                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(CharacterBody.master, CharacterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    CharacterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
+                    CharacterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
+
+                }
+            }
+
+            public void OnTakeDamageServer(DamageReport damageReport)
+            {
+                if (damageReport.victimBody.healthComponent.health < 1)
+                {
+                    damageReport.victimBody.healthComponent.health = 1;
+                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(CharacterBody.master, CharacterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    CharacterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
+                    CharacterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
+                }
+            }
         }
     }
 #endif

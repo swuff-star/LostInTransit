@@ -26,6 +26,7 @@ namespace LostInTransit.Items
 
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
+        private BuffDef _rootRegen;
 
         public override void Initialize()
         {
@@ -44,10 +45,15 @@ namespace LostInTransit.Items
             yield break;
         }
 
-        public class BitterRootBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver
+        public class BitterRootBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver, IBodyStatArgModifier
         {
             [ItemDefAssociation(useOnClient = true, useOnServer = true, behaviorTypeOverride = typeof(BitterRootBehavior))]
             public static ItemDef GetItemDef() => LITContent.Items.BitterRoot;
+
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+            {
+                args.baseRegenAdd += (Items.BitterRoot.regenAmount + ((Items.BitterRoot.regenAmount / 5) * body.level)) * body.GetBuffCount(LITContent.Buffs.bdRootRegen);
+            }
 
             public void OnKilledOtherServer(DamageReport damageReport)
             {

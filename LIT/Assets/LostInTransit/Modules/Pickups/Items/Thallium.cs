@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using MSU;
 using RoR2;
 using UnityEngine;
@@ -7,6 +7,7 @@ using RoR2.ContentManagement;
 using System.Collections;
 using MSU.Config;
 using R2API;
+using System.Runtime.CompilerServices;
 
 namespace LostInTransit.Items
 {
@@ -37,22 +38,31 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
+        private BuffDef _thalliumPoison;
         public static DotController.DotIndex ThalliumPoison { get; private set; }
 
         public override void Initialize()
         {
-            throw new System.NotImplementedException();
+            ThalliumPoison = DotAPI.RegisterDotDef(0.2f, 0.2f, DamageColorIndex.DeathMark, _thalliumPoison);
+            R2API.RecalculateStatsAPI.GetStatCoefficients += HandleSlow;
+        }
+
+        private void HandleSlow(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.HasBuff(LITContent.Buffs.bdThalliumPoison))
+                args.moveSpeedReductionMultAdd += slowMultiplier;
         }
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public override IEnumerator LoadContentAsync()
         {
             /*
              * ItemDef - "Thallium" - Items
+             * BuffDef - "bdThalliumPoison" - Items
              */
             yield break;
         }

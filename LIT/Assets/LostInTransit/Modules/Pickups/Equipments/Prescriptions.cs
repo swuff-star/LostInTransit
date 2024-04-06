@@ -1,5 +1,6 @@
 ﻿using LostInTransit.Items;
 using MSU;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
@@ -14,6 +15,8 @@ namespace LostInTransit.Equipments
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
+        private BuffDef _meds;
+
         public override bool Execute(EquipmentSlot slot)
         {
             float timeMult = BeatingEmbryoManager.BeatingEmbryoProcs(slot) ? 1 : 2;
@@ -23,6 +26,17 @@ namespace LostInTransit.Equipments
 
         public override void Initialize()
         {
+            RecalculateStatsAPI.GetStatCoefficients += MedsGain;
+        }
+
+        private void MedsGain(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if(sender.HasBuff(_meds))
+            {
+                args.attackSpeedMultAdd += 0.7f;
+                args.damageMultAdd += 0.2f;
+                args.armorAdd += 20f;
+            }
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -34,6 +48,7 @@ namespace LostInTransit.Equipments
         {
             /*
              * EquipmentDef - "Prescriptions" - Equips
+             * BuffDef - "bdMeds" - Equips
              */
             yield break;
         }

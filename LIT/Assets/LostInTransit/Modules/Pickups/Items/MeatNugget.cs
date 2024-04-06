@@ -40,9 +40,22 @@ namespace LostInTransit.Items
         private ItemDef _itemDef;
 
         private static GameObject _meatNuggetPickup;
+        private BuffDef _nuggetRegen;
 
         public override void Initialize()
         {
+            var schmeat = Resources.Load<BuffDef>("buffdefs/MeatRegenBoost");
+            _nuggetRegen.iconSprite = schmeat.iconSprite;
+            _nuggetRegen.startSfx = schmeat.startSfx;
+
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            int buffCount = sender.GetBuffCount(_nuggetRegen);
+
+            args.baseRegenAdd += (regenBonus + ((regenBonus / 5) * sender.level)) * buffCount;
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -55,6 +68,7 @@ namespace LostInTransit.Items
             /*
              * ItemDef - "MeatNugget" - Items
              * GameObject - "MeatNuggetPickup - Items
+             * BuffDef - "bdNuggetRegen" - Items
              */
             yield break;
         }

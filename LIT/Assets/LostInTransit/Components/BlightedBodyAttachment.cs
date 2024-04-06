@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using LostInTransit.Elites;
 using RoR2;
 using System.Collections.ObjectModel;

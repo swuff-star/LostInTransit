@@ -1,6 +1,7 @@
-﻿using LostInTransit.Buffs;
+﻿
 using MSU;
 using MSU.Config;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
@@ -51,9 +52,40 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Weighted Rolls", ConfigDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
         public static bool fairRolls = false;
 
+        private BuffDef _diceArmor;
+        private BuffDef _diceAttack;
+        private BuffDef _diceMove;
+        private BuffDef _diceLuck;
+        private BuffDef _diceCrit;
+
         public override void Initialize()
         {
             GlobalEventManager.OnInteractionsGlobal += GiveDiceBuff;
+            RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.CharacterMaster.OnInventoryChanged += IncreaseLuck;
+        }
+
+        private void IncreaseLuck(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        {
+            orig(self);
+            var body = self.GetBody();
+            if (!body)
+                return;
+
+            self.luck += luckAmountBonus * body.GetBuffCount(_diceLuck);
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            int armorCount = sender.GetBuffCount(_diceArmor);
+            int attackCount = sender.GetBuffCount(_diceAttack);
+            int moveCount = sender.GetBuffCount(_diceMove);
+            int critCount = sender.GetBuffCount(_diceCrit);
+
+            args.armorAdd += armorBonus * armorCount;
+            args.attackSpeedMultAdd += (attackBonus / 100) * attackCount;
+            args.moveSpeedMultAdd += (movementSpeedBonus / 100) * moveCount;
+            args.critAdd += criticalChanceBonus * critCount;
         }
 
         private void GiveDiceBuff(Interactor arg1, IInteractable arg2, GameObject arg3)
@@ -123,6 +155,11 @@ namespace LostInTransit.Items
         {
             /*
              * ItemDef - "BlessedDice" - Items
+             * BuffDef - "bdDiceArmor" - Items
+             * BuffDef - "bdDiceAtk" - Items
+             * BuffDef - "bdDiceMove" - Items
+             * BuffDef - "bdDiceLuck" - Items
+             * BuffDef - "bdDiceCrit" - Items
              */
             yield break;
         }

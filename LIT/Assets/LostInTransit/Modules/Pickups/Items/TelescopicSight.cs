@@ -46,6 +46,8 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
+        private BuffDef _cooldownDebuff;
+
         public override void Initialize()
         {
         }
@@ -59,6 +61,7 @@ namespace LostInTransit.Items
         {
             /*
              * ItemDef - "TelescopicSight" - Items
+             * BuffDef - "bdTeleSightCD" - Items
              */
             yield break;
         }

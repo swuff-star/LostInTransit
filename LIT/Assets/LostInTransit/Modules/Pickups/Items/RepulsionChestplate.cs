@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using MSU;
 using RoR2;
 using UnityEngine;
@@ -7,6 +7,8 @@ using RoR2.Items;
 using RoR2.ContentManagement;
 using System.Collections;
 using MSU.Config;
+using R2API;
+using RoR2.Projectile;
 
 namespace LostInTransit.Items
 {
@@ -42,20 +44,24 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
+        private BuffDef _repulsionArmorActive;
+        private BuffDef _repulsionArmorCooldown;
+
         public override void Initialize()
         {
-            throw new System.NotImplementedException();
         }
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public override IEnumerator LoadContentAsync()
         {
             /*
              * ItemDef - "Chestplate" - Items
+             * BuffDef - "bdRepulsionArmorActive" - Items
+             * BuffDef - "bdRepulsionArmorCD" - Items
              */
             yield break;
         }
@@ -88,6 +94,62 @@ namespace LostInTransit.Items
                         body.AddTimedBuff(LITContent.Buffs.bdRepulsionArmorActive.buffIndex, (buffBaseDuration + buffStackDuration * (stack - 1)));
                     }
                 }
+            }
+        }
+
+        public class RepulsionArmorActiveBehavior : BuffBehaviour, IBodyStatArgModifier
+        {
+            [BuffDefAssociation]
+            public static BuffDef GetBuffDef() => LITContent.Buffs.bdRepulsionArmorActive;
+
+            public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
+            {
+                args.armorAdd += RepulsionArmor.armorBonus;
+            }
+
+            public void FixedUpdate()       //★ i think this works because of a bug; working is working!
+            {
+                Collider[] array = Physics.OverlapSphere(CharacterBody.corePosition, 2f, LayerIndex.projectile.mask);
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    ProjectileController pc = array[i].GetComponentInParent<ProjectileController>();
+                    if (pc)
+                    {
+                        if (pc.owner != gameObject)
+                        {
+                            pc.owner = gameObject;
+
+                            FireProjectileInfo info = new FireProjectileInfo()
+                            {
+                                projectilePrefab = pc.gameObject,
+                                position = pc.gameObject.transform.position,
+                                rotation = Quaternion.Inverse(pc.gameObject.transform.rotation),
+                                owner = CharacterBody.gameObject,
+                                damage = CharacterBody.damage * 5f,
+                                force = 200f,
+                                crit = true,
+                                damageColorIndex = DamageColorIndex.Default,
+                                target = null,
+                                speedOverride = 120f,
+                                fuseOverride = -1
+                            };
+                            ProjectileManager.instance.FireProjectile(info);
+
+                            Destroy(pc.gameObject);
+                        }
+                    }
+                }
+            }
+
+            public void OnDisable()
+            {
+                CharacterBody.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeeded);
+            }
+
+            public void OnIncomingDamageServer(DamageInfo damageInfo)
+            {
+                damageInfo.damage *= ((100f - RepulsionArmor.armorBonus) * 0.01f);
             }
         }
     }

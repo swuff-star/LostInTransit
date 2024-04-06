@@ -1,4 +1,4 @@
-﻿using LostInTransit.Buffs;
+﻿
 using MSU;
 using RoR2;
 using UnityEngine;
@@ -29,6 +29,8 @@ namespace LostInTransit.Items
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
+        private BuffDef _goldeGunBuff;
+
         public override void Initialize()
         {
         }
@@ -42,6 +44,7 @@ namespace LostInTransit.Items
         {
             /*
              * ItemDef - "GoldenGun" - Items
+             * BuffDef - "bdGoldenGun" - Items
              */
             yield break;
         }
