@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af00c00fb9bbb5b49976a40609f990d5, type: 3}
-  m_Name: Frenzied
+  m_Script: {fileID: 11500000, guid: 418323186c6d3bf4aa9fab1aa65bef7c, type: 3}
+  m_Name: Frenzied_upgraded
   m_EditorClassIdentifier: 
   modifierToken: LIT_ELITE_MODIFIER_FRENZIED
   eliteEquipmentDef: {fileID: 11400000, guid: 40ff794bbbf17fa458952cda08f732d1, type: 2}
@@ -21,7 +21,6 @@ MonoBehaviour:
   healthBoostCoefficient: 4
   damageBoostCoefficient: 2
   eliteTier: 1
-  lightColor: {r: 1, g: 0.9607844, b: 0, a: 0}
   eliteRamp: {fileID: 2800000, guid: 3c28f3eff3387bb459733827ef286f19, type: 3}
-  overlay: {fileID: 0}
+  overlayMaterial: {fileID: 0}
   effect: {fileID: 0}
