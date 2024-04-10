@@ -27,7 +27,7 @@ namespace LostInTransit
     [BepInDependency("com.bepis.r2api.sound")]
     #endregion
 
-    [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(MSU.MSUMain.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
     //[BepInDependency("com.TheMysticSword.AspectAbilities", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -50,7 +50,9 @@ namespace LostInTransit
             new LITLog(Logger);
             new LITConfig(this);
             new LITContent();
-            new LITTempItems().Init();
+
+            //Disabling temp items cuz they seem to be broken atm.
+            //LITAssets.AssetsAvailability.CallWhenAvailable(() => new LITTempItems().Init());
 
             LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
 

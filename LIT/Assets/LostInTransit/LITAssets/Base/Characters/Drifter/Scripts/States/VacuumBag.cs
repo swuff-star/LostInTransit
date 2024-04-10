@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace EntityStates.Drifter
 {
+#if DEBUG
     public class VacuumBag : BaseSkillState
     {
         public static string muzzle;
@@ -151,4 +152,5 @@ namespace EntityStates.Drifter
             outer.SetNextState(nextState);
         }
     }
+#endif
 }

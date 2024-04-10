@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 418323186c6d3bf4aa9fab1aa65bef7c, type: 3}
-  m_Name: Volatile_upgraded
+  m_Name: Volatile
   m_EditorClassIdentifier: 
   modifierToken: LIT_ELITE_MODIFIER_VOLATILE
   eliteEquipmentDef: {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}

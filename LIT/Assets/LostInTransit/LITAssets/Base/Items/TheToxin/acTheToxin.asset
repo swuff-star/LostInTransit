@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acTheToxin
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 1859417938671173, guid: 45176f3686fcdfc4c9d1636d05b07635, type: 3}
+  - {fileID: 1531237222543017, guid: f87bb1f441ad4ba4bb2c508823566d44, type: 3}
+  - {fileID: 1484805394520364, guid: ee369183245280c47ba85ae6be7d3dbb, type: 3}
+  - {fileID: 11400000, guid: cd882f9da0619ff4c9fe5a4fe29bfd7e, type: 2}
+  - {fileID: 11400000, guid: 74e451bcce453f4418fe91f1d2ff8fc5, type: 2}
+  - {fileID: 11400000, guid: 9b8bf7542662cc24981dadba3db2bfff, type: 2}
+  - {fileID: 11400000, guid: a209cb74b78f4a74a9507d3c51e42f58, type: 2}

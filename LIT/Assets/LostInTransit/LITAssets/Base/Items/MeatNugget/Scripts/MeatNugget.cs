@@ -12,7 +12,7 @@ using MSU.Config;
 namespace LostInTransit.Items
 {
     //[DisabledContent]
-    public sealed class MeatNugget : LITItem
+    public sealed class MeatNugget : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_MEATNUGGET_DESC";
 
@@ -65,12 +65,24 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "MeatNugget" - Items
-             * GameObject - "MeatNuggetPickup - Items
-             * BuffDef - "bdNuggetRegen" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acMeatNugget", LITBundle.Items);
+
+            request.StartLoad();
+
+            while (!request.IsComplete)
+                yield return null;
+
+            var collection = request.Asset;
+
+            _itemDef = collection.FindAsset<ItemDef>("MeatNugget");
+            _meatNuggetPickup = collection.FindAsset<GameObject>("MeatNuggetPickup");
+            _nuggetRegen = collection.FindAsset<BuffDef>("bdNuggetRegen");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.networkedObjectPrefabs.AddSingle(_meatNuggetPickup);
+            contentPack.buffDefs.AddSingle(_nuggetRegen);
         }
 
         public class MeatNuggetBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver

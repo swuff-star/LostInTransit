@@ -32,10 +32,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "WickedRingNew" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<ItemDef>("WickedRingNew", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
         }
         public class WickedRingBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver
         {

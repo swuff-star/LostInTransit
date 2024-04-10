@@ -18,18 +18,19 @@ using UnityEngine.XR;
 
 namespace LostInTransit.Equipments
 {
-    public sealed class AffixBlighted : LITEliteEquipment
+    public sealed class AffixBlighted : LITEliteEquipment, IContentPackModifier
     {
         [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
         public static bool enableBlightedBosses = false;
 
-        public override List<EliteDef> EliteDefs => new List<EliteDef> { _eliteDef };
-        private EliteDef _eliteDef;
+        public override List<EliteDef> EliteDefs => _eliteDefs;
+        private List<EliteDef> _eliteDefs;
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
 
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
         private static GameObject _blightedBodyAttachment;
+        private AssetCollection _blightedAssetCollection;
 
         public override bool Execute(EquipmentSlot slot)
         {
@@ -86,13 +87,21 @@ namespace LostInTransit.Equipments
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ExtendedEliteDef - "Blighted" - Equips
-             * EquipmentDef - "AffixBlighted" - Equips
-             * ArtifactDef - "Prestige" Artifacts
-             * BuffDef - "bdAffixBlightedFake" - Equips
-             * GameObject - "BlightedBodyAttachment" - Equips
-             */
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acAffixBlighted", LITBundle.Equips);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _blightedAssetCollection = request.Asset;
+            
+            _eliteDefs = new List<EliteDef>
+            {
+                _blightedAssetCollection.FindAsset<ExtendedEliteDef>("Blighted")
+            };
+
+            _equipmentDef = _blightedAssetCollection.FindAsset<EquipmentDef>("AffixBlighted");
+            _blightedBodyAttachment = _blightedAssetCollection.FindAsset<GameObject>("BlightedBodyAttachment");
             yield break;
         }
 
@@ -105,6 +114,12 @@ namespace LostInTransit.Equipments
         {
             body.AddItemBehavior<BlightStatIncrease>(1);
         }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_blightedAssetCollection);
+        }
+
         //Stat increase is done via having this equipment, to avoid huge stat changes when using wake of vultures
         //plus, having this kind of power is pog, and if you get the drop then i think you've earned the powertrip -N
         public class BlightStatIncrease : CharacterBody.ItemBehavior
@@ -151,7 +166,7 @@ namespace LostInTransit.Equipments
         }
 
         //Makes sure the body attachment gets attached whenever the buff is active, and also handles changing the blighted elite's buffdefs.
-        public class AffixBlightedBehaviour : MSU.BuffBehaviour
+        public class AffixBlightedBehaviour : BuffBehaviour
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;
@@ -166,14 +181,14 @@ namespace LostInTransit.Equipments
 
             private void Awake()
             {
-                _attachment = Instantiate(_blightedAttachment).GetComponent<NetworkedBodyAttachment>();
+                _attachment = Instantiate(_blightedBodyAttachment).GetComponent<NetworkedBodyAttachment>();
                 _blightedAttachment = _attachment.GetComponent<BlightedBodyAttachment>();
                 _attachment.gameObject.SetActive(false);
             }
 
-            private void OnEnable()
+            protected override void OnFirstStackGained()
             {
-                if(_attachment.attachedBody != CharacterBody)
+                if (_attachment.attachedBody != CharacterBody)
                 {
                     _attachment.AttachToGameObjectAndSpawn(CharacterBody.gameObject);
                 }
@@ -182,7 +197,7 @@ namespace LostInTransit.Equipments
                     _attachment.gameObject.SetActive(true);
             }
 
-            private void OnDisable()
+            protected override void OnAllStacksLost()
             {
                 if (_attachment.attached)
                     _attachment.gameObject.SetActive(false);
@@ -192,6 +207,7 @@ namespace LostInTransit.Equipments
                 if (SecondEliteBuff)
                     CharacterBody.RemoveBuff(SecondEliteBuff);
             }
+
             private void Start()
             {
                 _aiRandomizeEliteStopwatch = LITContent.Equipments.AffixBlighted.cooldown;
@@ -249,17 +265,6 @@ namespace LostInTransit.Equipments
                     if (NetworkServer.active)
                         CharacterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
                 }
-            }
-
-            private void OnDestroy()
-            {
-                if (_attachment)
-                    Destroy(_attachment.gameObject);
-
-                if (FirstEliteBuff)
-                    CharacterBody.RemoveBuff(FirstEliteBuff);
-                if (SecondEliteBuff)
-                    CharacterBody.RemoveBuff(SecondEliteBuff);
             }
         }
     }

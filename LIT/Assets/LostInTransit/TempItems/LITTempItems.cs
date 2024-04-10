@@ -149,7 +149,9 @@ namespace LostInTransit
             TemporaryItemPickupComponent.onAwakeGlobal += (timer) => ModifyTimer(timer, duration);
             PickupDropletController.CreatePickupDroplet(info, position, velocity);          
             TemporaryItemPickupComponent.onAwakeGlobal -= (timer) => ModifyTimer(timer, duration); // THIS DOESNT UNHOOK BUT IDK HOWWWWWWWW
+            //Its because its an annonymous function, even if theyre identically written it gets compiled into different functions. this needs to be fixed somehow
         }
+
 
         private static void ModifyTimer(TemporaryItemPickupComponent timer, float duration)
         {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acBlessedDice
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 11400000, guid: 3b426a11ad276144da7ee5dade73af19, type: 2}
+  - {fileID: 11400000, guid: ec5d91d04859c934e827a16b1ed25011, type: 2}
+  - {fileID: 11400000, guid: bc791966d21fcf94484a1f8b5f44e279, type: 2}
+  - {fileID: 11400000, guid: adadbf018c13e2841b20e2a097600170, type: 2}
+  - {fileID: 11400000, guid: 3845601d3e416a6488dd03846794fa9e, type: 2}
+  - {fileID: 11400000, guid: 6a83f997651172d48aad42420807f268, type: 2}
+  - {fileID: 11400000, guid: 80ee38347ab46964a9886c29bc9fd5f7, type: 2}

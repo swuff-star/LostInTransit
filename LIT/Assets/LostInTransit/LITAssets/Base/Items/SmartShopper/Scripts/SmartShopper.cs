@@ -32,6 +32,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
+            var request = LITAssets.LoadAssetAsync<ItemDef>("SmartShopper", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
             /*
              * ItemDef - "SmartShopper" - Items
              */

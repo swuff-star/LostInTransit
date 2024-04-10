@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace LostInTransit.Items
 {
-    public sealed class HitList : LITItem
+    public sealed class HitList : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_HITLIST_DESC";
 
@@ -31,8 +31,7 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _hitListBuff;
-        private BuffDef _markedDebuff;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -65,11 +64,11 @@ namespace LostInTransit.Items
 
         private void HandleDamageBuff(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            int buffCount = sender.GetBuffCount(_hitListBuff);
+            int buffCount = sender.GetBuffCount(LITContent.Buffs.bdHitListBuff);
             if (buffCount == 0)
                 return;
 
-            args.baseDamageAdd += sender.baseDamage * damageBuffPower * sender.GetBuffCount(LITContent.Buffs.bdHitListBuff);
+            args.baseDamageAdd += sender.baseDamage * damageBuffPower * buffCount;
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -79,12 +78,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "HitList" - Items
-             * BuffDef - "bdHitListBuff" - Items
-             * BuffDef - "bdHitListMarked" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acHitList", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("HitList");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class HitListMarkedBehavior : BuffBehaviour, IOnKilledServerReceiver
@@ -94,6 +101,9 @@ namespace LostInTransit.Items
 
             public void OnKilledServer(DamageReport damageReport)
             {
+                if (!enabled)
+                    return;
+
                 if (damageReport.attackerBody)
                 {
                     damageReport.attackerBody.AddTimedBuffAuthority(LITContent.Buffs.bdHitListBuff.buffIndex, buffDuration);

@@ -12,7 +12,7 @@ using RoR2.Orbs;
 
 namespace LostInTransit.Items
 {
-    public sealed class TheToxin : LITItem
+    public sealed class TheToxin : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_THETOXIN_DESC";
 
@@ -36,12 +36,8 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _toxin;
-
         private static GameObject _toxinRangeIndicator;
-        private BuffDef _toxinReady;
-
-        private BuffDef _toxinCooldown;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -54,14 +50,21 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "TheToxin" - Items
-             * BuffDef - "bdToxin" - Items;
-             * BuffDef - "bdToxinReady" - Items
-             * GameObject - "ToxinIndicator" - Items
-             * BuffDef - "bdToxinCooldown" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acTheToxin", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("TheToxin");
+            _toxinRangeIndicator = _assetCollection.FindAsset<GameObject>("ToxinIndicator");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class TheToxinBehavior : BaseItemBodyBehavior
@@ -94,10 +97,9 @@ namespace LostInTransit.Items
             private GameObject effectInstance;
             private List<GameObject> toxinEffectInstances;
 
-            public void OnEnable()
+            protected override void OnFirstStackGained()
             {
-                //effectInstance = Instantiate(LITAssets.LoadAsset<GameObject>("ToxinEffect", LITBundle.Items), base.transform);
-                //ParticleSystem ps = effectInstance.GetComponent<ParticleSystem>();
+                base.OnFirstStackGained();
                 GameObject charModel = CharacterBody.modelLocator.modelTransform.gameObject;
                 if (charModel != null)
                 {
@@ -157,9 +159,8 @@ namespace LostInTransit.Items
                 return null;
             }
 
-            public void OnDisable()
-            {
-                //why dont you work..
+            protected override void OnAllStacksLost()
+            {//why dont you work..
 
                 /*for (int i = 0; i < toxinEffectInstances.Count; i++)
                 {
@@ -171,10 +172,14 @@ namespace LostInTransit.Items
                             dot.enabled = true;
                     }
                 }*/
+
             }
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
+                if (!enabled)
+                    return;
+
                 args.armorAdd -= Items.TheToxin.toxinArmorReduction;
             }
         }
@@ -198,7 +203,7 @@ namespace LostInTransit.Items
                 search.radius = Items.TheToxin.toxinRadius;
             }
 
-            private void OnEnable()
+            protected override void OnFirstStackGained()
             {
                 AttemptInfect();
 
@@ -221,7 +226,7 @@ namespace LostInTransit.Items
                 }
             }
 
-            public void OnDisable()
+            protected override void OnAllStacksLost()
             {
                 if (indicatorUtils != null)
                     indicatorUtils.shouldDestroy = true;

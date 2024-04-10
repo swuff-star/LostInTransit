@@ -34,7 +34,13 @@ namespace LostInTransit.Equipments
             /*
              * EquipmentDef - "GoldPlatedBomb" - Equips
              */
-            yield break;
+            var assetRequest = LITAssets.LoadAssetAsync<EquipmentDef>("GoldPlatedBomb", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _equipmentDef = assetRequest.Asset;
         }
 
         public override void OnEquipmentLost(CharacterBody body)

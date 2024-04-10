@@ -1,5 +1,6 @@
 ﻿using LostInTransit.Items;
 using MSU;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
@@ -8,15 +9,16 @@ using UnityEngine;
 namespace LostInTransit.Equipments
 {
 #if DEBUG
-    public sealed class UnstableWatch : LITEquipment
+    public sealed class UnstableWatch : LITEquipment, IContentPackModifier
     {
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private static GameObject _buffWard;
-        private BuffDef _timeStop;
-        private BuffDef _timeStopDebuff;
+
+        private AssetCollection _assetCollection;
+
         public override bool Execute(EquipmentSlot slot)
         {
             float timeMult = BeatingEmbryoManager.BeatingEmbryoProcs(slot) ? 1 : 2;
@@ -31,6 +33,7 @@ namespace LostInTransit.Equipments
 
         private void DoSlow(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
+            orig(self);
             if (self.HasBuff(LITContent.Buffs.bdTimeStopDebuff))
             {
                 self.moveSpeed *= 0f;
@@ -40,7 +43,7 @@ namespace LostInTransit.Equipments
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            return true;
+            return false;
         }
 
         public override IEnumerator LoadContentAsync()
@@ -51,6 +54,15 @@ namespace LostInTransit.Equipments
              * GameObject - "TimeStopSphere" - Equips
              * BuffDef - "bdTimeStopDebuff" - Equips
              */
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acUnstableWatch", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _equipmentDef = _assetCollection.FindAsset<EquipmentDef>("UnstableWatch");
             yield break;
         }
 
@@ -62,21 +74,28 @@ namespace LostInTransit.Equipments
         {
         }
 
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
+        }
+
         public class TimeStopBehavior : BuffBehaviour
         {
             [BuffDefAssociation()]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdTimeStop;
             private GameObject wardInstance;
 
-            public void OnEnable()
+            protected override void OnFirstStackGained()
             {
+                base.OnFirstStackGained();
                 wardInstance = Instantiate(_buffWard);
                 wardInstance.GetComponent<TeamFilter>().teamIndex = CharacterBody.teamComponent.teamIndex;
                 wardInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(gameObject);
             }
 
-            public void OnDisable()
+            protected override void OnAllStacksLost()
             {
+                base.OnAllStacksLost();
                 if (wardInstance != null)
                     Destroy(wardInstance);
             }

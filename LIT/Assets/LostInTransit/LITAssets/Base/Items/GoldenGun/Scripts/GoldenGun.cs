@@ -11,7 +11,7 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class GoldenGun : LITItem
+    public class GoldenGun : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_GOLDENGUN_DESC";
 
@@ -29,7 +29,8 @@ namespace LostInTransit.Items
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
-        private BuffDef _goldeGunBuff;
+
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -42,11 +43,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "GoldenGun" - Items
-             * BuffDef - "bdGoldenGun" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acGoldenGun", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("GoldenGun");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class GoldenGunBehavior : BaseItemBodyBehavior, IBodyStatArgModifier

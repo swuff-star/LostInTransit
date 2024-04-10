@@ -16,7 +16,7 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public class GuardiansHeart : LITItem
+    public class GuardiansHeart : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_GUARDIANSHEART_DESC";
 
@@ -40,7 +40,7 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _guardiansHeartBuff;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -109,10 +109,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "GuardiansHeart" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acGuardiansHeart", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("GuardiansHeart");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class GuardiansHeartBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver, IBodyStatArgModifier
@@ -164,7 +174,7 @@ namespace LostInTransit.Items
                 {
                     displayList = model.GetItemDisplayObjects(LITContent.Items.GuardiansHeart.itemIndex);
 
-                    if (displayList != null)
+                    if (displayList != null && displayList.Count != 0)
                     {
                         displayObject = displayList[0];
                         if (displayObject != null)

@@ -8,14 +8,13 @@ using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
-    public class Prescriptions : LITEquipment
+    public class Prescriptions : LITEquipment, IContentPackModifier
     {
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
 
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
-
-        private BuffDef _meds;
+        private AssetCollection _assetCollection;
 
         public override bool Execute(EquipmentSlot slot)
         {
@@ -31,7 +30,7 @@ namespace LostInTransit.Equipments
 
         private void MedsGain(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(sender.HasBuff(_meds))
+            if(sender.HasBuff(LITContent.Buffs.bdMeds))
             {
                 args.attackSpeedMultAdd += 0.7f;
                 args.damageMultAdd += 0.2f;
@@ -45,12 +44,14 @@ namespace LostInTransit.Equipments
         }
 
         public override IEnumerator LoadContentAsync()
-        {
-            /*
-             * EquipmentDef - "Prescriptions" - Equips
-             * BuffDef - "bdMeds" - Equips
-             */
-            yield break;
+        {var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acPrescriptions", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+            _equipmentDef = _assetCollection.FindAsset<EquipmentDef>("Prescriptions");
         }
 
         public override void OnEquipmentLost(CharacterBody body)
@@ -59,6 +60,11 @@ namespace LostInTransit.Equipments
 
         public override void OnEquipmentObtained(CharacterBody body)
         {
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.buffDefs.AddSingle(_assetCollection.FindAsset<BuffDef>("bdMeds"));
         }
     }
 }                                                                  

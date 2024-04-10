@@ -8,7 +8,7 @@ using RoR2.ContentManagement;
 namespace LostInTransit.Characters
 {
 #if DEBUG
-    public sealed class Robomando : LITSurvivor
+    public sealed class Robomando : LITSurvivor, IContentPackModifier
     {
         public override SurvivorDef SurvivorDef => _survivorDef;
         private SurvivorDef _survivorDef;
@@ -19,6 +19,7 @@ namespace LostInTransit.Characters
         public override GameObject CharacterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
 
+        private AssetCollection _robomandoAssets;
         public override void Initialize()
         {
         }
@@ -30,11 +31,20 @@ namespace LostInTransit.Characters
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * SurvivorDef - "SurvivorRobomando" - Characters
-             * GameObject - "RobomandoBody" - Characters
-             */
-            yield return null;
+            LITAssetRequest<AssetCollection> request = LITAssets.LoadAssetAsync<AssetCollection>("acRobomando", LITBundle.Characters);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _robomandoAssets = request.Asset;
+
+            _characterPrefab = _robomandoAssets.FindAsset<GameObject>("RobomandoBody");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_robomandoAssets);
         }
     }
 #endif

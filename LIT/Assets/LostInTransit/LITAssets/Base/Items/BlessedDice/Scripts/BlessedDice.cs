@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 namespace LostInTransit.Items
 {
 #if DEBUG
-    public class BlessedDice : LITItem
+    public class BlessedDice : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_BLESSEDDICE_DESC";
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
@@ -52,12 +52,7 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Weighted Rolls", ConfigDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
         public static bool fairRolls = false;
 
-        private BuffDef _diceArmor;
-        private BuffDef _diceAttack;
-        private BuffDef _diceMove;
-        private BuffDef _diceLuck;
-        private BuffDef _diceCrit;
-
+        private AssetCollection _assetCollection;
         public override void Initialize()
         {
             GlobalEventManager.OnInteractionsGlobal += GiveDiceBuff;
@@ -72,15 +67,15 @@ namespace LostInTransit.Items
             if (!body)
                 return;
 
-            self.luck += luckAmountBonus * body.GetBuffCount(_diceLuck);
+            self.luck += luckAmountBonus * body.GetBuffCount(LITContent.Buffs.bdDiceLuck);
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            int armorCount = sender.GetBuffCount(_diceArmor);
-            int attackCount = sender.GetBuffCount(_diceAttack);
-            int moveCount = sender.GetBuffCount(_diceMove);
-            int critCount = sender.GetBuffCount(_diceCrit);
+            int armorCount = sender.GetBuffCount(LITContent.Buffs.bdDiceArmor);
+            int attackCount = sender.GetBuffCount(LITContent.Buffs.bdDiceAtk);
+            int moveCount = sender.GetBuffCount(LITContent.Buffs.bdDiceMove);
+            int critCount = sender.GetBuffCount(LITContent.Buffs.bdDiceCrit);
 
             args.armorAdd += armorBonus * armorCount;
             args.attackSpeedMultAdd += (attackBonus / 100) * attackCount;
@@ -161,7 +156,21 @@ namespace LostInTransit.Items
              * BuffDef - "bdDiceLuck" - Items
              * BuffDef - "bdDiceCrit" - Items
              */
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acBlessedDice", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("BlessedDice");
             yield break;
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
     }
 #endif

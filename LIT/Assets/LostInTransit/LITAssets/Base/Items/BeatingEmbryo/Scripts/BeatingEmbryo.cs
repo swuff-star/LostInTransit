@@ -33,7 +33,7 @@ namespace LostInTransit.Items
      * Other LIT Equipment have their embryo interaction codeed in their equipment class.
      */
 
-    public sealed class BeatingEmbryo : LITItem
+    public sealed class BeatingEmbryo : LITItem, IContentPackModifier
     {
         private const string VANILLA_BBOSSHUNTER_CONSUMED_TOKEN = "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT";
         public string[] bossHunterOptions = new string[] { VANILLA_BBOSSHUNTER_CONSUMED_TOKEN, "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_1", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_2", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_3", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_4" };
@@ -42,9 +42,8 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _hiddenCritDamage;
-
         private static GameObject _bfg10kController;
+        private AssetCollection _assetCollection;
         public override void Initialize()
         {
             RecalculateStatsAPI.GetStatCoefficients += HandleHiddenCritDamage;
@@ -110,7 +109,17 @@ namespace LostInTransit.Items
              * BuffDef - "bdHiddenCritDamage" - Items
              * GameObject - "BFG10KBodyAttachment" - Items
              */
-            yield break;
+
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acBeatingEmbryo", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("BeatingEmbryo");
+            _bfg10kController = _assetCollection.FindAsset<GameObject>("BFG10KBodyAttachment");
         }
 
         #region Upgraded Effects
@@ -990,6 +999,11 @@ namespace LostInTransit.Items
         {
             string activateTwice = "Equipment will activate twice instead.";
             LITLog.Fatal($"Failed to implement Embryo ILHook!: {message}. {postMessage ?? activateTwice}");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class ProcTrackerBeatingEmbryoBehaviour : BaseItemBodyBehavior

@@ -120,7 +120,7 @@ MonoBehaviour:
     assets:
     - {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
     - {fileID: 11400000, guid: 107c76cde60158548a897912447a2a63, type: 2}
-    - {fileID: 2800000, guid: ab91b154d4fd6c64f9e67cfbf9a89483, type: 3}
+    - {fileID: 2800000, guid: f04053fdead41624d856cf4823829d97, type: 3}
     - {fileID: 2800000, guid: b96edc6e52910cc4a858cbbf1b2dbaf0, type: 3}
     - {fileID: 2800000, guid: b34e1c9bc387cee4eb1fde5b1d518aa3, type: 3}
   - assetBundleName: litbase

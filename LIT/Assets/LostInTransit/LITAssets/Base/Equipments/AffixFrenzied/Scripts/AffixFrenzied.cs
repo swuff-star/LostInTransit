@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Equipments
 {
-    public sealed class AffixFrenzied : LITEliteEquipment
+    public sealed class AffixFrenzied : LITEliteEquipment, IContentPackModifier
     {
         public override List<EliteDef> EliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
@@ -20,7 +20,7 @@ namespace LostInTransit.Equipments
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
-        private static BuffDef _eliteBuffDef;
+        private AssetCollection _assetCollection;
         private static GameObject _blinkReadyEffect;
         private static Type _stunState;
         private static Type _shockState;
@@ -57,13 +57,21 @@ namespace LostInTransit.Equipments
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ExtendedEliteDef - "Frenzied" - Equips
-             * ExtendedEliteDef - "FrenziedHonor" - Equips
-             * EquipmentDef - "AffixFrenzied" - Equips
-             * GameObject - "EffectFrenziedTPReady" - Equips
-             * BuffDef - "bdAffixFrenzied" - Equips
-             */
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acAffixFrenzied", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _eliteDefs = new List<EliteDef>
+            {
+                _assetCollection.FindAsset<ExtendedEliteDef>("Frenzied"),
+                _assetCollection.FindAsset<ExtendedEliteDef>("FrenziedHonor")
+            };
+            _equipmentDef = _assetCollection.FindAsset<EquipmentDef>("AffixFrenzied");
+            _blinkReadyEffect = _assetCollection.FindAsset<GameObject>("EffectFrenziedTPReady");
             yield break;
         }
 
@@ -73,6 +81,11 @@ namespace LostInTransit.Equipments
 
         public override void OnEquipmentObtained(CharacterBody body)
         {
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         //Rewrote this because i hate my old code -N
@@ -99,8 +112,10 @@ namespace LostInTransit.Equipments
                 }
             }
 
-            private void OnEnable()
+            protected override void OnFirstStackGained()
             {
+                base.OnFirstStackGained();
+
                 CharacterBody.MarkAllStatsDirty();
             }
 
@@ -194,6 +209,9 @@ namespace LostInTransit.Equipments
 
             public void ModifyStatArguments(RecalculateStatsAPI.StatHookEventArgs args)
             {
+                if (!enabled)
+                    return;
+
                 args.moveSpeedMultAdd += 0.5f;
                 args.attackSpeedMultAdd += 0.5f;
 
@@ -205,8 +223,10 @@ namespace LostInTransit.Equipments
                 return _slot && _slot.equipmentIndex == LITContent.Equipments.AffixFrenzied.equipmentIndex;
             }
 
-            private void OnDisable()
+            protected override void OnAllStacksLost()
             {
+                base.OnAllStacksLost();
+
                 if (_blinkReadyInstance)
                     Destroy(_blinkReadyInstance);
             }

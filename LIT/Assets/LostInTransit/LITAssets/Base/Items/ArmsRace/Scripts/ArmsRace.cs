@@ -10,11 +10,11 @@ using UnityEngine;
 namespace LostInTransit.Items
 {
 #if DEBUG
-    public sealed class ArmsRace : LITItem
+    public sealed class ArmsRace : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_ARMSRACE_DESC";
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => throw new System.NotImplementedException();
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
 
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
@@ -24,6 +24,8 @@ namespace LostInTransit.Items
 
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether or not drones should be given gated shields.")]
         public static bool shieldGating = true;
+
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -36,11 +38,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "ArmsRace" - Items
-             * ItemDef - "ArmsRaceDroneModifiers" - Items
-             */
-            yield return null;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acArmsRace", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("ArmsRace");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.itemDefs.AddSingle(_assetCollection.FindAsset<ItemDef>("ArmsRaceDroneModifiers"));
         }
 
         public class ArmsRaceBehavior : BaseItemBodyBehavior

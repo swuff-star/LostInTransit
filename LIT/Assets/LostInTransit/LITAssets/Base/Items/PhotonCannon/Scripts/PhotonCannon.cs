@@ -46,10 +46,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "PhotonCannon" - Items
-             */
-            yield break;
+            var assetRequest = LITAssets.LoadAssetAsync<ItemDef>("PhotonCannon", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _itemDef = assetRequest.Asset;
         }
 
         public class PhotonCannonBehavior : BaseItemBodyBehavior

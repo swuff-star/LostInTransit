@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acAffixVolatile
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 11400000, guid: 0721b5569d82a8d4e9aa030155affbd1, type: 2}
+  - {fileID: 11400000, guid: 5408cca5afbce724db70bd30a7200044, type: 2}
+  - {fileID: 11400000, guid: 2fbcfec9346736f4fad759eb10c6bf57, type: 2}
+  - {fileID: 11400000, guid: 70e6b089ce816474d9db383acd9a1e7c, type: 2}
+  - {fileID: 11400000, guid: 3667a88e6245b1549a278b22a11b2758, type: 2}
+  - {fileID: 5605638329512005404, guid: c50d31a1b60e23147b406c98b6e4ae69, type: 3}
+  - {fileID: 11400000, guid: fef043aa20a1a4545a944222d4387081, type: 2}

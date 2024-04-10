@@ -7,14 +7,13 @@ using UnityEngine;
 namespace LostInTransit.Equipments
 {
 #if DEBUG
-    public sealed class FieldGenerator : LITEquipment
+    public sealed class FieldGenerator : LITEquipment, IContentPackModifier
     {
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
-        private EquipmentDef _consumedEquipmentDef;
 
-        private BuffDef _fieldGeneratorPassive;
+        private AssetCollection _assetCollection;
 
         public override bool Execute(EquipmentSlot slot)
         {
@@ -37,7 +36,18 @@ namespace LostInTransit.Equipments
              * EquipmentDef - "FieldGeneratorUsed" - Equips
              * BuffDef - "FieldGeneratorPassive" - Equips
              */
-            yield break;
+
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acFieldGenerator", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while(!assetRequest.IsComplete)
+            {
+                yield return null;
+            }
+
+            _assetCollection = assetRequest.Asset;
+
+            _equipmentDef = _assetCollection.FindAsset<EquipmentDef>("FieldGenerator");
         }
 
         public override void OnEquipmentLost(CharacterBody body)
@@ -48,6 +58,11 @@ namespace LostInTransit.Equipments
         {
         }
 
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
+        }
+
         public class FieldGeneratorBehaviour : BuffBehaviour, IOnIncomingDamageOtherServerReciever, IOnTakeDamageServerReceiver
         {
             [BuffDefAssociation]
@@ -55,6 +70,9 @@ namespace LostInTransit.Equipments
 
             public void OnIncomingDamageOther(HealthComponent victimHealthComponent, DamageInfo damageInfo)
             {
+                if (!enabled)
+                    return;
+
                 if (damageInfo.damage >= victimHealthComponent.health)
                 {
                     damageInfo.damage = victimHealthComponent.health - 1;
@@ -67,6 +85,9 @@ namespace LostInTransit.Equipments
 
             public void OnTakeDamageServer(DamageReport damageReport)
             {
+                if (!enabled)
+                    return;
+
                 if (damageReport.victimBody.healthComponent.health < 1)
                 {
                     damageReport.victimBody.healthComponent.health = 1;

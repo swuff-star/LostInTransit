@@ -9,7 +9,7 @@ using System.Collections;
 namespace LostInTransit.Items
 {
 #if DEBUG
-    public sealed class MuConstruct : LITItem
+    public sealed class MuConstruct : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_MUCONSTRUCT_DESC";
 
@@ -17,7 +17,7 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-
+        private AssetCollection _assetCollection;
         public override void Initialize()
         {
             //ty ClassicItemsReturns for specific use cases
@@ -80,10 +80,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "MuConstruct" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acMuConstruct", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("MuConstruct");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class MuConstructBehavior : BaseItemBodyBehavior

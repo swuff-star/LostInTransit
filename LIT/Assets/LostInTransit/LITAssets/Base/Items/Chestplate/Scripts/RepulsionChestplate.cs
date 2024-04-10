@@ -12,7 +12,7 @@ using RoR2.Projectile;
 
 namespace LostInTransit.Items
 {
-    public sealed class RepulsionArmor : LITItem
+    public sealed class RepulsionArmor : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_REPULCHEST_DESC";
 
@@ -43,9 +43,7 @@ namespace LostInTransit.Items
         public override NullableRef<GameObject> ItemDisplayPrefab => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
-
-        private BuffDef _repulsionArmorActive;
-        private BuffDef _repulsionArmorCooldown;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -63,7 +61,21 @@ namespace LostInTransit.Items
              * BuffDef - "bdRepulsionArmorActive" - Items
              * BuffDef - "bdRepulsionArmorCD" - Items
              */
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acChestplate", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("Chestplate");
             yield break;
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class RepulsionArmorBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver
@@ -142,8 +154,9 @@ namespace LostInTransit.Items
                 }
             }
 
-            public void OnDisable()
+            protected override void OnAllStacksLost()
             {
+                base.OnAllStacksLost();
                 CharacterBody.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeeded);
             }
 

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace LostInTransit.Items
 {
-    public sealed class PrisonShackles : LITItem
+    public sealed class PrisonShackles : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_PRISONSHACKLES_DESC";
 
@@ -29,7 +29,8 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _shackled;
+        private AssetCollection _assetCollection;
+
         public override void Initialize()
         {
             R2API.RecalculateStatsAPI.GetStatCoefficients += HandleSlow;
@@ -48,11 +49,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "PrisonShackles" - Items
-             * BuffDef - "bdShackled" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acPrisonShackles", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("PrisonShackles");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class PrisonShacklesBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver

@@ -46,8 +46,6 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _cooldownDebuff;
-
         public override void Initialize()
         {
         }
@@ -59,11 +57,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "TelescopicSight" - Items
-             * BuffDef - "bdTeleSightCD" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<ItemDef>("TelescopicSight", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
         }
 
         public class TelescopicSightBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever

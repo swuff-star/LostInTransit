@@ -37,6 +37,13 @@ namespace LostInTransit.Items
             /*
              * ItemDef - "LockedJewel" - Items
              */
+            var assetRequest = LITAssets.LoadAssetAsync<ItemDef>("LockedJewel", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _itemDef = assetRequest.Asset;
             yield break;
         }
 

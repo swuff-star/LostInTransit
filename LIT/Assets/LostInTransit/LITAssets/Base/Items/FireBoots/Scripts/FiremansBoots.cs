@@ -39,9 +39,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "FireBoots" - Items
-             */
+            var assetRequest = LITAssets.LoadAssetAsync<ItemDef>("FireBoots", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _itemDef = assetRequest.Asset;
             yield break;
         }
 

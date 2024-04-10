@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 418323186c6d3bf4aa9fab1aa65bef7c, type: 3}
-  m_Name: Blighted_upgraded
+  m_Name: Blighted
   m_EditorClassIdentifier: 
   modifierToken: LIT_MODIFIER_BLIGHTED
   eliteEquipmentDef: {fileID: 11400000, guid: c572279333409f54f9ba90b9d7614c43, type: 2}

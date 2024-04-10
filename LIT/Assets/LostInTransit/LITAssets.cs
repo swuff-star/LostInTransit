@@ -235,7 +235,7 @@ namespace LostInTransit
 
         private static IEnumerator SwapShaders()
         {
-            return ShaderUtil.SwapAssetBundleShadersAsync(_assetBundles.Values.ToArray());
+            return ShaderUtil.SwapStubbedShadersAsync(_assetBundles.Values.ToArray());
         }
 
         private static IEnumerator SwapAddressableShaders()
@@ -325,8 +325,8 @@ namespace LostInTransit
             }
             return stringBuilder.ToString();
         }
-    }
 #endif
+    }
 
     public class LITAssetRequest<TAsset> where TAsset : UObject
     {
@@ -398,19 +398,21 @@ namespace LostInTransit
                 yield break;
             }
 
-            request = LITAssets.GetAssetBundle(TargetBundle).LoadAssetAsync<TAsset>(AssetName); ;
+            request = LITAssets.GetAssetBundle(TargetBundle).LoadAssetAsync<TAsset>(AssetName);
             while (!request.isDone)
                 yield return null;
 
             _asset = (TAsset)request.asset;
-
 #if DEBUG
-            LITLog.Warning($"The method \"{GetCallingMethod()}\" is calling a CommissionAssetRequest.StartLoad() while the class has the values \"{typeof(TAsset).Name}\", \"{AssetName}\" and \"{TargetBundle}\", however, the asset could not be found.\n" +
-    $"A complete search of all the bundles will be done and the correct bundle enum will be logged.");
+            if(!_asset)
+            {
+                LITLog.Warning($"The method \"{GetCallingMethod()}\" is calling a CommissionAssetRequest.StartLoad() while the class has the values \"{typeof(TAsset).Name}\", \"{AssetName}\" and \"{TargetBundle}\", however, the asset could not be found.\n" +
+        $"A complete search of all the bundles will be done and the correct bundle enum will be logged.");
 
-            _targetBundle = LITBundle.All;
-            _internalCoroutine.Reset();
-            yield break;
+                _targetBundle = LITBundle.All;
+                this._internalCoroutine = LoadSingleAsset();
+                yield break;
+            }
 #endif
         }
 

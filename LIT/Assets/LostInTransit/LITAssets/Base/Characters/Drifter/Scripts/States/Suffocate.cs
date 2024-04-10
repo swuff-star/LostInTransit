@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 namespace EntityStates.Drifter
 {
+#if DEBUG
     class Suffocate : BasicMeleeAttack
     {
         public override void PlayAnimation()
@@ -27,4 +28,5 @@ namespace EntityStates.Drifter
             DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ExecuteToScrap);
         }
     }
+#endif
 }

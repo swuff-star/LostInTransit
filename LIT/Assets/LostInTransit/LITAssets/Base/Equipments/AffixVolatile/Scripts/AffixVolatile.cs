@@ -12,7 +12,7 @@ using Mono.Cecil.Cil;
 
 namespace LostInTransit.Equipments
 {
-    public sealed class AffixVolatile : LITEliteEquipment
+    public sealed class AffixVolatile : LITEliteEquipment, IContentPackModifier
     {
         public override List<EliteDef> EliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
@@ -21,12 +21,10 @@ namespace LostInTransit.Equipments
         private EquipmentDef _equipmentDef;
 
         private static GameObject _volatileAttachment;
-        private BuffDef _buffDef;
         private static Type _explodingStateType;
         private static Type _postExplosionType;
+        private AssetCollection _assetCollection;
 
-        //ProcTypeAPI when... -N
-        public static DamageAPI.ModdedDamageType VolatileExplosionDamageType { get; private set; }
 
         public override bool Execute(EquipmentSlot slot)
         {
@@ -39,7 +37,6 @@ namespace LostInTransit.Equipments
 
         public override void Initialize()
         {
-            VolatileExplosionDamageType = DamageAPI.ReserveDamageType();
             IL.RoR2.GlobalEventManager.OnHitAll += VolatileExplosion;
             _explodingStateType = typeof(EntityStates.AffixVolatile.SelfDestruct);
             _postExplosionType = typeof(EntityStates.AffixVolatile.PostSelfDestruct);
@@ -64,7 +61,7 @@ namespace LostInTransit.Equipments
             cursor.Emit(OpCodes.Ldloc_3);
             cursor.EmitDelegate<Func<CharacterBody, int, int>>((body, behemothCount) =>
             {
-                if (body && body.HasBuff(_buffDef))
+                if (body && body.HasBuff(LITContent.Buffs.bdAffixVolatile))
                 {
                     return behemothCount + 2;
                 }
@@ -87,7 +84,21 @@ namespace LostInTransit.Equipments
              * BuffDef - "bdAffixVolatile" - Equips
              * GameObject - "VolatileEquipBodyAttachment" - Equips
              */
-            yield break;
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acAffixVolatile", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _eliteDefs = new List<EliteDef>
+            {
+                _assetCollection.FindAsset<ExtendedEliteDef>("Volatile"),
+                _assetCollection.FindAsset<ExtendedEliteDef>("VolatileHonor")
+            };
+            _equipmentDef = _assetCollection.FindAsset<EquipmentDef>("AffixVolatile");
+            _volatileAttachment = _assetCollection.FindAsset<GameObject>("VolatileEquipBodyAttachment");
         }
 
         public override void OnEquipmentLost(CharacterBody body)
@@ -96,6 +107,11 @@ namespace LostInTransit.Equipments
 
         public override void OnEquipmentObtained(CharacterBody body)
         {
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class AffixVolatileSelfDetonateBehaviour : BuffBehaviour, IOnTakeDamageServerReceiver
@@ -113,28 +129,33 @@ namespace LostInTransit.Equipments
                 _attachment.gameObject.SetActive(false);
             }
 
-            private void OnEnable()
+            protected override void OnFirstStackGained()
             {
-                if(_attachment.attachedBody != CharacterBody)
+                base.OnFirstStackGained();
+                if (_attachment.attachedBody != CharacterBody)
                 {
                     _attachment.AttachToGameObjectAndSpawn(CharacterBody.gameObject);
                 }
 
-                if(_attachment.attached)
+                if (_attachment.attached)
                 {
                     _attachment.gameObject.SetActive(true);
                 }
             }
 
-            private void OnDisable()
+            protected override void OnAllStacksLost()
             {
-                if (_attachment.attached)
-                    _attachment.gameObject.SetActive(false);
+                base.OnAllStacksLost();
+                    if (_attachment.attached)
+                        _attachment.gameObject.SetActive(false);
             }
 
             public void OnTakeDamageServer(DamageReport damageReport)
             {
                 if (!_attachment.gameObject.activeSelf)
+                    return;
+
+                if (!enabled)
                     return;
 
                 var healthComponent = CharacterBody.healthComponent;
@@ -167,7 +188,7 @@ namespace LostInTransit.Equipments
                 return type == _explodingStateType || type == _postExplosionType;
             }
 
-            private void OnDestroy()
+            protected override void OnDestroy()
             {
                 if (_attachment)
                     Destroy(_attachment.gameObject);

@@ -28,9 +28,9 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
         public static float minGravity = 90f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => throw new NotImplementedException();
-
-        public override ItemDef ItemDef => throw new NotImplementedException();
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
 
         public override void Initialize()
         {
@@ -43,10 +43,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "RustyJetpack" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<ItemDef>("RustyJetpack", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
         }
 
         public class RustyJetpackBehavior : BaseItemBodyBehavior, IBodyStatArgModifier

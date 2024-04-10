@@ -103,6 +103,14 @@ namespace LostInTransit.Equipments
              * EquipmentDef - "Thqwib" - Equips
              */
 
+            var assetRequest = LITAssets.LoadAssetAsync<EquipmentDef>("Thqwib", LITBundle.Equips);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _equipmentDef = assetRequest.Asset;
+
             var addressablesRequest = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Scav/ScavSackProjectile.prefab");
 
             while (!addressablesRequest.IsDone)

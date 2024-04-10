@@ -31,10 +31,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "EnergyCell" - Items
-             */
-            yield break;
+            var assetRequest = LITAssets.LoadAssetAsync<ItemDef>("EnergyCell", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _itemDef = assetRequest.Asset;
         }
 
         public class EnergyCellBehavior : BaseItemBodyBehavior, IBodyStatArgModifier, IOnTakeDamageServerReceiver

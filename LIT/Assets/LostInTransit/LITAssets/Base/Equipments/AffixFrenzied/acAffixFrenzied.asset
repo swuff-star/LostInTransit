@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acAffixFrenzied
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 11400000, guid: 29d68b102b5d9c04cb340bcddefa43d6, type: 2}
+  - {fileID: 11400000, guid: 40ff794bbbf17fa458952cda08f732d1, type: 2}
+  - {fileID: 11400000, guid: f6f54088444f57d478576a4d311c3d7e, type: 2}
+  - {fileID: 11400000, guid: 90b261887f672db4e83dff3bc37c2fdf, type: 2}
+  - {fileID: 11400000, guid: 891343714ef693441a96bada6ae2b273, type: 2}
+  - {fileID: 4022649321121695610, guid: 594e401c277a5aa44891c16264106d12, type: 3}

@@ -10,7 +10,7 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public sealed class BitterRoot : LITItem
+    public sealed class BitterRoot : LITItem, IContentPackModifier
     {
         public const string TOKEN = "LIT_ITEM_BITTERROOT_DESC";
 
@@ -26,7 +26,7 @@ namespace LostInTransit.Items
 
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
-        private BuffDef _rootRegen;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -42,7 +42,20 @@ namespace LostInTransit.Items
             /*
              * ItemDef - "BitterRoot" - Items
              */
-            yield break;
+
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acBitterRoot", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+            _itemDef = _assetCollection.FindAsset<ItemDef>("BitterRoot");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class BitterRootBehavior : BaseItemBodyBehavior, IOnKilledOtherServerReceiver, IBodyStatArgModifier

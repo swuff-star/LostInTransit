@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace LostInTransit.Items
 {
-    public sealed class Thallium : LITItem
+    public sealed class Thallium : LITItem, IContentPackModifier
     {
         public const string TOKEN = "LIT_ITEM_THALLIUM_DESC";
 
@@ -38,18 +38,20 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _thalliumPoison;
-        public static DotController.DotIndex ThalliumPoison { get; private set; }
+        private static DotBuffDef _dotBuffDef;
+        public static DotController.DotIndex ThalliumPoison => _dotBuffDef.DotIndex;
 
         public override void Initialize()
         {
-            ThalliumPoison = DotAPI.RegisterDotDef(0.2f, 0.2f, DamageColorIndex.DeathMark, _thalliumPoison);
+            _dotBuffDef.Init();
+
+            _dotBuffDef.DotDef.damageColorIndex = DamageColorIndex.DeathMark;
             R2API.RecalculateStatsAPI.GetStatCoefficients += HandleSlow;
         }
 
         private void HandleSlow(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (sender.HasBuff(LITContent.Buffs.bdThalliumPoison))
+            if (sender.HasBuff(LITContent.Buffs.dbdThalliumPoison))
                 args.moveSpeedReductionMultAdd += slowMultiplier;
         }
 
@@ -60,11 +62,22 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "Thallium" - Items
-             * BuffDef - "bdThalliumPoison" - Items
-             */
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acThallium", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            var collection = request.Asset;
+
+            _itemDef = collection.FindAsset<ItemDef>("Thallium");
+            _dotBuffDef = collection.FindAsset<DotBuffDef>("dbdThalliumPoison");
             yield break;
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.buffDefs.AddSingle(_dotBuffDef);
         }
 
         public class ThalliumBehavior : BaseItemBodyBehavior, IOnDamageDealtServerReceiver

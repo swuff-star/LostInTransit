@@ -60,8 +60,13 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /* ItemDef - "BeckoningCat" - Items
-             */
+            var assetRequest = LITAssets.LoadAssetAsync<ItemDef>("BeckoningCat", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _itemDef = assetRequest.Asset;
             yield break;
         }
 

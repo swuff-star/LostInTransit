@@ -13,16 +13,10 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public sealed class FireShield : LITItem
+    public sealed class FireShield : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_FIRESHIELD_DESC";
-        public static DamageAPI.ModdedDamageType FireShieldDamageType { get; private set; }
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
-        public override ItemDef ItemDef => _itemDef;
-        private ItemDef _itemDef;
-
-        private static GameObject _explosionVFX;
-
+        
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base damage dealt by Fire Shield.")]
         [FormatToken(TOKEN)]
         public static float baseDamageCoefficient = 3f;
@@ -30,6 +24,15 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added burn damage per stack.")]
         [FormatToken(TOKEN, 1)]
         public static float burnDamageCoefficient = 1f;
+        
+        public static DamageAPI.ModdedDamageType FireShieldDamageType { get; private set; }
+        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override ItemDef ItemDef => _itemDef;
+        private ItemDef _itemDef;
+
+        private static GameObject _explosionVFX;
+
+        private AssetCollection _assetCollection;
         public override void Initialize()
         {
             FireShieldDamageType = DamageAPI.ReserveDamageType();
@@ -63,13 +66,26 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            // ItemDef - "FireShield" - Items
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acFireShield", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            _assetCollection = assetRequest.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("FireShield");
 
             var request = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ExplosionVFX.prefab");
             while(!request.IsDone)
                 yield return null;
 
             _explosionVFX = request.Result;
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         public class FireShieldBehavior : BaseItemBodyBehavior, IOnIncomingDamageServerReceiver

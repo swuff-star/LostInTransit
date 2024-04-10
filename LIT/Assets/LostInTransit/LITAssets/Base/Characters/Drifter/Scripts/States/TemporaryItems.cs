@@ -11,6 +11,7 @@ using LostInTransit;
 
 namespace EntityStates.Drifter
 {
+#if DEBUG
     public class TemporaryItems : BaseSkillState
     {
         public static float baseEntryDuration = 1f;
@@ -111,4 +112,5 @@ namespace EntityStates.Drifter
 
 
     }
+#endif
 }

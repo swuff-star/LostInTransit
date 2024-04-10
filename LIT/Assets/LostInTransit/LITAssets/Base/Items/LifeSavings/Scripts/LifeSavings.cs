@@ -8,7 +8,7 @@ using MSU.Config;
 
 namespace LostInTransit.Items
 {
-    public sealed class LifeSavings : LITItem
+    public sealed class LifeSavings : LITItem, IContentPackModifier
     {
 
         private const string TOKEN = "LIT_ITEM_LIFESAVINGS_DESC";
@@ -50,11 +50,21 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "LifeSavings" - Items
-             * ItemDef - "LifeSavingsUsed" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acLifeSavings", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            var collection = request.Asset;
+
+            _itemDef = collection.FindAsset<ItemDef>("LifeSavings");
+            _brokenPiggy = collection.FindAsset<ItemDef>("LifeSavingsUsed");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.itemDefs.AddSingle(_brokenPiggy);
         }
     }
 }

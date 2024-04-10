@@ -23,20 +23,23 @@ namespace LostInTransit.Items
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
         }
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "Looper" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<ItemDef>("Lopper", LITBundle.Items);
+
+            request.StartLoad();
+
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
         }
 
         public class LopperBehavior : BaseItemBodyBehavior, IOnIncomingDamageOtherServerReciever
@@ -46,7 +49,9 @@ namespace LostInTransit.Items
 
             public void OnIncomingDamageOther(HealthComponent healthComponent, DamageInfo damageInfo)
             {
+                LITLog.Info($"Lop my balls: " + damageInfo.damage);
                 damageInfo.damage += stack * (damageInfo.damage * Math.Min(((1f - healthComponent.combinedHealthFraction) * 2f), maxBonus));
+                LITLog.Info($"Lop my Dick: " + damageInfo.damage);
             }
         }
     }

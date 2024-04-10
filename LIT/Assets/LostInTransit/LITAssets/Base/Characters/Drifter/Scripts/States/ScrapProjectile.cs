@@ -13,6 +13,7 @@ using UnityEngine;
 //problem for me then! just need to see how it feels!
 namespace EntityStates.Drifter
 {
+#if DEBUG
     public class ScrapProjectile : BaseSkillState
     {
         public static float baseDuration;
@@ -120,4 +121,5 @@ namespace EntityStates.Drifter
             return InterruptPriority.PrioritySkill;
         }
     }
+#endif
 }

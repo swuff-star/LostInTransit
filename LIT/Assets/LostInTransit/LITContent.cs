@@ -36,7 +36,8 @@ namespace LostInTransit
                 args.ReportProgress(Util.Remap(i + 1, 0f, _loadDispatchers.Length, 0.1f, 0.2f));
                 enumerator = _loadDispatchers[i]();
 
-                while (enumerator.MoveNext()) yield return null;
+                while (enumerator.MoveNext()) 
+                    yield return null;
             }
 
             _parallelPostLoadDispatchers.Start();
@@ -159,7 +160,7 @@ namespace LostInTransit
             public static BuffDef bdRepulsionArmorCD;
             public static BuffDef bdRootRegen;
             public static BuffDef bdShackled;
-            public static BuffDef bdThalliumPoison;
+            public static BuffDef dbdThalliumPoison;
             public static BuffDef bdTimeStop;
             public static BuffDef bdTimeStopDebuff;
             public static BuffDef bdToxin;

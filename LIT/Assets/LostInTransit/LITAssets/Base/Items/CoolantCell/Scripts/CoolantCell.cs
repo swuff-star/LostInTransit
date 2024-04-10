@@ -37,6 +37,16 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
+            var assetRequest = LITAssets.LoadAssetAsync<AssetCollection>("acCoolantCell", LITBundle.Items);
+
+            assetRequest.StartLoad();
+            while (!assetRequest.IsComplete)
+                yield return null;
+
+            var assetCollection = assetRequest.Asset;
+
+            _itemDef = assetCollection.FindAsset<ItemDef>("CoolantCell");
+            _energyCell = assetCollection.FindAsset<ItemDef>("EnergyCell");
             /*
              * ItemDef - "CoolantCell" - Items
              */

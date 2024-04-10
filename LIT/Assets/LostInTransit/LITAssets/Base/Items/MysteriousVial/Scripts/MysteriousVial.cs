@@ -41,10 +41,14 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - MysteriousVial - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<ItemDef>("MysteriousVial", LITBundle.Items);
+
+            request.StartLoad();
+
+            while (!request.IsComplete)
+                yield return null;
+
+            _itemDef = request.Asset;
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
-    public sealed class RapidMitosis : LITItem
+    public sealed class RapidMitosis : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_RAPIDMITOSIS_DESC";
 
@@ -31,7 +31,7 @@ namespace LostInTransit.Items
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 
-        private BuffDef _mitosisBuff;
+        private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
@@ -67,11 +67,20 @@ namespace LostInTransit.Items
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * ItemDef - "RapidMitosis" - Items
-             * BuffDef - "bdMitosisBuff" - Items
-             */
-            yield break;
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acRapidMitosis", LITBundle.Items);
+
+            request.StartLoad();
+            while (!request.IsComplete)
+                yield return null;
+
+            _assetCollection = request.Asset;
+
+            _itemDef = _assetCollection.FindAsset<ItemDef>("RapidMitosis");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
         //I'm pretty sure that recalculatestatsAPI can now handle skill cooldown scales? might be a good idea to switch to that ASAP
@@ -84,6 +93,8 @@ namespace LostInTransit.Items
 
             public void RecalculateStatsEnd()
             {
+                if (!enabled)
+                    return;
                 if (CharacterBody.HasBuff(LITContent.Buffs.bdMitosisBuff))
                 {
                     if (CharacterBody.skillLocator)
@@ -100,8 +111,9 @@ namespace LostInTransit.Items
                 }
             }
 
-            public void OnEnable()
+            protected override void OnFirstStackGained()
             {
+                base.OnFirstStackGained();
                 GameObject charModel = CharacterBody.modelLocator.modelTransform.gameObject;
                 if (charModel != null)
                 {

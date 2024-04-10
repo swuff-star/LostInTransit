@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 namespace LostInTransit.Characters
 {
 #if DEBUG
-    public sealed class Drifter : LITSurvivor
+    public sealed class Drifter : LITSurvivor, IContentPackModifier
     {
         public override SurvivorDef SurvivorDef => _survivorDef;
         private SurvivorDef _survivorDef;
@@ -21,6 +21,8 @@ namespace LostInTransit.Characters
 
         public override GameObject CharacterPrefab => throw new System.NotImplementedException();
         private GameObject _characterPrefab;
+
+        private AssetCollection _assetCollection;
 
         public static DamageAPI.ModdedDamageType ExecuteToScrap { get; private set; }
         private static GameObject _scrapPickup;
@@ -104,13 +106,21 @@ namespace LostInTransit.Characters
 
         public override IEnumerator LoadContentAsync()
         {
-            /*
-             * SurvivorDef - "SurvivorDrifter" - Characters
-             * GameObject - "DrifterBody" - Characters
-             * GameObject - "ScrapPickup" - Characters
-             * GameObject - "DrifterScrapProjectile" - Characters
-             */
-            yield return null;
+            LITAssetRequest<AssetCollection> drifterAssetCollection = LITAssets.LoadAssetAsync<AssetCollection>("acDrifter", LITBundle.Characters);
+
+            drifterAssetCollection.StartLoad();
+            while(!drifterAssetCollection.IsComplete)
+                yield return null;
+
+            _assetCollection = drifterAssetCollection.Asset;
+
+            _survivorDef = _assetCollection.FindAsset<SurvivorDef>("SurvivorDrifter");
+            _characterPrefab = _assetCollection.FindAsset<GameObject>("DrifterBody");
+        }
+
+        public void ModifyContentPack(ContentPack contentPack)
+        {
+            contentPack.AddContentFromAssetCollection(_assetCollection);
         }
     }
 #endif
