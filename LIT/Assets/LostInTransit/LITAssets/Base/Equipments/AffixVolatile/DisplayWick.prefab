@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Root: {fileID: 4984898350622223905}
-  m_UpdateRate: 60
+  m_UpdateRate: 30
   m_UpdateMode: 0
   m_Damping: 0.2
   m_DampingDistrib:
@@ -330,7 +330,8 @@ MonoBehaviour:
     defaultShadowCastingMode: 0
     ignoreOverlays: 0
     hideOnDeath: 0
-  hideOnDeathObjects: []
+  hideOnDeathObjects:
+  - {fileID: 4984898351522494348}
 --- !u!1 &4984898351522494348
 GameObject:
   m_ObjectHideFlags: 0

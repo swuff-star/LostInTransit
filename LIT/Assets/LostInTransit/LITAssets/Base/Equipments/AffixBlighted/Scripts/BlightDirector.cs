@@ -36,7 +36,7 @@ namespace LostInTransit.Components
             }
             set
             {
-                if(_monstersKilled != value)
+                if (_monstersKilled != value)
                 {
                     _monstersKilled = (ulong)Mathf.Max(0, value);
                     RecalculateSpawnChance();
@@ -64,13 +64,27 @@ namespace LostInTransit.Components
             Run = GetComponentInParent<Run>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
             Instance = this;
-            RecalculateSpawnChance();
 
             GlobalEventManager.onCharacterDeathGlobal += OnEnemyKilled;
             CharacterBody.onBodyStartGlobal += TrySpawn;
+        }
+
+        private void OnDisable()
+        {
+            if(Instance == this)
+            {
+                Instance = null;
+            }
+
+            GlobalEventManager.onCharacterDeathGlobal -= OnEnemyKilled;
+            CharacterBody.onBodyStartGlobal -= TrySpawn;
+        }
+        private void Start()
+        {
+            RecalculateSpawnChance();
         }
 
         //Who knew fucking guard clauses where good? -N
