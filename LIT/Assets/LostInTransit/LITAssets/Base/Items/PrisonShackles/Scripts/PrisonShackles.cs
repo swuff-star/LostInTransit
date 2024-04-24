@@ -5,6 +5,7 @@ using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Items
@@ -25,7 +26,7 @@ namespace LostInTransit.Items
         [FormatToken(TOKEN, 2)]
         public static int durationStack = 2;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

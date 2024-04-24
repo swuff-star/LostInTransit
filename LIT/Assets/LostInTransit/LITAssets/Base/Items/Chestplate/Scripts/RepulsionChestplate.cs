@@ -9,6 +9,7 @@ using System.Collections;
 using MSU.Config;
 using R2API;
 using RoR2.Projectile;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -40,7 +41,7 @@ namespace LostInTransit.Items
 
         public static bool badFix = false;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
         private AssetCollection _assetCollection;

@@ -6,6 +6,7 @@ using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Projectile;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -28,7 +29,7 @@ namespace LostInTransit.Equipments
         [FormatToken(TOKEN, 2)]
         public static float onKillProcChance = 0f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 

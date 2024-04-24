@@ -16,7 +16,7 @@ namespace LostInTransit.Items
         public static float stackingValue = 0.4f;
         public static float maxValue = 0.75f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
         private ItemDef _energyCell;

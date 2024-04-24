@@ -8,6 +8,7 @@ using R2API;
 using RoR2.ContentManagement;
 using System.Collections;
 using MSU.Config;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -26,7 +27,7 @@ namespace LostInTransit.Items
         public static uint maxGoldThreshold = 300;
 
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

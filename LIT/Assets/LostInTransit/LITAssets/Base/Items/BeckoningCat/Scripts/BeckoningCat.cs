@@ -45,7 +45,7 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Luck should be accounted for in all Beckoning Cat-related rolls.")]
         public static bool useLuck = true;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

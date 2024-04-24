@@ -17,9 +17,9 @@ namespace LostInTransit
         public static ReadOnlyContentPack ReadOnlyContentPack => new ReadOnlyContentPack(LITContentPack);
         internal static ContentPack LITContentPack { get; } = new ContentPack();
 
-        internal static ParallelCoroutineHelper _parallelPreLoadDispatchers = new ParallelCoroutineHelper();
+        internal static ParallelMultiStartCoroutine _parallelPreLoadDispatchers = new ParallelMultiStartCoroutine();
         internal static Func<IEnumerator>[] _loadDispatchers;
-        internal static ParallelCoroutineHelper _parallelPostLoadDispatchers = new ParallelCoroutineHelper();
+        internal static ParallelMultiStartCoroutine _parallelPostLoadDispatchers = new ParallelMultiStartCoroutine();
 
         private static Action[] _fieldAssignDispatchers;
 

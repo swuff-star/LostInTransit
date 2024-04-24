@@ -7,6 +7,7 @@ using RoR2.Items;
 using RoR2.ContentManagement;
 using System.Collections;
 using MSU.Config;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -31,7 +32,7 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Use static charge timer", ConfigDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
         public static bool skillIssue = false;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

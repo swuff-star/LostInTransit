@@ -13,7 +13,7 @@ namespace LostInTransit
 {
     public abstract class LITVoidItem : IVoidItemContentPiece
     {
-        public abstract NullableRef<GameObject> ItemDisplayPrefab { get; }
+        public abstract NullableRef<List<GameObject>> ItemDisplayPrefabs { get; }
         ItemDef IContentPiece<ItemDef>.Asset => ItemDef;
         public abstract ItemDef ItemDef { get; }
 

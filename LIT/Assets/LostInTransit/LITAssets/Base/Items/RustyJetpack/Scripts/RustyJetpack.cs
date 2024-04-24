@@ -28,7 +28,7 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
         public static float minGravity = 90f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

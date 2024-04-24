@@ -5,6 +5,7 @@ using RoR2.Items;
 using UnityEngine;
 using RoR2.ContentManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -13,7 +14,7 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_MUCONSTRUCT_DESC";
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

@@ -16,7 +16,7 @@ namespace LostInTransit.Equipments
     {
         public override List<EliteDef> EliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 

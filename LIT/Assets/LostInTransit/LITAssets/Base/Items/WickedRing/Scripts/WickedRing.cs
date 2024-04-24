@@ -7,6 +7,7 @@ using UnityEngine;
 using MSU.Config;
 using RoR2.ContentManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -18,7 +19,7 @@ namespace LostInTransit.Items
         [FormatToken(TOKEN, 0)]
         public static float secondsRemovedPerKill = 1f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
         public override void Initialize()

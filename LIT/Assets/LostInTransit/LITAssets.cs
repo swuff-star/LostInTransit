@@ -108,7 +108,7 @@ namespace LostInTransit
         {
             LITLog.Info($"Initializing Assets");
 
-            ParallelCoroutineHelper helper1 = new ParallelCoroutineHelper();
+            ParallelMultiStartCoroutine helper1 = new ParallelMultiStartCoroutine();
 
             helper1.Add(LoadAssetBundles);
             helper1.Add(LoadSoundbank);
@@ -116,7 +116,7 @@ namespace LostInTransit
             helper1.Start();
             while (!helper1.IsDone()) yield return null;
 
-            ParallelCoroutineHelper helper2 = new ParallelCoroutineHelper();
+            ParallelMultiStartCoroutine helper2 = new ParallelMultiStartCoroutine();
             helper2.Add(SwapShaders);
             helper2.Add(SwapAddressableShaders);
 
@@ -130,7 +130,7 @@ namespace LostInTransit
 
         private static IEnumerator LoadAssetBundles()
         {
-            ParallelCoroutineHelper helper = new ParallelCoroutineHelper();
+            ParallelMultiStartCoroutine helper = new ParallelMultiStartCoroutine();
 
             List<(string path, LITBundle bundleEnum, AssetBundle loadedBundle)> pathsAndBundles = new List<(string path, LITBundle bundleEnum, AssetBundle loadedBundle)>();
 

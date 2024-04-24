@@ -8,6 +8,7 @@ using System.Collections;
 using MSU.Config;
 using R2API;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace LostInTransit.Items
 {
@@ -34,7 +35,7 @@ namespace LostInTransit.Items
         [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Poison is Fixed Duration", ConfigDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
         public static bool noTimeToDie = false;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

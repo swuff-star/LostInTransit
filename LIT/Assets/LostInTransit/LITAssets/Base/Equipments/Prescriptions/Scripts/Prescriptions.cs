@@ -4,13 +4,14 @@ using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
     public class Prescriptions : LITEquipment, IContentPackModifier
     {
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
 
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;

@@ -3,13 +3,14 @@ using MSU;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostInTransit.Equipments
 {
     public sealed class GiganticAmethyst : LITEquipment
     {
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override EquipmentDef EquipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 

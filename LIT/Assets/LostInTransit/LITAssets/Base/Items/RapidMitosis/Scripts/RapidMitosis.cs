@@ -27,7 +27,7 @@ namespace LostInTransit.Items
         [FormatToken(TOKEN)]
         public static float mitosisDur = 6f;
 
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
 

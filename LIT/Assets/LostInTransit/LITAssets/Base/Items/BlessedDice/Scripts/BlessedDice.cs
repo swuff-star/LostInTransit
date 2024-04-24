@@ -6,6 +6,7 @@ using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -15,7 +16,7 @@ namespace LostInTransit.Items
     public class BlessedDice : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_BLESSEDDICE_DESC";
-        public override NullableRef<GameObject> ItemDisplayPrefab => null;
+        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
 
         public override ItemDef ItemDef => _itemDef;
         private ItemDef _itemDef;
