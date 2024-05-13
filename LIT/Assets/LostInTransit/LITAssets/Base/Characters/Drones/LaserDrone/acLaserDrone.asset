@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acLaserDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 6549451472896834303, guid: c2fabc539121d3948a241752f2e67384, type: 3}
+  - {fileID: 2890170479074595321, guid: 7a7cfb65845006948b460dbda7fbea9b, type: 3}
+  - {fileID: 6690403988594969723, guid: 522acad939d4f6d4aac1a611db38c653, type: 3}
+  - {fileID: 11400000, guid: 9c1ef0039c23f58459d77c1befd4c411, type: 2}
+  - {fileID: 11400000, guid: 91c6c43de734c874787f3795869214cb, type: 2}
+  - {fileID: 11400000, guid: 2089e17f6fb2abd4bbe477e43b05f5a1, type: 2}
+  - {fileID: 11400000, guid: f843c45e85fd7a0419ebe04eedd501f3, type: 2}
