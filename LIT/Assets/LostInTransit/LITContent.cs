@@ -106,6 +106,11 @@ namespace LostInTransit
                 {
                     CharacterModule.AddProvider(main, ContentUtil.CreateGameObjectContentPieceProvider<CharacterBody>(main, LITContentPack));
                     return CharacterModule.InitializeCharacters(main);
+                },
+                () =>
+                {
+                    InteractableModule.AddProvider(main, ContentUtil.CreateGameObjectContentPieceProvider<IInteractable>(main, LITContentPack));
+                    return InteractableModule.InitializeInteractables(main);
                 }
             };
 
