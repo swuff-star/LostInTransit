@@ -262,16 +262,16 @@ Shader:
     m_SubShaders:
     - m_Passes:
       - m_NameIndices:
-        - FOG_EXP: 8
-        - FOG_LINEAR: 7
-        - UnityFog: 4
-        - UnityPerDraw: 0
-        - UnityPerFrame: 1
-        - unity_FogColor: 9
-        - unity_FogParams: 6
-        - unity_MatrixV: 5
-        - unity_MatrixVP: 3
-        - unity_ObjectToWorld: 2
+          FOG_EXP: 8
+          FOG_LINEAR: 7
+          UnityFog: 4
+          UnityPerDraw: 0
+          UnityPerFrame: 1
+          unity_FogColor: 9
+          unity_FogParams: 6
+          unity_MatrixV: 5
+          unity_MatrixVP: 3
+          unity_ObjectToWorld: 2
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -549,10 +549,10 @@ Shader:
           gpuProgramID: 142911
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - PreviewType: Plane
-            - QUEUE: Transparent
-            - RenderType: Transparent
+              IGNOREPROJECTOR: true
+              PreviewType: Plane
+              QUEUE: Transparent
+              RenderType: Transparent
           m_LOD: 0
           lighting: 0
         m_ProgramMask: 6
@@ -830,52 +830,52 @@ Shader:
         m_Tags:
           tags: {}
       - m_NameIndices:
-        - $Globals: 0
-        - DIRECTIONAL: 14
-        - LIGHTPROBE_SH: 15
-        - SHADOWS_SCREEN: 16
-        - UnityLighting: 26
-        - UnityPerCamera: 1
-        - UnityPerDraw: 2
-        - UnityPerFrame: 3
-        - UnityShadows: 42
-        - _AtmosphereRamp: 18
-        - _AtmosphereStrength: 30
-        - _CameraDepthTexture: 17
-        - _DetailStrength: 36
-        - _DiffuseDetailTex: 20
-        - _DiffuseDetailTex_ST: 5
-        - _DiffuseTex: 19
-        - _DiffuseTex_ST: 4
-        - _DoubleSampleFactor: 33
-        - _EmissionRamp: 24
-        - _EmissionStrength: 35
-        - _EmissionTex: 23
-        - _EmissionTex_ST: 8
-        - _LightColor0: 27
-        - _LightShadowData: 43
-        - _LightWarpRamp: 25
-        - _NormalDetailTex: 22
-        - _NormalDetailTex_ST: 7
-        - _NormalStrength: 31
-        - _NormalTex: 21
-        - _NormalTex_ST: 6
-        - _ProjectionParams: 9
-        - _RotationSpeed: 34
-        - _ShadowMapTexture: 41
-        - _SpecColor: 28
-        - _SpecularPower: 32
-        - _Time: 37
-        - _TintColor: 29
-        - _WorldSpaceCameraPos: 38
-        - _WorldSpaceLightPos0: 40
-        - _ZBufferParams: 39
-        - unity_MatrixV: 45
-        - unity_MatrixVP: 13
-        - unity_ObjectToWorld: 11
-        - unity_ShadowFadeCenterAndType: 44
-        - unity_WorldToObject: 12
-        - unity_WorldTransformParams: 10
+          $Globals: 0
+          DIRECTIONAL: 14
+          LIGHTPROBE_SH: 15
+          SHADOWS_SCREEN: 16
+          UnityLighting: 26
+          UnityPerCamera: 1
+          UnityPerDraw: 2
+          UnityPerFrame: 3
+          UnityShadows: 42
+          _AtmosphereRamp: 18
+          _AtmosphereStrength: 30
+          _CameraDepthTexture: 17
+          _DetailStrength: 36
+          _DiffuseDetailTex: 20
+          _DiffuseDetailTex_ST: 5
+          _DiffuseTex: 19
+          _DiffuseTex_ST: 4
+          _DoubleSampleFactor: 33
+          _EmissionRamp: 24
+          _EmissionStrength: 35
+          _EmissionTex: 23
+          _EmissionTex_ST: 8
+          _LightColor0: 27
+          _LightShadowData: 43
+          _LightWarpRamp: 25
+          _NormalDetailTex: 22
+          _NormalDetailTex_ST: 7
+          _NormalStrength: 31
+          _NormalTex: 21
+          _NormalTex_ST: 6
+          _ProjectionParams: 9
+          _RotationSpeed: 34
+          _ShadowMapTexture: 41
+          _SpecColor: 28
+          _SpecularPower: 32
+          _Time: 37
+          _TintColor: 29
+          _WorldSpaceCameraPos: 38
+          _WorldSpaceLightPos0: 40
+          _ZBufferParams: 39
+          unity_MatrixV: 45
+          unity_MatrixVP: 13
+          unity_ObjectToWorld: 11
+          unity_ShadowFadeCenterAndType: 44
+          unity_WorldToObject: 12
+          unity_WorldTransformParams: 10
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -1153,12 +1153,12 @@ Shader:
           gpuProgramID: 54854
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - LIGHTMODE: FORWARDBASE
-            - PreviewType: Plane
-            - QUEUE: Transparent
-            - RenderType: Transparent
-            - SHADOWSUPPORT: true
+              IGNOREPROJECTOR: true
+              LIGHTMODE: FORWARDBASE
+              PreviewType: Plane
+              QUEUE: Transparent
+              RenderType: Transparent
+              SHADOWSUPPORT: true
           m_LOD: 0
           lighting: 0
         m_ProgramMask: 6
@@ -2307,10 +2307,10 @@ Shader:
           tags: {}
       m_Tags:
         tags:
-        - IGNOREPROJECTOR: true
-        - PreviewType: Plane
-        - QUEUE: Transparent
-        - RenderType: Transparent
+          IGNOREPROJECTOR: true
+          PreviewType: Plane
+          QUEUE: Transparent
+          RenderType: Transparent
       m_LOD: 0
     m_Name: Hopoo Games/FX/Forward Planet
     m_CustomEditorName:

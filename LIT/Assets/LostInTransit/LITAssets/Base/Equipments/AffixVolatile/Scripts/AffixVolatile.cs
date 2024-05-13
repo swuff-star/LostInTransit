@@ -114,7 +114,7 @@ namespace LostInTransit.Equipments
             contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
-        public class AffixVolatileSelfDetonateBehaviour : BuffBehaviour, IOnTakeDamageServerReceiver
+        public class AffixVolatileSelfDetonateBehaviour : BaseBuffBehaviour, IOnTakeDamageServerReceiver
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixVolatile;

@@ -435,29 +435,29 @@ Shader:
         m_Tags:
           tags: {}
       - m_NameIndices:
-        - $Globals: 0
-        - DISTANCEMODULATION: 9
-        - SOFTPARTICLES_ON: 10
-        - UnityPerCamera: 1
-        - UnityPerDraw: 2
-        - UnityPerFrame: 3
-        - _BumpMap: 11
-        - _BumpMap_ST: 4
-        - _CameraDepthTexture: 19
-        - _DistanceModulationMagnitude: 20
-        - _FarFadeOneDistance: 18
-        - _FarFadeZeroDistance: 17
-        - _GrabTexturePostProcess: 13
-        - _InvFade: 22
-        - _Magnitude: 14
-        - _MaskTex: 12
-        - _MaskTex_ST: 5
-        - _NearFadeOneDistance: 16
-        - _NearFadeZeroDistance: 15
-        - _ProjectionParams: 6
-        - _ZBufferParams: 21
-        - unity_MatrixVP: 8
-        - unity_ObjectToWorld: 7
+          $Globals: 0
+          DISTANCEMODULATION: 9
+          SOFTPARTICLES_ON: 10
+          UnityPerCamera: 1
+          UnityPerDraw: 2
+          UnityPerFrame: 3
+          _BumpMap: 11
+          _BumpMap_ST: 4
+          _CameraDepthTexture: 19
+          _DistanceModulationMagnitude: 20
+          _FarFadeOneDistance: 18
+          _FarFadeZeroDistance: 17
+          _GrabTexturePostProcess: 13
+          _InvFade: 22
+          _Magnitude: 14
+          _MaskTex: 12
+          _MaskTex_ST: 5
+          _NearFadeOneDistance: 16
+          _NearFadeZeroDistance: 15
+          _ProjectionParams: 6
+          _ZBufferParams: 21
+          unity_MatrixVP: 8
+          unity_ObjectToWorld: 7
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -735,9 +735,9 @@ Shader:
           gpuProgramID: 28211
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - QUEUE: Transparent+2000
-            - RenderType: Transparent
+              IGNOREPROJECTOR: true
+              QUEUE: Transparent+2000
+              RenderType: Transparent
           m_LOD: 0
           lighting: 0
         m_ProgramMask: 6
@@ -1409,9 +1409,9 @@ Shader:
           tags: {}
       m_Tags:
         tags:
-        - IGNOREPROJECTOR: true
-        - QUEUE: Transparent+2000
-        - RenderType: Transparent
+          IGNOREPROJECTOR: true
+          QUEUE: Transparent+2000
+          RenderType: Transparent
       m_LOD: 0
     m_Name: Hopoo Games/FX/Distortion
     m_CustomEditorName:

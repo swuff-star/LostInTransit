@@ -166,7 +166,7 @@ namespace LostInTransit.Equipments
         }
 
         //Makes sure the body attachment gets attached whenever the buff is active, and also handles changing the blighted elite's buffdefs.
-        public class AffixBlightedBehaviour : BuffBehaviour
+        public class AffixBlightedBehaviour : BaseBuffBehaviour
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;

@@ -80,7 +80,7 @@ namespace LostInTransit.Equipments
             contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
-        public class TimeStopBehavior : BuffBehaviour
+        public class TimeStopBehavior : BaseBuffBehaviour
         {
             [BuffDefAssociation()]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdTimeStop;

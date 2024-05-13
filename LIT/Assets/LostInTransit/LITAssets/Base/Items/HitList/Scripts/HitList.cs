@@ -94,7 +94,7 @@ namespace LostInTransit.Items
             contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
-        public class HitListMarkedBehavior : BuffBehaviour, IOnKilledServerReceiver
+        public class HitListMarkedBehavior : BaseBuffBehaviour, IOnKilledServerReceiver
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdHitListMarked;

@@ -89,7 +89,7 @@ namespace LostInTransit.Equipments
         }
 
         //Rewrote this because i hate my old code -N
-        public class AffixFrenziedBehaviour : BuffBehaviour, IBodyStatArgModifier
+        public class AffixFrenziedBehaviour : BaseBuffBehaviour, IBodyStatArgModifier
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixFrenzied;

@@ -26,18 +26,18 @@ Shader:
     m_SubShaders:
     - m_Passes:
       - m_NameIndices:
-        - $Globals: 10
-        - DIRECTIONAL: 5
-        - LIGHTPROBE_SH: 6
-        - SHADOWS_SCREEN: 9
-        - UnityPerCamera: 7
-        - UnityPerDraw: 0
-        - UnityPerFrame: 1
-        - _ProjectionParams: 8
-        - _TintColor: 11
-        - unity_MatrixVP: 4
-        - unity_ObjectToWorld: 2
-        - unity_WorldToObject: 3
+          $Globals: 10
+          DIRECTIONAL: 5
+          LIGHTPROBE_SH: 6
+          SHADOWS_SCREEN: 9
+          UnityPerCamera: 7
+          UnityPerDraw: 0
+          UnityPerFrame: 1
+          _ProjectionParams: 8
+          _TintColor: 11
+          unity_MatrixVP: 4
+          unity_ObjectToWorld: 2
+          unity_WorldToObject: 3
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -315,12 +315,12 @@ Shader:
           gpuProgramID: 23143
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - LIGHTMODE: FORWARDBASE
-            - PreviewType: Plane
-            - QUEUE: Transparent
-            - RenderType: Transparent
-            - SHADOWSUPPORT: true
+              IGNOREPROJECTOR: true
+              LIGHTMODE: FORWARDBASE
+              PreviewType: Plane
+              QUEUE: Transparent
+              RenderType: Transparent
+              SHADOWSUPPORT: true
           m_LOD: 0
           lighting: 0
         m_ProgramMask: 6
@@ -717,10 +717,10 @@ Shader:
           tags: {}
       m_Tags:
         tags:
-        - IGNOREPROJECTOR: true
-        - PreviewType: Plane
-        - QUEUE: Transparent
-        - RenderType: Transparent
+          IGNOREPROJECTOR: true
+          PreviewType: Plane
+          QUEUE: Transparent
+          RenderType: Transparent
       m_LOD: 0
     m_Name: Hopoo Games/FX/Vertex Colors Only
     m_CustomEditorName:

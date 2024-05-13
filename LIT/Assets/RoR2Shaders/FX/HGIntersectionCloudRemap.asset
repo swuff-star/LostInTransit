@@ -247,47 +247,47 @@ Shader:
     m_SubShaders:
     - m_Passes:
       - m_NameIndices:
-        - $Globals: 0
-        - DIRECTIONAL: 11
-        - FADE_FROM_VERTEX_COLORS: 14
-        - INSTANCING_ON: 22
-        - LIGHTPROBE_SH: 12
-        - SHADOWS_SCREEN: 15
-        - TRIPLANAR: 13
-        - UnityDrawCallInfo: 16
-        - UnityInstancing_PerDraw0: 17
-        - UnityPerCamera: 1
-        - UnityPerDraw: 2
-        - UnityPerFrame: 3
-        - _AlphaBoost: 37
-        - _Boost: 36
-        - _CameraDepthTexture: 26
-        - _Cloud1Tex: 24
-        - _Cloud1Tex_ST: 5
-        - _Cloud2Tex: 25
-        - _Cloud2Tex_ST: 6
-        - _CutoffScroll: 30
-        - _ExternalAlpha: 29
-        - _IntersectionStrength: 32
-        - _InvFade: 31
-        - _MainTex: 23
-        - _MainTex_ST: 4
-        - _ProjectionParams: 7
-        - _RemapTex: 27
-        - _RimPower: 33
-        - _RimStrength: 34
-        - _SoftPower: 35
-        - _Time: 38
-        - _TintColor: 28
-        - _WorldSpaceCameraPos: 39
-        - _ZBufferParams: 40
-        - unity_BaseInstanceID: 18
-        - unity_Builtins0Array: 19
-        - unity_MatrixVP: 10
-        - unity_ObjectToWorld: 8
-        - unity_ObjectToWorldArray: 20
-        - unity_WorldToObject: 9
-        - unity_WorldToObjectArray: 21
+          $Globals: 0
+          DIRECTIONAL: 11
+          FADE_FROM_VERTEX_COLORS: 14
+          INSTANCING_ON: 22
+          LIGHTPROBE_SH: 12
+          SHADOWS_SCREEN: 15
+          TRIPLANAR: 13
+          UnityDrawCallInfo: 16
+          UnityInstancing_PerDraw0: 17
+          UnityPerCamera: 1
+          UnityPerDraw: 2
+          UnityPerFrame: 3
+          _AlphaBoost: 37
+          _Boost: 36
+          _CameraDepthTexture: 26
+          _Cloud1Tex: 24
+          _Cloud1Tex_ST: 5
+          _Cloud2Tex: 25
+          _Cloud2Tex_ST: 6
+          _CutoffScroll: 30
+          _ExternalAlpha: 29
+          _IntersectionStrength: 32
+          _InvFade: 31
+          _MainTex: 23
+          _MainTex_ST: 4
+          _ProjectionParams: 7
+          _RemapTex: 27
+          _RimPower: 33
+          _RimStrength: 34
+          _SoftPower: 35
+          _Time: 38
+          _TintColor: 28
+          _WorldSpaceCameraPos: 39
+          _ZBufferParams: 40
+          unity_BaseInstanceID: 18
+          unity_Builtins0Array: 19
+          unity_MatrixVP: 10
+          unity_ObjectToWorld: 8
+          unity_ObjectToWorldArray: 20
+          unity_WorldToObject: 9
+          unity_WorldToObjectArray: 21
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -565,12 +565,12 @@ Shader:
           gpuProgramID: 63801
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - LIGHTMODE: FORWARDBASE
-            - PreviewType: Plane
-            - QUEUE: Transparent
-            - RenderType: Transparent
-            - SHADOWSUPPORT: true
+              IGNOREPROJECTOR: true
+              LIGHTMODE: FORWARDBASE
+              PreviewType: Plane
+              QUEUE: Transparent
+              RenderType: Transparent
+              SHADOWSUPPORT: true
           m_LOD: 0
           lighting: 0
         m_ProgramMask: 6
@@ -6027,10 +6027,10 @@ Shader:
           tags: {}
       m_Tags:
         tags:
-        - IGNOREPROJECTOR: true
-        - PreviewType: Plane
-        - QUEUE: Transparent
-        - RenderType: Transparent
+          IGNOREPROJECTOR: true
+          PreviewType: Plane
+          QUEUE: Transparent
+          RenderType: Transparent
       m_LOD: 0
     m_Name: Hopoo Games/FX/Cloud Intersection Remap
     m_CustomEditorName:

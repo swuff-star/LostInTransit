@@ -245,7 +245,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0d67492cf9c98e71e92f46bd53940c09920c9b87"
+      "hash": "1f026446ee48832fc8f81f64d2e5a1fc65ad6889"
     },
     "riskofthunder-ror2importextensions": {
       "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.4.0",
@@ -277,7 +277,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e5c4bc897b9354fcb75aeb73b7617caa2a15a397"
+      "hash": "715bd5a448cb15f47683c9e116721edd062828d8"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

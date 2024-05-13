@@ -500,3 +500,12 @@ MonoBehaviour:
       localAngles: {x: 327.5221, y: 180, z: 0}
       localScale: {x: 0.25, y: 0.25, z: 0.25}
       limbMask: 0
+  - idrsName: idrsLITArchWisp
+    rules:
+    - ruleType: 0
+      displayPrefabIndex: 0
+      childName: Head
+      localPos: {x: 0, y: -0.0282, z: 0.62346}
+      localAngles: {x: 317.5785, y: 357.3898, z: 181.7615}
+      localScale: {x: 0.5, y: 0.5, z: 0.5}
+      limbMask: 0

@@ -10,7 +10,7 @@ namespace LostInTransit
         private static ManualLogSource logger = null;
 
 #if DEBUG && !UNITY_EDITOR
-        private static LogLevel _breakableLevel = LogLevel.Fatal;
+        private static LogLevel _breakableLevel = LogLevel.None;
 #endif
 
         public static void Fatal(object data, [CallerLineNumber] int i = 0, [CallerMemberName] string member = "") => Log(LogLevel.Fatal, data, i, member);

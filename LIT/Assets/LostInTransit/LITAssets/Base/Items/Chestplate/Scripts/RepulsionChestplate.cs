@@ -110,7 +110,7 @@ namespace LostInTransit.Items
             }
         }
 
-        public class RepulsionArmorActiveBehavior : BuffBehaviour, IBodyStatArgModifier
+        public class RepulsionArmorActiveBehavior : BaseBuffBehaviour, IBodyStatArgModifier
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdRepulsionArmorActive;

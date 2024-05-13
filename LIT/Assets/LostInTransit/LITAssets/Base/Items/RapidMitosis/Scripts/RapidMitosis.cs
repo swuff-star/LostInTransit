@@ -84,7 +84,7 @@ namespace LostInTransit.Items
         }
 
         //I'm pretty sure that recalculatestatsAPI can now handle skill cooldown scales? might be a good idea to switch to that ASAP
-        public class MitosisBuffBehavior : BuffBehaviour, IStatItemBehavior
+        public class MitosisBuffBehavior : BaseBuffBehaviour, IStatItemBehavior
         {
             [BuffDefAssociation]
             private static BuffDef GetBuffDef() => LITContent.Buffs.bdMitosisBuff;

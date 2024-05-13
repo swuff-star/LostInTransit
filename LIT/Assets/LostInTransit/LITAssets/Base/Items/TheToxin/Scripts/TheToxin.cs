@@ -90,7 +90,7 @@ namespace LostInTransit.Items
             }
         }
 
-        public class ToxinBehavior : BuffBehaviour, IBodyStatArgModifier
+        public class ToxinBehavior : BaseBuffBehaviour, IBodyStatArgModifier
         {
             [BuffDefAssociation()]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdToxin;
@@ -184,7 +184,7 @@ namespace LostInTransit.Items
             }
         }
 
-        public class ToxinReadyBehavior : BuffBehaviour
+        public class ToxinReadyBehavior : BaseBuffBehaviour
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdToxinReady;

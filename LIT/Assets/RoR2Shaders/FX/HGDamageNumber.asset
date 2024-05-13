@@ -62,19 +62,19 @@ Shader:
     m_SubShaders:
     - m_Passes:
       - m_NameIndices:
-        - $Globals: 0
-        - FOG_EXP: 8
-        - FOG_LINEAR: 7
-        - SOFTPARTICLES_ON: 6
-        - UnityPerDraw: 1
-        - UnityPerFrame: 2
-        - _CharacterLimit: 12
-        - _CritColor: 11
-        - _MainTex: 9
-        - _MainTex_ST: 3
-        - _TintColor: 10
-        - unity_MatrixVP: 5
-        - unity_ObjectToWorld: 4
+          $Globals: 0
+          FOG_EXP: 8
+          FOG_LINEAR: 7
+          SOFTPARTICLES_ON: 6
+          UnityPerDraw: 1
+          UnityPerFrame: 2
+          _CharacterLimit: 12
+          _CritColor: 11
+          _MainTex: 9
+          _MainTex_ST: 3
+          _TintColor: 10
+          unity_MatrixVP: 5
+          unity_ObjectToWorld: 4
         m_Type: 0
         m_State:
           serializedVersion: 2
@@ -352,9 +352,9 @@ Shader:
           gpuProgramID: 62505
           m_Tags:
             tags:
-            - IGNOREPROJECTOR: true
-            - QUEUE: Transparent
-            - RenderType: Transparent
+              IGNOREPROJECTOR: true
+              QUEUE: Transparent
+              RenderType: Transparent
           m_LOD: 100
           lighting: 0
         m_ProgramMask: 6
@@ -1035,9 +1035,9 @@ Shader:
           tags: {}
       m_Tags:
         tags:
-        - IGNOREPROJECTOR: true
-        - QUEUE: Transparent
-        - RenderType: Transparent
+          IGNOREPROJECTOR: true
+          QUEUE: Transparent
+          RenderType: Transparent
       m_LOD: 100
     m_Name: Hopoo Games/FX/Damage Number
     m_CustomEditorName:

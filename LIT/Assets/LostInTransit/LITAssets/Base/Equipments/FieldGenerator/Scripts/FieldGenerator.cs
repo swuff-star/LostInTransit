@@ -64,7 +64,7 @@ namespace LostInTransit.Equipments
             contentPack.AddContentFromAssetCollection(_assetCollection);
         }
 
-        public class FieldGeneratorBehaviour : BuffBehaviour, IOnIncomingDamageOtherServerReciever, IOnTakeDamageServerReceiver
+        public class FieldGeneratorBehaviour : BaseBuffBehaviour, IOnIncomingDamageOtherServerReciever, IOnTakeDamageServerReceiver
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdFieldGeneratorPassive;
