@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3479500834086378248}
   - component: {fileID: 8965975445246776975}
   - component: {fileID: 1956573244885958664}
+  - component: {fileID: 4249827237252497640}
   m_Layer: 0
   m_Name: FireParticles
   m_TagString: Untagged
@@ -105,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4753,6 +4754,45 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4249827237252497640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722730134362698257}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9636fe3d73c343871854233956ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 8965975445246776975}
+  strengthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxTime: 2
+  loop: 1
 --- !u!1 &979104931668009259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4764,6 +4804,7 @@ GameObject:
   - component: {fileID: 507842822762689710}
   - component: {fileID: 8285985611548960142}
   - component: {fileID: 6410747617530979914}
+  - component: {fileID: 4671827119863937068}
   m_Layer: 0
   m_Name: SmallFireParticles
   m_TagString: Untagged
@@ -4858,7 +4899,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -7375,7 +7416,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 3
@@ -9506,6 +9547,45 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4671827119863937068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979104931668009259}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9636fe3d73c343871854233956ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 8285985611548960142}
+  strengthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxTime: 2
+  loop: 1
 --- !u!1 &1196538568874042971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9645,6 +9725,12 @@ MonoBehaviour:
     transform: {fileID: 4773425303004003765}
   - name: MuzzleHandR
     transform: {fileID: 1867226387030846428}
+  - name: FireHead
+    transform: {fileID: 3479500834086378248}
+  - name: FireLeft
+    transform: {fileID: 6795254929911430095}
+  - name: FireRight
+    transform: {fileID: 507842822762689710}
 --- !u!1 &4081414877730207277
 GameObject:
   m_ObjectHideFlags: 0
@@ -10683,6 +10769,7 @@ GameObject:
   - component: {fileID: 6795254929911430095}
   - component: {fileID: 4362646681376639024}
   - component: {fileID: 7584092920864279408}
+  - component: {fileID: 7579477790117190684}
   m_Layer: 0
   m_Name: SmallFireParticles
   m_TagString: Untagged
@@ -10777,7 +10864,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -13294,7 +13381,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 3
@@ -15425,6 +15512,45 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7579477790117190684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459649454106421961}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9636fe3d73c343871854233956ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 4362646681376639024}
+  strengthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxTime: 2
+  loop: 1
 --- !u!1 &5002937205586612527
 GameObject:
   m_ObjectHideFlags: 0
@@ -15469,12 +15595,12 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.78823537, g: 0.2901961, b: 0.43921572, a: 1}
   m_Intensity: 10
-  m_Range: 10
+  m_Range: 35.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -15846,12 +15972,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1533aa68f54c04c8053b603a407aca, type: 3}
---- !u!1 &3775547990817041587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b1533aa68f54c04c8053b603a407aca,
-    type: 3}
-  m_PrefabInstance: {fileID: 4081414878753706466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5167864212359906626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9156917742449808544, guid: 3b1533aa68f54c04c8053b603a407aca,
@@ -15870,12 +15990,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4081414878753706466}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3130368565541624714 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1429141549105777256, guid: 3b1533aa68f54c04c8053b603a407aca,
-    type: 3}
-  m_PrefabInstance: {fileID: 4081414878753706466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &627461263453755804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3463595239286065278, guid: 3b1533aa68f54c04c8053b603a407aca,
@@ -15885,6 +15999,18 @@ Transform:
 --- !u!4 &4246272523508092433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 164895313497710579, guid: 3b1533aa68f54c04c8053b603a407aca,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081414878753706466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6574056798323101099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7178637642967391305, guid: 3b1533aa68f54c04c8053b603a407aca,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081414878753706466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3130368565541624714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1429141549105777256, guid: 3b1533aa68f54c04c8053b603a407aca,
     type: 3}
   m_PrefabInstance: {fileID: 4081414878753706466}
   m_PrefabAsset: {fileID: 0}
@@ -15906,21 +16032,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4081414878753706466}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6574056798323101099 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7178637642967391305, guid: 3b1533aa68f54c04c8053b603a407aca,
-    type: 3}
-  m_PrefabInstance: {fileID: 4081414878753706466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3976891831658243092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8100608788295338506, guid: 3b1533aa68f54c04c8053b603a407aca,
-    type: 3}
-  m_PrefabInstance: {fileID: 4081414878753706466}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4552752505551238665 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b1533aa68f54c04c8053b603a407aca,
     type: 3}
   m_PrefabInstance: {fileID: 4081414878753706466}
   m_PrefabAsset: {fileID: 0}
@@ -15933,6 +16047,18 @@ Transform:
 --- !u!4 &4337466861346027981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 330414325608294447, guid: 3b1533aa68f54c04c8053b603a407aca,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081414878753706466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4552752505551238665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b1533aa68f54c04c8053b603a407aca,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081414878753706466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3775547990817041587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b1533aa68f54c04c8053b603a407aca,
     type: 3}
   m_PrefabInstance: {fileID: 4081414878753706466}
   m_PrefabAsset: {fileID: 0}
