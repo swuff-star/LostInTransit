@@ -16,6 +16,7 @@ namespace EntityStates.LITArchWisp.Weapon
         public static float procCoefficientPerTick;
         public static float tickFrequency;
         public static GameObject _flamethrowerEffectPrefab;
+        public static GameObject hitEffect;
 
         [Header("Bullet Metadata")]
         public static float radius;
@@ -103,6 +104,7 @@ namespace EntityStates.LITArchWisp.Weapon
                 smartCollision = true,
                 stopperMask = LayerIndex.world.mask,
                 weapon = gameObject,
+                hitEffectPrefab = hitEffect
             };
             attack.Fire();
         }

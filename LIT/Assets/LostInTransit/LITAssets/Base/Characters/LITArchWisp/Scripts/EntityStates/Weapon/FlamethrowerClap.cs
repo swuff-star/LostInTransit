@@ -17,11 +17,14 @@ namespace EntityStates.LITArchWisp.Weapon
         public static float clapDamageCoefficient;
         public static float clapForce;
         public static Vector3 bonusForce;
+        public static GameObject clapEffectPrefab;
+        public static GameObject impactEffect;
 
         private Transform _clapOriginTransform;
         private float _duration;
         private float _durationUntilClap;
         private float _clapDamage;
+        private EffectIndex _effectIndex;
 
         private bool _hasClapped;
         public override void OnEnter()
@@ -33,9 +36,10 @@ namespace EntityStates.LITArchWisp.Weapon
             var childLocator = GetModelChildLocator();
             if(childLocator)
             {
-                _clapOriginTransform = childLocator.FindChild("FlamethrowerMuzzle");
+                _clapOriginTransform = childLocator.FindChild("MuzzleHandR");
             }
-            PlayCrossfade("Body", "Clap", "Clap.playbackRate", _duration, 0.25f);
+            _effectIndex = impactEffect.TryGetComponent<EffectComponent>(out var comp) ? comp.effectIndex : EffectIndex.Invalid;
+            PlayCrossfade("Body", "Clap", "Clap.playbackRate", _duration, 0.5f);
         }
 
         public override void FixedUpdate()
@@ -54,9 +58,16 @@ namespace EntityStates.LITArchWisp.Weapon
 
         private void Clap()
         {
+
             if (!isAuthority)
                 return;
 
+            Vector3 position = _clapOriginTransform ? _clapOriginTransform.position : transform.position;
+            EffectManager.SpawnEffect(clapEffectPrefab, new EffectData
+            {
+                origin = position,
+                scale = clapRadius
+            }, true);
             BlastAttack attack = new BlastAttack
             {
                 attacker = gameObject,
@@ -72,9 +83,15 @@ namespace EntityStates.LITArchWisp.Weapon
                 position = _clapOriginTransform ? _clapOriginTransform.position : transform.position,
                 procCoefficient = 1,
                 radius = clapRadius,
-                teamIndex = teamComponent.teamIndex
+                teamIndex = teamComponent.teamIndex,
+                impactEffect = _effectIndex
             };
             attack.Fire();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Pain;
         }
     }
 }
