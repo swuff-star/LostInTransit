@@ -64,12 +64,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: e8f0b3c7b5c4943408d1c7192d4071e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 34ef0ef3754ad5b4e81dde1342aec1d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaBias: 0.491
-    - _AlphaBoost: 0.5
+    - _AlphaBias: 0.05
+    - _AlphaBoost: 0.9
     - _Boost: 2
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0

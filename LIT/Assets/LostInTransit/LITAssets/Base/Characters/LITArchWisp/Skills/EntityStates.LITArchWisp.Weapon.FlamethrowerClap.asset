@@ -23,7 +23,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: baseDurationUntilClap
       fieldValue:
-        stringValue: 0.6
+        stringValue: 0.7
         objectValue: {fileID: 0}
     - fieldName: clapRadius
       fieldValue:
@@ -41,3 +41,13 @@ MonoBehaviour:
       fieldValue:
         stringValue: 0 0 0
         objectValue: {fileID: 0}
+    - fieldName: clapEffectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 3543115190793399708, guid: 166a1ed0313b0c14ab2e9af5ea8b7199,
+          type: 3}
+    - fieldName: impactEffect
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 7266673544167300391, guid: 992cb20ba536a0b4f8c6dd09ef5078a1,
+          type: 3}

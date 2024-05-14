@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: matArchFireChargeTrail
+  m_Name: matLITArchWispImpact
   m_Shader: {fileID: 4800000, guid: 81e2940ed81972c4aa729667a0a32648, type: 2}
   m_ShaderKeywords: USE_CLOUDS
   m_LightmapFlags: 4
@@ -24,11 +24,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cloud1Tex:
-        m_Texture: {fileID: 2800000, guid: a06a0cc9127bc0546abd98e0b5032314, type: 3}
+        m_Texture: {fileID: 2800000, guid: 897fa74a98c2f644aac84cc3398d4560, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cloud2Tex:
-        m_Texture: {fileID: 2800000, guid: 54466b52beafaf5408fe7804cc914657, type: 3}
+        m_Texture: {fileID: 2800000, guid: 779612f69a4442b48b821cad0f72c16c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2555a3df97671204086f7cba641ce0e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 337118f8c21a34f45b33fc80bcf59a78, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,8 +68,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaBias: 0.05
-    - _AlphaBoost: 2.5
+    - _AlphaBias: 0.054
+    - _AlphaBoost: 0.7
     - _Boost: 3
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0
@@ -91,8 +91,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InternalSimpleBlendMode: 1
-    - _InvFade: 0
+    - _InternalSimpleBlendMode: 0
+    - _InvFade: 0.27
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -111,6 +111,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CutoffScroll: {r: 0, g: 0, b: 50, a: 0}
+    - _CutoffScroll: {r: 10, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}

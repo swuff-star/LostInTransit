@@ -50,3 +50,8 @@ MonoBehaviour:
         stringValue: 
         objectValue: {fileID: 1924117349653594617, guid: d7efb1d931bc0b64fa944bf3fc761bfc,
           type: 3}
+    - fieldName: hitEffect
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 7266673544167300391, guid: 992cb20ba536a0b4f8c6dd09ef5078a1,
+          type: 3}
