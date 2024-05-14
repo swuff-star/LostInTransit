@@ -259,6 +259,13 @@
 
 		"LIT_EVOLEMURIAN_NAME": "Evolved Lemurian",
 
+		"LIT_DRONE_LASER_NAME": "Laser Drone",
+		"LIT_DRONE_LASER_INTERACTABLE_NAME": "Broken Laser Drone",
+		"LIT_DRONE_LASER_INTERACTABLE_CONTEXT": "Repair Laser Drone",
+
+		"LIT_DRONE_ROCKET_NAME": "Rocket Drone",
+		"LIT_DRONE_ROCKET_INTERACTABLE_NAME": "Broken Rocket Drone",
+		"LIT_DRONE_ROCKET_INTERACTABLE_CONTEXT":  "Repair Rocket Drone",
 
 		"LIT_DRIFTER_BODY_NAME": "Drifter",
 		"LIT_DRIFTER_DESCRIPTION": "The Drifter is a scavanger who's resourcefulness literally pays off when warding off foes.",

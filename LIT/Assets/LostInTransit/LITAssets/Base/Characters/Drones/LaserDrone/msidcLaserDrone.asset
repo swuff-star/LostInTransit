@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: msidcLaserDrone
   m_EditorClassIdentifier: 
   _serializedCardPairs:
-  - stageEnum: 128
-    customStageName: 
+  - stageEnum: 134480320
+    customStageNames: []
     interactableCategory: 5
     customCategoryWeight: 0
     customCategoryName: 
@@ -26,29 +26,7 @@ MonoBehaviour:
       selectionWeight: 2
       spawnDistance: 0
       preventOverhead: 0
-      minimumStageCompletions: 0
-      requiredUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-      forbiddenUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-  - stageEnum: 134217728
-    customStageName: 
-    interactableCategory: 5
-    customCategoryWeight: 0
-    customCategoryName: 
-    card:
-      spawnCard:
-        _asset: {fileID: 11400000, guid: f843c45e85fd7a0419ebe04eedd501f3, type: 2}
-        _address: 
-        _useDirectReference: 1
-      selectionWeight: 2
-      spawnDistance: 0
-      preventOverhead: 0
-      minimumStageCompletions: 0
+      minimumStageCompletions: 2
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 
