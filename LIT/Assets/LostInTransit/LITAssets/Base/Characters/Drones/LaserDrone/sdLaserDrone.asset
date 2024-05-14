@@ -19,10 +19,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: EntityStates.GolemMonster.FireLaser, RoR2, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    _typeName: EntityStates.LaserDrone.LaserDroneFire, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 8
+  baseRechargeInterval: 10
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
