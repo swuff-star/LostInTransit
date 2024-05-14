@@ -1,4 +1,6 @@
-﻿using RoR2;
+﻿using LostInTransit.Components;
+using MSU;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,21 @@ namespace EntityStates.LITArchWisp
                 return;
 
             _modelBaseTransform = modelLocator.modelBaseTransform;
+            var childLocator = GetModelChildLocator();
+
+            var transforms = new Transform[3]
+            {
+                childLocator.FindChild("FireHead"),
+                childLocator.FindChild("FireLeft"),
+                childLocator.FindChild("FireRight")
+            };
+            foreach(Transform t in transforms)
+            {
+                if(t.TryGetComponent<IncreaseParticleNoiseStrengthOverTime>(out var component))
+                {
+                    component.enabled = true;
+                }
+            }
         }
 
         private void AttemptDeathBehaviour()
