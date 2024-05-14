@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acAttackDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 6549451472896834303, guid: c294dae726dd17946997069322ecb96e, type: 3}
+  - {fileID: 2890170479074595321, guid: 71e60bff9ce439244b8ba93af2afaacc, type: 3}
+  - {fileID: 6690403988594969723, guid: 90811e44e1b0f464b92ba86f6ef704e5, type: 3}
+  - {fileID: 11400000, guid: f9b531c6daea31f419a5d44fb7c8ed89, type: 2}
+  - {fileID: 11400000, guid: 22eeda04ee6eb964299d57659eb52bf1, type: 2}
+  - {fileID: 11400000, guid: d889b83e1802dd9408a4c0e3b3b6b3cf, type: 2}
+  - {fileID: 11400000, guid: 99ae99d4888d25646ab70a3a43ad479f, type: 2}
+  - {fileID: 11400000, guid: 40b3d0c8aa796aa4fa5cb9d2c1196182, type: 2}
+  - {fileID: 11400000, guid: 09b53bf0f06364f4b8d1c16b3e40b241, type: 2}
