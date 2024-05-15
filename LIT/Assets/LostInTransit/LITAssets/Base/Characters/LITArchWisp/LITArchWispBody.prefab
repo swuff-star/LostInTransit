@@ -10001,7 +10001,7 @@ MonoBehaviour:
   hideCrosshair: 0
   aimOriginTransform: {fileID: 4081414878386052900}
   hullClassification: 1
-  portraitIcon: {fileID: 0}
+  portraitIcon: {fileID: 2800000, guid: 7679a3e385b2ef04c9c6f6c2a8ca5f59, type: 3}
   bodyColor: {r: 1, g: 0.21226418, b: 0.66760933, a: 1}
   isChampion: 0
   currentVehicle: {fileID: 0}
@@ -10431,7 +10431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logUnlockableName: 
-  logUnlockableDef: {fileID: 0}
+  logUnlockableDef: {fileID: 11400000, guid: 4ce345e97a978a64280af5b5b14f89e9, type: 2}
   bossDropTable: {fileID: 0}
   bossPickup:
     pickupName: 

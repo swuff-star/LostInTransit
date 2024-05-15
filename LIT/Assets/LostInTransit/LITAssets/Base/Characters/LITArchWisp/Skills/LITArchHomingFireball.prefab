@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRange: 15
   lookCone: 90
-  targetSearchInterval: 0.3
+  targetSearchInterval: 0.1
   onlySearchIfNoTarget: 1
   allowTargetLoss: 1
   testLoS: 1
@@ -307,4 +307,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
-  rotationSpeed: 180
+  rotationSpeed: 270
