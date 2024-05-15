@@ -28,9 +28,9 @@ namespace EntityStates.LITArchWisp.Weapon
         private GameObject[] _chargeFXInstances = new GameObject[3];
         private Quaternion[] _fireSpread = new Quaternion[3]
         {
-            Quaternion.Euler(-10, 0, 0),
-            Quaternion.Euler(10, 10, 0),
-            Quaternion.Euler(10, -10, 0)
+            Quaternion.Euler(-3, 0, 0),
+            Quaternion.Euler(3, 3, 0),
+            Quaternion.Euler(3, -3, 0)
         };
 
         private float _damagePerFireball;
@@ -112,6 +112,18 @@ namespace EntityStates.LITArchWisp.Weapon
                 info.rotation = rot;
                 ProjectileManager.instance.FireProjectile(info);
 
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            for (int i = 0; i < _chargeFXInstances.Length; i++)
+            {
+                if (_chargeFXInstances[i])
+                {
+                    Destroy(_chargeFXInstances[i]);
+                }
             }
         }
 

@@ -10,10 +10,14 @@ namespace LostInTransit.Characters
 {
     public class LITArchWisp : LITMonster, IContentPackModifier
     {
-        public override NullableRef<MonsterCardProvider> CardProvider => null;
-        public override NullableRef<DirectorAPI.DirectorCardHolder> DissonanceCard => null;
+        public override NullableRef<MonsterCardProvider> CardProvider => _cardProvider;
+        private MonsterCardProvider _cardProvider;
 
-        public override NullableRef<GameObject> MasterPrefab => null;
+        public override NullableRef<DirectorAPI.DirectorCardHolder> DissonanceCard => _dissonanceCard;
+        private DirectorAPI.DirectorCardHolder _dissonanceCard;
+
+        public override NullableRef<GameObject> MasterPrefab => _masterPrefab;
+        private GameObject _masterPrefab;
 
         public override GameObject CharacterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
@@ -21,6 +25,18 @@ namespace LostInTransit.Characters
 
         public override void Initialize()
         {
+            _dissonanceCard = new DirectorAPI.DirectorCardHolder
+            {
+                Card = new DirectorCard
+                {
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    spawnCard = _assetcollection.FindAsset<CharacterSpawnCard>("cscLITArchWisp"),
+                    preventOverhead = true,
+                    selectionWeight = 1,
+                },
+                MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
+                InteractableCategory = DirectorAPI.InteractableCategory.Invalid,
+            };
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -38,6 +54,8 @@ namespace LostInTransit.Characters
 
             _assetcollection = request.Asset;
             _characterPrefab = _assetcollection.FindAsset<GameObject>("LITArchWispBody");
+            _masterPrefab = _assetcollection.FindAsset<GameObject>("LITArchWispMaster");
+            _cardProvider = _assetcollection.FindAsset<MonsterCardProvider>("mcpLITArchWisp");
         }
 
         public void ModifyContentPack(ContentPack contentPack)

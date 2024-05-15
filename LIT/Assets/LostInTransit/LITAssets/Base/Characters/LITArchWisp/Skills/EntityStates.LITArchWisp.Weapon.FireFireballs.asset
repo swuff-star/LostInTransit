@@ -32,7 +32,7 @@ MonoBehaviour:
           type: 3}
     - fieldName: totalDamageCoefficient
       fieldValue:
-        stringValue: 9
+        stringValue: 5
         objectValue: {fileID: 0}
     - fieldName: projectilePrefab
       fieldValue:

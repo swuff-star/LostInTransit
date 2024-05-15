@@ -23,7 +23,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: totalDamageCoefficient
       fieldValue:
-        stringValue: 20
+        stringValue: 10
         objectValue: {fileID: 0}
     - fieldName: procCoefficientPerTick
       fieldValue:
@@ -31,7 +31,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: tickFrequency
       fieldValue:
-        stringValue: 5
+        stringValue: 7
         objectValue: {fileID: 0}
     - fieldName: radius
       fieldValue:
