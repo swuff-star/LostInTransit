@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d10af29dc523c7243a6e6e3d787aa1d6, type: 3}
-  m_Name: msidcLaserDrone
+  m_Name: msidcAttackDrone
   m_EditorClassIdentifier: 
   _serializedCardPairs:
-  - stageEnum: 134496704
+  - stageEnum: 201507326
     customStageNames: []
     interactableCategory: 5
     customCategoryWeight: 0
     customCategoryName: 
     card:
       spawnCard:
-        _asset: {fileID: 11400000, guid: f843c45e85fd7a0419ebe04eedd501f3, type: 2}
+        _asset: {fileID: 11400000, guid: 99ae99d4888d25646ab70a3a43ad479f, type: 2}
         _address: 
         _useDirectReference: 1
-      selectionWeight: 2
+      selectionWeight: 4
       spawnDistance: 0
       preventOverhead: 0
-      minimumStageCompletions: 2
+      minimumStageCompletions: 3
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 
