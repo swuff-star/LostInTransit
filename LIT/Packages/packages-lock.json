@@ -6,6 +6,18 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "bubbet-zioconfigfile": {
+      "version": "file:ZioConfigFile",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "bubbet-zioriskofoptions": {
+      "version": "file:ZioRiskOfOptions",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.passivepicasso.thunderkit": {
       "version": "https://github.com/PassivePicasso/ThunderKit.git#8.0.6",
       "depth": 0,
@@ -35,6 +47,12 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
+    },
+    "iharbhd-debugtoolkit": {
+      "version": "file:DebugToolkit",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "mmhook-assemblies": {
       "version": "file:mmhook-assemblies",

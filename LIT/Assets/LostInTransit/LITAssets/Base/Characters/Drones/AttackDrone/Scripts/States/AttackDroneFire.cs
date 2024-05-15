@@ -14,11 +14,11 @@ namespace EntityStates.AttackDrone
         public static float force;
 
         [HideInInspector]
-        public static GameObject muzzleEffectPrefab = Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab;
+        public static GameObject muzzleEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/Muzzleflash1.prefab").WaitForCompletion();
         [HideInInspector]
-        public static GameObject tracerPrefab = Commando.CommandoWeapon.FirePistol2.tracerEffectPrefab;
+        public static GameObject tracerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/TracerNoSmoke.prefab").WaitForCompletion();
         [HideInInspector]
-        public static GameObject hitPrefab = Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
+        public static GameObject hitPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/Hitspark1.prefab").WaitForCompletion();
 
         private string muzzleString;
         private string muzzleString2;

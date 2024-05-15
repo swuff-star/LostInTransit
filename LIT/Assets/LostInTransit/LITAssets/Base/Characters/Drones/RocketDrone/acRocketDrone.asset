@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acRocketDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 6549451472896834303, guid: 1e3043dc6bc3ff14eac6e4a606f75250, type: 3}
+  - {fileID: 2890170479074595321, guid: 6054374ff4549d64d9265598bb7b4e3b, type: 3}
+  - {fileID: 6690403988594969723, guid: 4afb3033a806c4a44b1485008c13c383, type: 3}
+  - {fileID: 11400000, guid: 33daf7573be7b7d44a3418ba66950c27, type: 2}
+  - {fileID: 11400000, guid: c7cfb147835a3e246ae900aa6ee46433, type: 2}
+  - {fileID: 11400000, guid: 6d0bad038d979174a9732bb573be7202, type: 2}
+  - {fileID: 11400000, guid: 750409707f10d624385df729d727a120, type: 2}
+  - {fileID: 11400000, guid: 5891a5f1764394346a8300ded8cba2c6, type: 2}
+  - {fileID: 11400000, guid: 8aa79df1fdd35f14581e7605b56d8075, type: 2}
