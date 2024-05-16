@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -28,6 +29,8 @@ namespace LostInTransit.Characters
             smb = InteractablePrefab.GetComponent<SummonMasterBehavior>();
             cm = smb.masterPrefab.GetComponent<CharacterMaster>();
             bodyPrefab = cm.bodyPrefab;
+
+            On.EntityStates.Drone.DeathState.OnImpactServer += SpawnInteractableCorpse;
 
             var droneBody = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/Drone1Body.prefab").WaitForCompletion();
 
@@ -70,6 +73,32 @@ namespace LostInTransit.Characters
         public void ModifyContentPack(ContentPack contentPack)
         {
             contentPack.AddContentFromAssetCollection(_assetCollection);
+        }
+
+        private void SpawnInteractableCorpse(On.EntityStates.Drone.DeathState.orig_OnImpactServer orig, EntityStates.Drone.DeathState self, Vector3 contactPoint)
+        {
+            if (self.characterBody.bodyIndex == BodyCatalog.FindBodyIndexCaseInsensitive(_characterPrefab.name))
+            {
+                DirectorPlacementRule placementRule = new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.Direct,
+                    position = contactPoint
+                };
+                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(CardProvider.BuildSpawnCardSet().FirstOrDefault(), placementRule, new Xoroshiro128Plus(0UL)));
+                if (gameObject)
+                {
+                    PurchaseInteraction component = gameObject.GetComponent<PurchaseInteraction>();
+                    if (component && component.costType == CostTypeIndex.Money)
+                    {
+                        component.Networkcost = Run.instance.GetDifficultyScaledCost(component.cost);
+                    }
+                }
+
+            }
+            else
+            {
+                orig(self, contactPoint);
+            }
         }
     }
 }

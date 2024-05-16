@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace LostInTransit.Characters
 {
-    public class RocketDrone : LITInteractable, IContentPackModifier
+    public class BeamDrone : LITInteractable, IContentPackModifier
     {
         public override GameObject InteractablePrefab => _interactablePrefab;
         public override InteractableCardProvider CardProvider => _cardProvider;
@@ -58,16 +58,16 @@ namespace LostInTransit.Characters
 
         public override IEnumerator LoadContentAsync()
         {
-            var request = LITAssets.LoadAssetAsync<AssetCollection>("acRocketDrone", LITBundle.Characters);
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acBeamDrone", LITBundle.Characters);
 
             request.StartLoad();
             while (!request.IsComplete)
                 yield return null;
 
             _assetCollection = request.Asset;
-            _characterPrefab = _assetCollection.FindAsset<GameObject>("RocketDroneBody");
-            _cardProvider = _assetCollection.FindAsset<InteractableCardProvider>("msidcRocketDrone");
-            _interactablePrefab = _assetCollection.FindAsset<GameObject>("RocketDroneBroken");
+            _characterPrefab = _assetCollection.FindAsset<GameObject>("BeamDroneBody");
+            _cardProvider = _assetCollection.FindAsset<InteractableCardProvider>("msidcBeamDrone");
+            _interactablePrefab = _assetCollection.FindAsset<GameObject>("BeamDroneBroken");
         }
 
         public void ModifyContentPack(ContentPack contentPack)

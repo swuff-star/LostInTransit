@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acBeamDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 6549451472896834303, guid: a3522f19e80789145968bb2162c1a689, type: 3}
+  - {fileID: 2890170479074595321, guid: c8f4dde6fd036fc45b716026efa8d2ed, type: 3}
+  - {fileID: 6690403988594969723, guid: 5df04cbb3d58742438d1c1ad3662a130, type: 3}
+  - {fileID: 11400000, guid: 0adc63d1b12d35f4787f5e0e249b8f66, type: 2}
+  - {fileID: 11400000, guid: 9fc88de6199446044b3ef729559f80d9, type: 2}
+  - {fileID: 11400000, guid: 7fa3bdd9d7e422349a8e5fbcbd57aec9, type: 2}
+  - {fileID: 11400000, guid: 44dc4ece4e2038f47a6519ca057c7db0, type: 2}
+  - {fileID: 11400000, guid: 9d722b99678d8ec4780cc74f8ca922d3, type: 2}
+  - {fileID: 11400000, guid: 16cb2666828fa7b49a7c19f1f924fc9c, type: 2}
+  - {fileID: 11400000, guid: 17d037233e040eb4db3f3771fae8744b, type: 2}
+  - {fileID: 11400000, guid: 7a86692b87a06234681a8234d48cb99d, type: 2}
+  - {fileID: 1300326120530023, guid: b05c6ebdb4ae6cb46847df47f4ecdddc, type: 3}
+  - {fileID: 1801095490226149, guid: 656cfd38241c28a4fa54003a2570935e, type: 3}
+  - {fileID: 1046173388774271, guid: 17aa1f8836b8a474d83fbf65371e7234, type: 3}

@@ -4,7 +4,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.LaserDrone
+namespace EntityStates.RocketDrone
 {
     public class RocketDroneFire : BaseSkillState
     {
