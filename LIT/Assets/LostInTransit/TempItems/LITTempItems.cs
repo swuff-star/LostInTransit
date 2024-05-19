@@ -130,7 +130,7 @@ namespace LostInTransit
         }
         public static ItemIndex CheckForTemporaryReplacement(ItemIndex index)
         {           
-            if (Array.IndexOf<ItemIndex>(blacklist, index) != -1) return ItemIndex.None;
+            if (Array.IndexOf<ItemIndex>(blacklist, index) == -1) return ItemIndex.None;
 
             return realToTemporaryIndex.TryGetValue(index, out ItemIndex temporaryItem) ? temporaryItem : ItemIndex.None;
         }
