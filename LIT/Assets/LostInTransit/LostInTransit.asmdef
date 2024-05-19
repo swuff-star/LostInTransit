@@ -42,7 +42,8 @@
         "R2API.Items.dll",
         "UnityEngine.UI.dll",
         "R2API.Addressables.dll",
-        "RiskOfOptions.dll"
+        "RiskOfOptions.dll",
+        "ProperSave.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -4,6 +4,7 @@ using HG.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MSU;
+using ProperSave;
 using R2API;
 using R2API.Utils;
 using RoR2;
@@ -29,6 +30,7 @@ namespace LostInTransit
 
     [BepInDependency(MSU.MSUMain.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency(ProperSavePlugin.GUID, BepInDependency.DependencyFlags.SoftDependency)]
     //[BepInDependency("com.TheMysticSword.AspectAbilities", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(GUID, MODNAME, VERSION)]
@@ -42,6 +44,7 @@ namespace LostInTransit
         internal static LITMain Instance { get; private set; }
 
         public static bool RiskyModInstalled { get; private set; }
+        public static bool ProperSaveInstalled { get; private set; }
 
         private void Awake()
         {
@@ -57,35 +60,7 @@ namespace LostInTransit
             LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
 
             RiskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
+            ProperSaveInstalled = MSUtil.IsModInstalled(ProperSave.ProperSavePlugin.GUID);
         }
-
-        /*internal const string GUID = "com.ContactLight.LostInTransit";
-        internal const string MODNAME = "Lost in Transit";
-        internal const string VERSION = "0.4.0";
-
-        public static LITMain instance;
-
-        public static PluginInfo pluginInfo;
-
-        public static ConfigFile config;
-
-        public static bool RiskyModLoaded = false;
-
-        public static bool DEBUG = false;
-
-        public void Awake()
-        {
-            instance = this;
-            pluginInfo = Info;
-            config = Config;
-            LITLog.logger = Logger;
-            RiskyModLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
-
-            new LITConfig().Init();
-            new LITAssets().Init();
-            new LITContent().Init();
-            new LITLanguage().Init();
-            new LITTempItems().Init();
-        }*/
     }
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -47,6 +48,30 @@ namespace LostInTransit.Elites
             RoR2Application.onLoad += AddDefaultCollectionEntries;
             Run.onRunStartGlobal += CreateFinalizedCollections;
             On.RoR2.Util.GetBestBodyName += MakeBlightedName;
+
+            if(LITMain.ProperSaveInstalled)
+            {
+#if DEBUG
+                LITLog.Info($"ProperSave Installed, setting up save support...");
+#endif
+                ProperSaveSupport();
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void ProperSaveSupport()
+        {
+            ProperSave.SaveFile.OnGatherSaveData += SaveKillCount;
+
+        }
+
+        private static void SaveKillCount(Dictionary<string, object> obj)
+        {
+            if(BlightDirector.Instance)
+            {
+                LITLog.Message($"Saving Blighted Monsters Killed Count ({BlightDirector.KILL_COUNT_KEY}, {BlightDirector.Instance.MonstersKilled})");
+                obj.Add(BlightDirector.KILL_COUNT_KEY, BlightDirector.Instance.MonstersKilled);
+            }
         }
 
         private static string MakeBlightedName(On.RoR2.Util.orig_GetBestBodyName orig, GameObject bodyObject)
