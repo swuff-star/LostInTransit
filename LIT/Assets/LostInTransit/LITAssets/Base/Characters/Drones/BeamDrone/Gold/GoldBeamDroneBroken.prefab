@@ -5499,7 +5499,7 @@ GameObject:
   - component: {fileID: 581229458238017862}
   - component: {fileID: 5620204409272548099}
   m_Layer: 0
-  m_Name: BeamDroneBroken
+  m_Name: GoldBeamDroneBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5584,7 +5584,7 @@ MonoBehaviour:
   m_Script: {fileID: -2131767276, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterPrefab: {fileID: 2890170479074595321, guid: c8f4dde6fd036fc45b716026efa8d2ed,
+  masterPrefab: {fileID: 2890170479074595321, guid: c77d98829cc3ef94eb20577359a515dc,
     type: 3}
   callOnEquipmentSpentOnPurchase: 0
   destroyAfterSummoning: 1
@@ -5600,11 +5600,11 @@ MonoBehaviour:
   m_Script: {fileID: 370243918, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayNameToken: LIT_DRONE_BEAM_INTERACTABLE_NAME
-  contextToken: LIT_DRONE_BEAM_INTERACTABLE_CONTEXT
+  displayNameToken: LIT_DRONE_BEAM_GOLD_INTERACTABLE_NAME
+  contextToken: LIT_DRONE_BEAM_GOLD_INTERACTABLE_CONTEXT
   costType: 1
   available: 1
-  cost: 220
+  cost: 620
   automaticallyScaleCostWithDifficulty: 0
   requiredUnlockable: 
   ignoreSpherecastForInteractability: 0

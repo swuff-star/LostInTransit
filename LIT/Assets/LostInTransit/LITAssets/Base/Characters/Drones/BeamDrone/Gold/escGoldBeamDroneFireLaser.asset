@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: escGoldBeamDroneFireLaser
+  m_EditorClassIdentifier: 
+  targetType:
+    assemblyQualifiedName: EntityStates.BeamDrone.GoldBeamDroneFireLaser, LostInTransit,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: damageCoefficient
+      fieldValue:
+        stringValue: 12
+        objectValue: {fileID: 0}
+    - fieldName: procCoefficient
+      fieldValue:
+        stringValue: 3
+        objectValue: {fileID: 0}
+    - fieldName: force
+      fieldValue:
+        stringValue: 10
+        objectValue: {fileID: 0}
+    - fieldName: effectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 0}
+    - fieldName: hitEffectPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 0}
+    - fieldName: laserPrefab
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 1300326120530023, guid: b05c6ebdb4ae6cb46847df47f4ecdddc,
+          type: 3}
+    - fieldName: muzzleString
+      fieldValue:
+        stringValue: Muzzle
+        objectValue: {fileID: 0}
+    - fieldName: attackSoundString
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 0}
+    - fieldName: minSpread
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: maxSpread
+      fieldValue:
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: bulletCount
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}
+    - fieldName: fireFrequency
+      fieldValue:
+        stringValue: 10
+        objectValue: {fileID: 0}
+    - fieldName: maxDistance
+      fieldValue:
+        stringValue: 999
+        objectValue: {fileID: 0}
+    - fieldName: duration
+      fieldValue:
+        stringValue: 10
+        objectValue: {fileID: 0}
+    - fieldName: aimMaxSpeed
+      fieldValue:
+        stringValue: 20
+        objectValue: {fileID: 0}

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 8905370036601891338}
   - component: {fileID: 1896340144865384615}
   m_Layer: 0
-  m_Name: BeamDroneMaster
+  m_Name: GoldBeamDroneMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masterIndex: 0
-  bodyPrefab: {fileID: 6549451472896834303, guid: a3522f19e80789145968bb2162c1a689,
+  bodyPrefab: {fileID: 6549451472896834303, guid: 956a7cb83b862424ba2647dfb347c079,
     type: 3}
   spawnOnStart: 0
   _teamIndex: 1

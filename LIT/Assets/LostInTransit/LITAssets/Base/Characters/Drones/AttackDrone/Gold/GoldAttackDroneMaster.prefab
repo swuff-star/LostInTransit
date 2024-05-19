@@ -20,12 +20,13 @@ GameObject:
   - component: {fileID: 4243435258436112120}
   - component: {fileID: 6944175088870529870}
   - component: {fileID: 6589898239184094109}
+  - component: {fileID: 279713883822597313}
   - component: {fileID: 1775399174021187677}
   - component: {fileID: 5387280792788002227}
   - component: {fileID: 8905370036601891338}
   - component: {fileID: 1896340144865384615}
   m_Layer: 0
-  m_Name: BeamDroneMaster
+  m_Name: GoldAttackDroneMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masterIndex: 0
-  bodyPrefab: {fileID: 6549451472896834303, guid: a3522f19e80789145968bb2162c1a689,
+  bodyPrefab: {fileID: 6549451472896834303, guid: 132f94b88a2f49145bea04a8e276cc47,
     type: 3}
   spawnOnStart: 0
   _teamIndex: 1
@@ -217,7 +218,7 @@ MonoBehaviour:
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 120
+  minDistance: 60
   maxDistance: Infinity
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   shouldTapButton: 0
   buttonPressType: 0
   driverUpdateTimerOverride: 3
-  resetCurrentEnemyOnNextDriverSelection: 0
+  resetCurrentEnemyOnNextDriverSelection: 1
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &6944175088870529870
@@ -251,7 +252,93 @@ MonoBehaviour:
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: BackTooCloseTarget
+  customName: SoftLeashAttack
+  skillSlot: -1
+  requiredSkill: {fileID: 0}
+  requireSkillReady: 0
+  requireEquipmentReady: 0
+  minUserHealthFraction: -Infinity
+  maxUserHealthFraction: Infinity
+  minTargetHealthFraction: -Infinity
+  maxTargetHealthFraction: Infinity
+  minDistance: 60
+  maxDistance: Infinity
+  selectionRequiresTargetLoS: 0
+  selectionRequiresOnGround: 0
+  selectionRequiresAimTarget: 0
+  maxTimesSelected: -1
+  moveTargetType: 2
+  activationRequiresTargetLoS: 0
+  activationRequiresAimTargetLoS: 0
+  activationRequiresAimConfirmation: 0
+  movementType: 0
+  moveInputScale: 0.5
+  aimType: 1
+  ignoreNodeGraph: 0
+  shouldSprint: 0
+  shouldFireEquipment: 0
+  shouldTapButton: 0
+  buttonPressType: 0
+  driverUpdateTimerOverride: 1.5
+  resetCurrentEnemyOnNextDriverSelection: 1
+  noRepeat: 1
+  nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &6589898239184094109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890170479074595321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: SoftLeashToLeader
+  skillSlot: -1
+  requiredSkill: {fileID: 0}
+  requireSkillReady: 0
+  requireEquipmentReady: 0
+  minUserHealthFraction: -Infinity
+  maxUserHealthFraction: Infinity
+  minTargetHealthFraction: -Infinity
+  maxTargetHealthFraction: Infinity
+  minDistance: 40
+  maxDistance: Infinity
+  selectionRequiresTargetLoS: 0
+  selectionRequiresOnGround: 0
+  selectionRequiresAimTarget: 0
+  maxTimesSelected: -1
+  moveTargetType: 0
+  activationRequiresTargetLoS: 0
+  activationRequiresAimTargetLoS: 0
+  activationRequiresAimConfirmation: 0
+  movementType: 1
+  moveInputScale: 1
+  aimType: 2
+  ignoreNodeGraph: 0
+  shouldSprint: 0
+  shouldFireEquipment: 0
+  shouldTapButton: 0
+  buttonPressType: 0
+  driverUpdateTimerOverride: 0.05
+  resetCurrentEnemyOnNextDriverSelection: 1
+  noRepeat: 0
+  nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &279713883822597313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890170479074595321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: StrafeNearbyEnemies
   skillSlot: 0
   requiredSkill: {fileID: 0}
   requireSkillReady: 0
@@ -269,8 +356,8 @@ MonoBehaviour:
   moveTargetType: 0
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 0
-  activationRequiresAimConfirmation: 1
-  movementType: 3
+  activationRequiresAimConfirmation: 0
+  movementType: 2
   moveInputScale: 1
   aimType: 2
   ignoreNodeGraph: 0
@@ -278,51 +365,8 @@ MonoBehaviour:
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: 2
-  resetCurrentEnemyOnNextDriverSelection: 1
-  noRepeat: 0
-  nextHighPriorityOverride: {fileID: 0}
---- !u!114 &6589898239184094109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2890170479074595321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customName: SrafeCloseEnemy
-  skillSlot: 0
-  requiredSkill: {fileID: 0}
-  requireSkillReady: 0
-  requireEquipmentReady: 0
-  minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
-  minTargetHealthFraction: -Infinity
-  maxTargetHealthFraction: Infinity
-  minDistance: 30
-  maxDistance: 90
-  selectionRequiresTargetLoS: 1
-  selectionRequiresOnGround: 0
-  selectionRequiresAimTarget: 0
-  maxTimesSelected: -1
-  moveTargetType: 0
-  activationRequiresTargetLoS: 1
-  activationRequiresAimTargetLoS: 0
-  activationRequiresAimConfirmation: 1
-  movementType: 2
-  moveInputScale: 0.5
-  aimType: 2
-  ignoreNodeGraph: 0
-  shouldSprint: 0
-  shouldFireEquipment: 0
-  shouldTapButton: 0
-  buttonPressType: 0
-  driverUpdateTimerOverride: 2
-  resetCurrentEnemyOnNextDriverSelection: 1
+  driverUpdateTimerOverride: -1
+  resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &1775399174021187677
@@ -347,7 +391,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 70
+  maxDistance: 45
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -389,8 +433,8 @@ MonoBehaviour:
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 10
-  maxDistance: 40
+  minDistance: 0
+  maxDistance: 20
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
