@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: estcRocketDrone
   m_EditorClassIdentifier: 
   stateTypes:
-  - _typeName: EntityStates.LaserDrone.RocketDroneFire, LostInTransit, Version=0.0.0.0,
+  - _typeName: EntityStates.RocketDrone.RocketDroneFire, LostInTransit, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

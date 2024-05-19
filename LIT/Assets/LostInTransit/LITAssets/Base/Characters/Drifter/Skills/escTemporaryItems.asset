@@ -40,7 +40,7 @@ MonoBehaviour:
     - fieldName: dropTable
       fieldValue:
         stringValue: 
-        objectValue: {fileID: 11400000, guid: 6034645be2362974384f6670781b1015, type: 2}
+        objectValue: {fileID: 11400000, guid: 888b8009f4d5e1040bd06b705dcabf57, type: 2}
     - fieldName: numItems
       fieldValue:
         stringValue: 4

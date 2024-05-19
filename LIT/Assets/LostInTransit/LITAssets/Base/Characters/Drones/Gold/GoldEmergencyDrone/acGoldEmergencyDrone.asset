@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acGoldEmergencyDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 1246753649029702, guid: 3ffe504a3703a3f40b84f637b79c528c, type: 3}
+  - {fileID: 2890170479074595321, guid: 3aad516a535220c4e9485da1eaf0ed8b, type: 3}
+  - {fileID: 6690403988594969723, guid: b405685ab48eead468e4decb27c853a9, type: 3}
+  - {fileID: 11400000, guid: bef87e7d1d47989498e192611ad5df94, type: 2}
+  - {fileID: 11400000, guid: 0c060b34dabb4574d96832a200aac1ec, type: 2}
+  - {fileID: 11400000, guid: 6a7115d1c9a59274e918e28ad014d84a, type: 2}
+  - {fileID: 11400000, guid: d17e35ff2d9948e429c4eb0159fd501c, type: 2}
+  - {fileID: 11400000, guid: 99d85bab99a2cdf43bed37cef98fbcdf, type: 2}
+  - {fileID: 11400000, guid: 60feb88f24a1a1148a82baeef0f7160e, type: 2}

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: escRocketDroneFire
   m_EditorClassIdentifier: 
   targetType:
-    assemblyQualifiedName: EntityStates.LaserDrone.RocketDroneFire, LostInTransit,
+    assemblyQualifiedName: EntityStates.RocketDrone.RocketDroneFire, LostInTransit,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   serializedFieldsCollection:
     serializedFields:
     - fieldName: damageCoefficient
       fieldValue:
-        stringValue: 6
+        stringValue: 8
         objectValue: {fileID: 0}
     - fieldName: baseDuration
       fieldValue:

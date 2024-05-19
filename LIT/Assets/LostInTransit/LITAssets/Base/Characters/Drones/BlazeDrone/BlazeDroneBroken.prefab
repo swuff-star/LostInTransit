@@ -5794,7 +5794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupIndex:
     value: 0
-  targetRenderer: {fileID: 0}
+  targetRenderer: {fileID: 4153260776762285449}
   strength: 1
   highlightColor: 0
   isOn: 0
@@ -5916,7 +5916,7 @@ MonoBehaviour:
   m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: LIT_DRONE_LASER_NAME
+  displayToken: LIT_DRONE_BLAZE_NAME
 --- !u!114 &5620204409272548099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8514,7 +8514,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9787fbe4c606db5428c87abc9f57a6bd, type: 2}
+  - {fileID: 2100000, guid: a4329c3c051db384fa4345d76999df5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

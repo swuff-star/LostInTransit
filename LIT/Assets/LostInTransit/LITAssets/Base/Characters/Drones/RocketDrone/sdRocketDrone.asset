@@ -19,9 +19,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: 
+    _typeName: EntityStates.RocketDrone.RocketDroneFire, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 6
+  baseRechargeInterval: 8
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1

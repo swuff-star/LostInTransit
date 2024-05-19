@@ -72,8 +72,13 @@ namespace LostInTransit.Characters
             _cardProvider = _assetCollection.FindAsset<InteractableCardProvider>("msidcRocketDrone");
             _interactablePrefab = _assetCollection.FindAsset<GameObject>("RocketDroneBroken");
 
-            rocketPrefab = Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion());
-            rocketPrefab.GetComponent<ProjectileController>().ghostPrefab = _assetCollection.FindAsset<GameObject>("RocketGhost");
+            /*rocketPrefab = Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion());
+            ProjectileController pc = rocketPrefab.GetComponent<ProjectileController>();
+            if (pc != null)
+            {
+                pc.ghostPrefab = _assetCollection.FindAsset<GameObject>("RocketGhost");
+                EntityStates.RocketDrone.RocketDroneFire.projectilePrefab = rocketPrefab;
+            }*/
         }
 
         public void ModifyContentPack(ContentPack contentPack)

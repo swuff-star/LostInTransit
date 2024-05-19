@@ -5900,7 +5900,7 @@ MonoBehaviour:
   m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: LIT_DRONE_LASER_NAME
+  displayToken: LIT_DRONE_ATTACK_NAME
 --- !u!114 &5620204409272548099
 MonoBehaviour:
   m_ObjectHideFlags: 0

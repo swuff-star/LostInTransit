@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1229136950, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: acGoldBlazeDrone
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 6549451472896834303, guid: cca17d7b66132ef42b04d6a9d0aab981, type: 3}
+  - {fileID: 1193859181375097, guid: dee9ba110a0d5dc4981415d3becad6a1, type: 3}
+  - {fileID: 6690403988594969723, guid: b305e8203b151214a91e119e4fc18d6f, type: 3}
+  - {fileID: 11400000, guid: 5f6e20c9397b6b64fa895f4f7bbb78ec, type: 2}
+  - {fileID: 11400000, guid: 762365653086381499eb5bd8276ec87c, type: 2}
+  - {fileID: 11400000, guid: caea537a1fae5b7468c3711c60599a2c, type: 2}
+  - {fileID: 11400000, guid: 44391b3c4dd4c7341a34af25f5393e68, type: 2}
+  - {fileID: 11400000, guid: ec28bc8679a5e4a48bcae5876580ed96, type: 2}
+  - {fileID: 11400000, guid: d35fcb661e5c99842b47b65dd8fe048d, type: 2}

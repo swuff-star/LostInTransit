@@ -26,4 +26,4 @@ MonoBehaviour:
   voidTier3Weight: 0
   voidBossWeight: 0
   requiredItemTags: 
-  bannedItemTags: 
+  bannedItemTags: 14000000
