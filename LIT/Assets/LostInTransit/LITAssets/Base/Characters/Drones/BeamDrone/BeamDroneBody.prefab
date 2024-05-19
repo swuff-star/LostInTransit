@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyIndex: -1
-  baseNameToken: LIT_DRONE_LASER_NAME
+  baseNameToken: LIT_DRONE_BEAM_NAME
   subtitleNameToken: 
   bodyFlags: 2
   rootMotionInMainState: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   hideCrosshair: 0
   aimOriginTransform: {fileID: 0}
   hullClassification: 0
-  portraitIcon: {fileID: 2800000, guid: 7b647d31d4f734d43b7361e2710a4864, type: 3}
+  portraitIcon: {fileID: 2800000, guid: 10a7359784496904bba70dea7254c04a, type: 3}
   bodyColor: {r: 0.5803922, g: 0.58431375, b: 0.63529414, a: 1}
   isChampion: 0
   currentVehicle: {fileID: 0}

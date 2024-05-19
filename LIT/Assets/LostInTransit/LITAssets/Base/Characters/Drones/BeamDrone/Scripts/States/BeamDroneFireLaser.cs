@@ -19,13 +19,23 @@ namespace EntityStates.BeamDrone
         private static Vector3 aimDirection;
 
         private float originalMoveSpeed;
+        private RigidbodyDirection rbd;
 
         public override void OnEnter()
         {
             base.OnEnter();
 
+            string soundString = "Play_railgunner_R_fire";
+            Util.PlaySound(soundString, gameObject);
+
             if (loopSoundDef)
                 loopPtr = LoopSoundManager.PlaySoundLoopLocal(gameObject, loopSoundDef);
+
+            rbd = GetComponent<RigidbodyDirection>();
+            if (rbd != null)
+            {
+                rbd.enabled = false;
+            }
 
             if (hitEffectPrefab != null)
             {
@@ -49,6 +59,7 @@ namespace EntityStates.BeamDrone
             {
                 directionOverrideRequest.Dispose();
             }
+            rbd.enabled = true;
             LoopSoundManager.StopSoundLoopLocal(loopPtr);
             characterBody.moveSpeed = originalMoveSpeed;
             base.OnExit();
@@ -68,6 +79,7 @@ namespace EntityStates.BeamDrone
 
         public override void ModifyBullet(BulletAttack bulletAttack)
         {
+            bulletAttack.radius = 2f;
         }
 
         public override bool ShouldFireLaser()

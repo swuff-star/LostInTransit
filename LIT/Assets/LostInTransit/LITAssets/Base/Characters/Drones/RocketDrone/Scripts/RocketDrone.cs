@@ -1,6 +1,7 @@
 ﻿using MSU;
 using RoR2;
 using RoR2.ContentManagement;
+using RoR2.Projectile;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace LostInTransit.Characters
         private AssetCollection _assetCollection;
         private GameObject _interactablePrefab;
         private InteractableCardProvider _cardProvider;
+
+        private static GameObject rocketPrefab;
 
         private SummonMasterBehavior smb;
         private CharacterMaster cm;
@@ -68,6 +71,9 @@ namespace LostInTransit.Characters
             _characterPrefab = _assetCollection.FindAsset<GameObject>("RocketDroneBody");
             _cardProvider = _assetCollection.FindAsset<InteractableCardProvider>("msidcRocketDrone");
             _interactablePrefab = _assetCollection.FindAsset<GameObject>("RocketDroneBroken");
+
+            rocketPrefab = Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion());
+            rocketPrefab.GetComponent<ProjectileController>().ghostPrefab = _assetCollection.FindAsset<GameObject>("RocketGhost");
         }
 
         public void ModifyContentPack(ContentPack contentPack)

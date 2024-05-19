@@ -61,7 +61,7 @@ namespace LostInTransit.ScriptableObjects
 				}
 			}
 
-			return pickupDef.itemIndex != ItemIndex.None && Array.IndexOf<ItemIndex>(LITTempItems.blacklist, pickupDef.itemIndex) != -1;
+			return pickupDef.itemIndex != ItemIndex.None && Array.IndexOf<ItemIndex>(LITTempItems.blacklist, pickupDef.itemIndex) == -1;
 		}
 		public void Add(List<PickupIndex> sourceDropList, float chance)
 		{

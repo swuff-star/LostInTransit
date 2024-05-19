@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: msidcRocketDrone
   m_EditorClassIdentifier: 
   _serializedCardPairs:
-  - stageEnum: 134496704
+  - stageEnum: 134234590
     customStageNames: []
     interactableCategory: 5
     customCategoryWeight: 0
     customCategoryName: 
     card:
       spawnCard:
-        _asset: {fileID: 11400000, guid: f843c45e85fd7a0419ebe04eedd501f3, type: 2}
+        _asset: {fileID: 11400000, guid: 750409707f10d624385df729d727a120, type: 2}
         _address: 
         _useDirectReference: 1
       selectionWeight: 2
       spawnDistance: 0
       preventOverhead: 0
-      minimumStageCompletions: 2
+      minimumStageCompletions: 3
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 

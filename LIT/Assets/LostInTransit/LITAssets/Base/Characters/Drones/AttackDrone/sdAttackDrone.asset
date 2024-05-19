@@ -19,7 +19,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: 
+    _typeName: EntityStates.AttackDrone.AttackDroneFire, LostInTransit, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 1.2
   baseMaxStock: 1
