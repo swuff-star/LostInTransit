@@ -89,7 +89,7 @@ namespace EntityStates.AttackDrone
                     aimVector = r.direction,
                     origin = r.origin,
                     damage = damageCoefficient * damageStat,
-                    damageType = DamageType.Stun1s,
+                    damageType = DamageType.Generic,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
                     maxSpread = 0f,

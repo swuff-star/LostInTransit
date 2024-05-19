@@ -263,9 +263,43 @@
 		"LIT_DRONE_LASER_INTERACTABLE_NAME": "Broken Laser Drone",
 		"LIT_DRONE_LASER_INTERACTABLE_CONTEXT": "Repair Laser Drone",
 
+		"LIT_DRONE_BEAM_NAME": "Beam Drone",
+		"LIT_DRONE_BEAM_INERACTABLE_NAME": "Broken Beam Drone",
+		"LIT_DRONE_BEAM_INTERACTABLE_CONTEXT": "Repair Beam Drone",
+
+		"LIT_DRONE_BEAM_GOLD_NAME": "Gold Beam Drone",
+		"LIT_DRONE_BEAM_GOLD_INTERACTABLE_NAME": "Broken Gold Beam Drone",
+		"LIT_DRONE_BEAM_GOLD_INTERACTABLE_CONTEXT": "Repair Gold Beam Drone",
+
+		"LIT_DRONE_BLAZE_NAME": "Blaze Drone",
+		"LIT_DRONE_BLAZE_INTERACTABLE_NAME": "Broken Blaze Drone",
+		"LIT_DRONE_BLAZE_INTERACTABLE_CONTEXT": "Repair Blaze Drone",
+
+		"LIT_DRONE_BLAZE_GOLD_NAME": "Gold Blaze Drone",
+		"LIT_DRONE_BLAZE_GOLD_INTERACTABLE_NAME": "Broken Gold Blaze Drone",
+		"LIT_DRONE_BLAZE_GOLD_INTERACTABLE_CONTEXT": "Repair Gold Blaze Drone",
+
 		"LIT_DRONE_ROCKET_NAME": "Rocket Drone",
 		"LIT_DRONE_ROCKET_INTERACTABLE_NAME": "Broken Rocket Drone",
-		"LIT_DRONE_ROCKET_INTERACTABLE_CONTEXT":  "Repair Rocket Drone",
+		"LIT_DRONE_ROCKET_INTERACTABLE_CONTEXT": "Repair Rocket Drone",
+
+		"LIT_DRONE_ROCKET_GOLD_NAME": "Gold Rocket Drone",
+		"LIT_DRONE_ROCKET_GOLD_INTERACTABLE_NAME": "Broken Gold Rocket Drone",
+		"LIT_DRONE_ROCKET_GOLD_INTERACTABLE_CONTEXT": "Repair Gold Rocket Drone",
+
+		"LIT_DRONE_ATTACK_NAME": "Attack Drone",
+		"LIT_DRONE_ATTACK_INTERACTABLE_NAME": "Broken Attack Drone",
+		"LIT_DRONE_ATTACK_INTERACTABLE_CONTEXT": "Repair Attack Drone",
+
+		"LIT_DRONE_ATTACK_GOLD_NAME": "Gold Attack Drone",
+		"LIT_DRONE_ATTACK_GOLD_INTERACTABLE_NAME": "Broken Gold Attack Drone",
+		"LIT_DRONE_ATTACK_GOLD_INTERACTABLE_CONTEXT": "Repair Gold Attack Drone",
+
+		"LIT_DRONE_EMERGENCY_GOLD_NAME": "Gold Emergency Drone",
+		"LIT_DRONE_EMERGENCY_GOLD_INTERACTABLE_NAME": "Broken Gold Emergency Drone",
+		"LIT_DRONE_EMERGENCY_GOLD_INTERACTABLE_CONTEXT": "Repair Gold Emergency Drone",
+
+		"LIT_DRONE_PROTOTYPE_GOLD_NAME": "Gold TC-280 Prototype",
 
 		"LIT_DRIFTER_BODY_NAME": "Drifter",
 		"LIT_DRIFTER_DESCRIPTION": "The Drifter is a scavanger who's resourcefulness literally pays off when warding off foes.",

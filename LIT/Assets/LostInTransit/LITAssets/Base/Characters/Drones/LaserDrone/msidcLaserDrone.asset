@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: msidcLaserDrone
   m_EditorClassIdentifier: 
   _serializedCardPairs:
-  - stageEnum: 134496704
+  - stageEnum: 134627776
     customStageNames: []
     interactableCategory: 5
     customCategoryWeight: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
       selectionWeight: 2
       spawnDistance: 0
       preventOverhead: 0
-      minimumStageCompletions: 2
+      minimumStageCompletions: 1
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 

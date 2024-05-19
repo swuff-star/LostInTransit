@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d10af29dc523c7243a6e6e3d787aa1d6, type: 3}
-  m_Name: msidcRocketDrone
+  m_Name: msidcBlazeDrone
   m_EditorClassIdentifier: 
   _serializedCardPairs:
-  - stageEnum: 134234590
+  - stageEnum: 393408
     customStageNames: []
     interactableCategory: 5
     customCategoryWeight: 0
     customCategoryName: 
     card:
       spawnCard:
-        _asset: {fileID: 11400000, guid: 750409707f10d624385df729d727a120, type: 2}
+        _asset: {fileID: 11400000, guid: b2df38f146c1b4f458b841e930491fff, type: 2}
         _address: 
         _useDirectReference: 1
-      selectionWeight: 2
+      selectionWeight: 4
       spawnDistance: 0
       preventOverhead: 0
       minimumStageCompletions: 3

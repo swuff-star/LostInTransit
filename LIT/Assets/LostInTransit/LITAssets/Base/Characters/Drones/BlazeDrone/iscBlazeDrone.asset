@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1063210218, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: iscAttackDrone
+  m_Name: iscBlazeDrone
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6690403988594969723, guid: 90811e44e1b0f464b92ba86f6ef704e5, type: 3}
+  prefab: {fileID: 6690403988594969723, guid: 0084e11486723704db38b30cd882febc, type: 3}
   sendOverNetwork: 1
   hullSize: 1
   nodeGraphType: 0
   requiredFlags: 0
   forbiddenFlags: 8
-  directorCreditCost: 24
+  directorCreditCost: 35
   occupyPosition: 1
   eliteRules: 0
   orientToFloor: 1
