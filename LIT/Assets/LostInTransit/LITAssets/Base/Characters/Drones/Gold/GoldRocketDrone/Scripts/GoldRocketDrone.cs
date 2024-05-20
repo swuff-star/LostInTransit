@@ -12,7 +12,7 @@ namespace LostInTransit.Characters
     public class GoldRocketDrone : LITInteractable, IContentPackModifier
     {
         public override GameObject InteractablePrefab => _interactablePrefab;
-        public override InteractableCardProvider CardProvider => _cardProvider;
+        public override NullableRef<InteractableCardProvider> CardProvider => _cardProvider;
         public GameObject CharacterPrefab => _characterPrefab;
 
         private GameObject _characterPrefab;
@@ -87,7 +87,7 @@ namespace LostInTransit.Characters
                     placementMode = DirectorPlacementRule.PlacementMode.Direct,
                     position = contactPoint
                 };
-                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(CardProvider.BuildSpawnCardSet().FirstOrDefault(), placementRule, new Xoroshiro128Plus(0UL)));
+                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(CardProvider.Value.BuildSpawnCardSet().FirstOrDefault(), placementRule, new Xoroshiro128Plus(0UL)));
                 if (gameObject)
                 {
                     PurchaseInteraction component = gameObject.GetComponent<PurchaseInteraction>();

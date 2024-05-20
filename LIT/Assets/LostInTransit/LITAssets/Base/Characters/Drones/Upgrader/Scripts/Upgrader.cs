@@ -14,7 +14,7 @@ namespace LostInTransit.Characters
     public class Upgrader : LITInteractable, IContentPackModifier
     {
         public override GameObject InteractablePrefab => _interactablePrefab;
-        public override InteractableCardProvider CardProvider => _cardProvider;
+        public override NullableRef<InteractableCardProvider> CardProvider => _cardProvider;
 
         private AssetCollection _assetCollection;
         private GameObject _interactablePrefab;
