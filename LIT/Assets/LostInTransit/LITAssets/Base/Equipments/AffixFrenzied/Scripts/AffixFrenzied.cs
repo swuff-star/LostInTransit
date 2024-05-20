@@ -100,8 +100,9 @@ namespace LostInTransit.Equipments
             private GameObject _blinkReadyInstance;
             private float _aiCooldownStopwatch;
 
-            protected void Awake()
+            protected override void Awake()
             {
+                base.Awake();
                 _inputBank = GetComponent<InputBankTest>();
                 _slot = GetComponent<EquipmentSlot>();
                 _stateOnHurt = GetComponent<SetStateOnHurt>();

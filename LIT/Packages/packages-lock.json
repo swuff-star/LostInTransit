@@ -6,18 +6,6 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "bubbet-zioconfigfile": {
-      "version": "file:ZioConfigFile",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "bubbet-zioriskofoptions": {
-      "version": "file:ZioRiskOfOptions",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.passivepicasso.thunderkit": {
       "version": "https://github.com/PassivePicasso/ThunderKit.git#8.0.6",
       "depth": 0,
@@ -48,8 +36,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "iharbhd-debugtoolkit": {
-      "version": "file:DebugToolkit",
+    "kingenderbrine-propersave": {
+      "version": "file:ProperSave",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -295,7 +283,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "fcdc7988199e8b8ae39a3c4ffea39648662e600e"
+      "hash": "2a91c3d66152eb29a36b9fc8e1fa1517414a77a2"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

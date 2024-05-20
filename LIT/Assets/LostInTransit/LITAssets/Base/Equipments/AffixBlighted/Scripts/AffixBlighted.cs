@@ -45,6 +45,15 @@ namespace LostInTransit.Equipments
         public override void Initialize()
         {
             IL.RoR2.GlobalEventManager.OnCharacterDeath += GiveFakeBlightBuff;
+            RoR2Application.onLateUpdate += UpdateBlightedDisplayMaterials;
+        }
+
+        private void UpdateBlightedDisplayMaterials()
+        {
+            foreach(var affixBlightedBehaviour in InstanceTracker.GetInstancesList<AffixBlightedBehaviour>())
+            {
+                affixBlightedBehaviour.InstanceUpdate();
+            }
         }
 
         //If the killer has wake of vultures, and kills a blighted elite, it seems to give them the buff itself, but the buff doesnt sync the victim's elites properly, leaving a chance for permanent elite effects. Instead we'll give the player a "Fake" buff, which has the same icon but doesnt have any behaviours. I should probably figure out a better way to avoid this, but idk. -N
@@ -170,7 +179,7 @@ namespace LostInTransit.Equipments
         {
             [BuffDefAssociation]
             public static BuffDef GetBuffDef() => LITContent.Buffs.bdAffixBlighted;
-            public BuffDef FirstEliteBuff => _first ? _second.eliteEquipmentDef.passiveBuffDef : null;
+            public BuffDef FirstEliteBuff => _first ? _first.eliteEquipmentDef.passiveBuffDef : null;
             public BuffDef SecondEliteBuff => _second ? _second.eliteEquipmentDef.passiveBuffDef : null;
 
             private EliteDef _first;
@@ -179,8 +188,14 @@ namespace LostInTransit.Equipments
             private BlightedBodyAttachment _blightedAttachment;
             private float _aiRandomizeEliteStopwatch;
 
-            private void Awake()
+            private List<CharacterModel.ParentedPrefabDisplay> _firstDisplays = new List<CharacterModel.ParentedPrefabDisplay>();
+            private List<CharacterModel.ParentedPrefabDisplay> _secondDisplays = new List<CharacterModel.ParentedPrefabDisplay>();
+            private CharacterModel _characterModel;
+            private ChildLocator _childLocator;
+            private bool _supportsMultipleDisplays;
+            protected override void Awake()
             {
+                base.Awake();
                 _attachment = Instantiate(_blightedBodyAttachment).GetComponent<NetworkedBodyAttachment>();
                 _blightedAttachment = _attachment.GetComponent<BlightedBodyAttachment>();
                 _attachment.gameObject.SetActive(false);
@@ -188,24 +203,44 @@ namespace LostInTransit.Equipments
 
             protected override void OnFirstStackGained()
             {
-                if (_attachment.attachedBody != CharacterBody)
+                base.OnFirstStackGained();
+                var characterBody = GetComponent<CharacterBody>();
+                if (_attachment.attachedBody != characterBody)
                 {
-                    _attachment.AttachToGameObjectAndSpawn(CharacterBody.gameObject);
+                    _attachment.AttachToGameObjectAndSpawn(characterBody.gameObject);
+                }
+
+                var modelTransform = characterBody.modelLocator ? characterBody.modelLocator.modelTransform : null;
+                if(modelTransform)
+                {
+                    _characterModel = modelTransform.GetComponent<CharacterModel>();
+                    _childLocator = modelTransform.GetComponent<ChildLocator>();
+                    _supportsMultipleDisplays = _characterModel && _childLocator && _characterModel.itemDisplayRuleSet;
                 }
 
                 if (_attachment.attached)
                     _attachment.gameObject.SetActive(true);
+
+                InstanceTracker.Add(this);
             }
 
             protected override void OnAllStacksLost()
             {
+                base.OnAllStacksLost();
+                var characterBody = GetComponent<CharacterBody>();
+
                 if (_attachment.attached)
                     _attachment.gameObject.SetActive(false);
 
                 if (FirstEliteBuff)
-                    CharacterBody.RemoveBuff(FirstEliteBuff);
+                    characterBody.RemoveBuff(FirstEliteBuff);
                 if (SecondEliteBuff)
-                    CharacterBody.RemoveBuff(SecondEliteBuff);
+                    characterBody.RemoveBuff(SecondEliteBuff);
+
+                UndoDisplays(_firstDisplays);
+                UndoDisplays(_secondDisplays);
+
+                InstanceTracker.Remove(this);
             }
 
             private void Start()
@@ -221,10 +256,47 @@ namespace LostInTransit.Equipments
                 _blightedAttachment.RandomizeElites();
             }
 
+            internal void InstanceUpdate()
+            {
+                if (!_supportsMultipleDisplays || !_characterModel)
+                    return;
+
+                if (!_characterModel.materialsDirty)
+                    return;
+
+                Color value = Color.black;
+                if(CharacterBody && CharacterBody.healthComponent)
+                {
+                    float num = Mathf.Clamp01(1f - CharacterBody.healthComponent.timeSinceLastHit / CharacterModel.hitFlashDuration);
+                    float num2 = Mathf.Pow(Mathf.Clamp01(1f - CharacterBody.healthComponent.timeSinceLastHeal / CharacterModel.healFlashDuration), 0.5f);
+                    value = ((!(num2 > num)) ? (((CharacterBody.healthComponent.shield > 0f) ? CharacterModel.hitFlashShieldColor : CharacterModel.hitFlashBaseColor) * num) : (CharacterModel.healFlashColor * num2));
+                }
+                for(int i = 0; i < _firstDisplays.Count; i++)
+                {
+                    UpdateSingle(_firstDisplays[i].itemDisplay);
+                }
+                for(int i = 0; i < _secondDisplays.Count; i++)
+                {
+                    UpdateSingle(_secondDisplays[i].itemDisplay);
+                }
+
+                void UpdateSingle(ItemDisplay itemDisplay)
+                {
+                    for(int i = 0; i < itemDisplay.rendererInfos.Length; i++)
+                    {
+                        Renderer renderer = itemDisplay.rendererInfos[i].renderer;
+                        renderer.GetPropertyBlock(_characterModel.propertyStorage);
+                        _characterModel.propertyStorage.SetColor(CommonShaderProperties._FlashColor, value);
+                        _characterModel.propertyStorage.SetFloat(CommonShaderProperties._Fade, _characterModel.fade);
+                        renderer.SetPropertyBlock(_characterModel.propertyStorage);
+                    }
+                }
+            }
+
             private void FixedUpdate()
             {
-                UpdateIndividual(ref _first, _blightedAttachment.FirstIndex);
-                UpdateIndividual(ref _second, _blightedAttachment.SecondIndex);
+                UpdateIndividual(ref _first, _firstDisplays, _blightedAttachment.FirstIndex);
+                UpdateIndividual(ref _second, _secondDisplays, _blightedAttachment.SecondIndex);
 
                 //Makes ai blighted elites shuffle their elites every 60 seconds.
                 if (NetworkServer.active && !CharacterBody.isPlayerControlled)
@@ -238,7 +310,7 @@ namespace LostInTransit.Equipments
                 }
             }
 
-            private void UpdateIndividual(ref EliteDef eliteDef, EliteIndex index)
+            private void UpdateIndividual(ref EliteDef eliteDef, List<CharacterModel.ParentedPrefabDisplay> displays, EliteIndex index)
             {
                 //If we dont have an eliteDef, and the incoming index is not none, update our current eliteDef
                 if (!eliteDef)
@@ -246,6 +318,10 @@ namespace LostInTransit.Equipments
                     if (index != EliteIndex.None)
                     {
                         eliteDef = EliteCatalog.GetEliteDef(index);
+
+                        if(_supportsMultipleDisplays)
+                            ActivateDisplays(eliteDef, displays);
+    
                         if (NetworkServer.active && eliteDef.eliteEquipmentDef.passiveBuffDef)
                         {
                             CharacterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
@@ -257,13 +333,51 @@ namespace LostInTransit.Equipments
                     if (eliteDef.eliteIndex == index)
                         return;
 
+                    if(_supportsMultipleDisplays)
+                        UndoDisplays(displays);
+    
                     if (NetworkServer.active)
                         CharacterBody.RemoveBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
 
                     eliteDef = EliteCatalog.GetEliteDef(index);
 
+                    if(_supportsMultipleDisplays)
+                        ActivateDisplays(eliteDef, displays);
+    
                     if (NetworkServer.active)
                         CharacterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                }
+            }
+            
+            private void UndoDisplays(List<CharacterModel.ParentedPrefabDisplay> displays)
+            {
+                for(int i = displays.Count - 1; i >= 0; i--)
+                {
+                    displays[i].Undo();
+                    displays.RemoveAt(i);
+                }
+            }
+
+            private void ActivateDisplays(EliteDef eliteDef, List<CharacterModel.ParentedPrefabDisplay> container)
+            {
+                DisplayRuleGroup group = _characterModel.itemDisplayRuleSet.GetEquipmentDisplayRuleGroup(eliteDef.eliteEquipmentDef.equipmentIndex);
+                
+                if(group.rules == null)
+                {
+                    return;
+                }
+                for(int i = 0; i < group.rules.Length; i++)
+                {
+                    ItemDisplayRule rule = group.rules[i];
+                    Transform transform = _childLocator.FindChild(rule.childName);
+                    if (!transform)
+                        continue;
+
+                    CharacterModel.ParentedPrefabDisplay display = default(CharacterModel.ParentedPrefabDisplay);
+                    display.itemIndex = ItemIndex.None;
+                    display.equipmentIndex = eliteDef.eliteEquipmentDef.equipmentIndex;
+                    display.Apply(_characterModel, rule.followerPrefab, transform, rule.localPos, Quaternion.Euler(rule.localAngles), rule.localScale);
+                    container.Add(display);
                 }
             }
         }

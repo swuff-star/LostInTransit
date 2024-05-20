@@ -195,8 +195,9 @@ namespace LostInTransit.Items
             private float checkTime = 0.333f;
             private float checkTimer = 0f;
 
-            public void Awake()
+            protected override void Awake()
             {
+                base.Awake();
                 hits = new List<HurtBox>();
                 search = new SphereSearch();
                 search.mask = LayerIndex.entityPrecise.mask;

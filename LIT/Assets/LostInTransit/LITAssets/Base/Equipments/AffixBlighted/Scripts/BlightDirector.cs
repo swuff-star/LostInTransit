@@ -6,11 +6,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.ObjectModel;
 using LostInTransit.Elites;
+using System.Runtime.CompilerServices;
 
 namespace LostInTransit.Components
 {
     public class BlightDirector : MonoBehaviour
     {
+        public const string KILL_COUNT_KEY = "LIT_" + nameof(MonstersKilled);
         public const float MAX_SPAWN_RATE = 1f;
         public const float MIN_TIME_BEFORE_KILLS_COUNT = 1200f;
         public const float SPAWN_RATE_PER_MONSTER_KILLED = 0.001f;
@@ -69,7 +71,12 @@ namespace LostInTransit.Components
             Instance = this;
 
             GlobalEventManager.onCharacterDeathGlobal += OnEnemyKilled;
+            CharacterSpawnCard.onSpawnedServerGlobal += TrySpawn;
             CharacterBody.onBodyStartGlobal += TrySpawn;
+        }
+
+        private void TrySpawn(SpawnCard.SpawnResult obj)
+        {
         }
 
         private void OnDisable()
@@ -84,7 +91,21 @@ namespace LostInTransit.Components
         }
         private void Start()
         {
+            if(LITMain.ProperSaveInstalled)
+            {
+                RetrieveKillCountFromProperSave();
+            }
             RecalculateSpawnChance();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private void RetrieveKillCountFromProperSave()
+        {
+            if (ProperSave.Loading.CurrentSave == null)
+                return;
+
+            MonstersKilled = ProperSave.Loading.CurrentSave.GetModdedData<ulong>(KILL_COUNT_KEY);
+            LITLog.Message($"Retrieved ProperSave's Kill Count, MonstersKilled set to {MonstersKilled}");
         }
 
         //Who knew fucking guard clauses where good? -N

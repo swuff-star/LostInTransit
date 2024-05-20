@@ -122,8 +122,9 @@ namespace LostInTransit.Equipments
             private NetworkedBodyAttachment _attachment;
             private EntityStateMachine _explosionStateMachine;
 
-            private void Awake()
+            protected override void Awake()
             {
+                base.Awake();
                 _attachment = Instantiate(_volatileAttachment).GetComponent<NetworkedBodyAttachment>();
                 _explosionStateMachine = _attachment.GetComponent<EntityStateMachine>();
                 _attachment.gameObject.SetActive(false);
@@ -190,6 +191,7 @@ namespace LostInTransit.Equipments
 
             protected override void OnDestroy()
             {
+                base.OnDestroy();
                 if (_attachment)
                     Destroy(_attachment.gameObject);
             }
