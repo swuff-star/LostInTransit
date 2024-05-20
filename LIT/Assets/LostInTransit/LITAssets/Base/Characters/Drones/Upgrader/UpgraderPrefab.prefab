@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994408594493145766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5551062784651215101}
@@ -339,7 +339,7 @@ MonoBehaviour:
   contextToken: LIT_INTERACTABLE_UPGRADER_CONTEXT
   costType: 0
   available: 1
-  cost: 0
+  cost: 3
   automaticallyScaleCostWithDifficulty: 0
   requiredUnlockable: 
   ignoreSpherecastForInteractability: 0
@@ -444,9 +444,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: 
   initialStateType:
-    _typeName: EntityStates.TestState1, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
-    _typeName: 
+    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &7813652559990593766
 MonoBehaviour:
   m_ObjectHideFlags: 0
