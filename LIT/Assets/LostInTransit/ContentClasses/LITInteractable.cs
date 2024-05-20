@@ -15,9 +15,8 @@ namespace LostInTransit
     {
         IInteractable IGameObjectContentPiece<IInteractable>.Component => InteractablePrefab.GetComponent<IInteractable>();
         GameObject IContentPiece<GameObject>.Asset => InteractablePrefab;
-        InteractableCardProvider IInteractableContentPiece.CardProvider => CardProvider;
         public abstract GameObject InteractablePrefab { get; }
-        public abstract InteractableCardProvider CardProvider { get; }
+        public abstract NullableRef<InteractableCardProvider> CardProvider { get; }
 
         public abstract void Initialize();
         public abstract bool IsAvailable(ContentPack contentPack);

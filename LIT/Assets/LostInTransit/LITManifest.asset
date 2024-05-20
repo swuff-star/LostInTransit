@@ -119,7 +119,7 @@ MonoBehaviour:
   - assetBundleName: litmain
     assets:
     - {fileID: 11400000, guid: 2ce2fbceed4048348804f7408472b68c, type: 2}
-    - {fileID: 11400000, guid: 107c76cde60158548a897912447a2a63, type: 2}
+    - {fileID: 3974588144608092081, guid: e7c3259b600124f41a257da22105fa03, type: 3}
     - {fileID: 2800000, guid: f04053fdead41624d856cf4823829d97, type: 3}
     - {fileID: 2800000, guid: b96edc6e52910cc4a858cbbf1b2dbaf0, type: 3}
     - {fileID: 2800000, guid: b34e1c9bc387cee4eb1fde5b1d518aa3, type: 3}
@@ -128,6 +128,7 @@ MonoBehaviour:
     - {fileID: 102900000, guid: 15fa85ba063d4f14483a9fd9971fdb75, type: 3}
     - {fileID: 102900000, guid: f28e7e4fe1a1ef14eb3552448ab2ef8f, type: 3}
     - {fileID: 102900000, guid: c1d6dfe9aa990e54e8ae2267775c03d2, type: 3}
+    - {fileID: 102900000, guid: 7d40b82e91b39f34680ef9806b0ba663, type: 3}
   - assetBundleName: litartifacts
     assets:
     - {fileID: 102900000, guid: 872271561cfdfac47bf6159314b69aef, type: 3}

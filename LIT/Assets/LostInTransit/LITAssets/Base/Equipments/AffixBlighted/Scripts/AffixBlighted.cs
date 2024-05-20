@@ -237,6 +237,9 @@ namespace LostInTransit.Equipments
                 if (SecondEliteBuff)
                     characterBody.RemoveBuff(SecondEliteBuff);
 
+                UndoDisplays(_firstDisplays);
+                UndoDisplays(_secondDisplays);
+
                 InstanceTracker.Remove(this);
             }
 
