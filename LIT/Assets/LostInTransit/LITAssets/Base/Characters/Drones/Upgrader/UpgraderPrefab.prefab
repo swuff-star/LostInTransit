@@ -444,9 +444,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: 
   initialStateType:
-    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _typeName: EntityStates.Upgrader.Idle, LostInTransit, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   mainStateType:
-    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _typeName: EntityStates.Upgrader.Action, LostInTransit, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &7813652559990593766
 MonoBehaviour:
   m_ObjectHideFlags: 0

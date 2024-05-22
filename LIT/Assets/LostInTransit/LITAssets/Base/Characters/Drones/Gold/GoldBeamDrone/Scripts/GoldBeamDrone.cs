@@ -13,7 +13,9 @@ namespace LostInTransit.Characters
         public override GameObject InteractablePrefab => _interactablePrefab;
         public override NullableRef<InteractableCardProvider> CardProvider => _cardProvider;
         public GameObject CharacterPrefab => _characterPrefab;
+        public GameObject CharacterMaster => _characterMaster;
 
+        private GameObject _characterMaster;
         private GameObject _characterPrefab;
         private AssetCollection _assetCollection;
         private GameObject _interactablePrefab;
@@ -68,6 +70,7 @@ namespace LostInTransit.Characters
             _characterPrefab = _assetCollection.FindAsset<GameObject>("GoldBeamDroneBody");
             _cardProvider = _assetCollection.FindAsset<InteractableCardProvider>("msidcGoldBeamDrone");
             _interactablePrefab = _assetCollection.FindAsset<GameObject>("GoldBeamDroneBroken");
+            _characterMaster = _assetCollection.FindAsset<GameObject>("GoldBeamDroneMaster");
         }
 
         public void ModifyContentPack(ContentPack contentPack)

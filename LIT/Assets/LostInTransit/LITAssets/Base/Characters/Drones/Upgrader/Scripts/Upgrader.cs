@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace LostInTransit.Characters
+namespace LostInTransit.Interactables
 {
     public class Upgrader : LITInteractable, IContentPackModifier
     {
@@ -21,7 +21,7 @@ namespace LostInTransit.Characters
         private InteractableCardProvider _cardProvider;
         private static GameObject _bodyOrb;
 
-        public static List<KeyValuePair<string, string>> dronePairs = new List<KeyValuePair<string, string>>();
+        public static Dictionary<string, GameObject> droneUpgrades = new Dictionary<string, GameObject>();
 
         public static CostTypeDef droneCostDef;
         public static int droneCostIndex;
@@ -34,6 +34,21 @@ namespace LostInTransit.Characters
 
             var interactionToken = InteractablePrefab.AddComponent<UpgraderInteractionToken>();
             interactionToken.PurchaseInteraction = InteractablePrefab.GetComponent<PurchaseInteraction>();
+            SetupDroneUpgrades();
+        }
+
+        private void SetupDroneUpgrades()
+        {
+            droneUpgrades.Add("DRONE_GUNNER_BODY_NAME", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/Drone1Master.prefab").WaitForCompletion());
+            droneUpgrades.Add("DRONE_HEALING_BODY_NAME", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/Drone2Master.prefab").WaitForCompletion());
+            droneUpgrades.Add("FLAMEDRONE_BODY_NAME", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/FlameDroneMaster.prefab").WaitForCompletion());
+            droneUpgrades.Add("DRONE_MISSILE_BODY_NAME", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/DroneMissileMaster.prefab").WaitForCompletion());
+            droneUpgrades.Add("LIT_DRONE_LASER_NAME", LITAssets.LoadAsset<GameObject>("LaserDroneMaster", LITBundle.Characters));
+            droneUpgrades.Add("LIT_DRONE_ATTACK_NAME", LITAssets.LoadAsset<GameObject>("GoldAttackDroneMaster", LITBundle.Characters));
+            droneUpgrades.Add("DRONE_EMERGENCY_BODY_NAME", LITAssets.LoadAsset<GameObject>("GoldEmergencyDroneMaster", LITBundle.Characters));
+            droneUpgrades.Add("LIT_DRONE_BLAZE_NAME", LITAssets.LoadAsset<GameObject>("GoldBlazeDroneMaster", LITBundle.Characters));
+            droneUpgrades.Add("LIT_DRONE_ROCKET_NAME", LITAssets.LoadAsset<GameObject>("GoldRocketDroneMaster", LITBundle.Characters));
+            droneUpgrades.Add("LIT_DRONE_BEAM_NAME", LITAssets.LoadAsset<GameObject>("GoldBeamDroneMaster", LITBundle.Characters));
         }
 
         public override bool IsAvailable(ContentPack contentPack)
@@ -119,6 +134,12 @@ namespace LostInTransit.Characters
                     List<CharacterMaster> missileDroneMinions = new List<CharacterMaster>();
                     List<CharacterMaster> laserDroneMinions = new List<CharacterMaster>();
 
+                    List<CharacterMaster> attackDroneMinions = new List<CharacterMaster>();
+                    List<CharacterMaster> emergencyDroneMinions = new List<CharacterMaster>();
+                    List<CharacterMaster> blazeDroneMinions = new List<CharacterMaster>();
+                    List<CharacterMaster> rocketDroneMinions = new List<CharacterMaster>();
+                    List<CharacterMaster> beamDroneMinions = new List<CharacterMaster>();
+
                     foreach (var drone in members)
                     {
                         if (drone)
@@ -150,6 +171,21 @@ namespace LostInTransit.Characters
                                             case "LIT_DRONE_LASER_NAME":
                                                 laserDroneMinions.Add(master);
                                                 break;
+                                            case "LIT_DRONE_ATTACK_NAME":
+                                                attackDroneMinions.Add(master);
+                                                break;
+                                            case "DRONE_EMERGENCY_BODY_NAME":
+                                                emergencyDroneMinions.Add(master);
+                                                break;
+                                            case "LIT_DRONE_BLAZE_NAME":
+                                                blazeDroneMinions.Add(master);
+                                                break;
+                                            case "LIT_DRONE_ROCKET_NAME":
+                                                rocketDroneMinions.Add(master);
+                                                break;
+                                            case "LIT_DRONE_BEAM_NAME":
+                                                beamDroneMinions.Add(master);
+                                                break;
                                         }
                                     }
                                 }
@@ -159,7 +195,8 @@ namespace LostInTransit.Characters
 
                     List<CharacterMaster> validMinions = new List<CharacterMaster>();
 
-                    if (drone1Minions.Count >= 3)
+                    //if you're seeing this and thinking "that's so fucking stupid" please for the love of god suggest a better way to write this
+                    /*if (drone1Minions.Count >= 3)
                         validMinions = drone1Minions;
 
                     if (drone2Minions.Count >= 3)
@@ -174,6 +211,44 @@ namespace LostInTransit.Characters
                     if (laserDroneMinions.Count >= 3)
                         validMinions = laserDroneMinions;
 
+                    if (attackDroneMinions.Count >= 3)
+                        validMinions = attackDroneMinions;
+
+                    if (emergencyDroneMinions.Count >= 3)
+                        validMinions = emergencyDroneMinions;
+
+                    if (blazeDroneMinions.Count >= 3)
+                        validMinions = blazeDroneMinions;
+
+                    if (rocketDroneMinions.Count >= 3)
+                        validMinions = rocketDroneMinions;
+
+                    if (beamDroneMinions.Count >= 3)
+                        validMinions = beamDroneMinions;*/
+
+                    List<List<CharacterMaster>> masterLists = new List<List<CharacterMaster>>()
+                    {
+                        drone1Minions,
+                        drone2Minions,
+                        flameDroneMinions,
+                        missileDroneMinions,
+                        laserDroneMinions,
+                        attackDroneMinions,
+                        emergencyDroneMinions,
+                        blazeDroneMinions,
+                        rocketDroneMinions,
+                        beamDroneMinions
+                    };
+
+                    foreach (var minionList in masterLists)
+                    {
+                        if (minionList.Count >= 3)
+                        {
+                            validMinions = minionList;
+                            break;
+                        }
+                    }
+
                     MultiShopCardUtils.OnNonMoneyPurchase(context);
 
                     var model = context.purchasedObject;
@@ -181,10 +256,14 @@ namespace LostInTransit.Characters
                     var esm = model.GetComponent<EntityStateMachine>();
                     if (esm)
                     {
-                        /*DestroyLeadin nextState = new DestroyLeadin();
-                        nextState.droneIndex = (int)drone.bodyIndex + 1;
-                        nextState.itemIndex = (int)ind.pickupDef.itemIndex;
-                        esm.SetNextState(nextState);*/
+                        EntityStates.Upgrader.Action nextState = new EntityStates.Upgrader.Action();
+                        GameObject masterPrefab = null;
+                        droneUpgrades.TryGetValue(validMinions[0].GetBody().baseNameToken, out masterPrefab);
+                        if (masterPrefab == null)
+                            return;
+                        nextState.droneMasterPrefab = masterPrefab;
+                        nextState.summonerBody = body.gameObject;
+                        esm.SetNextState(nextState);
                     }
 
                     Debug.Log("valid minions: " + validMinions.Count);
