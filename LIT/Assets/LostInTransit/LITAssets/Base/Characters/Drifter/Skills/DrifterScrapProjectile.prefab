@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 3397164324637756930}
   - component: {fileID: 8191680297743051120}
   - component: {fileID: 5953467969526102556}
-  - component: {fileID: 1408565810533105211}
   m_Layer: 14
   m_Name: DrifterScrapProjectile
   m_TagString: Untagged
@@ -270,60 +269,6 @@ MonoBehaviour:
       m_Calls: []
   fireFrequency: 60
   resetInterval: -1
---- !u!114 &1408565810533105211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5499954412175847519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  falloffModel: 1
-  blastRadius: 5
-  blastDamageCoefficient: 1
-  blastProcCoefficient: 1
-  blastAttackerFiltering: 0
-  bonusBlastForce: {x: 0, y: 0, z: 0}
-  canRejectForce: 1
-  projectileHealthComponent: {fileID: 0}
-  explosionEffect: {fileID: 0}
-  explosionSoundString: 
-  fireChildren: 1
-  childrenProjectilePrefab: {fileID: 5499954412175847519, guid: 01580f4ac1adf37409f7a3155170c498,
-    type: 3}
-  childrenCount: 5
-  childrenDamageCoefficient: 0.2
-  minAngleOffset: {x: 360, y: 360, z: 360}
-  maxAngleOffset: {x: -360, y: -360, z: -360}
-  minRollDegrees: 0
-  rangeRollDegrees: 0
-  minPitchDegrees: 0
-  rangePitchDegrees: 0
-  useLocalSpaceForChildren: 0
-  applyDot: 0
-  dotIndex: -1
-  dotDuration: 0
-  dotDamageMultiplier: 1
-  applyMaxStacksFromAttacker: 0
-  maxStacksFromAttacker: 4294967295
-  calculateTotalDamage: 0
-  totalDamageMultiplier: 0
-  impactEffect: {fileID: 0}
-  lifetimeExpiredSoundString: 
-  lifetimeExpiredSound: {fileID: 0}
-  offsetForLifetimeExpiredSound: 0
-  destroyOnEnemy: 0
-  destroyOnWorld: 0
-  impactOnWorld: 1
-  timerAfterImpact: 0
-  lifetime: 8
-  lifetimeAfterImpact: 0
-  lifetimeRandomOffset: 0
-  transformSpace: 0
 --- !u!1 &6188159132364108756
 GameObject:
   m_ObjectHideFlags: 0
