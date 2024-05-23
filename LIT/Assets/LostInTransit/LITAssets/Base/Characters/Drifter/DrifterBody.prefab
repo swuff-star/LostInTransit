@@ -4371,7 +4371,7 @@ MonoBehaviour:
       PublicKeyToken=null
   idleStateMachine:
   - {fileID: 2641536380671084045}
-  - {fileID: 0}
+  - {fileID: 2641536380671084045}
 --- !u!114 &3027930811522988168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,7 +4518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minScrap: 0
-  maxScrap: 12
+  maxScrap: 14
   overlayPrefab: {fileID: 1894802512682313, guid: 07426d6f622c8b64d8d3c5e90069e9e9,
     type: 3}
   overlayChildLocatorEntry: CrosshairExtras

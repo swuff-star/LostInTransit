@@ -17,8 +17,8 @@ MonoBehaviour:
       PublicKeyToken=null
   - _typeName: EntityStates.Drifter.Suffocate, LostInTransit, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - _typeName: EntityStates.Drifter.ScrapProjectile, LostInTransit, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  - _typeName: EntityStates.Drifter.HurlScrap, LostInTransit, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - _typeName: EntityStates.Drifter.TemporaryItems, LostInTransit, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   - _typeName: EntityStates.Drifter.SwingBag, LostInTransit, Version=0.0.0.0, Culture=neutral,

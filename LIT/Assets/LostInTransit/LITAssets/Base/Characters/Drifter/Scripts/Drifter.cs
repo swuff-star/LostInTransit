@@ -19,7 +19,7 @@ namespace LostInTransit.Characters
         public override NullableRef<GameObject> MasterPrefab => throw new System.NotImplementedException();
         private GameObject _masterPrefab;
 
-        public override GameObject CharacterPrefab => throw new System.NotImplementedException();
+        public override GameObject CharacterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
 
         private AssetCollection _assetCollection;
@@ -101,7 +101,7 @@ namespace LostInTransit.Characters
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            return false;
+            return true;
         }
 
         public override IEnumerator LoadContentAsync()
@@ -116,6 +116,7 @@ namespace LostInTransit.Characters
 
             _survivorDef = _assetCollection.FindAsset<SurvivorDef>("SurvivorDrifter");
             _characterPrefab = _assetCollection.FindAsset<GameObject>("DrifterBody");
+            _scrapPickup = _assetCollection.FindAsset<GameObject>("ScrapPickup");
         }
 
         public void ModifyContentPack(ContentPack contentPack)

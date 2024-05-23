@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 namespace EntityStates.Drifter
 {
 #if DEBUG
-    class SwingBag : BasicMeleeAttack, SteppedSkillDef.IStepSetter
+    class SwingBag : BasicMeleeAttack, SteppedSkillDef.IStepSetter, ISkillState
     {
         public int swing = 0;
 
@@ -27,6 +27,8 @@ namespace EntityStates.Drifter
         private float durationBeforeInterruptable;
 
         private DrifterBagComponent dbc;
+
+        public GenericSkill activatorSkillSlot { get; set; }
 
         public override void OnEnter()
         {
@@ -58,7 +60,7 @@ namespace EntityStates.Drifter
         public override void PlayAnimation()
         {
             //Debug.Log("play anim");
-            string animationStateName = "Swing" + swing;
+            string animationStateName = "Swing" + swing.ToString();
             PlayCrossfade("Gesture, Override", animationStateName, "Primary.playbackRate", duration * swingTimeCoefficient, 0.1f);
         }
 
@@ -72,12 +74,14 @@ namespace EntityStates.Drifter
         {
             base.OnSerialize(writer);
             writer.Write((byte)swing);
+            this.Serialize(skillLocator, writer);
         }
 
         public override void OnDeserialize(NetworkReader reader)
         {
             base.OnDeserialize(reader);
             swing = (int)reader.ReadByte();
+            this.Deserialize(skillLocator, reader);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
