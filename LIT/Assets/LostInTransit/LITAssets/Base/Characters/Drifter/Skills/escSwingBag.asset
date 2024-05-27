@@ -39,7 +39,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: baseDuration
       fieldValue:
-        stringValue: 0.6
+        stringValue: 1.2
         objectValue: {fileID: 0}
     - fieldName: damageCoefficient
       fieldValue:
@@ -117,5 +117,5 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: swingTimeCoefficient
       fieldValue:
-        stringValue: 0
+        stringValue: 1
         objectValue: {fileID: 0}

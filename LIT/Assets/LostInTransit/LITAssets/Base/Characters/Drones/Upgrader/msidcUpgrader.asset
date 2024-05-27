@@ -23,11 +23,11 @@ MonoBehaviour:
       spawnCard:
         _asset: {fileID: 11400000, guid: 5630714a7bee8d84b871c48ae4e7109f, type: 2}
         _address: 
-        _useDirectReference: 1
-      selectionWeight: 8
+        _useDirectReference: 0
+      selectionWeight: 3
       spawnDistance: 0
       preventOverhead: 0
-      minimumStageCompletions: 3
+      minimumStageCompletions: 2
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 

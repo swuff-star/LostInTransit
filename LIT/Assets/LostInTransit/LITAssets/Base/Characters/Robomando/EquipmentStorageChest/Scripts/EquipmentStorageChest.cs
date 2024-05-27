@@ -168,7 +168,7 @@ namespace LostInTransit.Interactables
 
         public override IEnumerator LoadContentAsync()
         {
-            var request = LITAssets.LoadAssetAsync<AssetCollection>("acEquipmentStorageChest", LITBundle.Base);
+            var request = LITAssets.LoadAssetAsync<AssetCollection>("acEquipmentStorageChest", LITBundle.Characters);
 
             request.StartLoad();
             while (!request.IsComplete)

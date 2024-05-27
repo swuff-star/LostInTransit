@@ -13,40 +13,44 @@ MonoBehaviour:
   m_Name: escScrapThrow
   m_EditorClassIdentifier: 
   targetType:
-    assemblyQualifiedName: EntityStates.Drifter.ScrapProjectile, LostInTransit, Version=0.0.0.0,
+    assemblyQualifiedName: EntityStates.Drifter.HurlScrap, LostInTransit, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   serializedFieldsCollection:
     serializedFields:
-    - fieldName: baseDuration
-      fieldValue:
-        stringValue: 0.3
-        objectValue: {fileID: 0}
     - fieldName: projectilePrefab
       fieldValue:
         stringValue: 
-        objectValue: {fileID: 5499954412175847519, guid: 80e93a44da0ddd74ab249cb804d88d75,
+        objectValue: {fileID: 5499954412175847519, guid: 01580f4ac1adf37409f7a3155170c498,
           type: 3}
-    - fieldName: damageCoef
+    - fieldName: maxDistance
       fieldValue:
-        stringValue: 0.4
+        stringValue: 60
         objectValue: {fileID: 0}
-    - fieldName: procCoef
+    - fieldName: rayRadius
       fieldValue:
-        stringValue: 1
+        stringValue: 0
         objectValue: {fileID: 0}
-    - fieldName: recoil
+    - fieldName: arcVisualizerPrefab
       fieldValue:
-        stringValue: 1
+        stringValue: 
         objectValue: {fileID: 0}
-    - fieldName: projSpeed
+    - fieldName: endpointVisualizerPrefab
       fieldValue:
-        stringValue: 25
+        stringValue: 
         objectValue: {fileID: 0}
-    - fieldName: scrapCost
+    - fieldName: endpointVisualizerRadiusScale
       fieldValue:
-        stringValue: -2
+        stringValue: 0.2
         objectValue: {fileID: 0}
-    - fieldName: projSpeedFast
+    - fieldName: setFuse
       fieldValue:
-        stringValue: 90
+        stringValue: 0
+        objectValue: {fileID: 0}
+    - fieldName: damageCoefficient
+      fieldValue:
+        stringValue: 5.6
+        objectValue: {fileID: 0}
+    - fieldName: baseMinimumDuration
+      fieldValue:
+        stringValue: 0.2
         objectValue: {fileID: 0}
