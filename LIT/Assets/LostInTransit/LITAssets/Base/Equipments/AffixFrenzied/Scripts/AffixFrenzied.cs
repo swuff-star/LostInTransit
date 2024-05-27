@@ -6,6 +6,7 @@ using RoR2.ContentManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -97,6 +98,7 @@ namespace LostInTransit.Equipments
             private EquipmentSlot _slot;
             private SetStateOnHurt _stateOnHurt;
             private EntityStateMachine _stateOnHurtTargetMachine;
+            private EntityStateMachine _bodyStateMachine;
             private GameObject _blinkReadyInstance;
             private float _aiCooldownStopwatch;
 
@@ -106,6 +108,7 @@ namespace LostInTransit.Equipments
                 _inputBank = GetComponent<InputBankTest>();
                 _slot = GetComponent<EquipmentSlot>();
                 _stateOnHurt = GetComponent<SetStateOnHurt>();
+                _bodyStateMachine = EntityStateMachine.FindByCustomName(gameObject, "Body");
 
                 if (_stateOnHurt)
                 {
@@ -118,6 +121,7 @@ namespace LostInTransit.Equipments
                 base.OnFirstStackGained();
 
                 CharacterBody.MarkAllStatsDirty();
+                _aiCooldownStopwatch = LITContent.Equipments.AffixFrenzied.cooldown;
             }
 
             private void FixedUpdate()
@@ -174,6 +178,12 @@ namespace LostInTransit.Equipments
             //Related code is ran only if the body is controlled dby an AI
             private void AIFixedUpdate()
             {
+                //Do not run any code if we're spawning.
+                if(_bodyStateMachine.state.GetType() == _bodyStateMachine.initialStateType.stateType)
+                {
+                    return;
+                }
+
                 //AI Case, we check the dedicated buff related cooldown.
                 if (!(_aiCooldownStopwatch < 0))
                     _aiCooldownStopwatch -= Time.fixedDeltaTime;
