@@ -147,7 +147,7 @@ namespace LostInTransit
                 prefabOverride = LITTempItems.temporaryItemPickupPrefab,
             };
             TemporaryItemPickupComponent.onAwakeGlobal += (timer) => ModifyTimer(timer, duration);
-            PickupDropletController.CreatePickupDroplet(info, position, velocity);          
+            PickupDropletController.CreatePickupDroplet(info, velocity);          
             TemporaryItemPickupComponent.onAwakeGlobal -= (timer) => ModifyTimer(timer, duration); // THIS DOESNT UNHOOK BUT IDK HOWWWWWWWW
             //Its because its an annonymous function, even if theyre identically written it gets compiled into different functions. this needs to be fixed somehow
         }

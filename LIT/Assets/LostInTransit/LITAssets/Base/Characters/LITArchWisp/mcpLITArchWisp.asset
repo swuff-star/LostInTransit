@@ -22,7 +22,7 @@ MonoBehaviour:
       spawnCard:
         _asset: {fileID: 11400000, guid: 408145e5b8e9ea2428cc7247e2030cce, type: 2}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1
       selectionWeight: 1
       spawnDistance: 0
       preventOverhead: 1
@@ -30,11 +30,11 @@ MonoBehaviour:
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1
       forbiddenUnlockableDef:
         _asset: {fileID: 0}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1
   - stageEnum: 64
     customStageNames: []
     monsterCategory: 3
@@ -44,7 +44,7 @@ MonoBehaviour:
       spawnCard:
         _asset: {fileID: 11400000, guid: 54d737d87587fd84eaac368c0296e19d, type: 2}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1
       selectionWeight: 1
       spawnDistance: 0
       preventOverhead: 1
@@ -52,8 +52,8 @@ MonoBehaviour:
       requiredUnlockableDef:
         _asset: {fileID: 0}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1
       forbiddenUnlockableDef:
         _asset: {fileID: 0}
         _address: 
-        _useDirectReference: 0
+        _useDirectReference: 1

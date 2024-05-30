@@ -6,7 +6,6 @@ using RoR2.ContentManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Networking;
 
