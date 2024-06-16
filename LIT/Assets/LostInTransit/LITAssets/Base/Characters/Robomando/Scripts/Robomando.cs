@@ -26,7 +26,7 @@ namespace LostInTransit.Characters
 
         public override bool IsAvailable(ContentPack contentPack)
         {
-            return false;
+            return true;
         }
 
         public override IEnumerator LoadContentAsync()

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: sudRobomando
+  m_EditorClassIdentifier: 
+  bodyPrefab: {fileID: 6583780716874856428, guid: ce344373a2d9b704b8d512cc0f3ea628,
+    type: 3}
+  displayPrefab: {fileID: 5455573077475773323, guid: 758612fe5ba227a4ca2dba4cb1f4cc42,
+    type: 3}
+  unlockableName: 
+  unlockableDef: {fileID: 0}
+  displayNameToken: LIT_ROBOMANDO_BODY_NAME
+  descriptionToken: LIT_ROBOMANDO_DESCRIPTION
+  outroFlavorToken: LIT_ROBOMANDO_OUTRO_FLAVOR
+  mainEndingEscapeFailureFlavorToken: LIT_ROBOMANDO_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR
+  primaryColor: {r: 0.44246173, g: 0.5296839, b: 0.5754717, a: 1}
+  desiredSortPosition: 999999
+  hidden: 0

@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyIndex: -1
-  baseNameToken: LIT_DRONE_ROCKET_NAME
+  baseNameToken: LIT_DRONE_ROCKET_GOLD_NAME
   subtitleNameToken: 
   bodyFlags: 2
   rootMotionInMainState: 0

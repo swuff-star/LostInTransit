@@ -18,11 +18,12 @@ MonoBehaviour:
   nodeGraphType: 0
   requiredFlags: 0
   forbiddenFlags: 8
-  directorCreditCost: 30
+  directorCreditCost: 25
   occupyPosition: 1
   eliteRules: 0
   orientToFloor: 1
-  slightlyRandomizeOrientation: 1
+  slightlyRandomizeOrientation: 0
   skipSpawnWhenSacrificeArtifactEnabled: 0
   weightScalarWhenSacrificeArtifactEnabled: 1
-  maxSpawnsPerStage: -1
+  skipSpawnWhenDevotionArtifactEnabled: 0
+  maxSpawnsPerStage: 1

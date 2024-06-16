@@ -19,7 +19,7 @@ MonoBehaviour:
   descriptionToken: LIT_ITEM_GOLDENGUN_DESC
   loreToken: LIT_ITEM_GOLDENGUN_LORE
   unlockableDef: {fileID: 0}
-  pickupModelPrefab: {fileID: 5139111717264113193, guid: 4fce6fae39cd41d449b7c8dcdb8aedbe,
+  pickupModelPrefab: {fileID: 2189024727761797783, guid: 1cb68e54525b0254ea9c314f655fdd69,
     type: 3}
   pickupIconSprite: {fileID: 21300000, guid: 64d83629132adfc4e80b3b7ff85e20fa, type: 3}
   hidden: 0

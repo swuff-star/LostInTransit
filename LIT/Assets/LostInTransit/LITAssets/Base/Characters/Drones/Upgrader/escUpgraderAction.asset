@@ -19,5 +19,5 @@ MonoBehaviour:
     serializedFields:
     - fieldName: duration
       fieldValue:
-        stringValue: 1.5
+        stringValue: 3
         objectValue: {fileID: 0}

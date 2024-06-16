@@ -163,9 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: -492659515, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformNodes:
-  - {fileID: 4500683747569523}
-  - {fileID: 4531479766501694}
+  _transformNodes: []
 --- !u!114 &114356560318997896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,56 +178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alphaCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.022177653
-      outSlope: -0.022177653
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9529851
-      value: 0.978865
-      inSlope: 0.04401178
-      outSlope: 0.04401178
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9645217
-      value: 1.29206
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9785151
-      value: 0.032529622
-      inSlope: -90.009
-      outSlope: 136.12105
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 2.9570782
-      inSlope: 136.12105
-      outSlope: -0.04792757
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeMax: 4
+  timeMax: 5
   decal: {fileID: 0}
   pauseTime: 0
   destroyOnEnd: 0
@@ -7021,13 +6974,13 @@ MonoBehaviour:
   shakeOnStart: 1
   shakeOnEnable: 0
   wave:
-    amplitude: 0.1
-    frequency: 40
+    amplitude: 1
+    frequency: 1
     cycleOffset: 0
-  duration: 4
-  radius: 30
+  duration: 1
+  radius: 10
   scaleShakeRadiusWithLocalScale: 0
-  amplitudeTimeDecay: 0
+  amplitudeTimeDecay: 1
 --- !u!1 &1447533718645475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7133,11 +7086,8 @@ MonoBehaviour:
   m_Script: {fileID: -875252823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 108665274683947927}
-  sinWaves:
-  - amplitude: 0.1
-    frequency: 0.5
-    cycleOffset: 0
+  light: {fileID: 0}
+  sinWaves: []
 --- !u!1 &1616595136869689
 GameObject:
   m_ObjectHideFlags: 0

@@ -301,6 +301,11 @@
 
 		"LIT_DRONE_PROTOTYPE_GOLD_NAME": "Gold TC-280 Prototype",
 
+		"LIT_INTERACTABLE_UPGRADER_NAME": "Drone Upgrader",
+		"LIT_INTERACTABLE_UPGRADER_NAME_TRUE": "3 Identical Drones Machine",
+		"LIT_INTERACTABLE_UPGRADER_CONTEXT": "Combine 3 Drones",
+		"LIT_COST_THREE_DRONES": "3 Identical Drones",
+
 		"LIT_DRIFTER_BODY_NAME": "Drifter",
 		"LIT_DRIFTER_DESCRIPTION": "The Drifter is a scavanger who's resourcefulness literally pays off when warding off foes.",
 		"LIT_DRIFTER_OUTRO_FLAVOR": "..and so she left, bringing only the necessities.",

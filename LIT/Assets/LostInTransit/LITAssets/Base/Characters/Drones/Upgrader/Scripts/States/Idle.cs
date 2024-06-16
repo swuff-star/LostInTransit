@@ -8,7 +8,7 @@ namespace EntityStates.Upgrader
 {
     public class Idle : UpgraderBaseState
     {
-        protected virtual bool enableInteraction
+        protected override bool enableInteraction
         {
             get
             {
