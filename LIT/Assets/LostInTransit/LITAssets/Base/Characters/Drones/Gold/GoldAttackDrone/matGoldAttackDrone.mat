@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matGoldAttackDrone
-  m_Shader: {fileID: 4800000, guid: 9b2024ee08a5bfc418ff897991e84323, type: 2}
-  m_ShaderKeywords: FRESNEL_EMISSION
+  m_Shader: {fileID: 4800000, guid: 99d7375c08a1e8f4b939426b5a699e36, type: 3}
+  m_ShaderKeywords: FRESNEL_EMISSION RoR2/Base/Common/TrimSheets/matTrimSheetMetalGolden.mat
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmTex:
-        m_Texture: {fileID: 2800000, guid: 8075fd1a78a5d6348accd5a31958aa35, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e01a951b086632449f448daca87aac4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FresnelMask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ca7287295538b4b4384af1da92b08eac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FresnelRamp:
@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1c5395450ffd5a44d91bdf2c1b6ef3bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: f8f7cd163b835b24e804d8edbda2e9e6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 89894f6b650ccde44a8457f8664b6ff3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -175,6 +175,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmColor: {r: 0, g: 0.34951395, b: 0.8018868, a: 1}
+    - _EmColor: {r: 0, g: 0.67637366, b: 0.94509804, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
