@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{33B638FC-D64D-463A-BD64-90D8A4BCDED2}" SchemaVersion="97">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{33B638FC-D64D-463A-BD64-90D8A4BCDED2}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="LostInTransitSoundbank" ID="{F4951ACF-1FC5-4436-A3CC-F7056829516E}">
+					<ObjectInclusionList>
+						<ObjectRef Name="ThalliumProc" ID="{518C5E30-C70F-402B-8EBF-78F9418FD79F}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="FrenzyDash" ID="{E9E398ED-964E-4386-8AB5-37FD8DE9817C}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BlightAppear" ID="{4D4DF2EC-6D4B-43B3-8F4C-1784726DD3FC}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BlightSpawn" ID="{E218AF40-2310-449B-859C-D29A7D51A1C5}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="CatProc" ID="{7D18FC6E-D7D3-479B-983F-D7FA492559ED}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="LeechHeal" ID="{F5D22466-04DE-482E-809A-CCA4C4D0C63A}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AmethystProc" ID="{24A704E8-3C2C-4A99-9F28-7BA3508256CB}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="RepulsionChestProc" ID="{CD76B58A-2A8E-4CA2-AAB2-12F4EBAC4E6B}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TeleSightProc" ID="{06C5C4D5-6381-4F5B-87B2-F83C01980AF6}" WorkUnitID="{C9A51AE7-872F-4BCE-B2FA-A6E64E4BF652}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
