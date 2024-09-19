@@ -15,15 +15,15 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_ARMSRACE_DESC";
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override ItemDef ItemDef => _itemDef;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Percentage of max health granted to drones as shield, per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Percentage of max health granted to drones as shield, per stack.")]
         public static float shieldAmount = 8f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether or not drones should be given gated shields.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether or not drones should be given gated shields.")]
         public static bool shieldGating = true;
 
         private AssetCollection _assetCollection;

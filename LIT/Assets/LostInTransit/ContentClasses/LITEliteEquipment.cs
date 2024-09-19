@@ -13,10 +13,10 @@ namespace LostInTransit
 {
     public abstract class LITEliteEquipment : IEliteContentPiece
     {
-        public abstract List<EliteDef> EliteDefs { get; }
-        public abstract NullableRef<List<GameObject>> ItemDisplayPrefabs { get; }
-        EquipmentDef IContentPiece<EquipmentDef>.Asset => EquipmentDef;
-        public abstract EquipmentDef EquipmentDef { get; }
+        public abstract List<EliteDef> eliteDefs { get; }
+        public abstract NullableRef<List<GameObject>> itemDisplayPrefabs { get; }
+        EquipmentDef IContentPiece<EquipmentDef>.asset => equipmentDef;
+        public abstract EquipmentDef equipmentDef { get; }
 
         public abstract bool Execute(EquipmentSlot slot);
         public abstract void OnEquipmentObtained(CharacterBody body);

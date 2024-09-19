@@ -17,20 +17,20 @@ namespace LostInTransit.Equipments
     {
         private const string TOKEN = "LIT_EQUIP_THQWIB_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Number of Thqwibs tossed in a single bloom.")]
+        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, configDescOverride = "Number of Thqwibs tossed in a single bloom.")]
         [FormatToken(TOKEN)]
         public static int numberOfThqwibs = 20;
 
-        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Amount of damage each Thqwib deals on explosion, as a %.")]
+        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, configDescOverride = "Amount of damage each Thqwib deals on explosion, as a %.")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 1)]
         public static float damagePerThqwib = 2;
 
-        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Chance, per Thqwib, to activate On-Kill effects when exploding.\nDefault Average: 30x * 10% = 3 average On-Kill activations per bloom. Fun (OP) with Soulbound Catalyst.")]
+        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, configDescOverride = "Chance, per Thqwib, to activate On-Kill effects when exploding.\nDefault Average: 30x * 10% = 3 average On-Kill activations per bloom. Fun (OP) with Soulbound Catalyst.")]
         [FormatToken(TOKEN, 2)]
         public static float onKillProcChance = 0f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private GameObject _thqwibProjectile;

@@ -12,8 +12,8 @@ namespace LostInTransit.Components
     [RequireComponent(typeof(NetworkedBodyAttachment))]
     public class BlightedBodyAttachment : NetworkBehaviour, INetworkedBodyAttachmentListener
     {
-        public EliteIndex FirstIndex => (EliteIndex)_firstEliteIndex;
-        public EliteIndex SecondIndex => (EliteIndex)_secondEliteIndex;
+        public EliteIndex firstIndex => (EliteIndex)_firstEliteIndex;
+        public EliteIndex secondIndex => (EliteIndex)_secondEliteIndex;
         [SyncVar]
         private int _firstEliteIndex;
         [SyncVar]
@@ -31,11 +31,11 @@ namespace LostInTransit.Components
             _rng = new Xoroshiro128Plus(Run.instance.runRNG.nextUlong);
             if (RunArtifactManager.instance)
             {
-                _availableEliteDefs = RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef) ? BlightedElites.ElitesHonorEnabled : BlightedElites.ElitesHonorDisabled;
+                _availableEliteDefs = RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef) ? BlightedElites.elitesHonorEnabled : BlightedElites.elitesHonorDisabled;
             }
             else
             {
-                _availableEliteDefs = BlightedElites.ElitesHonorDisabled;
+                _availableEliteDefs = BlightedElites.elitesHonorDisabled;
             }
         }
 

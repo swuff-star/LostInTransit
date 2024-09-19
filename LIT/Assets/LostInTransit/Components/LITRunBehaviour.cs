@@ -10,14 +10,14 @@ namespace LostInTransit.Components
 {
     public class LITRunBehaviour : MonoBehaviour
     {
-        public static LITRunBehaviour Instance { get; private set; }
-        public bool HasAnyEquipmentBarrelBeenOpened { get; private set; } = false;
-        public bool HasEquipmentBeenStoredThisRun { get; private set; }
+        public static LITRunBehaviour instance { get; private set; }
+        public bool hasAnyEquipmentBarrelBeenOpened { get; private set; } = false;
+        public bool hasEquipmentBeenStoredThisRun { get; private set; }
         private GameObject _firstEquipmentBarrelObject;
     
         private void OnEnable()
         {
-            Instance = this;
+            instance = this;
             GlobalEventManager.OnInteractionsGlobal -= EquipmentStorageInteractionChecks;
             GlobalEventManager.OnInteractionsGlobal += EquipmentStorageInteractionChecks;
         }
@@ -31,7 +31,7 @@ namespace LostInTransit.Components
 
         private void CheckForBarrelOpening(IInteractable interactableComponent, GameObject interactableObject)
         {
-            if (HasAnyEquipmentBarrelBeenOpened)
+            if (hasAnyEquipmentBarrelBeenOpened)
             {
                 return;
             }
@@ -45,14 +45,14 @@ namespace LostInTransit.Components
             string displayNameToken = pi.displayNameToken;
             if (displayNameToken == "EQUIPMENTBARREL_NAME")
             {
-                HasAnyEquipmentBarrelBeenOpened = true;
+                hasAnyEquipmentBarrelBeenOpened = true;
                 _firstEquipmentBarrelObject = interactableObject;
             }
         }
 
         private void CheckForEquipmentStorageChestInteraction( IInteractable interactableComponent)
         {
-            if (HasEquipmentBeenStoredThisRun)
+            if (hasEquipmentBeenStoredThisRun)
                 return;
 
             if(!(interactableComponent is PurchaseInteraction pi))
@@ -63,7 +63,7 @@ namespace LostInTransit.Components
             string displayNameToken = pi.displayNameToken;
             if(displayNameToken == "LIT_EQUIPMENTSTORAGE_NAME")
             {
-                HasEquipmentBeenStoredThisRun = true;
+                hasEquipmentBeenStoredThisRun = true;
             }
         }
 
@@ -74,9 +74,9 @@ namespace LostInTransit.Components
 
         private void OnDisable()
         {
-            if(Instance == this)
+            if(instance == this)
             {
-                Instance = null;
+                instance = null;
 
                 GlobalEventManager.OnInteractionsGlobal -= EquipmentStorageInteractionChecks;
             }

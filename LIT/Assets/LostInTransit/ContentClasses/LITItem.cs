@@ -13,9 +13,9 @@ namespace LostInTransit
 {
     public abstract class LITItem : IItemContentPiece
     {
-        public abstract NullableRef<List<GameObject>> ItemDisplayPrefabs { get; }
-        ItemDef IContentPiece<ItemDef>.Asset => ItemDef;
-        public abstract ItemDef ItemDef { get; }
+        public abstract NullableRef<List<GameObject>> itemDisplayPrefabs { get; }
+        ItemDef IContentPiece<ItemDef>.asset => itemDef;
+        public abstract ItemDef itemDef { get; }
 
         public abstract void Initialize();
         public abstract bool IsAvailable(ContentPack contentPack);

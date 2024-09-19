@@ -20,31 +20,31 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_GUARDIANSHEART_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of shield added per heart.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of shield added per heart.")]
         public static float extraShieldAmount = 60;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of armor added when heart breaks.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of armor added when heart breaks.")]
         public static float extraArmor = 40;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Length of the Heart's armor debuff.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Length of the Heart's armor debuff.")]
         public static float extraArmorDuration = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether the Heart should block damage past the remaining shield when broken.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether the Heart should block damage past the remaining shield when broken.")]
         public static bool shieldGating = true;
 
         public static bool hadShield = false;
 
         public static bool hooked = false;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;
 
         public override void Initialize()
         {
-            if (LITMain.RiskyModInstalled)
+            if (LITMain.riskyModInstalled)
             {
                 if (RiskyModShieldGateEnabled())
                 {

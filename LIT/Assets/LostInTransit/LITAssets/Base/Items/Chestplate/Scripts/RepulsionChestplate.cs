@@ -17,32 +17,32 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_REPULCHEST_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of times required to take damage before activating Repulsion Armor.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of times required to take damage before activating Repulsion Armor.")]
         [FormatToken(TOKEN, 0)]
         public static int hitsNeeded = 6;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of extra hits needed per stack to activate Repulsion Armor.")] //This kinda sucks but is easy to include if anyone wanted it for some god-forsaken reason.
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of extra hits needed per stack to activate Repulsion Armor.")] //This kinda sucks but is easy to include if anyone wanted it for some god-forsaken reason.
         public static float hitsNeededPerStack = 0f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of armor added while the Repulsion Armor buff is active.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of armor added while the Repulsion Armor buff is active.")]
         [FormatToken(TOKEN, 1)]
         public static float armorBonus = 500f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of time the Repulsion Armor buff lasts.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of time the Repulsion Armor buff lasts.")]
         [FormatToken(TOKEN, 2)]
         public static float buffBaseDuration = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra aount of time added to the Repulsion Armor buff per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra aount of time added to the Repulsion Armor buff per stack.")]
         [FormatToken(TOKEN, 3)]
         public static float buffStackDuration = 1.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum length of the Repulsion Armor buff. Set to 0 to disable.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Maximum length of the Repulsion Armor buff. Set to 0 to disable.")]
         public static float maximumBuffDuration = 0f;
 
         public static bool badFix = false;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
         private AssetCollection _assetCollection;
 
@@ -122,7 +122,7 @@ namespace LostInTransit.Items
 
             public void FixedUpdate()       //★ i think this works because of a bug; working is working!
             {
-                Collider[] array = Physics.OverlapSphere(CharacterBody.corePosition, 2f, LayerIndex.projectile.mask);
+                Collider[] array = Physics.OverlapSphere(characterBody.corePosition, 2f, LayerIndex.projectile.mask);
 
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -138,8 +138,8 @@ namespace LostInTransit.Items
                                 projectilePrefab = pc.gameObject,
                                 position = pc.gameObject.transform.position,
                                 rotation = Quaternion.Inverse(pc.gameObject.transform.rotation),
-                                owner = CharacterBody.gameObject,
-                                damage = CharacterBody.damage * 5f,
+                                owner = characterBody.gameObject,
+                                damage = characterBody.damage * 5f,
                                 force = 200f,
                                 crit = true,
                                 damageColorIndex = DamageColorIndex.Default,
@@ -158,7 +158,7 @@ namespace LostInTransit.Items
             protected override void OnAllStacksLost()
             {
                 base.OnAllStacksLost();
-                CharacterBody.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeeded);
+                characterBody.SetBuffCount(LITContent.Buffs.bdRepulsionArmorCD.buffIndex, (int)RepulsionArmor.hitsNeeded);
             }
 
             public void OnIncomingDamageServer(DamageInfo damageInfo)

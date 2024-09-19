@@ -15,20 +15,20 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_HITLIST_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base chance for enemies to spawn Marked.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base chance for enemies to spawn Marked.")]
         [FormatToken(TOKEN)]
         public static float markChance = 5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "% increase to base damage provided by buffs from this item.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "% increase to base damage provided by buffs from this item.")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 1)]
         public static float damageBuffPower = 0.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Duration of the damage buff provided by Hit List.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Duration of the damage buff provided by Hit List.")]
         [FormatToken(TOKEN, 2)]
         public static float buffDuration = 20f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;

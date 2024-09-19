@@ -14,12 +14,12 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_MYSTERIOUSVIAL_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra Regeneration added per vial.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra Regeneration added per vial.")]
         [FormatToken(TOKEN)]
         public static float regenBonus = 0.8f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

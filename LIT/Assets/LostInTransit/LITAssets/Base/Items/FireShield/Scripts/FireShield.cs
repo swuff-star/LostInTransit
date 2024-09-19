@@ -18,17 +18,17 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_FIRESHIELD_DESC";
         
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base damage dealt by Fire Shield.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base damage dealt by Fire Shield.")]
         [FormatToken(TOKEN)]
         public static float baseDamageCoefficient = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added burn damage per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Added burn damage per stack.")]
         [FormatToken(TOKEN, 1)]
         public static float burnDamageCoefficient = 1f;
         
         public static DamageAPI.ModdedDamageType FireShieldDamageType { get; private set; }
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private static GameObject _explosionVFX;

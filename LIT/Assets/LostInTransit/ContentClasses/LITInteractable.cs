@@ -13,10 +13,10 @@ namespace LostInTransit
 {
     public abstract class LITInteractable : IInteractableContentPiece
     {
-        IInteractable IGameObjectContentPiece<IInteractable>.Component => InteractablePrefab.GetComponent<IInteractable>();
-        GameObject IContentPiece<GameObject>.Asset => InteractablePrefab;
-        public abstract GameObject InteractablePrefab { get; }
-        public abstract NullableRef<InteractableCardProvider> CardProvider { get; }
+        IInteractable IGameObjectContentPiece<IInteractable>.component => interactablePrefab.GetComponent<IInteractable>();
+        GameObject IContentPiece<GameObject>.asset => interactablePrefab;
+        public abstract GameObject interactablePrefab { get; }
+        public abstract NullableRef<InteractableCardProvider> cardProvider { get; }
 
         public abstract void Initialize();
         public abstract bool IsAvailable(ContentPack contentPack);

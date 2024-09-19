@@ -14,8 +14,8 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_MUCONSTRUCT_DESC";
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;

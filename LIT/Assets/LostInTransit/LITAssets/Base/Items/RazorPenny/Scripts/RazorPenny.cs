@@ -14,16 +14,16 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_RAZORPENNY_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra Crit added per penny.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra Crit added per penny.")]
         [FormatToken(TOKEN)]
         public static float pennyCrit = 4f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Gold gained on crit.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Gold gained on crit.")]
         [FormatToken(TOKEN, 1)]
         public static float goldPerCrit = 1f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

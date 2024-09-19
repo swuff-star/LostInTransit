@@ -12,25 +12,25 @@ namespace LostInTransit.Components
 {
     public class BlightDirector : MonoBehaviour
     {
-        public const string KILL_COUNT_KEY = "LIT_" + nameof(MonstersKilled);
+        public const string KILL_COUNT_KEY = "LIT_" + nameof(monstersKilled);
         public const float MAX_SPAWN_RATE = 1f;
         public const float MIN_TIME_BEFORE_KILLS_COUNT = 1200f;
         public const float SPAWN_RATE_PER_MONSTER_KILLED = 0.001f;
 
-        public static BlightDirector Instance { get; private set; }
+        public static BlightDirector instance { get; private set; }
 
-        ReadOnlyCollection<PlayerCharacterMasterController> PlayerCharacterMasters => PlayerCharacterMasterController.instances;
+        ReadOnlyCollection<PlayerCharacterMasterController> playerCharacterMasters => PlayerCharacterMasterController.instances;
 
         public Run Run { get; private set; }
 
-        public DifficultyDef RunDifficulty => DifficultyCatalog.GetDifficultyDef(Run.selectedDifficulty);
+        public DifficultyDef runDifficulty => DifficultyCatalog.GetDifficultyDef(Run.selectedDifficulty);
 
-        public float MaxSpawnRate => (MAX_SPAWN_RATE * RunDifficulty.scalingValue) + GetBeadCount();
+        public float maxSpawnRate => (MAX_SPAWN_RATE * runDifficulty.scalingValue) + GetBeadCount();
 
-        public float MinTimeBeforeKillsCount => (MIN_TIME_BEFORE_KILLS_COUNT / RunDifficulty.scalingValue);
+        public float minTimeBeforeKillsCount => (MIN_TIME_BEFORE_KILLS_COUNT / runDifficulty.scalingValue);
 
-        public float CurrentSpawnRate { get; private set; }
-        public ulong MonstersKilled
+        public float currentSpawnRate { get; private set; }
+        public ulong monstersKilled
         {
             get
             {
@@ -46,16 +46,16 @@ namespace LostInTransit.Components
             }
         }
         private ulong _monstersKilled;
-        public bool IsPrestigeActive => RunArtifactManager.instance.IsArtifactEnabled(LITContent.Artifacts.Prestige);
-        public bool IsHonorActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef);
-        public bool IsSwarmsActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.swarmsArtifactDef);
+        public bool isPrestigeActive => RunArtifactManager.instance.IsArtifactEnabled(LITContent.Artifacts.Prestige);
+        public bool isHonorActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.eliteOnlyArtifactDef);
+        public bool isSwarmsActive => RunArtifactManager.instance.IsArtifactEnabled(RoR2Content.Artifacts.swarmsArtifactDef);
 
         private SceneDef _moonScene;
         private SceneDef _moon2Scene;
 
         private void Awake()
         {
-            if (!BlightedElites.Initialized)
+            if (!BlightedElites.initialized)
             {
                 Destroy(this);
                 return;
@@ -68,7 +68,7 @@ namespace LostInTransit.Components
 
         private void OnEnable()
         {
-            Instance = this;
+            instance = this;
 
             GlobalEventManager.onCharacterDeathGlobal += OnEnemyKilled;
             CharacterSpawnCard.onSpawnedServerGlobal += TrySpawn;
@@ -81,9 +81,9 @@ namespace LostInTransit.Components
 
         private void OnDisable()
         {
-            if(Instance == this)
+            if(instance == this)
             {
-                Instance = null;
+                instance = null;
             }
 
             GlobalEventManager.onCharacterDeathGlobal -= OnEnemyKilled;
@@ -91,7 +91,7 @@ namespace LostInTransit.Components
         }
         private void Start()
         {
-            if(LITMain.ProperSaveInstalled)
+            if(LITMain.properSaveInstalled)
             {
                 RetrieveKillCountFromProperSave();
             }
@@ -104,8 +104,8 @@ namespace LostInTransit.Components
             if (ProperSave.Loading.CurrentSave == null)
                 return;
 
-            MonstersKilled = ProperSave.Loading.CurrentSave.GetModdedData<ulong>(KILL_COUNT_KEY);
-            LITLog.Message($"Retrieved ProperSave's Kill Count, MonstersKilled set to {MonstersKilled}");
+            monstersKilled = ProperSave.Loading.CurrentSave.GetModdedData<ulong>(KILL_COUNT_KEY);
+            LITLog.Message($"Retrieved ProperSave's Kill Count, MonstersKilled set to {monstersKilled}");
         }
 
         //Who knew fucking guard clauses where good? -N
@@ -117,7 +117,7 @@ namespace LostInTransit.Components
             if (IsInBlacklist(obj))
                 return;
 
-            var checkRoll = Util.CheckRoll(CurrentSpawnRate);
+            var checkRoll = Util.CheckRoll(currentSpawnRate);
 
             if (!checkRoll)
                 return;
@@ -131,7 +131,7 @@ namespace LostInTransit.Components
             if (!IsEnemyTeam(teamIndex))
                 return;
 
-            bool canChampionBeBlighted = IsPrestigeActive;
+            bool canChampionBeBlighted = isPrestigeActive;
             if (!canChampionBeBlighted && obj.isChampion)
                 return;
 
@@ -140,12 +140,12 @@ namespace LostInTransit.Components
 
         private void OnEnemyKilled(DamageReport obj)
         {
-            if(!(Run.GetRunStopwatch() > MinTimeBeforeKillsCount))
+            if(!(Run.GetRunStopwatch() > minTimeBeforeKillsCount))
             {
                 return;
             }
 
-            if (!(CurrentSpawnRate < MaxSpawnRate))
+            if (!(currentSpawnRate < maxSpawnRate))
                 return;
 
             var victimBody = obj.victimBody;
@@ -162,12 +162,12 @@ namespace LostInTransit.Components
             if (attackerTeam != TeamIndex.Player)
                 return;
 
-            MonstersKilled += 1 * ((ulong)Run.loopClearCount + 1);
+            monstersKilled += 1 * ((ulong)Run.loopClearCount + 1);
         }
 
         private void MakeBlighted(CharacterBody body)
         {
-            MonstersKilled -= CalculateCostToTurnBlighted(body);
+            monstersKilled -= CalculateCostToTurnBlighted(body);
 
             var inventory = body.inventory;
 
@@ -211,9 +211,9 @@ namespace LostInTransit.Components
         private int GetBeadCount()
         {
             int sharedBeadCount = 0;
-            for (int i = 0; i < PlayerCharacterMasters.Count; i++)
+            for (int i = 0; i < playerCharacterMasters.Count; i++)
             {
-                var playableMaster = PlayerCharacterMasters[i];
+                var playableMaster = playerCharacterMasters[i];
                 if (!playableMaster)
                     continue;
 
@@ -237,30 +237,30 @@ namespace LostInTransit.Components
 
         private void RecalculateSpawnChance()
         {
-            if (IsPrestigeActive)
+            if (isPrestigeActive)
             {
-                CurrentSpawnRate = 10f;
+                currentSpawnRate = 10f;
                 return;
             }
 
             float baseSpawnChance = 0;
-            var runScalingValue = RunDifficulty.scalingValue;
-            if(RunDifficulty.scalingValue > 3)
+            var runScalingValue = runDifficulty.scalingValue;
+            if(runDifficulty.scalingValue > 3)
             {
                 baseSpawnChance = 0.1f * (runScalingValue - 2);
             }
 
             float monstersKilledModifier = 0;
-            int divisor = IsSwarmsActive ? 2 : 1;
-            monstersKilledModifier = (MonstersKilled * SPAWN_RATE_PER_MONSTER_KILLED * runScalingValue) / divisor;
+            int divisor = isSwarmsActive ? 2 : 1;
+            monstersKilledModifier = (monstersKilled * SPAWN_RATE_PER_MONSTER_KILLED * runScalingValue) / divisor;
 
             float finalSpawnChance = baseSpawnChance + monstersKilledModifier;
-            CurrentSpawnRate = Mathf.Min(finalSpawnChance, MaxSpawnRate);
+            currentSpawnRate = Mathf.Min(finalSpawnChance, maxSpawnRate);
         }
 
         private bool IsInBlacklist(CharacterBody body)
         {
-            return IsPrestigeActive ? BlightedElites.PrestigeBodyBlacklist.Contains(body.bodyIndex) : BlightedElites.RegularBodyBlacklist.Contains(body.bodyIndex);
+            return isPrestigeActive ? BlightedElites.prestigeBodyBlacklist.Contains(body.bodyIndex) : BlightedElites.regularBodyBlacklist.Contains(body.bodyIndex);
         }
 
         private void OnDestroy()

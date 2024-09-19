@@ -98,13 +98,13 @@ namespace EntityStates.Drifter
             switch(swing)
             {
                 case 0:
-                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit10);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.scrapOnHit10);
                     break;
                 case 1:
-                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit20);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.scrapOnHit20);
                     break;
                 case 2:
-                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ScrapOnHit30);
+                    DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.scrapOnHit30);
                     break;
             }
 

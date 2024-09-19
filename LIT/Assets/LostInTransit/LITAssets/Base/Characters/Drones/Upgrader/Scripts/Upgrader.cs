@@ -14,8 +14,8 @@ namespace LostInTransit.Interactables
 {
     public class Upgrader : LITInteractable, IContentPackModifier
     {
-        public override GameObject InteractablePrefab => _interactablePrefab;
-        public override NullableRef<InteractableCardProvider> CardProvider => _cardProvider;
+        public override GameObject interactablePrefab => _interactablePrefab;
+        public override NullableRef<InteractableCardProvider> cardProvider => _cardProvider;
 
         private AssetCollection _assetCollection;
         private GameObject _interactablePrefab;
@@ -33,8 +33,8 @@ namespace LostInTransit.Interactables
         {
             CostTypeCatalog.modHelper.getAdditionalEntries += AddDroneCostType;
 
-            var interactionToken = InteractablePrefab.AddComponent<UpgraderInteractionToken>();
-            interactionToken.PurchaseInteraction = InteractablePrefab.GetComponent<PurchaseInteraction>();
+            var interactionToken = interactablePrefab.AddComponent<UpgraderInteractionToken>();
+            interactionToken.PurchaseInteraction = interactablePrefab.GetComponent<PurchaseInteraction>();
             SetupDroneUpgrades();
 
             On.EntityStates.Drone.DeathState.OnEnter += overrideDroneCorpse;

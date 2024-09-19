@@ -10,8 +10,8 @@ namespace LostInTransit.Equipments
 #if DEBUG
     public sealed class FieldGenerator : LITEquipment, IContentPackModifier
     {
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private AssetCollection _assetCollection;
@@ -77,9 +77,9 @@ namespace LostInTransit.Equipments
                 if (damageInfo.damage >= victimHealthComponent.health)
                 {
                     damageInfo.damage = victimHealthComponent.health - 1;
-                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(CharacterBody.master, CharacterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
-                    CharacterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
-                    CharacterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
+                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(characterBody.master, characterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    characterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
+                    characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
 
                 }
             }
@@ -92,9 +92,9 @@ namespace LostInTransit.Equipments
                 if (damageReport.victimBody.healthComponent.health < 1)
                 {
                     damageReport.victimBody.healthComponent.health = 1;
-                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(CharacterBody.master, CharacterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
-                    CharacterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
-                    CharacterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
+                    CharacterMasterNotificationQueue.PushEquipmentTransformNotification(characterBody.master, characterBody.inventory.currentEquipmentIndex, LITContent.Equipments.FieldGeneratorUsed.equipmentIndex, CharacterMasterNotificationQueue.TransformationType.Default);
+                    characterBody.inventory.SetEquipmentIndex(LITContent.Equipments.FieldGeneratorUsed.equipmentIndex);
+                    characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 8f);
                 }
             }
         }

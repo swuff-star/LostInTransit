@@ -38,8 +38,8 @@ namespace LostInTransit.Items
         private const string VANILLA_BBOSSHUNTER_CONSUMED_TOKEN = "EQUIPMENT_BOSSHUNTERCONSUMED_CHAT";
         public string[] bossHunterOptions = new string[] { VANILLA_BBOSSHUNTER_CONSUMED_TOKEN, "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_1", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_2", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_3", "LIT_EQUIPMENT_BOSSHUNTERCONSUMED_CHAT_4" };
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private static GameObject _bfg10kController;

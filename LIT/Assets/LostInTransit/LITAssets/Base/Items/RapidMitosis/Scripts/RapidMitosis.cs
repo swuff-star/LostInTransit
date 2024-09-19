@@ -15,20 +15,20 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_RAPIDMITOSIS_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Equipment CDR Amount", ConfigDescOverride = "Equipment Cooldown Reduction per Rapid Mitosis.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Equipment CDR Amount", configDescOverride = "Equipment Cooldown Reduction per Rapid Mitosis.")]
         [FormatToken(TOKEN)]
         public static float mitosisEquipCD = 0.30f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Skill CDR Amount", ConfigDescOverride = "Skill Cooldown Reduction granted via Rapid Mitosis.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Skill CDR Amount", configDescOverride = "Skill Cooldown Reduction granted via Rapid Mitosis.")]
         [FormatToken(TOKEN)]
         public static float mitosisSkillCD = 0.4f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Skill CDR Length", ConfigDescOverride = "Duration of the buff granted via Rapid Mitosis.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Skill CDR Length", configDescOverride = "Duration of the buff granted via Rapid Mitosis.")]
         [FormatToken(TOKEN)]
         public static float mitosisDur = 6f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;
@@ -95,18 +95,18 @@ namespace LostInTransit.Items
             {
                 if (!enabled)
                     return;
-                if (CharacterBody.HasBuff(LITContent.Buffs.bdMitosisBuff))
+                if (characterBody.HasBuff(LITContent.Buffs.bdMitosisBuff))
                 {
-                    if (CharacterBody.skillLocator)
+                    if (characterBody.skillLocator)
                     {
-                        if (CharacterBody.skillLocator.primary)
-                            CharacterBody.skillLocator.primary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
-                        if (CharacterBody.skillLocator.secondary)
-                            CharacterBody.skillLocator.secondary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
-                        if (CharacterBody.skillLocator.utility)
-                            CharacterBody.skillLocator.utility.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
-                        if (CharacterBody.skillLocator.special)
-                            CharacterBody.skillLocator.special.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (characterBody.skillLocator.primary)
+                            characterBody.skillLocator.primary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (characterBody.skillLocator.secondary)
+                            characterBody.skillLocator.secondary.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (characterBody.skillLocator.utility)
+                            characterBody.skillLocator.utility.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
+                        if (characterBody.skillLocator.special)
+                            characterBody.skillLocator.special.cooldownScale *= 1 - Items.RapidMitosis.mitosisSkillCD;
                     }
                 }
             }
@@ -114,7 +114,7 @@ namespace LostInTransit.Items
             protected override void OnFirstStackGained()
             {
                 base.OnFirstStackGained();
-                GameObject charModel = CharacterBody.modelLocator.modelTransform.gameObject;
+                GameObject charModel = characterBody.modelLocator.modelTransform.gameObject;
                 if (charModel != null)
                 {
                     CharacterModel cm = charModel.GetComponent<CharacterModel>();
@@ -128,7 +128,7 @@ namespace LostInTransit.Items
                                 //pls work
                                 if (rendererInfos[i].renderer && !rendererInfos[i].ignoreOverlays)
                                 {
-                                    GameObject effect = AddParticles(rendererInfos[i].renderer, CharacterBody.coreTransform);
+                                    GameObject effect = AddParticles(rendererInfos[i].renderer, characterBody.coreTransform);
                                     if (effect != null)
                                     {
                                         //effectInstances.Add(effect);

@@ -17,23 +17,23 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_PHOTONCANNON_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of charge gained every second for each skill on cooldown")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of charge gained every second for each skill on cooldown")]
         [FormatToken(TOKEN)]
         public static float baseCharge = 1f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Additional charge per turbine")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Additional charge per turbine")]
         [FormatToken(TOKEN, 1)]
         public static float stackCharge = 0.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of damage the laser deals")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of damage the laser deals")]
         [FormatToken(TOKEN, 2)]
         public static float laserDamage = 2000f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Use static charge timer", ConfigDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Use static charge timer", configDescOverride = "if true, the turbine will gain charge as if one skill is on cooldown at all times")]
         public static bool skillIssue = false;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

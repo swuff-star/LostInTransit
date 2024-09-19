@@ -6,13 +6,13 @@ namespace LostInTransit.Components
     [RequireComponent(typeof(ObjectScaleCurve))]
     public class LoopObjectScaleCurve : MonoBehaviour
     {
-        public ObjectScaleCurve Component { get => gameObject.GetComponent<ObjectScaleCurve>(); }
+        public ObjectScaleCurve component { get => gameObject.GetComponent<ObjectScaleCurve>(); }
 
         public void Update()
         {
-            if (Component.time > Component.timeMax)
+            if (component.time > component.timeMax)
             {
-                Component.Reset();
+                component.Reset();
             }
         }
     }

@@ -10,13 +10,13 @@ namespace LostInTransit.Characters
 #if DEBUG
     public sealed class Robomando : LITSurvivor, IContentPackModifier
     {
-        public override SurvivorDef SurvivorDef => _survivorDef;
+        public override SurvivorDef survivorDef => _survivorDef;
         private SurvivorDef _survivorDef;
 
-        public override NullableRef<GameObject> MasterPrefab => _masterPrefab;
+        public override NullableRef<GameObject> masterPrefab => _masterPrefab;
         private GameObject _masterPrefab;
 
-        public override GameObject CharacterPrefab => _characterPrefab;
+        public override GameObject characterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
 
         private AssetCollection _robomandoAssets;

@@ -12,8 +12,8 @@ namespace LostInTransit.Equipments
 #if DEBUG
     public sealed class UnstableWatch : LITEquipment, IContentPackModifier
     {
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private static GameObject _buffWard;
@@ -90,7 +90,7 @@ namespace LostInTransit.Equipments
             {
                 base.OnFirstStackGained();
                 wardInstance = Instantiate(_buffWard);
-                wardInstance.GetComponent<TeamFilter>().teamIndex = CharacterBody.teamComponent.teamIndex;
+                wardInstance.GetComponent<TeamFilter>().teamIndex = characterBody.teamComponent.teamIndex;
                 wardInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(gameObject);
             }
 

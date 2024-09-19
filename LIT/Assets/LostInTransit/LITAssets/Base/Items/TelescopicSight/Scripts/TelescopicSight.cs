@@ -14,37 +14,37 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_TELESCOPICSIGHT_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base proc chance for Telescopic Sight.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base proc chance for Telescopic Sight.")]
         [FormatToken(TOKEN)]
         public static float baseProcChance = 1f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra proc chance per stack of sights.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra proc chance per stack of sights.")]
         [FormatToken(TOKEN, 1)]
         public static float procChancePerStack = 0.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Telescopic Sight's instant kill should have a cooldown.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether Telescopic Sight's instant kill should have a cooldown.")]
         public static bool enableCooldown = true;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Percentage of max health that's dealt to set exceptions when activated on them.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Percentage of max health that's dealt to set exceptions when activated on them.")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 2)]
         public static float exceptionHealthPercentage = 0.2f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Cooldown between Telescopic Sight activations.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Cooldown between Telescopic Sight activations.")]
         [FormatToken(TOKEN, 3)]
         public static float cooldownDuration = 20f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Seconds removed from cooldown per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Seconds removed from cooldown per stack.")]
         [FormatToken(TOKEN, 4)]
         public static float cooldownReductio = 2f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Telescopic Sight should instakill elites.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether Telescopic Sight should instakill elites.")]
         public static bool instakillElites = true;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Telescopic Sight should instakill boss monsters.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether Telescopic Sight should instakill boss monsters.")]
         public static bool instakillBosses = false;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

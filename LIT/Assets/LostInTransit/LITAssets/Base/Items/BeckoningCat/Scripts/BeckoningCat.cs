@@ -15,38 +15,38 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_BECKONINGCAT_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base chance for Elites to drop an item.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base chance for Elites to drop an item.")]
         [FormatToken(TOKEN)]
         public static float baseDropChance = 4.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added chance for Elites to drop an item per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Added chance for Elites to drop an item per stack.")]
         [FormatToken(TOKEN,1)]
         public static float stackingDropChance = 1.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum possible chance for Elites to drop an item, regardless of stacks.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Maximum possible chance for Elites to drop an item, regardless of stacks.")]
         public static float maximumDropChance = 100f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Uncommon Item Chance", ConfigDescOverride = "Chance for Elites to drop an Uncommon (Green) item.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Uncommon Item Chance", configDescOverride = "Chance for Elites to drop an Uncommon (Green) item.")]
         [FormatToken(TOKEN, 2)]
         public static float greenItemChance = 6f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Uncommon Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop an Uncommon (Green) item per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Uncommon Item Stacking Chance", configDescOverride = "Extra chance for Elites to drop an Uncommon (Green) item per stack.")]
         [FormatToken(TOKEN, 3)]
         public static float greenItemStack = 1f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Rare Item Chance", ConfigDescOverride = "Chance for Elites to drop a Rare (Red) item.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Rare Item Chance", configDescOverride = "Chance for Elites to drop a Rare (Red) item.")]
         [FormatToken(TOKEN, 4)]
         public static float redItemChance = 0.5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Rare Item Stacking Chance", ConfigDescOverride = "Extra chance for Elites to drop a Rare (Red) item per stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Rare Item Stacking Chance", configDescOverride = "Extra chance for Elites to drop a Rare (Red) item per stack.")]
         [FormatToken(TOKEN, 5)]
         public static float redItemStack = 0.25f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Whether Luck should be accounted for in all Beckoning Cat-related rolls.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Whether Luck should be accounted for in all Beckoning Cat-related rolls.")]
         public static bool useLuck = true;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

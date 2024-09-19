@@ -41,14 +41,14 @@ namespace LostInTransit
         internal const string MODNAME = "Lost in Transit";
         internal const string VERSION = "0.4.0";
 
-        internal static LITMain Instance { get; private set; }
+        internal static LITMain instance { get; private set; }
 
-        public static bool RiskyModInstalled { get; private set; }
-        public static bool ProperSaveInstalled { get; private set; }
+        public static bool riskyModInstalled { get; private set; }
+        public static bool properSaveInstalled { get; private set; }
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
 
             new LITLog(Logger);
             new LITConfig(this);
@@ -59,8 +59,8 @@ namespace LostInTransit
 
             LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
 
-            RiskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
-            ProperSaveInstalled = MSUtil.IsModInstalled(ProperSave.ProperSavePlugin.GUID);
+            riskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
+            properSaveInstalled = MSUtil.IsModInstalled(ProperSave.ProperSavePlugin.GUID);
         }
     }
 }

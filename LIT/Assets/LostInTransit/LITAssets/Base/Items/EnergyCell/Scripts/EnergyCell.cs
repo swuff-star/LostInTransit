@@ -14,11 +14,11 @@ namespace LostInTransit.Items
     public sealed class EnergyCell : LITItem
     {
         private const string TOKEN = "LIT_ITEM_ENERGYCELL_DESC";
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount of attack speed per item held.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Maximum amount of attack speed per item held.")]
         public static float maxAttackSpeedPerCell = 0.4f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

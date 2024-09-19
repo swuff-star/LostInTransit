@@ -17,9 +17,9 @@ namespace LostInTransit.Interactables
 {
     public class EquipmentStorageChest : LITInteractable, IContentPackModifier
     {
-        public override GameObject InteractablePrefab => _prefab;
+        public override GameObject interactablePrefab => _prefab;
         private GameObject _prefab;
-        public override NullableRef<InteractableCardProvider> CardProvider => null;
+        public override NullableRef<InteractableCardProvider> cardProvider => null;
 
         private static ConfigEntry<string> _equipmentStorageChest;
         public static GameObject EquipmentTakenOrbPrefab { get; private set; }
@@ -57,14 +57,14 @@ namespace LostInTransit.Interactables
                 return;
             }
 
-            if (!LITRunBehaviour.Instance)
+            if (!LITRunBehaviour.instance)
             {
                 orig(self);
                 return;
             }
 
-            LITRunBehaviour instance = LITRunBehaviour.Instance;
-            if(instance.HasAnyEquipmentBarrelBeenOpened && !instance.HasEquipmentBeenStoredThisRun && instance.IsGameObjectTheFirstEquipmentBarrelBeingOpen(self.gameObject))
+            LITRunBehaviour instance = LITRunBehaviour.instance;
+            if(instance.hasAnyEquipmentBarrelBeenOpened && !instance.hasEquipmentBeenStoredThisRun && instance.IsGameObjectTheFirstEquipmentBarrelBeingOpen(self.gameObject))
             {
                 orig(self);
                 return;

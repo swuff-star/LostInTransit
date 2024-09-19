@@ -25,7 +25,7 @@ namespace EntityStates.Drifter
         {
             //Debug.Log("modify overlap");
             base.AuthorityModifyOverlapAttack(overlapAttack);
-            DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.ExecuteToScrap);
+            DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.executeToScrap);
         }
     }
 #endif

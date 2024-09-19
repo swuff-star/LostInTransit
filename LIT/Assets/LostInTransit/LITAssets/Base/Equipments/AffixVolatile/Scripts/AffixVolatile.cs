@@ -14,10 +14,10 @@ namespace LostInTransit.Equipments
 {
     public sealed class AffixVolatile : LITEliteEquipment, IContentPackModifier
     {
-        public override List<EliteDef> EliteDefs => _eliteDefs;
+        public override List<EliteDef> eliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private static GameObject _volatileAttachment;
@@ -133,9 +133,9 @@ namespace LostInTransit.Equipments
             protected override void OnFirstStackGained()
             {
                 base.OnFirstStackGained();
-                if (_attachment.attachedBody != CharacterBody)
+                if (_attachment.attachedBody != characterBody)
                 {
-                    _attachment.AttachToGameObjectAndSpawn(CharacterBody.gameObject);
+                    _attachment.AttachToGameObjectAndSpawn(characterBody.gameObject);
                 }
 
                 if (_attachment.attached)
@@ -159,13 +159,13 @@ namespace LostInTransit.Equipments
                 if (!enabled)
                     return;
 
-                var healthComponent = CharacterBody.healthComponent;
+                var healthComponent = characterBody.healthComponent;
                 //If we're dead, destroy the attachment to avoid detonation post mortem
                 if (!healthComponent.alive && _attachment)
                     Destroy(_attachment.gameObject);
 
                 //This makes any AI body self detonate if they have the buff
-                if (healthComponent && healthComponent.isHealthLow && !CharacterBody.isPlayerControlled)
+                if (healthComponent && healthComponent.isHealthLow && !characterBody.isPlayerControlled)
                 {
                     TryExplode();
                 }

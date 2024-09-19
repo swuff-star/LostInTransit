@@ -16,19 +16,19 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_GOLDENGUN_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "The maximum amount of bonus damage Golden Gun grants.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "The maximum amount of bonus damage Golden Gun grants.")]
         [FormatToken(TOKEN)]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 1, 2)]
         public static uint maxDamageBonus = 40;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "The maximum amount of gold that Golden Gun will account for.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "The maximum amount of gold that Golden Gun will account for.")]
         [FormatToken(TOKEN, 2)]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 3, 2)]
         public static uint maxGoldThreshold = 300;
 
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;

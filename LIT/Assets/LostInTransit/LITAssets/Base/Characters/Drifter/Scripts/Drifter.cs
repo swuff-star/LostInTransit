@@ -13,32 +13,32 @@ namespace LostInTransit.Characters
 #if DEBUG
     public sealed class Drifter : LITSurvivor, IContentPackModifier
     {
-        public override SurvivorDef SurvivorDef => _survivorDef;
+        public override SurvivorDef survivorDef => _survivorDef;
         private SurvivorDef _survivorDef;
 
-        public override NullableRef<GameObject> MasterPrefab => throw new System.NotImplementedException();
+        public override NullableRef<GameObject> masterPrefab => _masterPrefab;
         private GameObject _masterPrefab;
 
-        public override GameObject CharacterPrefab => _characterPrefab;
+        public override GameObject characterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
 
         private AssetCollection _assetCollection;
 
-        public static DamageAPI.ModdedDamageType ExecuteToScrap { get; private set; }
+        public static DamageAPI.ModdedDamageType executeToScrap { get; private set; }
         private static GameObject _scrapPickup;
         private static float executeScrapProcChance = 20f;
 
-        public static DamageAPI.ModdedDamageType ScrapOnHit10 { get; private set; }
-        public static DamageAPI.ModdedDamageType ScrapOnHit20 { get; private set; }
-        public static DamageAPI.ModdedDamageType ScrapOnHit30 { get; private set; }
-        public static GameObject DrifterScrapProjectile { get; private set; }
+        public static DamageAPI.ModdedDamageType scrapOnHit10 { get; private set; }
+        public static DamageAPI.ModdedDamageType scrapOnHit20 { get; private set; }
+        public static DamageAPI.ModdedDamageType scrapOnHit30 { get; private set; }
+        public static GameObject drifterScrapProjectile { get; private set; }
 
         public override void Initialize()
         {
-            ExecuteToScrap = DamageAPI.ReserveDamageType();
-            ScrapOnHit10 = DamageAPI.ReserveDamageType();
-            ScrapOnHit20 = DamageAPI.ReserveDamageType();
-            ScrapOnHit30 = DamageAPI.ReserveDamageType();
+            executeToScrap = DamageAPI.ReserveDamageType();
+            scrapOnHit10 = DamageAPI.ReserveDamageType();
+            scrapOnHit20 = DamageAPI.ReserveDamageType();
+            scrapOnHit30 = DamageAPI.ReserveDamageType();
 
             GlobalEventManager.onServerDamageDealt += HandleScrapDamageTypes;
         }
@@ -48,7 +48,7 @@ namespace LostInTransit.Characters
             var victimBody = report.victimBody;
             var attackerBody = report.attackerBody;
             var damageInfo = report.damageInfo;
-            if (DamageAPI.HasModdedDamageType(damageInfo, ExecuteToScrap))
+            if (DamageAPI.HasModdedDamageType(damageInfo, executeToScrap))
             {
                 if (victimBody.healthComponent.combinedHealth < victimBody.healthComponent.fullCombinedHealth * 0.2f)
                 {
@@ -67,7 +67,7 @@ namespace LostInTransit.Characters
                     NetworkServer.Spawn(scrap);
                 }
             }
-            if (DamageAPI.HasModdedDamageType(damageInfo, ScrapOnHit10))
+            if (DamageAPI.HasModdedDamageType(damageInfo, scrapOnHit10))
             {
                 if (Util.CheckRoll(10))
                 {
@@ -77,7 +77,7 @@ namespace LostInTransit.Characters
                     NetworkServer.Spawn(scrap);
                 }
             }
-            if (DamageAPI.HasModdedDamageType(damageInfo, ScrapOnHit20))
+            if (DamageAPI.HasModdedDamageType(damageInfo, scrapOnHit20))
             {
                 if (Util.CheckRoll(20))
                 {
@@ -87,7 +87,7 @@ namespace LostInTransit.Characters
                     NetworkServer.Spawn(scrap);
                 }
             }
-            if (DamageAPI.HasModdedDamageType(damageInfo, ScrapOnHit30))
+            if (DamageAPI.HasModdedDamageType(damageInfo, scrapOnHit30))
             {
                 if (Util.CheckRoll(30))
                 {

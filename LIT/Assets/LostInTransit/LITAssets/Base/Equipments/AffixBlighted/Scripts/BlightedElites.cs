@@ -16,16 +16,16 @@ namespace LostInTransit.Elites
 {
     public static class BlightedElites
     {
-        public static bool Initialized { get; private set; }
-        public static ReadOnlyCollection<EliteDef> ElitesHonorDisabled { get; private set; }
+        public static bool initialized { get; private set; }
+        public static ReadOnlyCollection<EliteDef> elitesHonorDisabled { get; private set; }
         private static List<EliteDef> _elitesHonorDisabled = new List<EliteDef>();
-        public static ReadOnlyCollection<EliteDef> ElitesHonorEnabled { get; private set; }
+        public static ReadOnlyCollection<EliteDef> elitesHonorEnabled { get; private set; }
         private static List<EliteDef> _elitesHonorEnabled = new List<EliteDef>();
 
-        public static ReadOnlyCollection<BodyIndex> PrestigeBodyBlacklist { get; private set; }
+        public static ReadOnlyCollection<BodyIndex> prestigeBodyBlacklist { get; private set; }
         private static List<CharacterBody> _prestigeBodyBlacklist = new List<CharacterBody>();
 
-        public static ReadOnlyCollection<BodyIndex> RegularBodyBlacklist { get; private set; }
+        public static ReadOnlyCollection<BodyIndex> regularBodyBlacklist { get; private set; }
         private static List<CharacterBody> _regularBodyBlacklist = new List<CharacterBody>();
 
         public static void AddBodyToRegularBlacklist(CharacterBody body) => _regularBodyBlacklist.Add(body);
@@ -43,13 +43,13 @@ namespace LostInTransit.Elites
                 return;
             }
             LITLog.Info("Blighted elites enabled, setting up underlying systems...");
-            Initialized = true;
+            initialized = true;
 
             RoR2Application.onLoad += AddDefaultCollectionEntries;
             Run.onRunStartGlobal += CreateFinalizedCollections;
             On.RoR2.Util.GetBestBodyName += MakeBlightedName;
 
-            if(LITMain.ProperSaveInstalled)
+            if(LITMain.properSaveInstalled)
             {
 #if DEBUG
                 LITLog.Info($"ProperSave Installed, setting up save support...");
@@ -67,10 +67,10 @@ namespace LostInTransit.Elites
 
         private static void SaveKillCount(Dictionary<string, object> obj)
         {
-            if(BlightDirector.Instance)
+            if(BlightDirector.instance)
             {
-                LITLog.Message($"Saving Blighted Monsters Killed Count ({BlightDirector.KILL_COUNT_KEY}, {BlightDirector.Instance.MonstersKilled})");
-                obj.Add(BlightDirector.KILL_COUNT_KEY, BlightDirector.Instance.MonstersKilled);
+                LITLog.Message($"Saving Blighted Monsters Killed Count ({BlightDirector.KILL_COUNT_KEY}, {BlightDirector.instance.monstersKilled})");
+                obj.Add(BlightDirector.KILL_COUNT_KEY, BlightDirector.instance.monstersKilled);
             }
         }
 
@@ -277,8 +277,8 @@ namespace LostInTransit.Elites
                     honorEnabledCollection.Add(honorElite);
             }
 
-            ElitesHonorEnabled = new ReadOnlyCollection<EliteDef>(honorEnabledCollection);
-            ElitesHonorDisabled = new ReadOnlyCollection<EliteDef>(honorDisabledCollection);
+            elitesHonorEnabled = new ReadOnlyCollection<EliteDef>(honorEnabledCollection);
+            elitesHonorDisabled = new ReadOnlyCollection<EliteDef>(honorDisabledCollection);
         }
 
         private static void CreateBlacklistCollections(Run run)
@@ -320,8 +320,8 @@ namespace LostInTransit.Elites
                 }
             }
 
-            PrestigeBodyBlacklist = new ReadOnlyCollection<BodyIndex>(prestigeBlacklist);
-            RegularBodyBlacklist = new ReadOnlyCollection<BodyIndex>(regularBlacklist);
+            prestigeBodyBlacklist = new ReadOnlyCollection<BodyIndex>(prestigeBlacklist);
+            regularBodyBlacklist = new ReadOnlyCollection<BodyIndex>(regularBlacklist);
         }
     }
 }

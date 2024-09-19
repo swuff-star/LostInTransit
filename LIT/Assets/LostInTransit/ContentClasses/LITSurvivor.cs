@@ -13,11 +13,11 @@ namespace LostInTransit
 {
     public abstract class LITSurvivor : ISurvivorContentPiece
     {
-        public abstract SurvivorDef SurvivorDef { get; }
-        public abstract NullableRef<GameObject> MasterPrefab { get; }
-        CharacterBody IGameObjectContentPiece<CharacterBody>.Component => CharacterPrefab.GetComponent<CharacterBody>();
-        GameObject IContentPiece<GameObject>.Asset => CharacterPrefab;
-        public abstract GameObject CharacterPrefab { get; }
+        public abstract SurvivorDef survivorDef { get; }
+        public abstract NullableRef<GameObject> masterPrefab { get; }
+        CharacterBody IGameObjectContentPiece<CharacterBody>.component => characterPrefab.GetComponent<CharacterBody>();
+        GameObject IContentPiece<GameObject>.asset => characterPrefab;
+        public abstract GameObject characterPrefab { get; }
 
         public abstract IEnumerator LoadContentAsync();
         public abstract bool IsAvailable(ContentPack contentPack);

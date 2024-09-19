@@ -20,14 +20,14 @@ namespace LostInTransit.Equipments
 {
     public sealed class AffixBlighted : LITEliteEquipment, IContentPackModifier
     {
-        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, ConfigDescOverride = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
+        [RiskOfOptionsConfigureField(LITConfig.EQUIPS, configDescOverride = "Whether Teleporter Bosses should spawn as Blighted enemies.")]
         public static bool enableBlightedBosses = false;
 
-        public override List<EliteDef> EliteDefs => _eliteDefs;
+        public override List<EliteDef> eliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
         private static GameObject _blightedBodyAttachment;
         private AssetCollection _blightedAssetCollection;
@@ -265,11 +265,11 @@ namespace LostInTransit.Equipments
                     return;
 
                 Color value = Color.black;
-                if(CharacterBody && CharacterBody.healthComponent)
+                if(characterBody && characterBody.healthComponent)
                 {
-                    float num = Mathf.Clamp01(1f - CharacterBody.healthComponent.timeSinceLastHit / CharacterModel.hitFlashDuration);
-                    float num2 = Mathf.Pow(Mathf.Clamp01(1f - CharacterBody.healthComponent.timeSinceLastHeal / CharacterModel.healFlashDuration), 0.5f);
-                    value = ((!(num2 > num)) ? (((CharacterBody.healthComponent.shield > 0f) ? CharacterModel.hitFlashShieldColor : CharacterModel.hitFlashBaseColor) * num) : (CharacterModel.healFlashColor * num2));
+                    float num = Mathf.Clamp01(1f - characterBody.healthComponent.timeSinceLastHit / CharacterModel.hitFlashDuration);
+                    float num2 = Mathf.Pow(Mathf.Clamp01(1f - characterBody.healthComponent.timeSinceLastHeal / CharacterModel.healFlashDuration), 0.5f);
+                    value = ((!(num2 > num)) ? (((characterBody.healthComponent.shield > 0f) ? CharacterModel.hitFlashShieldColor : CharacterModel.hitFlashBaseColor) * num) : (CharacterModel.healFlashColor * num2));
                 }
                 for(int i = 0; i < _firstDisplays.Count; i++)
                 {
@@ -295,11 +295,11 @@ namespace LostInTransit.Equipments
 
             private void FixedUpdate()
             {
-                UpdateIndividual(ref _first, _firstDisplays, _blightedAttachment.FirstIndex);
-                UpdateIndividual(ref _second, _secondDisplays, _blightedAttachment.SecondIndex);
+                UpdateIndividual(ref _first, _firstDisplays, _blightedAttachment.firstIndex);
+                UpdateIndividual(ref _second, _secondDisplays, _blightedAttachment.secondIndex);
 
                 //Makes ai blighted elites shuffle their elites every 60 seconds.
-                if (NetworkServer.active && !CharacterBody.isPlayerControlled)
+                if (NetworkServer.active && !characterBody.isPlayerControlled)
                 {
                     _aiRandomizeEliteStopwatch -= Time.fixedDeltaTime;
                     if (_aiRandomizeEliteStopwatch < 0)
@@ -324,7 +324,7 @@ namespace LostInTransit.Equipments
     
                         if (NetworkServer.active && eliteDef.eliteEquipmentDef.passiveBuffDef)
                         {
-                            CharacterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                            characterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
                         }
                     }
                 }
@@ -337,7 +337,7 @@ namespace LostInTransit.Equipments
                         UndoDisplays(displays);
     
                     if (NetworkServer.active)
-                        CharacterBody.RemoveBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                        characterBody.RemoveBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
 
                     eliteDef = EliteCatalog.GetEliteDef(index);
 
@@ -345,7 +345,7 @@ namespace LostInTransit.Equipments
                         ActivateDisplays(eliteDef, displays);
     
                     if (NetworkServer.active)
-                        CharacterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
+                        characterBody.AddBuff(eliteDef.eliteEquipmentDef.passiveBuffDef);
                 }
             }
             

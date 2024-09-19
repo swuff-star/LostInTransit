@@ -34,7 +34,7 @@ namespace LostInTransit.Components
             // or the timer wont disappear if its not a temporary item
             Transform timer = self.transform.Find("TemporaryItemTimer(Clone)");// xDDDDDD
 
-            if (LITTempItems.realToTemporaryIndex.ContainsValue(newItemIndex))
+            if (false /*LITTempItems.realToTemporaryIndex.ContainsValue(newItemIndex)*/)
             {
                 ItemInventoryDisplay display = self.GetComponentInParent<ItemInventoryDisplay>();
 

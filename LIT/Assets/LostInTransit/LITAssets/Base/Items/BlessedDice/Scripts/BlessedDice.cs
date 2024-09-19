@@ -16,41 +16,41 @@ namespace LostInTransit.Items
     public class BlessedDice : LITItem, IContentPackModifier
     {
         private const string TOKEN = "LIT_ITEM_BLESSEDDICE_DESC";
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override ItemDef ItemDef => _itemDef;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base duration of buff after using a shrine.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base duration of buff after using a shrine.")]
         [FormatToken(TOKEN, 0)]
         public static float baseBuffDuration = 10f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added duration of buff per stack of Dice.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Added duration of buff per stack of Dice.")]
         [FormatToken(TOKEN, 1)]
         public static float buffStackDuration = 5f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Barrier/Temp HP gained while you have the shield buff, as a percentage of max health")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Barrier/Temp HP gained while you have the shield buff, as a percentage of max health")]
         public static float barrierAmount = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Barrier decay rate during buff", ConfigDescOverride = "Rate at which barrier decays while you have the Shield buff, as a percentage of normal decay rate.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Barrier decay rate during buff", configDescOverride = "Rate at which barrier decays while you have the Shield buff, as a percentage of normal decay rate.")]
         public static float barrierDecayRate = 0f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS,  ConfigDescOverride = "Armor added while you have the armor buff.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS,  configDescOverride = "Armor added while you have the armor buff.")]
         public static float armorBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Move speed added while you have the move speed buff, in percent.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Move speed added while you have the move speed buff, in percent.")]
         public static float movementSpeedBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Attack speed added while you have the attack speed buff, in percent.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Attack speed added while you have the attack speed buff, in percent.")]
         public static float attackBonus = 50f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Critical strike chance added while you have the critical strike buff, in percent.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Critical strike chance added while you have the critical strike buff, in percent.")]
         public static float criticalChanceBonus = 20f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Luck added while you have the luck buff. (Whole numbers only)")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Luck added while you have the luck buff. (Whole numbers only)")]
         public static uint luckAmountBonus = 1;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Weighted Rolls", ConfigDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Weighted Rolls", configDescOverride = "Make all buffs equally likely, instead of weighted for balance")]
         public static bool fairRolls = false;
 
         private AssetCollection _assetCollection;

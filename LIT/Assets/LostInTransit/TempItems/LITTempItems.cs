@@ -11,7 +11,14 @@ using HG;
 using LostInTransit.Components;
 namespace LostInTransit
 {
-    public class LITTempItems
+    //N: idek why this uses ItemAPI, so i'm commenting it out for now cuz i'm lazy
+    //Had to comment out parts of the following scripts:
+    //TemporaryItemDropTable
+    //TemporaryItemTracker
+    //TemporaryItemPickupComponent
+    //Drifter - TemporaryItems
+
+    /*public class LITTempItems
     {
         public static ItemTierDef tempTier1;
         public static ItemTierDef tempTier2;
@@ -147,7 +154,7 @@ namespace LostInTransit
                 prefabOverride = LITTempItems.temporaryItemPickupPrefab,
             };
             TemporaryItemPickupComponent.onAwakeGlobal += (timer) => ModifyTimer(timer, duration);
-            PickupDropletController.CreatePickupDroplet(info, velocity);          
+            PickupDropletController.CreatePickupDroplet(info, position, velocity);          
             TemporaryItemPickupComponent.onAwakeGlobal -= (timer) => ModifyTimer(timer, duration); // THIS DOESNT UNHOOK BUT IDK HOWWWWWWWW
             //Its because its an annonymous function, even if theyre identically written it gets compiled into different functions. this needs to be fixed somehow
         }
@@ -287,5 +294,5 @@ namespace LostInTransit
             ItemDisplayRule[] rules = null;
             return new CustomItem(newItem, rules);
         }
-    }
+    }*/
 }

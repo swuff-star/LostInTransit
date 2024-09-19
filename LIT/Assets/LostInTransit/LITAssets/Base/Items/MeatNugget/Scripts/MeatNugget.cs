@@ -17,27 +17,27 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_MEATNUGGET_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Proc chance for Meat Nugget.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Proc chance for Meat Nugget.")]
         [FormatToken(TOKEN, 0)]
         public static float procChance = 8f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount added to regen by nugget pickup.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount added to regen by nugget pickup.")]
         [FormatToken(TOKEN, 1)]
         public static float regenBonus = 1.6f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "If true, the regen buff duration can stack up to the number of Meat Nuggets you have.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "If true, the regen buff duration can stack up to the number of Meat Nuggets you have.")]
         public static bool regenStacking = true;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base duration of the regen buff granted by dropped nuggets.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base duration of the regen buff granted by dropped nuggets.")]
         [FormatToken(TOKEN, 2)]
         public static float baseDuration = 2;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra duration of the regen buff per stack of Meat Nugget.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra duration of the regen buff per stack of Meat Nugget.")]
         [FormatToken(TOKEN, 3)]
         public static float stackDuration = 1;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private static GameObject _meatNuggetPickup;

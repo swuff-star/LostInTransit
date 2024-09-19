@@ -16,24 +16,24 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_THETOXIN_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Time in seconds until The Toxin can re-infect.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Time in seconds until The Toxin can re-infect.")]
         [FormatToken(TOKEN, 0)]
         public static float toxinCooldown = 6f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Time in seconds that The Toxin infects enemies.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Time in seconds that The Toxin infects enemies.")]
         [FormatToken(TOKEN, 1)]
         public static float toxinDuration = 8f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Range of which enemies will become infected by The Toxin.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Range of which enemies will become infected by The Toxin.")]
         [FormatToken(TOKEN, 2)]
         public static float toxinRadius = 8f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Armor removed by the debuff inflicted by The Toxin.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Armor removed by the debuff inflicted by The Toxin.")]
         [FormatToken(TOKEN, 3)]
         public static float toxinArmorReduction = 40f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private static GameObject _toxinRangeIndicator;
@@ -100,7 +100,7 @@ namespace LostInTransit.Items
             protected override void OnFirstStackGained()
             {
                 base.OnFirstStackGained();
-                GameObject charModel = CharacterBody.modelLocator.modelTransform.gameObject;
+                GameObject charModel = characterBody.modelLocator.modelTransform.gameObject;
                 if (charModel != null)
                 {
                     CharacterModel cm = charModel.GetComponent<CharacterModel>();
@@ -237,10 +237,10 @@ namespace LostInTransit.Items
             {
                 hits.Clear();
                 search.ClearCandidates();
-                search.origin = CharacterBody.corePosition;
+                search.origin = characterBody.corePosition;
                 search.RefreshCandidates();
                 search.FilterCandidatesByDistinctHurtBoxEntities();
-                search.FilterCandidatesByHurtBoxTeam(TeamMask.GetUnprotectedTeams(CharacterBody.teamComponent.teamIndex));
+                search.FilterCandidatesByHurtBoxTeam(TeamMask.GetUnprotectedTeams(characterBody.teamComponent.teamIndex));
                 search.GetHurtBoxes(hits);
 
                 CharacterBody closestBody = null;
@@ -251,9 +251,9 @@ namespace LostInTransit.Items
                     if (hp)
                     {
                         CharacterBody bodyS = hp.body;
-                        if (bodyS && bodyS != CharacterBody)
+                        if (bodyS && bodyS != characterBody)
                         {
-                            float distance = Vector3.Distance(transform.position, CharacterBody.transform.position);
+                            float distance = Vector3.Distance(transform.position, characterBody.transform.position);
                             if (closestBody == null || distance < Vector3.Distance(transform.position, closestBody.transform.position))
                             {
                                 closestBody = bodyS;
@@ -273,8 +273,8 @@ namespace LostInTransit.Items
                     if (indicatorUtils != null)
                         indicatorUtils.shouldDestroy = true;
 
-                    CharacterBody.RemoveBuff(LITContent.Buffs.bdToxinReady);
-                    CharacterBody.AddTimedBuff(LITContent.Buffs.bdToxinCooldown, Items.TheToxin.toxinCooldown);
+                    characterBody.RemoveBuff(LITContent.Buffs.bdToxinReady);
+                    characterBody.AddTimedBuff(LITContent.Buffs.bdToxinCooldown, Items.TheToxin.toxinCooldown);
                 }
             }
         }

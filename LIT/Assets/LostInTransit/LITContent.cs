@@ -89,27 +89,27 @@ namespace LostInTransit
                 _parallelPreLoadDispatchers.Add(AddExpansionDef);
             });
 
-            LITMain main = LITMain.Instance;
+            LITMain main = LITMain.instance;
             _loadDispatchers = new Func<IEnumerator>[]
             {
                 () =>
                 {
-                    EquipmentModule.AddProvider(main, ContentUtil.CreateContentPieceProvider<EquipmentDef>(main, LITContentPack));
-                    return EquipmentModule.InitialzeEquipments(main);
+                    EquipmentModule.AddProvider(main, ContentUtil.CreateGenericContentPieceProvider<EquipmentDef>(main, LITContentPack));
+                    return EquipmentModule.InitializeEquipments(main);
                 },
                 () =>
                 {
-                    ItemModule.AddProvider(main, ContentUtil.CreateContentPieceProvider<ItemDef>(main, LITContentPack));
+                    ItemModule.AddProvider(main, ContentUtil.CreateGenericContentPieceProvider<ItemDef>(main, LITContentPack));
                     return ItemModule.InitializeItems(main);
                 },
                 () =>
                 {
-                    CharacterModule.AddProvider(main, ContentUtil.CreateGameObjectContentPieceProvider<CharacterBody>(main, LITContentPack));
+                    CharacterModule.AddProvider(main, ContentUtil.CreateGameObjectGenericContentPieceProvider<CharacterBody>(main, LITContentPack));
                     return CharacterModule.InitializeCharacters(main);
                 },
                 () =>
                 {
-                    InteractableModule.AddProvider(main, ContentUtil.CreateGameObjectContentPieceProvider<IInteractable>(main, LITContentPack));
+                    InteractableModule.AddProvider(main, ContentUtil.CreateGameObjectGenericContentPieceProvider<IInteractable>(main, LITContentPack));
                     return InteractableModule.InitializeInteractables(main);
                 }
             };

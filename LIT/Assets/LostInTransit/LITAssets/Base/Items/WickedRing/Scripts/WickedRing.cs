@@ -15,12 +15,12 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_WICKEDRING_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Seconds removed from skill cooldowns on kill.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Seconds removed from skill cooldowns on kill.")]
         [FormatToken(TOKEN, 0)]
         public static float secondsRemovedPerKill = 1f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
         public override void Initialize()
         {

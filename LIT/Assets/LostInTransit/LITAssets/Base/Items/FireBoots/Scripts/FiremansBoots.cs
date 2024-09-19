@@ -17,16 +17,16 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_FIREMANSBOOTS_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Chance to Ignite on Hit.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Chance to Ignite on Hit.")]
         [FormatToken(TOKEN)]
         public static float igniteChance = 8f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Damage coefficient of dealt ignite debuffs.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Damage coefficient of dealt ignite debuffs.")]
         [FormatToken(TOKEN, 1)]
         public static float igniteDamageCoefficient = 2.4f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

@@ -14,12 +14,12 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_LOOPER_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum extra damage dealt by each stack of Ol' Lopper.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Maximum extra damage dealt by each stack of Ol' Lopper.")]
         [FormatToken(TOKEN)]
         public static float maxBonus = 0.6f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()

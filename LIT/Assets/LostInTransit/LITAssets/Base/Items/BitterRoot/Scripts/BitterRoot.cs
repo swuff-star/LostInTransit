@@ -15,17 +15,17 @@ namespace LostInTransit.Items
     {
         public const string TOKEN = "LIT_ITEM_BITTERROOT_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of regen on kill per Root.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of regen on kill per Root.")]
         [FormatToken(TOKEN, 0)]
         public static float regenAmount = 3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Duration of regen on kill per Root.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Duration of regen on kill per Root.")]
         [FormatToken(TOKEN, 1)]
         public static float regenDuration = 3f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override ItemDef ItemDef => _itemDef;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
         private AssetCollection _assetCollection;
 

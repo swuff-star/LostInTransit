@@ -16,37 +16,37 @@ namespace LostInTransit.Items
     {
         public const string TOKEN = "LIT_ITEM_THALLIUM_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Chance to afflict Thallium Poisoning.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Chance to afflict Thallium Poisoning.")]
         [FormatToken(TOKEN, 0)]
         public static float procChance = 10f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Total damage of Thallium, as a percentage of the victim's damage. Halved after the first stack")]
         [FormatToken(TOKEN, 1)]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.DivideByN, 2, 2)]
         public static float totalDamage = 500f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "How much the victim is slowed by.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "How much the victim is slowed by.")]
         [FormatToken(TOKEN, 3)]
         public static float slowMultiplier = 75f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of time needed to deal the full damage. By default, increases with stacks. Minimum 1.")]
         public static int poisonDuration = 4;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigNameOverride = "Poison is Fixed Duration", ConfigDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configNameOverride = "Poison is Fixed Duration", configDescOverride = "If enabled, stacks increase the damage per tick instead of the total duration")]
         public static bool noTimeToDie = false;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private static DotBuffDef _dotBuffDef;
-        public static DotController.DotIndex ThalliumPoison => _dotBuffDef.DotIndex;
+        public static DotController.DotIndex ThalliumPoison => _dotBuffDef.dotIndex;
 
         public override void Initialize()
         {
             _dotBuffDef.Init();
 
-            _dotBuffDef.DotDef.damageColorIndex = DamageColorIndex.DeathMark;
+            _dotBuffDef.dotDef.damageColorIndex = DamageColorIndex.DeathMark;
             R2API.RecalculateStatsAPI.GetStatCoefficients += HandleSlow;
         }
 

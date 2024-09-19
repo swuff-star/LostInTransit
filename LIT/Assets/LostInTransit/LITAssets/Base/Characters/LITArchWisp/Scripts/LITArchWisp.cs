@@ -10,22 +10,22 @@ namespace LostInTransit.Characters
 {
     public class LITArchWisp : LITMonster, IContentPackModifier
     {
-        public override NullableRef<MonsterCardProvider> CardProvider => _cardProvider;
+        public override NullableRef<MonsterCardProvider> cardProvider => _cardProvider;
         private MonsterCardProvider _cardProvider;
 
-        public override NullableRef<DirectorAPI.DirectorCardHolder> DissonanceCard => _dissonanceCard;
-        private DirectorAPI.DirectorCardHolder _dissonanceCard;
+        public override NullableRef<DirectorCardHolderExtended> dissonanceCard => _dissonanceCard;
+        private DirectorCardHolderExtended _dissonanceCard;
 
-        public override NullableRef<GameObject> MasterPrefab => _masterPrefab;
+        public override NullableRef<GameObject> masterPrefab => _masterPrefab;
         private GameObject _masterPrefab;
 
-        public override GameObject CharacterPrefab => _characterPrefab;
+        public override GameObject characterPrefab => _characterPrefab;
         private GameObject _characterPrefab;
         private AssetCollection _assetcollection;
 
         public override void Initialize()
         {
-            _dissonanceCard = new DirectorAPI.DirectorCardHolder
+            _dissonanceCard = new DirectorCardHolderExtended
             {
                 Card = new DirectorCard
                 {

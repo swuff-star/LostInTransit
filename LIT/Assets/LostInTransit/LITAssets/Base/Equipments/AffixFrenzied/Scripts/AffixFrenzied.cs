@@ -13,11 +13,11 @@ namespace LostInTransit.Equipments
 {
     public sealed class AffixFrenzied : LITEliteEquipment, IContentPackModifier
     {
-        public override List<EliteDef> EliteDefs => _eliteDefs;
+        public override List<EliteDef> eliteDefs => _eliteDefs;
         private List<EliteDef> _eliteDefs;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         private AssetCollection _assetCollection;
@@ -119,14 +119,14 @@ namespace LostInTransit.Equipments
             {
                 base.OnFirstStackGained();
 
-                CharacterBody.MarkAllStatsDirty();
+                characterBody.MarkAllStatsDirty();
                 _aiCooldownStopwatch = LITContent.Equipments.AffixFrenzied.cooldown;
             }
 
             private void FixedUpdate()
             {
                 //AI case
-                if (!CharacterBody.isPlayerControlled)
+                if (!characterBody.isPlayerControlled)
                 {
                     AIFixedUpdate();
                     UpdateVisuals(true);
@@ -151,8 +151,8 @@ namespace LostInTransit.Equipments
                     {
                         if (!_blinkReadyInstance)
                         {
-                            _blinkReadyInstance = Instantiate(_blinkReadyEffect, CharacterBody.aimOriginTransform ? CharacterBody.aimOriginTransform : transform);
-                            _blinkReadyInstance.transform.localScale *= CharacterBody.radius;
+                            _blinkReadyInstance = Instantiate(_blinkReadyEffect, characterBody.aimOriginTransform ? characterBody.aimOriginTransform : transform);
+                            _blinkReadyInstance.transform.localScale *= characterBody.radius;
                         }
                     }
                     else if (_blinkReadyInstance)
@@ -166,8 +166,8 @@ namespace LostInTransit.Equipments
                 {
                     if (!_blinkReadyInstance)
                     {
-                        _blinkReadyInstance = Instantiate(_blinkReadyEffect, CharacterBody.aimOriginTransform ? CharacterBody.aimOriginTransform : transform);
-                        _blinkReadyInstance.transform.localScale *= CharacterBody.radius;
+                        _blinkReadyInstance = Instantiate(_blinkReadyEffect, characterBody.aimOriginTransform ? characterBody.aimOriginTransform : transform);
+                        _blinkReadyInstance.transform.localScale *= characterBody.radius;
                     }
                 }
                 else if (_blinkReadyInstance)
@@ -203,7 +203,7 @@ namespace LostInTransit.Equipments
                     }
                 }
 
-                bool isFrozen = CharacterBody.healthComponent.isInFrozenState;
+                bool isFrozen = characterBody.healthComponent.isInFrozenState;
                 bool isStunned = false;
                 if (_stateOnHurt)
                 {

@@ -17,19 +17,19 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_RUSTYJETPACK_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Added jump power per Jetpack, as a percentage of normal jump power. Halved after the first stack.")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100)]
         public static float jumpPower = 2f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Amount of gravity removed, as a pecent")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Amount of gravity removed, as a pecent")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100, 2)]
         public static float reducedGravity = 0.35f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Maximum amount fall speed can be reduced by, in percent")]
         public static float minGravity = 90f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()
@@ -80,7 +80,8 @@ namespace LostInTransit.Items
             private void Start()
             {
                 if (NetworkServer.active)
-                    body.characterMotor.onHitGroundServer += Reset;
+                    body.characterMotor.onHitGroundAuthority += Reset;
+                //body.characterMotor.onHitGroundServer += Reset;
                 else
                     body.characterMotor.onHitGroundAuthority += Reset;
 

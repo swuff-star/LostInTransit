@@ -14,20 +14,20 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_PRISONSHACKLES_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Multiplier added to the shackled body's movement speed.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Multiplier added to the shackled body's movement speed.")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100)]
         public static float slowMultiplier = 0.3f;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Base duration of the Shackled debuff.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Base duration of the Shackled debuff.")]
         [FormatToken(TOKEN, 1)]
         public static int duration = 2;
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Extra duration of the Shackled debuff per stack of shackles.")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Extra duration of the Shackled debuff per stack of shackles.")]
         [FormatToken(TOKEN, 2)]
         public static int durationStack = 2;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         private AssetCollection _assetCollection;

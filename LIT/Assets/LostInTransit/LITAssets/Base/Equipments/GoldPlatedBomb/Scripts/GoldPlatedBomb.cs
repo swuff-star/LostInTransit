@@ -10,9 +10,9 @@ namespace LostInTransit.Equipments
 #if DEBUG
     public sealed class GoldPlatedBomb : LITEquipment
     {
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         public override bool Execute(EquipmentSlot slot)

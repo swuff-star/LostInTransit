@@ -11,8 +11,8 @@ namespace LostInTransit.Characters
 {
     public class GoldEmergencyDrone : LITInteractable, IContentPackModifier
     {
-        public override GameObject InteractablePrefab => _interactablePrefab;
-        public override NullableRef<InteractableCardProvider> CardProvider => _cardProvider;
+        public override GameObject interactablePrefab => _interactablePrefab;
+        public override NullableRef<InteractableCardProvider> cardProvider => _cardProvider;
         public GameObject CharacterPrefab => _characterPrefab;
         public GameObject CharacterMaster => _characterMaster;
 
@@ -29,7 +29,7 @@ namespace LostInTransit.Characters
 
         public override void Initialize()
         {
-            smb = InteractablePrefab.GetComponent<SummonMasterBehavior>();
+            smb = interactablePrefab.GetComponent<SummonMasterBehavior>();
             cm = smb.masterPrefab.GetComponent<CharacterMaster>();
             bodyPrefab = cm.bodyPrefab;
 
@@ -90,7 +90,7 @@ namespace LostInTransit.Characters
                     placementMode = DirectorPlacementRule.PlacementMode.Direct,
                     position = contactPoint
                 };
-                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(CardProvider.Value.BuildSpawnCardSet().FirstOrDefault(), placementRule, new Xoroshiro128Plus(0UL)));
+                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(cardProvider.value.BuildSpawnCardSet().FirstOrDefault(), placementRule, new Xoroshiro128Plus(0UL)));
                 if (gameObject)
                 {
                     PurchaseInteraction component = gameObject.GetComponent<PurchaseInteraction>();

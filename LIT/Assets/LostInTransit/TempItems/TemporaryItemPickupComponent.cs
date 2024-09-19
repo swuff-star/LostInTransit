@@ -15,7 +15,7 @@ namespace LostInTransit.Components
 
         public static Action<TemporaryItemPickupComponent> onAwakeGlobal;
 
-        public float itemDuration = LITTempItems.fallbackTemporaryItemDuration;
+        public float itemDuration = 120; // LITTempItems.fallbackTemporaryItemDuration;
 
         private void Awake()
         {

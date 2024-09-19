@@ -15,12 +15,12 @@ namespace LostInTransit.Items
     {
         private const string TOKEN = "LIT_ITEM_SMARTSHOPPER_DESC";
 
-        [RiskOfOptionsConfigureField(LITConfig.ITEMS, ConfigDescOverride = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
+        [RiskOfOptionsConfigureField(LITConfig.ITEMS, configDescOverride = "Percentage of money refunded when purchasing something, Percentage (0.5 = 50)")]
         [FormatToken(TOKEN, FormatTokenAttribute.OperationTypeEnum.MultiplyByN, 100)]
         public static float refundAmount = 0.5f;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override ItemDef ItemDef => _itemDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override ItemDef itemDef => _itemDef;
         private static ItemDef _itemDef;
         public override void Initialize()
         {

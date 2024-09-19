@@ -17,9 +17,9 @@ namespace LostInTransit.Items
         public static float barrierGain = 20;
         public static int moneyGain = 8;
 
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
 
-        public override ItemDef ItemDef => _itemDef;
+        public override ItemDef itemDef => _itemDef;
         private ItemDef _itemDef;
 
         public override void Initialize()
@@ -58,7 +58,7 @@ namespace LostInTransit.Items
             if (!arg1.TryGetComponent<CharacterBody>(out var body))
                 return;
 
-            var itemCount = body.GetItemCount(ItemDef);
+            var itemCount = body.GetItemCount(itemDef);
             if (itemCount == 0)
                 return;
 

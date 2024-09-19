@@ -41,8 +41,8 @@ namespace LostInTransit
         private const string CHARACTERS = "litcharacters";
         private const string SHARED = "litshared";
 
-        private static string SoundBankPath { get => Path.Combine(Path.GetDirectoryName(LITMain.Instance.Info.Location), "soundbanks", "LostInTransitSoundbank.bnk"); }
-        private static string AssetBundleFolderPath => Path.Combine(Path.GetDirectoryName(LITMain.Instance.Info.Location), ASSET_BUNDLE_FOLDER_NAME);
+        private static string SoundBankPath { get => Path.Combine(Path.GetDirectoryName(LITMain.instance.Info.Location), "soundbanks", "LostInTransitSoundbank.bnk"); }
+        private static string AssetBundleFolderPath => Path.Combine(Path.GetDirectoryName(LITMain.instance.Info.Location), ASSET_BUNDLE_FOLDER_NAME);
 
         private static Dictionary<LITBundle, AssetBundle> _assetBundles = new Dictionary<LITBundle, AssetBundle>();
         private static AssetBundle[] _streamedSceneBundles = Array.Empty<AssetBundle>();

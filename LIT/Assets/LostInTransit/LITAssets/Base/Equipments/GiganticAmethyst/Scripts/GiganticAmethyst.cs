@@ -10,8 +10,8 @@ namespace LostInTransit.Equipments
 {
     public sealed class GiganticAmethyst : LITEquipment
     {
-        public override NullableRef<List<GameObject>> ItemDisplayPrefabs => null;
-        public override EquipmentDef EquipmentDef => _equipmentDef;
+        public override NullableRef<List<GameObject>> itemDisplayPrefabs => null;
+        public override EquipmentDef equipmentDef => _equipmentDef;
         private EquipmentDef _equipmentDef;
 
         public override bool Execute(EquipmentSlot slot)
