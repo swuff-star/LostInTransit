@@ -51,7 +51,7 @@ MonoBehaviour:
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
-  Source: <BuildPath>
+  Source: <MSUBuildPath>
   Destination: <GaforbTestingPath>
 --- !u!114 &11400000
 MonoBehaviour:
@@ -70,4 +70,5 @@ MonoBehaviour:
   - {fileID: -3576180096776599551}
   - {fileID: -216652644370084839}
   QuickAccess: 0
-  manifest: {fileID: 11400000, guid: 6f21799fca639037e1b559d4902eab24, type: 2}
+  manifest: {fileID: -3892906877110538616, guid: 6f21799fca639037e1b559d4902eab24,
+    type: 2}

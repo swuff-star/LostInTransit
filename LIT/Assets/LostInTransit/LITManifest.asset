@@ -13,32 +13,13 @@ MonoBehaviour:
   m_Name: Files
   m_EditorClassIdentifier: 
   StagingPaths:
-  - <BuildPath>
+  - <MSUBuildPath>
   includeMetaFiles: 0
   files:
   - {fileID: 4900000, guid: ee105b2720cd7e24483cc186959d6a09, type: 3}
   - {fileID: 4900000, guid: 451d4395f4cd99d40b2b0e6cad0ea424, type: 3}
   - {fileID: 2800000, guid: f04053fdead41624d856cf4823829d97, type: 3}
 --- !u!114 &-3892906877110538616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3230df44b431ebc49a958dde5afa4f88, type: 3}
-  m_Name: LanguageFolderTree
-  m_EditorClassIdentifier: 
-  StagingPaths:
-  - <BuildPathPlugins>
-  rootFolderName: LITLang
-  languageFolders:
-  - languageName: en
-    languageFiles:
-    - {fileID: 4900000, guid: d49a561796037484e9eb4bfb50e4679a, type: 3}
---- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,11 +36,28 @@ MonoBehaviour:
   - {fileID: 114107831304456238}
   - {fileID: 114431642618062350}
   - {fileID: 114987763159783732}
-  - {fileID: -3892906877110538616}
+  - {fileID: -3614853084426579080}
   - {fileID: 8324102109481770816}
   - {fileID: -4467616490986340797}
   identity: {fileID: 114211852988908172}
   QuickAccess: 0
+--- !u!114 &-3614853084426579080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b243ff405b33b94dbf5b6775dd9aa33, type: 3}
+  m_Name: Files
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <MSUBuildPathStreamingLanguage>
+  includeMetaFiles: 0
+  files:
+  - {fileID: 102900000, guid: 49962d515fe24e347b3f52d7fb94f57d, type: 3}
 --- !u!114 &114107831304456238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +71,7 @@ MonoBehaviour:
   m_Name: AssemblyDefinitions
   m_EditorClassIdentifier: 
   StagingPaths:
-  - <BuildPathPlugins>
+  - <MSUBuildPathPlugins>
   definitions:
   - {fileID: 5897886265953266890, guid: 79be0a6d29fb3f44aa248e65febf15cd, type: 3}
 --- !u!114 &114211852988908172
@@ -114,7 +112,7 @@ MonoBehaviour:
   m_Name: AssetBundleDefinitions
   m_EditorClassIdentifier: 
   StagingPaths:
-  - <BuildPathAssets>
+  - <MSUBuildPathAssets>
   assetBundles:
   - assetBundleName: litmain
     assets:
@@ -161,7 +159,7 @@ MonoBehaviour:
   m_Name: Files
   m_EditorClassIdentifier: 
   StagingPaths:
-  - <BuildPathSoundbanks>
+  - <MSUBuildPathStreamingSoundbank>
   includeMetaFiles: 0
   files:
   - {fileID: 102900000, guid: b5a346d72bcafd149bb4d4ebbd969d47, type: 3}

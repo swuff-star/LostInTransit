@@ -57,7 +57,7 @@ namespace LostInTransit
             //Disabling temp items cuz they seem to be broken atm.
             //LITAssets.AssetsAvailability.CallWhenAvailable(() => new LITTempItems().Init());
 
-            LanguageFileLoader.AddLanguageFilesFromMod(this, "LITLang");
+            LanguageFileLoader.AddLanguageFilesFromMod(this, "languages");
 
             riskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
             properSaveInstalled = MSUtil.IsModInstalled(ProperSave.ProperSavePlugin.GUID);
