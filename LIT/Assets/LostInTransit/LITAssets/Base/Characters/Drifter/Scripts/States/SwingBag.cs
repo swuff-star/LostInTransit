@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 
 namespace EntityStates.Drifter
 {
-#if DEBUG
     class SwingBag : BasicMeleeAttack, SteppedSkillDef.IStepSetter, ISkillState
     {
         public int swing = 0;
@@ -112,5 +111,4 @@ namespace EntityStates.Drifter
                 overlapAttack.damageType = DamageType.Stun1s;
         }
     }
-#endif
 }

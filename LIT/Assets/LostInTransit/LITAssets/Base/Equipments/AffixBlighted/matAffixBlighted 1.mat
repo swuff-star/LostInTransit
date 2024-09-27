@@ -2,15 +2,25 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: matAffixBlighted 1
-  m_Shader: {fileID: 4800000, guid: 99d7375c08a1e8f4b939426b5a699e36, type: 3}
-  m_ShaderKeywords: BINARYBLEND CUTOUT DISABLEREMAP FRESNEL FRESNEL_EMISSION VERTEXOFFSET
-    _DISPLACEMENTMODE_OFF _DISTORTIONQUALITY_HIGH _EMISSION _REFLECTIONTYPE_NONE
+  m_Shader: {fileID: 4800000, guid: 9b2024ee08a5bfc418ff897991e84323, type: 2}
+  m_ValidKeywords:
+  - CUTOUT
+  - FRESNEL_EMISSION
+  m_InvalidKeywords:
+  - BINARYBLEND
+  - DISABLEREMAP
+  - FRESNEL
+  - VERTEXOFFSET
+  - _DISPLACEMENTMODE_OFF
+  - _DISTORTIONQUALITY_HIGH
+  - _EMISSION
+  - _REFLECTIONTYPE_NONE
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -140,6 +150,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaBias: 0.12
     - _AlphaBoost: 1.3
@@ -284,3 +295,4 @@ Material:
     - _WDirectionAB: {r: 0.3, g: 0.85, b: 0.85, a: 0.25}
     - _WDirectionCD: {r: 0.1, g: 0.9, b: 0.5, a: 0.5}
     - _WSpeed: {r: 1.2, g: 1.375, b: 1.1, a: 1.5}
+  m_BuildTextureStacks: []

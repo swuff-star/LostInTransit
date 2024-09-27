@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace EntityStates.Drifter
 {
-#if DEBUG
     public class VacuumBag : BaseSkillState
     {
         public static string muzzle;
@@ -41,6 +40,8 @@ namespace EntityStates.Drifter
             maxDuration = baseMaxDuration / attackSpeedStat;
             suckFrequency = baseSuckFrequency / attackSpeedStat;
             characterBody.modelLocator.modelTransform.GetComponent<ChildLocator>().FindChild("SuckFX").gameObject.SetActive(true);
+
+            PlayCrossfade("Gesture, Override", "SuffocateEnter", "Utility.playbackRate", minDuration, 0.1f);
 
             Suck();
             characterBody.SetAimTimer(suckFrequency);
@@ -152,5 +153,4 @@ namespace EntityStates.Drifter
             outer.SetNextState(nextState);
         }
     }
-#endif
 }

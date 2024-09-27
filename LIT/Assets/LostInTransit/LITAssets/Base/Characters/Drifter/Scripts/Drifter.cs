@@ -10,7 +10,6 @@ using UnityEngine.Networking;
 
 namespace LostInTransit.Characters
 {
-#if DEBUG
     public sealed class Drifter : LITSurvivor, IContentPackModifier
     {
         public override SurvivorDef survivorDef => _survivorDef;
@@ -124,5 +123,4 @@ namespace LostInTransit.Characters
             contentPack.AddContentFromAssetCollection(_assetCollection);
         }
     }
-#endif
 }

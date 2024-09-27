@@ -8,12 +8,11 @@ using UnityEngine.Networking;
 
 namespace EntityStates.Drifter
 {
-#if DEBUG
     class Suffocate : BasicMeleeAttack
     {
         public override void PlayAnimation()
         {
-            //PlayCrossfade("Gesture, Override", animationStateName, "Primary.playbackRate", duration, 0.1f);
+            PlayCrossfade("Gesture, Override", "SuffocateEnd", "Utility.playbackRate", duration, 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -28,5 +27,4 @@ namespace EntityStates.Drifter
             DamageAPI.AddModdedDamageType(overlapAttack, LostInTransit.Characters.Drifter.executeToScrap);
         }
     }
-#endif
 }
