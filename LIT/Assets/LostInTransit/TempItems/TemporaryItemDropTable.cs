@@ -35,8 +35,7 @@ namespace LostInTransit.ScriptableObjects
 
 		public bool IsFilterRequired()
 		{
-			return false;
-			//return LITTempItems.blacklist.Length > 0 || this.requiredItemTags.Length != 0 || this.bannedItemTags.Length != 0;
+			return LITTempItems.blacklist.Length > 0 || this.requiredItemTags.Length != 0 || this.bannedItemTags.Length != 0;
 		}
 
 		public bool PassesFilter(PickupIndex pickupIndex)
@@ -62,8 +61,7 @@ namespace LostInTransit.ScriptableObjects
 				}
 			}
 
-			return false;
-			//return pickupDef.itemIndex != ItemIndex.None && Array.IndexOf<ItemIndex>(LITTempItems.blacklist, pickupDef.itemIndex) == -1;
+			return pickupDef.itemIndex != ItemIndex.None && Array.IndexOf<ItemIndex>(LITTempItems.blacklist, pickupDef.itemIndex) == -1;
 		}
 		public void Add(List<PickupIndex> sourceDropList, float chance)
 		{

@@ -54,8 +54,7 @@ namespace LostInTransit
             new LITConfig(this);
             new LITContent();
 
-            //Disabling temp items cuz they seem to be broken atm.
-            //LITAssets.AssetsAvailability.CallWhenAvailable(() => new LITTempItems().Init());
+            LITAssets.AssetsAvailability.CallWhenAvailable(() => new LITTempItems().Init());
 
             LanguageFileLoader.AddLanguageFilesFromMod(this, "languages");
 

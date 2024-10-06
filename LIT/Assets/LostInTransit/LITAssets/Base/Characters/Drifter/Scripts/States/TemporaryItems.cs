@@ -43,7 +43,7 @@ namespace EntityStates.Drifter
 
             if (NetworkServer.active)
             {
-                this.rng = new Xoroshiro128Plus(Run.instance.treasureRng.nextUlong);
+                this.rng = new Xoroshiro128Plus(Run.instance.treasureRng.nextUlong); // SHOULD BE ONCE PER STAGE INSTEAD OF PER USE
             }
 
             drifterScrapComponent = base.GetComponent<DrifterScrapComponent>();
@@ -94,7 +94,7 @@ namespace EntityStates.Drifter
             pickupIndex = RoR2.Items.RandomlyLunarUtils.CheckForLunarReplacement(pickupIndex, this.rng);
 
             ItemIndex itemIndex = PickupCatalog.GetPickupDef(pickupIndex).itemIndex;
-            itemIndex = ItemIndex.None; //LITTempItems.CheckForTemporaryReplacement(itemIndex);
+            itemIndex = LITTempItems.CheckForTemporaryReplacement(itemIndex);
 
             if(itemIndex == ItemIndex.None)
             {
@@ -107,7 +107,7 @@ namespace EntityStates.Drifter
             Vector3 velocity = Vector3.up * TemporaryItems.dropletUpVelocity + direction * TemporaryItems.dropletForwardVelocity;
             Transform origin = base.transform; // BAG MUZZLEEEEEEEEEEEEEEEEEEEEEEEEE
 
-            //LITTempItems.CreateTemporaryItemDroplet(pickupIndex, origin.position, velocity, itemDuration);
+            LITTempItems.CreateTemporaryItemDroplet(pickupIndex, origin.position, velocity, itemDuration);
         }
 
 

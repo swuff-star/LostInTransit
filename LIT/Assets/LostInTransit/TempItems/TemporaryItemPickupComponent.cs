@@ -14,8 +14,9 @@ namespace LostInTransit.Components
         // unless it looks too busy with the blue glow
 
         public static Action<TemporaryItemPickupComponent> onAwakeGlobal;
+        public static void ClearSubscriptions() => onAwakeGlobal = null;
 
-        public float itemDuration = 120; // LITTempItems.fallbackTemporaryItemDuration;
+        public float itemDuration = LITTempItems.fallbackTemporaryItemDuration;
 
         private void Awake()
         {
