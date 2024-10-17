@@ -38,6 +38,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8620351945548440734}
   m_Father: {fileID: 0}
@@ -107,11 +108,14 @@ MonoBehaviour:
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
+  authorityHandlesCollisionEvents: 0
   flightSoundLoop: {fileID: 0}
   canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}
+  localCollisionHappened: 0
   procCoefficient: 1
+  CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!54 &8898331752983091904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120,7 +124,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5499954412175847519}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -143,6 +147,10 @@ MonoBehaviour:
   positionTransmitInterval: 0.033333335
   interpolationFactor: 1
   allowClientsideCollision: 0
+  checkForLocalPlayerAuthority: 0
+  singletonArrayIndex: -1
+  serverPosition: {x: 0, y: 0, z: 0}
+  serverRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1666599204509507547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 12
   lifetimeExpiredEffect: {fileID: 0}
-  desiredForwardSpeed: 30
+  desiredForwardSpeed: 15
   updateAfterFiring: 0
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
@@ -203,7 +211,9 @@ MonoBehaviour:
   crit: 0
   force: 0
   damageColorIndex: 0
-  damageType: 0
+  damageType:
+    damageType: 0
+    damageTypeExtended: 0
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!65 &672933750874568662
@@ -270,6 +280,10 @@ MonoBehaviour:
       m_Calls: []
   fireFrequency: 60
   resetInterval: -1
+  requireDelayOnePhysicsFrame: 0
+  ScaleWithVelocity: 0
+  ScaleVelocitySource: {fileID: 0}
+  ScaleWithVelocityAxis: {x: 0, y: 0, z: 1}
 --- !u!114 &218248498715159899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,11 +333,13 @@ MonoBehaviour:
   destroyOnEnemy: 0
   destroyOnWorld: 0
   impactOnWorld: 1
-  timerAfterImpact: 0
+  timerAfterImpact: 1
   lifetime: 8
   lifetimeAfterImpact: 0
   lifetimeRandomOffset: 0
+  minimumPhysicsStepsToKeepAliveAfterImpact: 0
   transformSpace: 0
+  explodeOnLifeTimeExpiration: 1
 --- !u!1 &6188159132364108756
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +367,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4975791342924806084}
   m_RootOrder: 0

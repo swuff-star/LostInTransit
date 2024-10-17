@@ -59,7 +59,7 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: dmgCoefficient
       fieldValue:
-        stringValue: 0
+        stringValue: 0.1
         objectValue: {fileID: 0}
     - fieldName: suckFX
       fieldValue:
