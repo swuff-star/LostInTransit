@@ -82,32 +82,8 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "moffein-assistmanager": {
-      "version": "file:AssistManager",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "moffein-defensematrixmanager": {
-      "version": "file:DefenseMatrixManager",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "moffein-elitereworks": {
-      "version": "file:EliteReworks",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "riskofrain2": {
       "version": "file:Risk of Rain 2",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "riskofresources-fixinvinciblemithrix": {
-      "version": "file:FixInvincibleMithrix",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -320,20 +296,8 @@
       "dependencies": {},
       "hash": "d101e5d64337681ec17093f88fb1ea01d07a55f4"
     },
-    "risky_lives-riskyfixes": {
-      "version": "file:RiskyFixes",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "risky_lives-riskymod": {
       "version": "file:RiskyMod",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
-    "risky_lives-riskytweaks": {
-      "version": "file:RiskyTweaks",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

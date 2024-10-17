@@ -49,7 +49,8 @@
         "UnityEngine.UI.dll",
         "R2API.Addressables.dll",
         "RiskOfOptions.dll",
-        "ProperSave.dll"
+        "ProperSave.dll",
+        "MonoMod.RuntimeDetour.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -9,6 +9,10 @@ using UnityEngine.AddressableAssets;
 using R2API;
 using HG;
 using LostInTransit.Components;
+using MonoMod.Cil;
+using Mono.Cecil.Cil;
+using MonoMod.RuntimeDetour;
+using System.Reflection;
 namespace LostInTransit
 {
     //N: idek why this uses ItemAPI, so i'm commenting it out for now cuz i'm lazy
@@ -18,7 +22,7 @@ namespace LostInTransit
     //TemporaryItemPickupComponent
     //Drifter - TemporaryItems
 
-    /*public class LITTempItems
+    public class LITTempItems
     {
         public static ItemTierDef tempTier1;
         public static ItemTierDef tempTier2;
@@ -45,7 +49,7 @@ namespace LostInTransit
             // blue glow needs to be on temporaryItemPickupPrefab
             temporaryItemPickupPrefab = PrefabAPI.InstantiateClone(pickup, "TemporaryItemPickup"); // might have to do r2api/contentpack thing i dont remember
             temporaryItemPickupPrefab.AddComponent<TemporaryItemPickupComponent>();
-            ContentAddition.AddNetworkedObject(temporaryItemPickupPrefab); /////////////////////////
+            LITContent.LITContentPack.networkedObjectPrefabs.Add(new GameObject[] { temporaryItemPickupPrefab });
 
             TemporaryItemTracker.Init();
 
@@ -57,8 +61,7 @@ namespace LostInTransit
                     return orig(inv, item) + orig(inv, tempItem);
                 return orig(inv, item);
             };
-
-
+            
             // would be good to get item timers into these somehow
             // also mithrix duplicates the temporary items when he gives them back. not fixed yet
             //On.RoR2.Orbs.ItemTransferOrb.DefaultOnArrivalBehavior += (orig, orb) =>
@@ -79,8 +82,6 @@ namespace LostInTransit
             tempTier1.canRestack = false;
             tempTier1.pickupRules = ItemTierDef.PickupRules.Default;
 
-            ContentAddition.AddItemTierDef(tempTier1);
-
             tempTier2 = ScriptableObject.CreateInstance<ItemTierDef>();
             tempTier2.name = "TemporaryTier2";
             tempTier2.tier = ItemTier.AssignedAtRuntime;
@@ -93,8 +94,6 @@ namespace LostInTransit
             tempTier2.canScrap = false;
             tempTier2.canRestack = false;
             tempTier2.pickupRules = ItemTierDef.PickupRules.Default;
-
-            ContentAddition.AddItemTierDef(tempTier2);
 
             tempTier3 = ScriptableObject.CreateInstance<ItemTierDef>();
             tempTier3.name = "TemporaryTier3";
@@ -109,8 +108,6 @@ namespace LostInTransit
             tempTier3.canRestack = false;
             tempTier3.pickupRules = ItemTierDef.PickupRules.Default;
 
-            ContentAddition.AddItemTierDef(tempTier3);
-
             tempLunar = ScriptableObject.CreateInstance<ItemTierDef>();
             tempLunar.name = "TemporaryLunar";
             tempLunar.tier = ItemTier.AssignedAtRuntime;
@@ -124,7 +121,7 @@ namespace LostInTransit
             tempLunar.canRestack = false;
             tempLunar.pickupRules = ItemTierDef.PickupRules.ConfirmAll;
 
-            ContentAddition.AddItemTierDef(tempLunar);
+            LITContent.LITContentPack.itemTierDefs.Add(new ItemTierDef[] { tempTier1, tempTier2, tempTier3, tempLunar });
         }
 
         [SystemInitializer(typeof(ItemCatalog))]
@@ -135,9 +132,62 @@ namespace LostInTransit
             DLC1Content.Items.LunarSun.itemIndex, // egocentrism turns items into non-temporary copies. would have to ILHook LunarSunBehavior. probably worth doing because the interaction would be funny
             };
         }
+        [SystemInitializer(typeof(CostTypeCatalog))]
+        private static void FixCostHooks() // for SOME REASON we didnt need to hook these before Devotion/SOTS. Id really like to figure out how that was even possible
+        {
+            // subtract temporary items so that they arent valid for purchases
+            IL.RoR2.Inventory.HasAtLeastXTotalItemsOfTier += (ILContext il) =>
+            {
+                ILCursor c = new ILCursor(il);
+                // num += GetItemCount(itemIndex);
+                bool b = c.TryGotoNext(MoveType.After,
+                    x => x.MatchLdloc(0),
+                    x => x.MatchLdarg(0),
+                    x => x.MatchLdloc(1)
+                    );
+                if(b)
+                {
+                    c.Remove(); // evil maxxing
+                    c.EmitDelegate<Func<Inventory, ItemIndex, int>>((inv, index) =>
+                    {
+                        return inv.GetItemCount(index) - (realToTemporaryIndex.TryGetValue(index, out var temp) ? inv.GetItemCount(temp) : 0);
+
+                    });
+                }
+                else
+                {
+                    LITLog.Fatal("LITTempItems.Inventory_HasAtLeastXTotalItemsOfTier: ILHook failed.");
+                }
+
+            };
+            CostTypeDef itemDef = CostTypeCatalog.GetCostTypeDef(CostTypeIndex.WhiteItem);
+            var itemPayCostHook = new ILHook(itemDef.payCost.GetMethodInfo(), delegate (ILContext il)
+            {
+                ILCursor c = new ILCursor(il);
+                // int itemCount = inventory.GetItemCount(allItem);
+                bool b = c.TryGotoNext(MoveType.After,
+                    x => x.MatchLdloc(1),
+                    x => x.MatchLdloc(9)
+                    );
+                if(b)
+                {
+                    c.Remove(); // evil maxxing 2
+                    c.EmitDelegate<Func<Inventory, ItemIndex, int>>((inv, index) =>
+                    {
+                        return inv.GetItemCount(index) - (realToTemporaryIndex.TryGetValue(index, out var temp) ? inv.GetItemCount(temp) : 0);
+
+                    });
+                }
+                else
+                {
+                    LITLog.Fatal("LITTempItems.PayCostCatalog_PayCostItem: ILHook failed.");
+                }
+            }
+            );
+        }
         public static ItemIndex CheckForTemporaryReplacement(ItemIndex index)
         {           
-            if (Array.IndexOf<ItemIndex>(blacklist, index) == -1) return ItemIndex.None;
+            if (Array.IndexOf<ItemIndex>(blacklist, index) != -1) return ItemIndex.None;
 
             return realToTemporaryIndex.TryGetValue(index, out ItemIndex temporaryItem) ? temporaryItem : ItemIndex.None;
         }
@@ -154,8 +204,8 @@ namespace LostInTransit
                 prefabOverride = LITTempItems.temporaryItemPickupPrefab,
             };
             TemporaryItemPickupComponent.onAwakeGlobal += (timer) => ModifyTimer(timer, duration);
-            PickupDropletController.CreatePickupDroplet(info, position, velocity);          
-            TemporaryItemPickupComponent.onAwakeGlobal -= (timer) => ModifyTimer(timer, duration); // THIS DOESNT UNHOOK BUT IDK HOWWWWWWWW
+            PickupDropletController.CreatePickupDroplet(info, position, velocity);
+            TemporaryItemPickupComponent.ClearSubscriptions(); // genius mode activated
             //Its because its an annonymous function, even if theyre identically written it gets compiled into different functions. this needs to be fixed somehow
         }
 
@@ -294,5 +344,5 @@ namespace LostInTransit
             ItemDisplayRule[] rules = null;
             return new CustomItem(newItem, rules);
         }
-    }*/
+    }
 }
